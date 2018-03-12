@@ -1,6 +1,6 @@
 package model;
 
-public class M_ManagmentAssistent {
+public class M_ManagementAssistent {
 	private int mitarbeiterID;
 	private String name;
 	private String vorname;
