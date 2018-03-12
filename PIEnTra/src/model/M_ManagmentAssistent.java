@@ -1,10 +1,13 @@
 package model;
 
+import java.util.ArrayList;
+
 public class M_ManagmentAssistent {
 	
 	private int mitarbeiterID;
 	private String name;
 	private String vorname;
+	private List<M_Training> trainings = new ArrayList<M_Training>();
 	
 	public int getMitarbeiterID() {
 		return mitarbeiterID;
