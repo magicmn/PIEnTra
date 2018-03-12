@@ -1,11 +1,10 @@
 package model;
 
 public class M_ManagmentAssistent {
+	
 	private int mitarbeiterID;
 	private String name;
 	private String vorname;
-	
-	
 	
 	public int getMitarbeiterID() {
 		return mitarbeiterID;
