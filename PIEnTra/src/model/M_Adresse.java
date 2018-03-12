@@ -3,6 +3,6 @@ package model;
 public class M_Adresse {
 
 	private int adressID;
-	private Stringstrasse;
+	private String strasse;
 	
 }
