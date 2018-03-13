@@ -6,15 +6,12 @@ public class M_ManagementAssistent extends M_Person{
 	private static int interneID;
 	private int mitarbeiterID;
 	private ArrayList<M_Training> trainings;
-	public M_ManagementAssistent(String vorname, String nachname, M_Training ...trainings) {
+	public M_ManagementAssistent(String vorname, String nachname) {
 		super(vorname, nachname);
 		setInterneID(getInterneID()+1);
 		setMitarbeiterID(getInterneID());
-		this.trainings = new ArrayList<M_Training>();
-		for(int i  = 0; i<trainings.length; i++) {
-			this.trainings.add(trainings[i]);
-			
-		}
+		
+		
 		
 		
 	}
@@ -100,6 +97,17 @@ public class M_ManagementAssistent extends M_Person{
 	public void setNachname(String nachname) {
 		// TODO Auto-generated method stub
 		super.setNachname(nachname);
+	}
+	
+	/**Ordnet einem Assistenten ein weiteres Training hinzu
+	 * 
+	 * @param training
+	 */
+	public void trainingHinzufuegen(M_Training training ) {
+		if(trainings == null) {
+			trainings = new ArrayList<>();
+		}
+		trainings.add(training);
 	}
 	
 }
