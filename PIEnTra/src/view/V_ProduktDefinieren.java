@@ -25,9 +25,9 @@ public class V_ProduktDefinieren extends JFrame{
 	JLabel lbl_produktbezeichnung = new JLabel("Produktbezeichnung:              ");
 	JLabel lbl_produktbeschreibung = new JLabel("Produktbeschreibung:             ");
 	
-	JTextField txt_produktbezeichnung = new JTextField(25);
-	JTextArea txt_produktbeschreibung = new JTextArea(25, 25);
-	JTextField txt_bottom = new JTextField(40);
+	JTextField txt_produktbezeichnung = new JTextField(35);
+	JTextArea txt_produktbeschreibung = new JTextArea(20, 35);
+	JTextField txt_bottom = new JTextField(54);
 	
 	JButton btn_produktdefninieren = new JButton("Produkt definieren");
 	JButton btn_zurueckzumhauptmenu = new JButton("Zurück zum Hauptmenü");
@@ -38,14 +38,14 @@ public class V_ProduktDefinieren extends JFrame{
 	}
 	
 	public void init(){
-		this.setBounds(50, 50, 475, 570);
+		this.setBounds(50, 50, 470, 525);
 		this.setVisible(true);
 		this.setLayout(new BorderLayout());
 		this.setResizable(false);
 		
 		txt_produktbeschreibung.setBorder(BorderFactory.createLineBorder(Color.gray));
 		txt_bottom.setEnabled(false);
-		//btn_produktdefninieren.
+		//txt_produktbeschreibung.
 		
 		pnl_pbezeichnung.setLayout(new FlowLayout());
 		pnl_pbezeichnung.add(lbl_produktbezeichnung);
