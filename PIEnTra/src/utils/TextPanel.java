@@ -1,7 +1,6 @@
 package utils;
 
 import java.awt.Dimension;
-import java.awt.FlowLayout;
 
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -12,18 +11,16 @@ public class TextPanel extends JPanel {
 
 	JLabel label;
 	JTextField txt_field;
-	JLabel platzhalter = new JLabel();
 
 	public TextPanel(String pnl_name, int txt_size) {
-		this.setLayout(new FlowLayout());
+		this.setLayout(null);
 		label = new JLabel(pnl_name);
-		label.setPreferredSize(new Dimension(200,20));
-		txt_field = new JTextField(txt_size);
+		label.setPreferredSize(new Dimension(160, 20));
+		label.setBounds(0, 0, 120, 20);
+		txt_field = new JTextField(20);
+		txt_field.setBounds(120, 0, txt_size, 20);
 		this.add(label);
 		this.add(txt_field);
-		//this.add(platzhalter);
-		this.setAlignmentX(LEFT_ALIGNMENT);
-		//platzhalter.setPreferredSize(new Dimension(1000,20));
 	}
 
 	public JTextField getTextField() {

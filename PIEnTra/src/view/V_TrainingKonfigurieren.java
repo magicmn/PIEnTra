@@ -1,33 +1,37 @@
 package view;
 
 import java.awt.BorderLayout;
+import java.awt.Dimension;
 import java.awt.GridLayout;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
-import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
 
+import utils.TextPanel;
+
 public class V_TrainingKonfigurieren extends JFrame {
 	
-		private JTextField txt_kundenId;
-		private JTextField txt_firmenname;
-		private JTextField txt_ansprechpartner;
-		private JTextField txt_produktbeschreibung;
-		private JTextField txt_anfangsdatum;
-		private JTextField txt_enddatum;
-		private JTextField txt_tage;
-		private JTextField txt_trainer;
-		private JTextField txt_ort;
-		private JTextField txt_bemerkungen;
+		private TextPanel txt_kundenId;
+		private TextPanel txt_firmenname;
+		private TextPanel txt_ansprechpartner;
+		private TextPanel txt_produktbeschreibung;
+		private TextPanel txt_anfangsdatum;
+		private TextPanel txt_enddatum;
+		private TextPanel txt_tage;
+		private TextPanel txt_trainer;
+		private TextPanel txt_ort;
+		private TextPanel txt_bemerkungen;
 		private JButton btn_kundewaehlen;
 		private JButton btn_ressourcenwaehlen;
 		private JButton btn_trainingspeichern;
 		private JButton btn_zurueck;
 		private JTextField txt_navigation;
+		
+		private int margin = 10;
 		
 		public static void main(String[]args) throws ClassNotFoundException, InstantiationException, IllegalAccessException, UnsupportedLookAndFeelException {
 			UIManager.setLookAndFeel("com.sun.java.swing.plaf.windows.WindowsLookAndFeel");
@@ -42,44 +46,44 @@ public class V_TrainingKonfigurieren extends JFrame {
 	private void initView() {
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		this.setTitle("PIEnTra p1.00");
-		this.setBounds(200, 200, 900, 450);
+		this.setBounds(200, 200, 600, 450);
 		this.setLayout(new BorderLayout());
-		//this.setResizable(false);
+		this.setResizable(false);
 		
 		JPanel pnl_center = new JPanel();
-		pnl_center.setLayout(new GridLayout(10,2,0,10));
+		pnl_center.setLayout(null);
 		this.add(BorderLayout.CENTER, pnl_center);
 		
-		txt_kundenId = new JTextField(20);
-		txt_firmenname = new JTextField();
-		txt_ansprechpartner = new JTextField();
-		txt_produktbeschreibung = new JTextField();
-		txt_anfangsdatum = new JTextField();
-		txt_enddatum = new JTextField();
-		txt_tage = new JTextField();
-		txt_trainer = new JTextField();
-		txt_ort = new JTextField();
-		txt_bemerkungen = new JTextField();
-		pnl_center.add(new JLabel("Kunden-ID: "));
-		pnl_center.add(txt_kundenId);
-		pnl_center.add(new JLabel("Firmenname: "));
-		pnl_center.add(txt_firmenname);
-		pnl_center.add(new JLabel("Ansprechpartner: "));
-		pnl_center.add(txt_ansprechpartner);
-		pnl_center.add(new JLabel("Produktbeschreibung: "));
-		pnl_center.add(txt_produktbeschreibung);
-		pnl_center.add(new JLabel("Anfangsdatum: "));
-		pnl_center.add(txt_anfangsdatum);
-		pnl_center.add(new JLabel("Enddatum: "));
-		pnl_center.add(txt_enddatum);
-		pnl_center.add(new JLabel("Tage: "));
-		pnl_center.add(txt_tage);
-		pnl_center.add(new JLabel("Trainer: "));
-		pnl_center.add(txt_trainer);
-		pnl_center.add(new JLabel("Ort: "));
-		pnl_center.add(txt_ort);
-		pnl_center.add(new JLabel("Bemerkungen: "));
-		pnl_center.add(txt_bemerkungen);
+		txt_kundenId = new TextPanel("Trainings-ID:", 120);
+		txt_firmenname = new TextPanel("Firmenname:", 200);
+		txt_ansprechpartner = new TextPanel("Ansprechpartner:", 200);
+		txt_produktbeschreibung = new TextPanel("Produktbeschreibung:", 200);
+		txt_anfangsdatum = new TextPanel("Anfangsdatum:", 120);
+		txt_enddatum = new TextPanel("Enddatum:", 120);
+		txt_tage = new TextPanel("Tage:", 50);
+		txt_trainer = new TextPanel("Trainer:", 200);
+		txt_ort = new TextPanel("Ort:", 200);
+		txt_bemerkungen = new TextPanel("Bemerkungen", 430);
+		pnl_center.add(new JPanel().add(txt_kundenId));
+		txt_kundenId.setBounds(20, margin, 1000, 20);
+		pnl_center.add(new JPanel().add(txt_firmenname));
+		txt_firmenname.setBounds(20, autoMargin(), 1000, 20);
+		pnl_center.add(new JPanel().add(txt_ansprechpartner));
+		txt_ansprechpartner.setBounds(20, autoMargin(), 1000, 20);
+		pnl_center.add(new JPanel().add(txt_produktbeschreibung));
+		txt_produktbeschreibung.setBounds(20, autoMargin(), 1000, 20);
+		pnl_center.add(new JPanel().add(txt_anfangsdatum));
+		txt_anfangsdatum.setBounds(20, autoMargin(), 1000, 20);
+		pnl_center.add(new JPanel().add(txt_enddatum));
+		txt_enddatum.setBounds(20, autoMargin(), 1000, 20);
+		pnl_center.add(new JPanel().add(txt_tage));
+		txt_tage.setBounds(20, autoMargin(), 1000, 20);
+		pnl_center.add(new JPanel().add(txt_trainer));
+		txt_trainer.setBounds(20, autoMargin(), 1000, 20);
+		pnl_center.add(new JPanel().add(txt_ort));
+		txt_ort.setBounds(20, autoMargin(), 1000, 20);
+		pnl_center.add(new JPanel().add(txt_bemerkungen));
+		txt_bemerkungen.setBounds(20, autoMargin(), 1000, 20);
 		
 		JPanel pnl_south = new JPanel();
 		pnl_south.setLayout(new GridLayout(2,1));
@@ -91,10 +95,16 @@ public class V_TrainingKonfigurieren extends JFrame {
 		JPanel pnl_south_top_inner = new JPanel();
 		pnl_south_top_inner.setLayout(new GridLayout(4,1,5,5));
 		
+		Dimension dim = new Dimension(135, 20);
 		btn_kundewaehlen = new JButton("Kunde wählen");
+		btn_kundewaehlen.setPreferredSize(dim);
 		btn_ressourcenwaehlen = new JButton("Ressourcen wählen");
+		btn_ressourcenwaehlen.setPreferredSize(dim);
 		btn_trainingspeichern = new JButton("Trainingspeichern");
+		btn_trainingspeichern.setPreferredSize(dim);
 		btn_zurueck = new JButton("Zurück zum Hauptmenü");
+		btn_zurueck.setPreferredSize(dim);
+		
 		pnl_south_top.add(btn_kundewaehlen);
 		pnl_south_top.add(btn_ressourcenwaehlen);
 		pnl_south_top.add(btn_trainingspeichern);
@@ -103,7 +113,12 @@ public class V_TrainingKonfigurieren extends JFrame {
 		JPanel pnl_south_bottom = new JPanel();
 		pnl_south.add(pnl_south_bottom);
 		
-		txt_navigation = new JTextField(40);
+		txt_navigation = new JTextField(78);
 		pnl_south_bottom.add(txt_navigation);
+	}
+	
+	private int autoMargin() {
+		margin = margin + 30;
+		return margin;
 	}
 }
