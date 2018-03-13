@@ -49,7 +49,7 @@ public class V_TrainingKonfigurieren extends JFrame {
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		this.setTitle("PIEnTra p1.00");
 		this.setBounds((int) screenSize.getWidth()/20, (int) screenSize.getWidth()/20, (int) screenSize.getWidth()/2, (int) screenSize.getHeight()/2);
-		this.setMinimumSize(arg0);
+		this.setMinimumSize(new Dimension(500, 410));
 		this.setLayout(new BorderLayout());
 		
 		JPanel pnl_center = new JPanel();
