@@ -48,7 +48,7 @@ public class V_TrainingKonfigurieren extends JFrame {
 		this.setTitle("PIEnTra p1.00");
 		this.setBounds(200, 200, 600, 450);
 		this.setLayout(new BorderLayout());
-		this.setResizable(false);
+		//this.setResizable(false);
 		
 		JPanel pnl_center = new JPanel();
 		pnl_center.setLayout(null);
@@ -100,7 +100,7 @@ public class V_TrainingKonfigurieren extends JFrame {
 		btn_kundewaehlen.setPreferredSize(dim);
 		btn_ressourcenwaehlen = new JButton("Ressourcen wählen");
 		btn_ressourcenwaehlen.setPreferredSize(dim);
-		btn_trainingspeichern = new JButton("Trainingspeichern");
+		btn_trainingspeichern = new JButton("Training speichern");
 		btn_trainingspeichern.setPreferredSize(dim);
 		btn_zurueck = new JButton("Zurück zum Hauptmenü");
 		btn_zurueck.setPreferredSize(dim);
