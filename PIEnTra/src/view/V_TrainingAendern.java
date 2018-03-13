@@ -63,7 +63,7 @@ public class V_TrainingAendern extends JFrame {
 	//Dem mainPanel und buttonPanel hinzufügen + nächste Zeile mit new Dimension
 	mainPanel.add(lbl_trainingsid);
 	mainPanel.add(txt_trainingsid);
-	mainPanel.add(Box.createRigidArea(new Dimension(50,50)));
+	mainPanel.add(Box.createRigidArea(new Dimension(0,0)));
 	mainPanel.add(lbl_firmenname);
 	mainPanel.add(txt_firmenname);
 	mainPanel.add(Box.createRigidArea(new Dimension(0,0)));
