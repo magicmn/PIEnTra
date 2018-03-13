@@ -33,6 +33,7 @@ public class V_TrainingAendern extends JFrame {
 	JLabel lbl_ort = new JLabel("Ort:");										//Label Ort
 	JTextField txt_bemerkungen = new JTextField();								//Text-Feld Bemerkungen
 	JLabel lbl_bemerkungen = new JLabel("Bemerkungen:");						//Label Bemerkungen
+	JTextField txt_info = new JTextField("PlEnTra / Training ändern");
 
 	//JButtons erstellen
 	JButton btn_suchen = new JButton("Training suchen");						//Button suchen
@@ -53,8 +54,11 @@ public class V_TrainingAendern extends JFrame {
 	//JPanel für den Hauptbereich des JFrames und für die Buttons
 	JPanel mainPanel = new JPanel(new GridLayout(10,2));
 	this.add(BorderLayout.CENTER, mainPanel);
-	JPanel panel_south = new JPanel(new FlowLayout(FlowLayout.CENTER));
-	this.add(BorderLayout.CENTER, panel_south);
+	JPanel panelButtons = new JPanel(new FlowLayout(FlowLayout.CENTER));
+	this.add(BorderLayout.CENTER, panelButtons);
+	JPanel panel_south = new JPanel();
+    panel_south.setLayout( new BoxLayout(panel_south, BoxLayout.X_AXIS));
+	
 	
 		
 //	//BoxLayout für das mainPanel einstellen
@@ -91,21 +95,26 @@ public class V_TrainingAendern extends JFrame {
 	mainPanel.add(lbl_bemerkungen);
 	mainPanel.add(txt_bemerkungen);
 	mainPanel.add(Box.createRigidArea(new Dimension(0,0)));
-	
-	panel_south.add(btn_suchen);
-	panel_south.add(Box.createRigidArea(new Dimension(5,0)));
-	panel_south.add(btn_ressourcenAendern);
-	panel_south.add(Box.createRigidArea(new Dimension(5,0)));
-	panel_south.add(btn_TrainingAktualisieren);
-	panel_south.add(Box.createRigidArea(new Dimension(5,0)));
-	panel_south.add(btn_zurueck);
-	panel_south.add(Box.createRigidArea(new Dimension(5,0)));
 
-	//Hinzufügen der JPanels zum BorderLayout
-	getContentPane().add(mainPanel);
+	panelButtons.add(btn_suchen);
+	panelButtons.add(Box.createRigidArea(new Dimension(5,0)));
+	panelButtons.add(btn_ressourcenAendern);
+	panelButtons.add(Box.createRigidArea(new Dimension(5,0)));
+	panelButtons.add(btn_TrainingAktualisieren);
+	panelButtons.add(Box.createRigidArea(new Dimension(5,0)));
+	panelButtons.add(btn_zurueck);
+	panelButtons.add(Box.createRigidArea(new Dimension(5,0)));
+	panel_south.add(txt_info);
+	panelButtons.add(Box.createRigidArea(new Dimension(5,0)));
+
+
+	getContentPane().add(mainPanel, BorderLayout.PAGE_START);
+	getContentPane().add(panelButtons, BorderLayout.CENTER);
 	getContentPane().add(panel_south, BorderLayout.SOUTH);
-	
+	txt_info.setEditable(false);
 	setVisible(true);
 }
+	
+	
 	
 }
