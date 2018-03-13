@@ -100,7 +100,7 @@ public class v_TrainingKonfigurieren extends JFrame {
 		JPanel pnl_south_bottom = new JPanel();
 		pnl_south.add(pnl_south_bottom);
 		
-		txt_navigation = new JTextField();
+		txt_navigation = new JTextField(40);
 		pnl_south_bottom.add(txt_navigation);
 	}
 }
