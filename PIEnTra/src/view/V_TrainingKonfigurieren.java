@@ -11,7 +11,7 @@ import javax.swing.JTextField;
 import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
 
-public class v_TrainingKonfigurieren extends JFrame {
+public class V_TrainingKonfigurieren extends JFrame {
 	
 		private JTextField txt_kundenId;
 		private JTextField txt_firmenname;
@@ -31,10 +31,10 @@ public class v_TrainingKonfigurieren extends JFrame {
 		
 		public static void main(String[]args) throws ClassNotFoundException, InstantiationException, IllegalAccessException, UnsupportedLookAndFeelException {
 			UIManager.setLookAndFeel("com.sun.java.swing.plaf.windows.WindowsLookAndFeel");
-			v_TrainingKonfigurieren ad = new v_TrainingKonfigurieren();
+			V_TrainingKonfigurieren ad = new V_TrainingKonfigurieren();
 		}
 
-	public v_TrainingKonfigurieren() {
+	public V_TrainingKonfigurieren() {
 		initView();
 		this.setVisible(true);
 	}
@@ -50,7 +50,7 @@ public class v_TrainingKonfigurieren extends JFrame {
 		pnl_center.setLayout(new GridLayout(10,2,0,10));
 		this.add(BorderLayout.CENTER, pnl_center);
 		
-		txt_kundenId = new JTextField();
+		txt_kundenId = new JTextField(20);
 		txt_firmenname = new JTextField();
 		txt_ansprechpartner = new JTextField();
 		txt_produktbeschreibung = new JTextField();
@@ -87,6 +87,9 @@ public class v_TrainingKonfigurieren extends JFrame {
 		
 		JPanel pnl_south_top = new JPanel();
 		pnl_south.add(pnl_south_top);
+		
+		JPanel pnl_south_top_inner = new JPanel();
+		pnl_south_top_inner.setLayout(new GridLayout(4,1,5,5));
 		
 		btn_kundewaehlen = new JButton("Kunde wählen");
 		btn_ressourcenwaehlen = new JButton("Ressourcen wählen");
