@@ -1,11 +1,12 @@
 package view;
 
 import java.awt.BorderLayout;
+import java.awt.FlowLayout;
 import java.awt.GridLayout;
+import java.awt.TextField;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
-import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.UIManager;
@@ -13,16 +14,16 @@ import javax.swing.UnsupportedLookAndFeelException;
 
 public class V_TrainingKonfigurieren extends JFrame {
 	
-		private JTextField txt_kundenId;
-		private JTextField txt_firmenname;
-		private JTextField txt_ansprechpartner;
-		private JTextField txt_produktbeschreibung;
-		private JTextField txt_anfangsdatum;
-		private JTextField txt_enddatum;
-		private JTextField txt_tage;
-		private JTextField txt_trainer;
-		private JTextField txt_ort;
-		private JTextField txt_bemerkungen;
+		private TextField txt_kundenId;
+		private TextField txt_firmenname;
+		private TextField txt_ansprechpartner;
+		private TextField txt_produktbeschreibung;
+		private TextField txt_anfangsdatum;
+		private TextField txt_enddatum;
+		private TextField txt_tage;
+		private TextField txt_trainer;
+		private TextField txt_ort;
+		private TextField txt_bemerkungen;
 		private JButton btn_kundewaehlen;
 		private JButton btn_ressourcenwaehlen;
 		private JButton btn_trainingspeichern;
@@ -47,39 +48,29 @@ public class V_TrainingKonfigurieren extends JFrame {
 		//this.setResizable(false);
 		
 		JPanel pnl_center = new JPanel();
-		pnl_center.setLayout(new GridLayout(10,2,0,10));
+		pnl_center.setLayout(new FlowLayout());
 		this.add(BorderLayout.CENTER, pnl_center);
 		
-		txt_kundenId = new JTextField(20);
-		txt_firmenname = new JTextField();
-		txt_ansprechpartner = new JTextField();
-		txt_produktbeschreibung = new JTextField();
-		txt_anfangsdatum = new JTextField();
-		txt_enddatum = new JTextField();
-		txt_tage = new JTextField();
-		txt_trainer = new JTextField();
-		txt_ort = new JTextField();
-		txt_bemerkungen = new JTextField();
-		pnl_center.add(new JLabel("Kunden-ID: "));
-		pnl_center.add(txt_kundenId);
-		pnl_center.add(new JLabel("Firmenname: "));
-		pnl_center.add(txt_firmenname);
-		pnl_center.add(new JLabel("Ansprechpartner: "));
-		pnl_center.add(txt_ansprechpartner);
-		pnl_center.add(new JLabel("Produktbeschreibung: "));
-		pnl_center.add(txt_produktbeschreibung);
-		pnl_center.add(new JLabel("Anfangsdatum: "));
-		pnl_center.add(txt_anfangsdatum);
-		pnl_center.add(new JLabel("Enddatum: "));
-		pnl_center.add(txt_enddatum);
-		pnl_center.add(new JLabel("Tage: "));
-		pnl_center.add(txt_tage);
-		pnl_center.add(new JLabel("Trainer: "));
-		pnl_center.add(txt_trainer);
-		pnl_center.add(new JLabel("Ort: "));
-		pnl_center.add(txt_ort);
-		pnl_center.add(new JLabel("Bemerkungen: "));
-		pnl_center.add(txt_bemerkungen);
+		txt_kundenId = new TextField("Kunden-ID:", 20);
+		txt_firmenname = new TextField("Firmenname:", 20);
+		txt_ansprechpartner = new TextField("Ansprechpartner:", 20);
+		txt_produktbeschreibung = new TextField("Produktbeschreibung:", 20);
+		txt_anfangsdatum = new TextField("Anfangsdatum:", 20);
+		txt_enddatum = new TextField("Enddatum:", 20);
+		txt_tage = new TextField("Tage:", 20);
+		txt_trainer = new TextField("Trainer:", 20);
+		txt_ort = new TextField("Ort:", 20);
+		txt_bemerkungen = new TextField("Bemerkungen", 20);
+		pnl_center.add(new JPanel().add(txt_kundenId));
+		pnl_center.add(new JPanel().add(txt_firmenname));
+		pnl_center.add(new JPanel().add(txt_ansprechpartner));
+		pnl_center.add(new JPanel().add(txt_produktbeschreibung));
+		pnl_center.add(new JPanel().add(txt_anfangsdatum));
+		pnl_center.add(new JPanel().add(txt_enddatum));
+		pnl_center.add(new JPanel().add(txt_tage));
+		pnl_center.add(new JPanel().add(txt_trainer));
+		pnl_center.add(new JPanel().add(txt_ort));
+		pnl_center.add(new JPanel().add(txt_bemerkungen));
 		
 		JPanel pnl_south = new JPanel();
 		pnl_south.setLayout(new GridLayout(2,1));
