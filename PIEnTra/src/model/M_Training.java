@@ -42,6 +42,14 @@ public class M_Training {
 		
 	}
 	
+	public ArrayList<M_ManagementAssistent> getManagementAssistente() {
+		return managementAssistente;
+	}
+
+	public void setManagementAssistente(ArrayList<M_ManagementAssistent> managementAssistente) {
+		this.managementAssistente = managementAssistente;
+	}
+
 	public int getTrainingsID() {
 		return trainingsID;
 	}
