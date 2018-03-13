@@ -3,6 +3,7 @@ package view;
 import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.GridLayout;
+import java.awt.Toolkit;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -32,6 +33,7 @@ public class V_TrainingKonfigurieren extends JFrame {
 		private JTextField txt_navigation;
 		
 		private int margin = 10;
+		Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
 		
 		public static void main(String[]args) throws ClassNotFoundException, InstantiationException, IllegalAccessException, UnsupportedLookAndFeelException {
 			UIManager.setLookAndFeel("com.sun.java.swing.plaf.windows.WindowsLookAndFeel");
@@ -46,9 +48,8 @@ public class V_TrainingKonfigurieren extends JFrame {
 	private void initView() {
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		this.setTitle("PIEnTra p1.00");
-		this.setBounds(200, 200, 600, 450);
+		this.setBounds((int) screenSize.getWidth()/20, (int) screenSize.getWidth()/20, (int) screenSize.getWidth()/2, (int) screenSize.getHeight()/2);
 		this.setLayout(new BorderLayout());
-		//this.setResizable(false);
 		
 		JPanel pnl_center = new JPanel();
 		pnl_center.setLayout(null);
