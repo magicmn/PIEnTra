@@ -6,6 +6,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
+/** Panel welches automatisch ein Label und ein Textfeld in einem Panel erstellt. **/
 public class TextPanel extends JPanel {
 
 	JLabel label;
