@@ -14,7 +14,7 @@ public class V_RessourcenAendern extends JFrame {
 	
 	JLabel lbl_produktbezeichnung= new JLabel("Produktbezeichnung:");  							
     String comboBoxListeProduktbezeichnung[] = {"du", "bist", "ein", "spast", "ich", "bin", "kein", "spast", "leih mir deine frau aus", "dann wird wenigstens dein sohn kein", "spast"};
-    JComboBox transaktionstypAuswahl = new JComboBox(comboBoxListeProduktbezeichnung);
+    JComboBox produktbezeichnungAuswahl = new JComboBox(comboBoxListeProduktbezeichnung);
     
 	JLabel lbl_trainer = new JLabel("Trainer:");  							
     String comboBoxListeTrainer[] = {};
@@ -39,25 +39,24 @@ public class V_RessourcenAendern extends JFrame {
 	
 	//Fenstergröße
 	this.setBounds(50, 50, 750,290);
-	//txt_produktbeschreibung.setBounds(50, 50, 50, 30);
-	//this.setResizable(false);
+	txt_produktbeschreibung.setBounds(50, 50, 50, 30);
 		
 	//JPanel für den Hauptbereich des JFrames und für die Buttons
 	
 	
-	JPanel mainPanel = new JPanel(new GridLayout(3,2, 5,10));
-	this.add(BorderLayout.CENTER, mainPanel);
+	JPanel mainPanel = new JPanel(new GridLayout(3,3, 5,10));
+	this.add(BorderLayout.LINE_START, mainPanel);
 	JPanel panelButtons = new JPanel(new FlowLayout(FlowLayout.CENTER));
 	this.add(BorderLayout.SOUTH, panelButtons);
 	JPanel panel_south = new JPanel();
-    panel_south.setLayout( new BoxLayout(panel_south, BoxLayout.X_AXIS));
-    
-    
+    panel_south.setLayout( new BoxLayout(panel_south, BoxLayout.X_AXIS));  
     
     mainPanel.add(lbl_produktbezeichnung);
-    mainPanel.add(transaktionstypAuswahl);
+    mainPanel.add(produktbezeichnungAuswahl);
+    mainPanel.add(lbl_produktbeschreibung);
     mainPanel.add(lbl_trainer);
     mainPanel.add(trainerAuswahl);
+    mainPanel.add(txt_produktbeschreibung);
     mainPanel.add(lbl_ort);
     mainPanel.add(ortAuswahl);
     panelButtons.add(btn_ressourcenAendern);
