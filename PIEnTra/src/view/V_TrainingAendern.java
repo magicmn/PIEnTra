@@ -2,6 +2,7 @@ package view;
 import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
+import java.awt.Frame;
 import java.awt.GridLayout;
 
 import javax.swing.*;
@@ -12,6 +13,7 @@ public class V_TrainingAendern extends JFrame {
 		V_TrainingAendern trainingAendern = new V_TrainingAendern();
 	}
 	
+
 	//JLabels und JTextfields zur Eingabe
 	JTextField txt_trainingsid = new JTextField();  							//Text-Feld Trainings-ID
 	JLabel lbl_trainingsid = new JLabel("Trainings-ID:");						//Label Trainings-ID
@@ -48,7 +50,8 @@ public class V_TrainingAendern extends JFrame {
 	public void init(){setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	
 	//Fenstergröße
-	this.setBounds(50, 50, 750,350);
+	this.setBounds(50, 50, 750,290);
+	this.setResizable(false);
 	//this.setLayout(new BorderLayout());
 		
 	//JPanel für den Hauptbereich des JFrames und für die Buttons
