@@ -4,6 +4,8 @@ import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.GridLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.ComponentEvent;
 import java.awt.event.ComponentListener;
 
@@ -75,6 +77,7 @@ public class V_Hauptmenue extends JFrame {
 		btn_TrainingLoeschen.setBtn_width(this.getWidth() / 5);
 		btn_PIEnTraVerlassen.setBtn_width(this.getWidth() / 5);
 		btn_ProdukteDefinieren.setBtn_width(this.getWidth() / 5);
+		btn_PIEnTraVerlassen.getButton().addActionListener((ActionListener) new backAction());
 	}
 	
 	private class ResizeListener implements ComponentListener {
@@ -84,6 +87,28 @@ public class V_Hauptmenue extends JFrame {
 		public void componentHidden(ComponentEvent arg0) {}
 		public void componentMoved(ComponentEvent arg0) {}
 		public void componentShown(ComponentEvent arg0) {}
+	}
+	
+	public void addBtn_TrainingKonfigurierenListener(ActionListener TrainingKonfigurieren) {
+		btn_TrainingKonfigurieren.getButton().addActionListener(TrainingKonfigurieren);
+	}
+	public void addBtn_TrainingAendernListener(ActionListener TrainingAendern) {
+		btn_TrainingAendern.getButton().addActionListener(TrainingAendern);
+	}
+	public void addBtn_KundeVerwaltenListener(ActionListener KundeVerwalten) {
+		btn_KundeVerwalten.getButton().addActionListener(KundeVerwalten);
+	}
+	public void addBtn_TrainingLoeschenListener(ActionListener TrainingLoeschen) {
+		btn_TrainingLoeschen.getButton().addActionListener(TrainingLoeschen);
+	}
+	public void addBtn_ProdukteDefinierenListener(ActionListener ProdukteDefinieren) {
+		btn_ProdukteDefinieren.getButton().addActionListener(ProdukteDefinieren);
+	}
+	
+	private class backAction implements ActionListener {
+		public void actionPerformed(ActionEvent arg0) {
+			System.exit(0);
+		}
 	}
 	
 }
