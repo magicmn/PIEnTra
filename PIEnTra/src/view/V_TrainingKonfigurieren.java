@@ -17,23 +17,23 @@ import utils.SimpleTextPanel;
 public class V_TrainingKonfigurieren extends JFrame {
 	
 	private JPanel pnl_center;
-	private SimpleTextPanel pnl_kundenId;
-	private SimpleTextPanel pnl_firmenname;
-	private SimpleTextPanel pnl_ansprechpartner;
-	private SimpleTextPanel pnl_produktbeschreibung;
-	private SimpleTextPanel pnl_anfangsdatum;
-	private SimpleTextPanel pnl_enddatum;
-	private SimpleTextPanel pnl_tage;
-	private SimpleTextPanel pnl_trainer;
-	private SimpleTextPanel pnl_ort;
-	private SimpleTextPanel pnl_bemerkungen;
+	private SimpleTextPanel pnl_kundenId = new SimpleTextPanel("Kunden-ID:");
+	private SimpleTextPanel pnl_firmenname = new SimpleTextPanel("Firmenname:");
+	private SimpleTextPanel pnl_ansprechpartner = new SimpleTextPanel("Ansprechpartner:");
+	private SimpleTextPanel pnl_produktbeschreibung = new SimpleTextPanel("Produktbeschreibung:");
+	private SimpleTextPanel pnl_anfangsdatum = new SimpleTextPanel("Anfangsdatum:");
+	private SimpleTextPanel pnl_enddatum = new SimpleTextPanel("Enddatum:");
+	private SimpleTextPanel pnl_tage = new SimpleTextPanel("Tage:");
+	private SimpleTextPanel pnl_trainer = new SimpleTextPanel("Trainer:");
+	private SimpleTextPanel pnl_ort = new SimpleTextPanel("Ort:");
+	private SimpleTextPanel pnl_bemerkungen = new SimpleTextPanel("Bemerkungen:");
 	private JPanel pnl_south;
-	private JButton btn_kundewaehlen;
-	private JButton btn_ressourcenwaehlen;
-	private JButton btn_trainingspeichern;
-	private JButton btn_zurueck;
+	private JButton btn_kundewaehlen = new JButton("Kunde wählen");
+	private JButton btn_ressourcenwaehlen = new JButton("Ressourcen wählen");
+	private JButton btn_trainingspeichern = new JButton("Training speichern");
+	private JButton btn_zurueck = new JButton("Zurück zum Hauptmenü");
 	private JTextField txt_navigation;
-
+	
 	public V_TrainingKonfigurieren() {
 		initView();
 		resizeGUI();
@@ -50,24 +50,24 @@ public class V_TrainingKonfigurieren extends JFrame {
 		this.addComponentListener(new ResizeListener());  // Fügt Listener für Frame veränderungen hinzu.
 		
 		pnl_center = new JPanel(new GridLayout(10, 1, 2 ,2));
-		pnl_center.add(pnl_kundenId = new SimpleTextPanel("Kunden-ID:"));
-		pnl_center.add(pnl_firmenname = new SimpleTextPanel("Firmenname:"));
-		pnl_center.add(pnl_ansprechpartner = new SimpleTextPanel("Ansprechpartner:"));
-		pnl_center.add(pnl_produktbeschreibung = new SimpleTextPanel("Produktbeschreibung:"));
-		pnl_center.add(pnl_anfangsdatum = new SimpleTextPanel("Anfangsdatum:"));
-		pnl_center.add(pnl_enddatum = new SimpleTextPanel("Enddatum:"));
-		pnl_center.add(pnl_tage= new SimpleTextPanel("Tage:"));
-		pnl_center.add(pnl_trainer = new SimpleTextPanel("Trainer:"));
-		pnl_center.add(pnl_ort = new SimpleTextPanel("Ort:"));
-		pnl_center.add(pnl_bemerkungen = new SimpleTextPanel("Bemerkungen:"));
+		pnl_center.add(pnl_kundenId);
+		pnl_center.add(pnl_firmenname);
+		pnl_center.add(pnl_ansprechpartner);
+		pnl_center.add(pnl_produktbeschreibung);
+		pnl_center.add(pnl_anfangsdatum);
+		pnl_center.add(pnl_enddatum);
+		pnl_center.add(pnl_tage);
+		pnl_center.add(pnl_trainer);
+		pnl_center.add(pnl_ort);
+		pnl_center.add(pnl_bemerkungen);
 		this.add(BorderLayout.CENTER, pnl_center);
 		
 		pnl_south = new JPanel(new GridLayout(2, 1));
 		JPanel pnl_south_top = new JPanel(new GridLayout(1, 4));
-		pnl_south_top.add(btn_kundewaehlen = new JButton("Kunde wählen"));
-		pnl_south_top.add(btn_ressourcenwaehlen = new JButton("Ressourcen wählen"));
-		pnl_south_top.add(btn_trainingspeichern = new JButton("Training speichern"));
-		pnl_south_top.add(btn_zurueck = new JButton("Zurück zum Hauptmenü"));
+		pnl_south_top.add(btn_kundewaehlen);
+		pnl_south_top.add(btn_ressourcenwaehlen);
+		pnl_south_top.add(btn_trainingspeichern);
+		pnl_south_top.add(btn_zurueck);
 		pnl_south.add(pnl_south_top);
 		JPanel pnl_south_bottom = new JPanel(new FlowLayout());
 		pnl_south_bottom.add(txt_navigation = new JTextField("PIEnTra / Training konfigurieren"));
@@ -76,6 +76,7 @@ public class V_TrainingKonfigurieren extends JFrame {
 		this.add(BorderLayout.SOUTH, pnl_south);
 	}
 	
+	/** Enthält variable Gößen **/
 	private void resizeGUI() {
 		txt_navigation.setPreferredSize(new Dimension(this.getWidth() - 30, txt_navigation.getPreferredSize().height));
 		pnl_kundenId.setTxtField_Size(pnl_center.getWidth() / 4);
