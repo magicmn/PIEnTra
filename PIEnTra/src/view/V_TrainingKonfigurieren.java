@@ -33,7 +33,7 @@ public class V_TrainingKonfigurieren extends JFrame {
 	private JButton btn_trainingspeichern = new JButton("Training speichern");
 	private JButton btn_zurueck = new JButton("Zurück zum Hauptmenü");
 	private JTextField txt_navigation;
-
+	
 	public V_TrainingKonfigurieren() {
 		initView();
 		resizeGUI();
