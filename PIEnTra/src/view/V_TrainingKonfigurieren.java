@@ -4,7 +4,6 @@ import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.GridLayout;
-import java.awt.Toolkit;
 import java.awt.event.ComponentEvent;
 import java.awt.event.ComponentListener;
 
@@ -30,17 +29,15 @@ public class V_TrainingKonfigurieren extends JFrame {
 	private SimpleTextPanel pnl_trainer;
 	private SimpleTextPanel pnl_ort;
 	private SimpleTextPanel pnl_bemerkungen;
+	private JPanel pnl_south;
 	private JButton btn_kundewaehlen;
 	private JButton btn_ressourcenwaehlen;
 	private JButton btn_trainingspeichern;
 	private JButton btn_zurueck;
 	private JTextField txt_navigation;
 		
-		// Variablen zur variablen varierung der variablen Fenstergröße.
-	private Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
-	private int width = (int) screenSize.getWidth();
-	private int height = (int) screenSize.getHeight();
-		
+	
+	// Nachher in den Aufrufer auslagern.
 	public static void main(String[]args) throws ClassNotFoundException, InstantiationException, IllegalAccessException, UnsupportedLookAndFeelException {
 		UIManager.setLookAndFeel("com.sun.java.swing.plaf.windows.WindowsLookAndFeel");
 		V_TrainingKonfigurieren ad = new V_TrainingKonfigurieren();
@@ -58,11 +55,11 @@ public class V_TrainingKonfigurieren extends JFrame {
 		this.setSize(750, 450); // Optimale Größe die beim Starten geladen wird.
 		this.setMinimumSize(new Dimension(500, 400)); // Um zu verhindern, dass der DAU sich wundert warum das Fenster auf einmal "weg" ist.
 		this.setLayout(new BorderLayout());
-		this.setLocationRelativeTo(null);
-		this.addComponentListener(new ResizeListener());
+		this.setLocationRelativeTo(null); // Zentriert Frame in der Mitte des Bildschirms.
+		this.addComponentListener(new ResizeListener());  // Fügt Listener für Frame veränderungen hinzu.
 		
 		pnl_center = new JPanel(new GridLayout(10, 1, 2 ,2));
-		pnl_center.add(pnl_kundenId = new SimpleTextPanel("Kunden-ID:", 20));
+		pnl_center.add(pnl_kundenId = new SimpleTextPanel("Kunden-ID:"));
 		pnl_center.add(pnl_firmenname = new SimpleTextPanel("Firmenname:"));
 		pnl_center.add(pnl_ansprechpartner = new SimpleTextPanel("Ansprechpartner:"));
 		pnl_center.add(pnl_produktbeschreibung = new SimpleTextPanel("Produktbeschreibung:"));
@@ -74,7 +71,7 @@ public class V_TrainingKonfigurieren extends JFrame {
 		pnl_center.add(pnl_bemerkungen = new SimpleTextPanel("Bemerkungen:"));
 		this.add(BorderLayout.CENTER, pnl_center);
 		
-		JPanel pnl_south = new JPanel(new GridLayout(2, 1));
+		pnl_south = new JPanel(new GridLayout(2, 1));
 		JPanel pnl_south_top = new JPanel(new GridLayout(1, 4));
 		pnl_south_top.add(btn_kundewaehlen = new JButton("Kunde wählen"));
 		pnl_south_top.add(btn_ressourcenwaehlen = new JButton("Ressourcen wählen"));
@@ -88,9 +85,18 @@ public class V_TrainingKonfigurieren extends JFrame {
 		this.add(BorderLayout.SOUTH, pnl_south);
 	}
 	
-	public void resizeGUI() {
+	private void resizeGUI() {
 		txt_navigation.setPreferredSize(new Dimension(this.getWidth() - 30, txt_navigation.getPreferredSize().height));
-		pnl_kundenId.setTxtField_Size(this.getWidth() / 2);
+		pnl_kundenId.setTxtField_Size(pnl_center.getWidth() / 4);
+		pnl_firmenname.setTxtField_Size(pnl_center.getWidth() / 2);
+		pnl_ansprechpartner.setTxtField_Size(pnl_center.getWidth() / 2);
+		pnl_produktbeschreibung.setTxtField_Size(pnl_center.getWidth() / 2);
+		pnl_anfangsdatum.setTxtField_Size(pnl_center.getWidth() / 4);
+		pnl_enddatum.setTxtField_Size(pnl_center.getWidth() / 4);
+		pnl_tage.setTxtField_Size(pnl_center.getWidth() / 8);
+		pnl_trainer.setTxtField_Size(pnl_center.getWidth() / 4);
+		pnl_ort.setTxtField_Size(pnl_center.getWidth() / 4);
+		pnl_bemerkungen.setTxtField_Size((pnl_center.getWidth() - 130));
 	}
 	
 	private class ResizeListener implements ComponentListener {
