@@ -56,7 +56,6 @@ public class V_RessourcenAendern extends JFrame {
 	this.add(BorderLayout.SOUTH, panelButtons);
 	JPanel panel_south = new JPanel();
     panel_south.setLayout( new BoxLayout(panel_south, BoxLayout.X_AXIS));  
-    
     mainPanel.add(lbl_produktbezeichnung);
     mainPanel.add(produktbezeichnungAuswahl);
     mainPanel.add(lbl_produktbeschreibung);
