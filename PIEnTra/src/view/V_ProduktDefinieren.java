@@ -46,15 +46,14 @@ public class V_ProduktDefinieren extends JFrame{
 		
 		txt_produktbeschreibung.setBorder(BorderFactory.createLineBorder(Color.gray));
 		txt_bottom.setEnabled(false);
-		
-		//txt_produktbeschreibung.
-		
+
 		pnl_pbezeichnung.setLayout(new FlowLayout());
 		pnl_pbezeichnung.add(lbl_produktbezeichnung);
 		pnl_pbezeichnung.add(txt_produktbezeichnung);
 		
 		FlowLayout flowlayout = new FlowLayout();
 		flowlayout.setAlignOnBaseline(true);
+		
 		pnl_pbeschreibung.setLayout(flowlayout);
 		pnl_pbeschreibung.add(lbl_produktbeschreibung);
 		pnl_pbeschreibung.add(txt_produktbeschreibung);
@@ -70,13 +69,26 @@ public class V_ProduktDefinieren extends JFrame{
 		pnl_center.add(pnl_txtbottom);
 		
 		pnl_txtbottom.add(txt_bottom);
-		
-		//pnl_pbezeichnung.setBorder(BorderFactory.createLineBorder(Color.black));
-		//pnl_pbeschreibung.setBorder(BorderFactory.createLineBorder(Color.black));
-		//pnl_buttons.setBorder(BorderFactory.createLineBorder(Color.black));
-		//pnl_txtbottom.setBorder(BorderFactory.createLineBorder(Color.black));
-		
+
 		this.add(pnl_center);
 		
+	}
+	
+	// Get und Set
+	
+	public String getText_txt_produktbezeichnung(){
+		return txt_produktbezeichnung.getText();
+	}
+	public String getText_txt_produktbeschreibung(){
+		return txt_produktbeschreibung.getText();
+	}
+	
+	//-----------------------------------------------------
+	
+	public void setText_txt_produktbezeichnung(String text){
+		txt_produktbezeichnung.setText(text);
+	}
+	public void setText_txt_produktbeschreibung(String text){
+		txt_produktbeschreibung.setText(text);
 	}
 }
