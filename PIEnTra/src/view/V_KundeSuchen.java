@@ -2,14 +2,12 @@ package view;
 
 import java.awt.BorderLayout;
 import java.awt.Dimension;
-import java.awt.FlowLayout;
 import java.awt.GridLayout;
 import java.awt.event.ComponentEvent;
 import java.awt.event.ComponentListener;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
-import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
@@ -68,6 +66,21 @@ public class V_KundeSuchen extends JFrame {
 		public void componentHidden(ComponentEvent arg0) {}
 		public void componentMoved(ComponentEvent arg0) {}
 		public void componentShown(ComponentEvent arg0) {}
+	}
+	
+	// Get and Set
+	
+	public String getText_pnl_kundenID(){
+		return pnl_kundenID.getString();
+	}
+	public String getText_pnl_firmenname(){
+		return pnl_firmenname.getString();
+	}
+	public void setText_pnl_kundenID(String text){
+		this.pnl_kundenID.setString(text);
+	}
+	public void setText_pnl_firmenname(String text){
+		this.pnl_firmenname.setString(text);
 	}
 	
 }
