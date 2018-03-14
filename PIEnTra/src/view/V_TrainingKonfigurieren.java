@@ -76,6 +76,7 @@ public class V_TrainingKonfigurieren extends JFrame {
 		this.add(BorderLayout.SOUTH, pnl_south);
 	}
 	
+	/** Enthält variable Gößen **/
 	private void resizeGUI() {
 		txt_navigation.setPreferredSize(new Dimension(this.getWidth() - 30, txt_navigation.getPreferredSize().height));
 		pnl_kundenId.setTxtField_Size(pnl_center.getWidth() / 4);
