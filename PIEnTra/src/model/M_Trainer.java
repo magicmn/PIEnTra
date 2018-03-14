@@ -14,14 +14,15 @@ public class M_Trainer extends M_Person {
 		this.produkte = new ArrayList<M_Produkt>();
 		for(int i  = 0; i<produkte.length; i++) {
 			this.produkte.add(produkte[i]);
-			
-			}
-		
-		
+			produkte[i].trainerHinzufuegen(this);
+
+		}
+
+
 		// TODO Auto-generated constructor stub
 	}
 
-	
+
 
 	public ArrayList<M_Training> getTrainings() {
 		return trainings;
@@ -92,6 +93,30 @@ public class M_Trainer extends M_Person {
 		}
 		trainings.add(training);
 	}
-	
+
+
+
+	@Override
+	public String toString() {
+		String trainings = "";
+		String produkte = "";
+
+		if(getProdukte()!=null) {
+			for(M_Produkt produkt : getProdukte()) {
+				produkte = produkte+" "+ produkt.getProduktID() +"";
+			}
+		}
+
+		if(getTrainings()!=null) {
+			for(M_Training training : getTrainings()) {
+				trainings = trainings+ " "+training.getTrainingsID() +"";
+			}
+		}
+
+
+		return ""+getVorname()+", "+ getNachname()+ "\nProdukte: " + produkte +"\nTrainings: "+trainings+"";
+	}
+
+
 
 }

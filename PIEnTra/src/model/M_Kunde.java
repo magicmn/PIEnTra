@@ -78,4 +78,13 @@ public class M_Kunde {
 	public void setAdresse(M_Adresse adresse) {
 		this.adresse = adresse;
 	}
+
+
+
+	@Override
+	public String toString() {
+		
+		return ""+getFirmenname()+" \nAnsprechpartner: "+ getAnsprechpartner()+"\n"+ getAdresse()+"\n"+getTelefon()+"\nBranche: "+ getBranche()+ "\n"+getEmail()+"";
+	}
+	
 }

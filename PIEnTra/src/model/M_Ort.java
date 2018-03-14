@@ -27,8 +27,8 @@ public class M_Ort {
 		return ortsID;
 	}
 
-	private void setOrtsID(String ortsID2) {
-		// TODO Auto-generated method stub
+	private void setOrtsID(String ortsID) {
+		this.ortsID=ortsID;
 		
 	}
 
@@ -72,6 +72,15 @@ public class M_Ort {
 	public void setRaum(String raum) {
 		this.raum = raum;
 	}
+
+	@Override
+	public String toString() {
+		
+		
+		return ""+getOrtsID()+ ", "+ getGeschaefstsstelle() + ", "+ getGebaeude()+ ", " + getRaum();
+	}
+	
+	
 
 	
 

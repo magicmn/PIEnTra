@@ -66,6 +66,15 @@ public class M_Adresse {
 	public void setPLZ(String pLZ) {
 		PLZ = pLZ;
 	}
+
+	@Override
+	public String toString() {
+		
+		return ""+getStrasse()+"\n"+getPLZ()+" "+getStadt()+"\n"+getBundesland();
+	}
+	
+	
+	
 	
 	
 	

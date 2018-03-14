@@ -19,10 +19,18 @@ public class M_Produkt {
 		
 		this.trainer = new ArrayList<M_Trainer>();
 		
+		if(trainer != null) {
+		
 		for(int i  = 0; i<trainer.length; i++) {
-			this.trainer.add(trainer[i]);
+			
+			 {
+				this.trainer.add(trainer[i]);
+			}
 			
 			}
+		}
+			
+		
 		
 		
 	}
@@ -67,6 +75,29 @@ public class M_Produkt {
 	public void setVersion(double version) {
 		this.version = version;
 	}
+
+	public void trainerHinzufuegen(M_Trainer trainer ) {
+		if(trainer == null) {
+			this.trainer = new ArrayList<M_Trainer>();
+		}
+		this.trainer.add(trainer);
+	}
+
+
+	@Override
+	public String toString() {
+		String trainers = "";
+		
+		
+		if(getTrainer()!=null) {
+			for(M_Trainer trainer: getTrainer()) {
+				trainers = trainers + " " + trainer.getVorname()+ " "+ trainer.getNachname()+"\n";
+			}
+		}
+		return ""+getBezeichnung()+" (Kürzel "+getProduktID()+")\n"+getBeschreibung()+"\nTrainer: "+ trainers;
+	}
+	
+	
 	
 	
 	

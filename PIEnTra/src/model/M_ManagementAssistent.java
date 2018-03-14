@@ -109,5 +109,27 @@ public class M_ManagementAssistent extends M_Person{
 		}
 		trainings.add(training);
 	}
+
+
+
+
+
+	@Override
+	public String toString() {
+		String trainings = "";
+		
+		if(getTrainings() != null) {
+		for(M_Training training : getTrainings()) {
+			trainings = trainings+ " "+training.getTrainingsID() +"";
+		}
+		}
+		
+		
+		return ""+getVorname()+", "+ getNachname()+ "\nTrainings: "+trainings+"";
+		
+		
+	}
+	
+	
 	
 }

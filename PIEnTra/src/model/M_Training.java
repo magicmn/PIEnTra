@@ -35,6 +35,7 @@ public class M_Training {
 		this.managementAssistente = new ArrayList<M_ManagementAssistent>();
 		for(int i  = 0; i<assistents.length; i++) {
 			this.managementAssistente.add(assistents[i]);
+			assistents[i].trainingHinzufuegen(this);
 			
 		}
 		
@@ -85,6 +86,7 @@ public class M_Training {
 		return interneID;
 	}
 
+	
 	public static void setInterneID(int interneID) {
 		M_Training.interneID = interneID;
 	}
@@ -120,5 +122,20 @@ public class M_Training {
 	public void setTrainer(M_Trainer trainer) {
 		this.trainer = trainer;
 	}
+
+	@Override
+	public String toString() {
+		String mAssistents = "";
+		if(getManagementAssistente() != null) {
+			for(M_ManagementAssistent mAssistent : getManagementAssistente()) {
+				mAssistents = mAssistents+ " \n"+mAssistent.getVorname()+", "+mAssistent.getNachname()+"";
+			}
+			}
+			
+		return "Training ID: "+getTrainingsID()+"\n"+getKunde()+"\n"+"Anfangsdatum: "+getAnfangsdatum()+
+				"\nEnddatum: "+ getEnddatum()+"\nTage: "+getTage()+"\nTrainer: "+
+				getTrainer().getVorname()+", "+getTrainer().getNachname()+"\nOrt:"+getOrt()+"\nBemerkungen: "+getBemerkungen();
+	}
+	
 	
 }

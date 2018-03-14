@@ -26,4 +26,12 @@ public class M_Person {
 		this.nachname = nachname;
 	}
 
+	@Override
+	public String toString() {
+		
+		return ""+getVorname()+", "+getNachname();
+	}
+	
+	
+
 }
