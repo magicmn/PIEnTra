@@ -40,6 +40,10 @@ public class V_TrainingKonfigurieren extends JFrame {
 		resizeGUI();
 		this.setVisible(true);
 	}
+	
+	public static void main(String[] args) {
+		new V_TrainingKonfigurieren();
+	}
 
 	private void initView() {
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
