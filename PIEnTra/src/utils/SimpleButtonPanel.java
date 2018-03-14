@@ -20,6 +20,7 @@ public class SimpleButtonPanel extends JPanel {
 	}
 	
 	public void setBtn_width(int btn_width) {
+		btn.setSize(new Dimension(btn_width, btn.getSize().height));
 		btn.setPreferredSize(new Dimension(btn_width, btn.getPreferredSize().height));
 	}
 }
