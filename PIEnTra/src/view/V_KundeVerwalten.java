@@ -76,6 +76,7 @@ public class V_KundeVerwalten extends JFrame {
 		pnl_south_top.add(btn_kundeaktualisieren);
 		pnl_south_top.add(btn_kundeanlegen);
 		pnl_south_top.add(btn_zurueck);
+		
 		pnl_south.add(pnl_south_top);
 		JPanel pnl_south_bottom = new JPanel(new FlowLayout());
 		pnl_south_bottom.add(txt_navigation = new JTextField("PIEnTra / Kunde verwalten"));
@@ -108,4 +109,69 @@ public class V_KundeVerwalten extends JFrame {
 		public void componentShown(ComponentEvent arg0) {}
 	}
 	
+	// Get und Set
+	
+	public String getText_pnl_kundenID(){
+		return pnl_kundenID.getString();
+	}
+	public String getText_pnl_firmenname(){
+		return pnl_firmenname.getString();
+	}
+	public String getText_pnl_ansprechpartner() {
+		return pnl_ansprechpartner.getString();
+	}
+	public String getText_pnl_branche() {
+		return pnl_branche.getString();
+	}
+	public String getText_pnl_email() {
+		return pnl_email.getString();
+	}
+	public String getText_pnl_rufnummer() {
+		return pnl_rufnummer.getString();
+	}
+	public String getText_pnl_strasse() {
+		return pnl_strasse.getString();
+	}
+	public String getText_pnl_plz() {
+		return pnl_plz.getString();
+	}
+	public String getText_pnl_bundesland() {
+		return pnl_bundesland.getString();
+	}
+	public String getText_pnl_stadt() {
+		return pnl_stadt.getString();
+	}
+	
+	//-------------------------------------------------------
+	
+	public void setText_pnl_kundenID(String text){
+		this.pnl_kundenID.setString(text);
+	}
+	public void setText_pnl_firmenname(String text){
+		this.pnl_firmenname.setString(text);
+	}
+	public void setText_pnl_ansprechpartner(String text) {
+		this.pnl_ansprechpartner.setString(text);;
+	}
+	public void setText_pnl_branche(String text) {
+		this.pnl_branche.setString(text);
+	}
+	public void setText_pnl_email(String text) {
+		this.pnl_email.setString(text);
+	}
+	public void setText_pnl_rufnummer(String text) {
+		this.pnl_rufnummer.setString(text);
+	}
+	public void setText_pnl_strasse(String text) {
+		this.pnl_strasse.setString(text);
+	}
+	public void setText_pnl_plz(String text) {
+		this.pnl_plz.setString(text);
+	}
+	public void setText_pnl_bundesland(String text) {
+		this.pnl_bundesland.setString(text);
+	}
+	public void setText_pnl_stadt(String text) {
+		this.pnl_stadt.setString(text);
+	}
 }
