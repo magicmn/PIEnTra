@@ -11,8 +11,6 @@ import javax.swing.BorderFactory;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
-import javax.swing.UIManager;
-import javax.swing.UnsupportedLookAndFeelException;
 
 import utils.SimpleButtonPanel;
 
@@ -34,17 +32,12 @@ public class V_Hauptmenue extends JFrame {
 		resizeGUI();
 		this.setVisible(true);
 	}
-	
-	public static void main(String [] args) throws ClassNotFoundException, InstantiationException, IllegalAccessException, UnsupportedLookAndFeelException {
-		UIManager.setLookAndFeel("com.sun.java.swing.plaf.windows.WindowsLookAndFeel");
-		new V_Hauptmenue();
-	}
 
 	private void initView() {
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		this.setTitle("PIEnTra p1.00");
-		this.setSize(750, 450); // Optimale Größe die beim Starten geladen wird.
-		this.setMinimumSize(new Dimension(500, 400)); // Um zu verhindern, dass der DAU sich wundert warum das Fenster auf einmal "weg" ist.
+		this.setSize(750, 300); // Optimale Größe die beim Starten geladen wird.
+		this.setMinimumSize(new Dimension(500, 200)); // Um zu verhindern, dass der DAU sich wundert warum das Fenster auf einmal "weg" ist.
 		this.setLayout(new BorderLayout()); 
 		this.setLocationRelativeTo(null); // Zentriert Frame in der Mitte des Bildschirms.
 		this.addComponentListener(new ResizeListener());  // Fügt Listener für Frame veränderungen hinzu.
