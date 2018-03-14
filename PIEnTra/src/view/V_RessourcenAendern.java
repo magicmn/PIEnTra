@@ -49,8 +49,11 @@ public class V_RessourcenAendern extends JFrame {
 		
 	//JPanel für den Hauptbereich des JFrames und für die Buttons
 	
-	
-	JPanel mainPanel = new JPanel(new GridLayout(3,3, 5,10));
+	JPanel panelProduktbeschreibung = new JPanel();
+	panelProduktbeschreibung.setLayout(new BorderLayout());
+	panelProduktbeschreibung.add(lbl_produktbeschreibung, BorderLayout.EAST);
+	panelProduktbeschreibung.add(txt_produktbeschreibung, BorderLayout.EAST);
+	JPanel mainPanel = new JPanel(new GridLayout(3,2, 5,10));
 	this.add(BorderLayout.LINE_START, mainPanel);
 	JPanel panelButtons = new JPanel(new FlowLayout(FlowLayout.CENTER));
 	this.add(BorderLayout.SOUTH, panelButtons);
@@ -59,10 +62,8 @@ public class V_RessourcenAendern extends JFrame {
     
     mainPanel.add(lbl_produktbezeichnung);
     mainPanel.add(produktbezeichnungAuswahl);
-    mainPanel.add(lbl_produktbeschreibung);
     mainPanel.add(lbl_trainer);
     mainPanel.add(trainerAuswahl);
-    mainPanel.add(txt_produktbeschreibung);
     mainPanel.add(lbl_ort);
     mainPanel.add(ortAuswahl);
     panelButtons.add(btn_ressourcenAendern);
