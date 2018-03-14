@@ -68,4 +68,19 @@ public class V_KundeSuchen extends JFrame {
 		public void componentShown(ComponentEvent arg0) {}
 	}
 	
+	// Get and Set
+	
+	public String getText_pnl_kundenID(){
+		return pnl_kundenID.getString();
+	}
+	public String getText_pnl_firmenname(){
+		return pnl_firmenname.getString();
+	}
+	public void setText_pnl_kundenID(String text){
+		this.pnl_kundenID.setString(text);
+	}
+	public void setText_pnl_firmenname(String text){
+		this.pnl_firmenname.setString(text);
+	}
+	
 }

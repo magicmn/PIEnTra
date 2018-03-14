@@ -110,5 +110,85 @@ public class V_TrainingAendern extends JFrame {
 		public void componentShown(ComponentEvent arg0) {}
 	}
 	
+	//Get Trainings-ID
+	public String getTrainingsId() {
+		return pnl_trainingsId.getString();
+	}
+	//Set Trainings-ID
+	public void setTextTrainingsId(String txt_trainingsId) {
+		this.pnl_trainingsId.setString(txt_trainingsId);
+	}
+	//Get Firmenname
+	public String getFirmenname() {
+		return pnl_firmenname.getString();
+	}	
+	//Set Firmenname
+	public void setTextFirmenname(String txt_firmenname) {
+		this.pnl_firmenname.setString(txt_firmenname);
+	}	
+	//Get Ansprechpartner
+	public String getAnsprechpartner() {
+		return pnl_ansprechpartner.getString();
+	}
+	//Set Ansprechpartner
+	public void setTextAnsprechpartner(String txt_ansprechpartner) {
+		this.pnl_ansprechpartner.setString(txt_ansprechpartner);
+	}
+	//Get Produktbeschreibung
+	public String getProduktbeschreibung() {
+		return pnl_produktbeschreibung.getString();
+	}
+	//Set Produktbeschreibung
+	public void setTextProduktbeschreibung(String txt_produktbeschreibung) {
+		this.pnl_produktbeschreibung.setString(txt_produktbeschreibung);
+	}
+	//Get Startdatum
+	public String getStartdatum() {
+		return pnl_startdatum.getString();
+	}
+	//Set Startdatum
+	public void setTextStartdatum(String txt_startdatum) {
+		this.pnl_startdatum.setString(txt_startdatum);
+	}	
+	//Get Enddatum
+	public String getEnddatum() {
+		return pnl_enddatum.getString();
+	}
+	//Set Enddatum
+	public void setTextEnddatum(String txt_enddatum) {
+		this.pnl_enddatum.setString(txt_enddatum);
+	}	
+	//Get Tage
+	public String getTage() {
+		return pnl_tage.getString();
+	}
+	//Set Tage
+	public void setTextTage(String txt_tage) {
+		this.pnl_tage.setString(txt_tage);
+	}	
+	//Get Trainer
+	public String getTrainer() {
+		return pnl_trainer.getString();
+	}
+	//Set Trainer
+	public void setTextTrainer(String txt_trainer) {
+		this.pnl_trainer.setString(txt_trainer);
+	}	
+	//Get Ort
+	public String getOrt() {
+		return pnl_ort.getString();
+	}
+	//Set Ort
+	public void setTextOrt(String txt_ort) {
+		this.pnl_ort.setString(txt_ort);
+	}	
+	//Get Bemerkungen
+	public String getBemerkungen() {
+		return pnl_bemerkungen.getString();
+	}
+	//Set Bemerkungen
+	public void setTextBemerkungen(String txt_bemerkungen) {
+		this.pnl_bemerkungen.setString(txt_bemerkungen);
+	}	
 	
 }

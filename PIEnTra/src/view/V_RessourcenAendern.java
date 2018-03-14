@@ -63,7 +63,6 @@ public class V_RessourcenAendern extends JFrame {
 	this.add(BorderLayout.SOUTH, panelButtons);
 	JPanel panel_south = new JPanel();
     panel_south.setLayout( new BoxLayout(panel_south, BoxLayout.X_AXIS));  
-    
     mainPanel.add(lbl_produktbezeichnung);
     mainPanel.add(produktbezeichnungAuswahl);
     mainPanel.add(lbl_produktbeschreibung);
@@ -79,7 +78,7 @@ public class V_RessourcenAendern extends JFrame {
 	getContentPane().add(mainPanel, BorderLayout.PAGE_START);
 	getContentPane().add(panelButtons, BorderLayout.WEST);
 	getContentPane().add(panel_south, BorderLayout.SOUTH);
-    
+
     txt_info.setEditable(false);
 	setVisible(true);
 }
