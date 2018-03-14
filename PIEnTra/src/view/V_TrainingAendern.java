@@ -76,11 +76,8 @@ public class V_TrainingAendern extends JFrame {
 		pnl_south_top.add(btn_trainingaktualisieren);
 		pnl_south_top.add(btn_zurueck);
 		pnl_south.add(pnl_south_top);
-//		JPanel pnl_south_bottom = new JPanel(new FlowLayout());
-		//Von mir
 		JPanel pnl_south_bottom = new JPanel();
 	    pnl_south_bottom.setLayout( new BoxLayout(pnl_south_bottom, BoxLayout.X_AXIS));
-	    //
 		pnl_south_bottom.add(txt_navigation = new JTextField("PlEnTra / Training ändern"));
 		txt_navigation.setFocusable(false);
 		pnl_south.add(pnl_south_bottom);
