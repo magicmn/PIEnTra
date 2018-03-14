@@ -18,7 +18,7 @@ import utils.SimpleTextPanel;
 public class V_TrainingKonfigurieren extends JFrame {
 	
 	private JPanel pnl_center;
-	private SimpleTextPanel pnl_kundenId = new SimpleTextPanel("Kunden-ID:");
+	private SimpleTextPanel pnl_kundenID = new SimpleTextPanel("Kunden-ID:");
 	private SimpleTextPanel pnl_firmenname = new SimpleTextPanel("Firmenname:");
 	private SimpleTextPanel pnl_ansprechpartner = new SimpleTextPanel("Ansprechpartner:");
 	private SimpleTextPanel pnl_produktbeschreibung = new SimpleTextPanel("Produktbeschreibung:");
@@ -55,7 +55,7 @@ public class V_TrainingKonfigurieren extends JFrame {
 		this.addComponentListener(new ResizeListener());  // Fügt Listener für Frame veränderungen hinzu.
 		
 		pnl_center = new JPanel(new GridLayout(10, 1, 2 ,2));
-		pnl_center.add(pnl_kundenId);
+		pnl_center.add(pnl_kundenID);
 		pnl_center.add(pnl_firmenname);
 		pnl_center.add(pnl_ansprechpartner);
 		pnl_center.add(pnl_produktbeschreibung);
@@ -85,7 +85,7 @@ public class V_TrainingKonfigurieren extends JFrame {
 	/** Enthält variable Gößen **/
 	private void resizeGUI() {
 		txt_navigation.setPreferredSize(new Dimension(this.getWidth() - 30, txt_navigation.getPreferredSize().height));
-		pnl_kundenId.setTxtField_Size(pnl_center.getWidth() / 4);
+		pnl_kundenID.setTxtField_Size(pnl_center.getWidth() / 4);
 		pnl_firmenname.setTxtField_Size(pnl_center.getWidth() / 2);
 		pnl_ansprechpartner.setTxtField_Size(pnl_center.getWidth() / 2);
 		pnl_produktbeschreibung.setTxtField_Size(pnl_center.getWidth() / 2);
@@ -106,4 +106,69 @@ public class V_TrainingKonfigurieren extends JFrame {
 		public void componentShown(ComponentEvent arg0) {}
 	}
 	
+	// Get und Set
+	
+	public String getText_pnl_kundenID(){
+		return pnl_kundenID.getString();
+	}
+	public String getText_pnl_firmenname(){
+		return pnl_firmenname.getString();
+	}
+	public String getText_pnl_ansprechpartner() {
+		return pnl_ansprechpartner.getString();
+	}
+	public String getText_pnl_produktbeschreibung() {
+		return pnl_produktbeschreibung.getString();
+	}
+	public String getText_pnl_anfangsdatum() {
+		return pnl_anfangsdatum.getString();
+	}
+	public String getText_pnl_enddatum() {
+		return pnl_enddatum.getString();
+	}
+	public String getText_pnl_tage() {
+		return pnl_tage.getString();
+	}
+	public String getText_pnl_trainer() {
+		return pnl_trainer.getString();
+	}
+	public String getText_pnl_ort() {
+		return pnl_ort.getString();
+	}
+	public String getText_pnl_bemerkungen() {
+		return pnl_bemerkungen.getString();
+	}
+	
+	//------------------------------------------------------
+	
+	public void setText_pnl_kundenID(String text){
+		this.pnl_kundenID.setString(text);
+	}
+	public void setText_pnl_firmenname(String text){
+		this.pnl_firmenname.setString(text);
+	}
+	public void setText_pnl_ansprechpartner(String text) {
+		this.pnl_ansprechpartner.setString(text);;
+	}
+	public void setText_pnl_produktbeschreibung(String text) {
+		this.pnl_produktbeschreibung.setString(text);
+	}
+	public void setText_pnl_anfangsdatum(String text) {
+		this.pnl_anfangsdatum.setString(text);
+	}
+	public void setText_pnl_enddatum(String text) {
+		this.pnl_enddatum.setString(text);
+	}
+	public void setText_pnl_tage(String text) {
+		this.pnl_tage.setString(text);
+	}
+	public void setText_pnl_trainer(String text) {
+		this.pnl_trainer.setString(text);
+	}
+	public void setText_pnl_ort(String text) {
+		this.pnl_ort.setString(text);
+	}
+	public void setText_pnl_bemerkungen(String text) {
+		this.pnl_bemerkungen.setString(text);
+	}
 }
