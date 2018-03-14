@@ -1,10 +1,16 @@
 package view;
 import java.awt.BorderLayout;
-import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.GridLayout;
 
-import javax.swing.*;
+import javax.swing.BoxLayout;
+import javax.swing.JButton;
+import javax.swing.JComboBox;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JTextArea;
+import javax.swing.JTextField;
 
 public class V_RessourcenAendern extends JFrame {
 
@@ -66,7 +72,7 @@ public class V_RessourcenAendern extends JFrame {
 	getContentPane().add(mainPanel, BorderLayout.PAGE_START);
 	getContentPane().add(panelButtons, BorderLayout.WEST);
 	getContentPane().add(panel_south, BorderLayout.SOUTH);
-
+    
     txt_info.setEditable(false);
 	setVisible(true);
 }
