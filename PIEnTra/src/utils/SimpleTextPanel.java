@@ -52,9 +52,8 @@ public class SimpleTextPanel extends JPanel {
 	//}
 	
 	public void setTxtField_Size(int txt_length) {
-	//	txt.setSize(new Dimension(txt_length, txt.getPreferredSize().height));
-		txt.setColumns(txt_length / 8);
-	//	txt.setPreferredSize(new Dimension(txt_length, txt.getPreferredSize().height));
+		txt.setSize(new Dimension(txt_length, txt.getPreferredSize().height));
+		txt.setPreferredSize(new Dimension(txt_length, txt.getPreferredSize().height));
 	}
 	
 	/** Gibt aktuellen Wert des Textfeldes zurück. **/

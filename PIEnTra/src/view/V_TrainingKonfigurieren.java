@@ -63,7 +63,7 @@ public class V_TrainingKonfigurieren extends JFrame {
 		this.addComponentListener(new ResizeListener());
 		
 		pnl_center = new JPanel(new GridLayout(10, 1, 2 ,2));
-		pnl_center.add(pnl_kundenId = new SimpleTextPanel("Kunden-ID:"));
+		pnl_center.add(pnl_kundenId = new SimpleTextPanel("Kunden-ID:", 20));
 		pnl_center.add(pnl_firmenname = new SimpleTextPanel("Firmenname:"));
 		pnl_center.add(pnl_ansprechpartner = new SimpleTextPanel("Ansprechpartner:"));
 		pnl_center.add(pnl_produktbeschreibung = new SimpleTextPanel("Produktbeschreibung:"));
