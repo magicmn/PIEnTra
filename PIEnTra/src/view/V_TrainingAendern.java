@@ -108,5 +108,65 @@ public class V_TrainingAendern extends JFrame {
 		public void componentShown(ComponentEvent arg0) {}
 	}
 	
+	public String getTrainingsId() {
+		return pnl_trainingsId.getString();
+	}
+	public void setTextTrainingsId(String txt_trainingsId) {
+		this.pnl_trainingsId.setString(txt_trainingsId);
+	}	
+	public String getFirmenname() {
+		return pnl_firmenname.getString();
+	}
+	public void setTextFirmenname(String txt_firmenname) {
+		this.pnl_firmenname.setString(txt_firmenname);
+	}	
+	public String getAnsprechpartner() {
+		return pnl_ansprechpartner.getString();
+	}
+	public void setTextAnsprechpartner(String txt_ansprechpartner) {
+		this.pnl_ansprechpartner.setString(txt_ansprechpartner);
+	}	
+	public String getProduktbeschreibung() {
+		return pnl_produktbeschreibung.getString();
+	}
+	public void setTextProduktbeschreibung(String txt_produktbeschreibung) {
+		this.pnl_produktbeschreibung.setString(txt_produktbeschreibung);
+	}	
+	public String getStartdatum() {
+		return pnl_startdatum.getString();
+	}
+	public void setTextStartdatum(String txt_startdatum) {
+		this.pnl_startdatum.setString(txt_startdatum);
+	}	
+	public String getEnddatum() {
+		return pnl_enddatum.getString();
+	}
+	public void setTextEnddatum(String txt_enddatum) {
+		this.pnl_enddatum.setString(txt_enddatum);
+	}	
+	public String getTage() {
+		return pnl_tage.getString();
+	}
+	public void setTextTage(String txt_tage) {
+		this.pnl_tage.setString(txt_tage);
+	}	
+	public String getTrainer() {
+		return pnl_trainer.getString();
+	}
+	public void setTextTrainer(String txt_trainer) {
+		this.pnl_trainer.setString(txt_trainer);
+	}	
+	public String getOrt() {
+		return pnl_ort.getString();
+	}
+	public void setTextOrt(String txt_ort) {
+		this.pnl_ort.setString(txt_ort);
+	}	
+	public String getBemerkungen() {
+		return pnl_bemerkungen.getString();
+	}
+	public void setTextBemerkungen(String txt_bemerkungen) {
+		this.pnl_bemerkungen.setString(txt_bemerkungen);
+	}	
 	
 }
