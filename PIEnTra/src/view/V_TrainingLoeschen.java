@@ -101,4 +101,70 @@ public class V_TrainingLoeschen extends JFrame {
 		public void componentShown(ComponentEvent arg0) {}
 	}
 	
+	
+	//get and set
+	
+	public String getText_pnl_trainingsId() {
+		return pnl_trainingsId.getString();
+	}
+
+	public void setText_pnl_trainingsId(String pnl_trainingsId) {
+		this.pnl_trainingsId.setString(pnl_trainingsId);
+	}
+	
+	public String getText_pnl_firmenname() {
+		return pnl_firmenname.getString();
+	}
+
+	public void setText_pnl_firmenname(String pnl_firmenname) {
+		this.pnl_firmenname.setString(pnl_firmenname);
+	}
+	
+	public String getText_pnl_produkt() {
+		return pnl_produkt.getString();
+	}
+
+	public void setText_pnl_produkt(String pnl_produkt) {
+		this.pnl_produkt.setString(pnl_produkt);
+	}
+	
+	public String getText_pnl_startdatum() {
+		return pnl_startdatum.getString();
+	}
+
+	public void setText_pnl_startdatum(String pnl_startdatum) {
+		this.pnl_startdatum.setString(pnl_startdatum);
+	}
+	
+	public String getText_pnl_enddatum() {
+		return pnl_enddatum.getString();
+	}
+
+	public void setText_pnl_enddatum(String pnl_enddatum) {
+		this.pnl_enddatum.setString(pnl_enddatum);
+	}
+	
+	public String getText_pnl_tage() {
+		return pnl_tage.getString();
+	}
+
+	public void setText_pnl_tage(String pnl_tage) {
+		this.pnl_tage.setString(pnl_tage);
+	}
+	
+	public String getText_pnl_ort() {
+		return pnl_ort.getString();
+	}
+
+	public void setText_pnl_ort(String pnl_ort) {
+		this.pnl_ort.setString(pnl_ort);
+	}
+	
+	public String getText_pnl_bemerkungen() {
+		return pnl_bemerkungen.getString();
+	}
+
+	public void setText_pnl_bemerkungen(String pnl_bemerkungen) {
+		this.pnl_bemerkungen.setString(pnl_bemerkungen);
+	}
 }
