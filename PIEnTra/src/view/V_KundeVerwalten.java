@@ -71,6 +71,7 @@ public class V_KundeVerwalten extends JFrame {
 		
 		pnl_south = new JPanel(new GridLayout(2, 1));
 		JPanel pnl_south_top = new JPanel(new GridLayout(1, 4));
+		pnl_south_top.setBorder(new EmptyBorder(10,8,5,10));
 		pnl_south_top.add(btn_kundesuchen);
 		pnl_south_top.add(btn_kundeaktualisieren);
 		pnl_south_top.add(btn_kundeanlegen);
@@ -98,7 +99,7 @@ public class V_KundeVerwalten extends JFrame {
 		pnl_stadt.setTxtField_Size((pnl_center.getWidth() / 2));
 	}
 	
-	private class ResizeListener implements ComponentListener {
+	class ResizeListener implements ComponentListener {
 		public void componentResized(ComponentEvent arg0) {
 			resizeGUI();
 		}
