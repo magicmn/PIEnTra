@@ -57,7 +57,6 @@ public class V_TrainingKonfigurieren extends JFrame {
 		this.setTitle("PIEnTra p1.00");
 		this.setSize(750, 450); // Optimale Größe die beim Starten geladen wird.
 		this.setMinimumSize(new Dimension(500, 400)); // Um zu verhindern, dass der DAU sich wundert warum das Fenster auf einmal "weg" ist.
-		this.setMaximumSize(screenSize); //Max Größe == Bildschirmauflösung
 		this.setLayout(new BorderLayout());
 		this.setLocationRelativeTo(null);
 		this.addComponentListener(new ResizeListener());
