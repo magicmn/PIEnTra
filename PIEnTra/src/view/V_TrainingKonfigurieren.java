@@ -96,7 +96,7 @@ public class V_TrainingKonfigurieren extends JFrame {
 		pnl_tage.setTxtField_Size(pnl_center.getWidth() / 8);
 		pnl_trainer.setTxtField_Size(pnl_center.getWidth() / 4);
 		pnl_ort.setTxtField_Size(pnl_center.getWidth() / 4);
-		pnl_bemerkungen.setTxtField_Size((pnl_center.getWidth() - 130));
+		pnl_bemerkungen.setTxtField_Size((this.getWidth() - 140));
 	}
 	
 	private class ResizeListener implements ComponentListener {
