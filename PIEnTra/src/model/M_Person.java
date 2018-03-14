@@ -4,11 +4,12 @@ package model;
  * @author Konstantin
  *
  */
-public class M_Person {
+public class M_Person{
 	private String vorname;
 	private String nachname;
 
 	public M_Person(String vorname, String nachname) {
+		super();
 		setVorname(vorname);
 		setNachname(nachname);
 
@@ -35,6 +36,7 @@ public class M_Person {
 
 		return ""+getVorname()+", "+getNachname();
 	}
+	
 
 
 

@@ -8,12 +8,18 @@ import java.util.ArrayList;
  */
 public class M_ManagementAssistent extends M_Person{
 	private static int interneID;
+	private static ArrayList<M_ManagementAssistent> interneListe;
 	private int mitarbeiterID;
 	private ArrayList<M_Training> trainings;
 	public M_ManagementAssistent(String vorname, String nachname) {
 		super(vorname, nachname);
 		setInterneID(getInterneID()+1);
 		setMitarbeiterID(getInterneID());
+		
+		if(this.interneListe == null) {
+			this.interneListe =new ArrayList<M_ManagementAssistent>();
+		}
+		getInterneListe().add(this);
 
 
 
@@ -132,6 +138,22 @@ public class M_ManagementAssistent extends M_Person{
 		return ""+getVorname()+", "+ getNachname()+ "\nTrainings: "+trainings+"";
 
 
+	}
+
+
+
+
+
+	public static ArrayList<M_ManagementAssistent> getInterneListe() {
+		return interneListe;
+	}
+
+
+
+
+
+	public static void setInterneListe(ArrayList<M_ManagementAssistent> interneListe) {
+		M_ManagementAssistent.interneListe = interneListe;
 	}
 
 

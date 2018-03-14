@@ -11,6 +11,7 @@ import java.util.ArrayList;
  */
 public class M_Training {
 	private static int interneID;
+	private static ArrayList<M_Training> interneListe;
 	private int trainingsID;
 	private String anfangsdatum; //zu ändern
 	private String enddatum; //zu ändern
@@ -55,10 +56,24 @@ public class M_Training {
 			this.managementAssistente.add(assistents[i]);
 			assistents[i].trainingHinzufuegen(this);
 
+			
+
 		}
+		if(this.interneListe == null) {
+			this.interneListe =new ArrayList<M_Training>();
+		}
+		getInterneListe().add(this);
 
 
 
+	}
+
+	public static ArrayList<M_Training> getInterneListe() {
+		return interneListe;
+	}
+
+	public static void setInterneListe(ArrayList<M_Training> interneListe) {
+		M_Training.interneListe = interneListe;
 	}
 
 	public ArrayList<M_ManagementAssistent> getManagementAssistente() {
@@ -157,6 +172,10 @@ public class M_Training {
 				"\nEnddatum: "+ getEnddatum()+"\nTage: "+getTage()+"\nTrainer: "+
 				getTrainer().getVorname()+", "+getTrainer().getNachname()+"\nOrt:"+getOrt()+"\nBemerkungen: "+getBemerkungen();
 	}
+
+
+
+
 
 
 }

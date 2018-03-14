@@ -1,4 +1,7 @@
 package model;
+
+import java.util.ArrayList;
+
 /**
  * Durchführungsort für die Trainings
  * @author Konstantin
@@ -6,6 +9,7 @@ package model;
  */
 public class M_Ort {
 	private static int interneID;
+	private static ArrayList<M_Ort> interneListe;
 	private String ortsID;
 	private String geschaefstsstelle;
 	private String gebaeude;
@@ -19,6 +23,11 @@ public class M_Ort {
 		setGebaeude(gebaeude);
 		setEtage(etage);
 		setRaum("Raum E"+etage+"-"+raum);
+		
+		if(this.interneListe == null) {
+			this.interneListe =new ArrayList<M_Ort >();
+		}
+		getInterneListe().add(this);
 
 
 	}
@@ -82,6 +91,14 @@ public class M_Ort {
 
 
 		return ""+getOrtsID()+ ", "+ getGeschaefstsstelle() + ", "+ getGebaeude()+ ", " + getRaum();
+	}
+
+	public static ArrayList<M_Ort> getInterneListe() {
+		return interneListe;
+	}
+
+	public static void setInterneListe(ArrayList<M_Ort> interneListe) {
+		M_Ort.interneListe = interneListe;
 	}
 
 

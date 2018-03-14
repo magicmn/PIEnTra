@@ -60,7 +60,7 @@ public class Testfaelle{
 				"Teilnehmer: 6-10\r\n" + 
 				"Methoden: Vortrag, Vorführung und praktische Übungen\r\n" + 
 				"Anforderungen: MyERP Version 2.01 Server Edition, Beamer, MyERP Version 2.01,\r\n" + 
-				"Windows Client", 1.0, null);
+				"Windows Client", 1.0);
 		eww = new M_Produkt("EWW","Erweitere Grundlagen Warenwirtschaft", "Systematisch werden Sie in die erweiterte Funktionalität der Software eingewiesen.\r\n" + 
 				"Sie lernen mit den Funktionen der Auftragsbearbeitung zu arbeiten. Sie sind\r\n" + 
 				"Anwender und haben Erfahrung mit dem Programm gesammelt.\r\n" + 
@@ -74,7 +74,7 @@ public class Testfaelle{
 				"Teilnehmer: 6-10\r\n" + 
 				"Methoden: Vortrag, Vorführung und praktische Übungen\r\n" + 
 				"Anforderungen: MyERP Version 2.01 Server Edition, Beamer, MyERP Version 2.01,\r\n" + 
-				"Windows Client", 1.0, null);
+				"Windows Client", 1.0);
 		wwp = new M_Produkt("WWP","Erweitere Grundlagen Warenwirtschaft", "Systematisch werden Sie in die effiziente Anwendung der Software eingewiesen. Sie\r\n" + 
 				"vertiefen Ihre Kenntnisse der Kunden-, Lieferanten- und Artikelverwaltung sowie die\r\n" + 
 				"Auftragsbearbeitung. Sie liefern die Daten für eine professionelle Angebotserstellung.\r\n" + 
@@ -88,7 +88,7 @@ public class Testfaelle{
 				"Teilnehmer: 6-10\r\n" + 
 				"Methoden: Vortrag, Vorführung und praktische Übungen\r\n" + 
 				"Anforderungen: MyERP Version 2.01 Server Edition, Beamer, MyERP Version 2.01,\r\n" + 
-				"Windows Client", 1.0, null);
+				"Windows Client", 1.0);
 		
 		trainer1 = new M_Trainer("Lukas", "Poodolski", eww,gww);
 		trainer2 = new M_Trainer("Roland", "Keiser", gww);
@@ -96,6 +96,8 @@ public class Testfaelle{
 		trainer4 = new M_Trainer("Karl", "Lager-Feld", eww);
 		trainer5 = new M_Trainer("Heidi", "Kluhm", wwp);
 		trainer6 = new M_Trainer("Swanja", "Ikeah", wwp);
+		
+
 		
 		kunde1 = new M_Kunde("Aeron Pumpen AG", "Pharmaindustrie", "info@aeronpump-it.de", "+49 61466939", new M_Adresse("Rainer-Kausing-Straße 4", "Hessen", "Hochheim/Main", "65239"), new M_Person("Heinrich", "Klaist"));
 		kunde2 = new M_Kunde("Agosini", "Edelmetalverarbeitung", "info@agosini.de", "+49 7231 9611", new M_Adresse("Kanzlereistr. 17","baden-Würtenberg", "Pforzheim", "75175"), new M_Person("Maria", "Jung"));

@@ -10,9 +10,12 @@ import java.util.ArrayList;
  */
 public class M_Trainer extends M_Person {
 	private static int interneID;
+	private static ArrayList<M_Trainer> interneListe;
 	private int trainerID; 
 	private ArrayList<M_Produkt> produkte;
 	private ArrayList<M_Training> trainings ; //muss durch die Methode trainingHinzufügen() initialisiert werden
+
+
 	public M_Trainer(String vorname, String nachname, M_Produkt ... produkte) {
 		super(vorname, nachname);
 		setInterneID(getInterneID()+1);
@@ -25,10 +28,39 @@ public class M_Trainer extends M_Person {
 			produkte[i].trainerHinzufuegen(this); //Trainer wird automatisch den zugeordneten M_Produkten hinzugefügt als Attribut
 
 		}
+		if(this.interneListe == null) {
+			this.interneListe =new ArrayList<M_Trainer>();
+		}
+		getInterneListe().add(this);
 
 
-		
+
+
 	}
+
+
+
+	
+
+
+
+	public static ArrayList<M_Trainer> getInterneListe() {
+		return interneListe;
+	}
+
+
+
+
+
+
+
+	public static void setInterneListe(ArrayList<M_Trainer> interneListe) {
+		M_Trainer.interneListe = interneListe;
+	}
+
+
+
+
 
 
 
@@ -46,25 +78,25 @@ public class M_Trainer extends M_Person {
 
 	@Override
 	public String getVorname() {
-	
+
 		return super.getVorname();
 	}
 
 	@Override
 	public void setVorname(String vorname) {
-		
+
 		super.setVorname(vorname);
 	}
 
 	@Override
 	public String getNachname() {
-		
+
 		return super.getNachname();
 	}
 
 	@Override
 	public void setNachname(String nachname) {
-		
+
 		super.setNachname(nachname);
 	}
 
@@ -124,6 +156,7 @@ public class M_Trainer extends M_Person {
 
 		return ""+getVorname()+", "+ getNachname()+ "\nProdukte: " + produkte +"\nTrainings: "+trainings+"";
 	}
+
 
 
 

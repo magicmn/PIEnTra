@@ -1,4 +1,7 @@
 package model;
+
+import java.util.ArrayList;
+
 /**
  * ModellKLasse für den Kunden
  * @author Konstantin
@@ -7,6 +10,7 @@ package model;
 public class M_Kunde {
 
 	private static int interneID;
+	private static ArrayList<M_Kunde> interneListe;
 	private int kundenID;
 	private String firmenname;
 	private String branche;
@@ -17,6 +21,8 @@ public class M_Kunde {
 
 	public M_Kunde(String firmenname, String branche, String email, String telefon, M_Adresse adresse, M_Person ansprechpartner) {
 		setInterneID(getInterneID()+1);
+		
+		
 		setKundenID(interneID);
 		setFirmenname(firmenname);
 		setBranche(branche);
@@ -24,7 +30,13 @@ public class M_Kunde {
 		setEmail(email);
 		setAnsprechpartner(ansprechpartner);
 		setAdresse(adresse);
+		
+		if(this.interneListe == null) {
+			this.interneListe =new ArrayList<M_Kunde>();
+		}
+		getInterneListe().add(this);
 	}
+	
 
 
 
@@ -90,5 +102,19 @@ public class M_Kunde {
 
 		return ""+getFirmenname()+" \nAnsprechpartner: "+ getAnsprechpartner()+"\n"+ getAdresse()+"\n"+getTelefon()+"\nBranche: "+ getBranche()+ "\n"+getEmail()+"";
 	}
+
+
+
+	public static ArrayList<M_Kunde> getInterneListe() {
+		return interneListe;
+	}
+
+
+
+	public static void setInterneListe(ArrayList<M_Kunde> interneListe) {
+		M_Kunde.interneListe = interneListe;
+	}
+	
+	
 
 }

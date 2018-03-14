@@ -5,13 +5,14 @@ import java.util.ArrayList;
 public class M_Produkt {
 
 	private String produktID;
+	private static ArrayList<M_Produkt> interneListe;
 	private String bezeichnung;
 	private String beschreibung;
 	private double version;
 	private ArrayList<M_Trainer> trainer;
 
 
-	public M_Produkt(String produktID, String bezeichnung, String beschreibung, double version, M_Trainer ... trainer) {
+	public M_Produkt(String produktID, String bezeichnung, String beschreibung, double version) {
 		setProduktID(produktID);
 		setBeschreibung(beschreibung);
 		setBezeichnung(bezeichnung);
@@ -19,21 +20,21 @@ public class M_Produkt {
 
 		this.trainer = new ArrayList<M_Trainer>();
 
-		if(trainer != null) {
+		
 
-			for(int i  = 0; i<trainer.length; i++) {
+			
 
-				{
-					this.trainer.add(trainer[i]);
-				}
-
+			if(this.interneListe == null) {
+				this.interneListe =new ArrayList<M_Produkt>();
 			}
+			getInterneListe().add(this);
+
 		}
 
 
 
 
-	}
+	
 
 
 	public String getBezeichnung() {
@@ -99,6 +100,16 @@ public class M_Produkt {
 			}
 		}
 		return ""+getBezeichnung()+" (Kürzel "+getProduktID()+")\n"+getBeschreibung()+"\nTrainer: "+ trainers;
+	}
+
+
+	public static ArrayList<M_Produkt> getInterneListe() {
+		return interneListe;
+	}
+
+
+	public static void setInterneListe(ArrayList<M_Produkt> interneListe) {
+		M_Produkt.interneListe = interneListe;
 	}
 
 
