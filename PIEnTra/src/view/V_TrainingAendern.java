@@ -12,6 +12,7 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
+import javax.swing.border.EmptyBorder;
 
 import utils.SimpleTextPanel;
 
@@ -71,13 +72,14 @@ public class V_TrainingAendern extends JFrame {
 		
 		pnl_south = new JPanel(new GridLayout(2, 1));
 		JPanel pnl_south_top = new JPanel(new GridLayout(1, 4));
+		pnl_south_top.setBorder(new EmptyBorder(10,8,5,10));
 		pnl_south_top.add(btn_trainingsuchen);
 		pnl_south_top.add(btn_ressourcenaendern);
 		pnl_south_top.add(btn_trainingaktualisieren);
 		pnl_south_top.add(btn_zurueck);
 		pnl_south.add(pnl_south_top);
 		JPanel pnl_south_bottom = new JPanel();
-	    pnl_south_bottom.setLayout( new BoxLayout(pnl_south_bottom, BoxLayout.X_AXIS));
+	    //pnl_south_bottom.setLayout( new BoxLayout(pnl_south_bottom, BoxLayout.X_AXIS));
 		pnl_south_bottom.add(txt_navigation = new JTextField("PlEnTra / Training ändern"));
 		txt_navigation.setFocusable(false);
 		pnl_south.add(pnl_south_bottom);
