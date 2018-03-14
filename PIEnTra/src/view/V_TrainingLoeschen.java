@@ -41,6 +41,10 @@ public class V_TrainingLoeschen extends JFrame {
 		this.setVisible(true);
 	}
 	
+	public static void main(String[] args) {
+		new V_TrainingLoeschen();
+	}
+	
 	private void initView() {
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		this.setTitle("PIEnTra p1.00");
