@@ -76,6 +76,9 @@ public class V_KundeSuchen extends JFrame {
 	public String getText_pnl_firmenname(){
 		return pnl_firmenname.getString();
 	}
+	
+	//-----------------------------------------------
+	
 	public void setText_pnl_kundenID(String text){
 		this.pnl_kundenID.setString(text);
 	}
