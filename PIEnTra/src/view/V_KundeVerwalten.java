@@ -19,7 +19,7 @@ import utils.SimpleTextPanel;
 public class V_KundeVerwalten extends JFrame {
 	
 	private JPanel pnl_center;
-	private SimpleTextPanel pnl_kundenId = new SimpleTextPanel("Kunden-ID:");
+	private SimpleTextPanel pnl_kundenID = new SimpleTextPanel("Kunden-ID:");
 	private SimpleTextPanel pnl_firmenname = new SimpleTextPanel("Firmenname:");
 	private SimpleTextPanel pnl_ansprechpartner = new SimpleTextPanel("Ansprechpartner:");
 	private SimpleTextPanel pnl_branche = new SimpleTextPanel("Branche:");
@@ -57,7 +57,7 @@ public class V_KundeVerwalten extends JFrame {
 		pnl_addresse.setBorder(new EmptyBorder(8,0,0,0));
 		
 		pnl_center = new JPanel(new GridLayout(11, 1, 2 ,2));
-		pnl_center.add(pnl_kundenId);
+		pnl_center.add(pnl_kundenID);
 		pnl_center.add(pnl_firmenname);
 		pnl_center.add(pnl_ansprechpartner);
 		pnl_center.add(pnl_branche);
@@ -87,7 +87,7 @@ public class V_KundeVerwalten extends JFrame {
 	/** Enthält variable Gößen **/
 	private void resizeGUI() {
 		txt_navigation.setPreferredSize(new Dimension(this.getWidth() - 30, txt_navigation.getPreferredSize().height));
-		pnl_kundenId.setTxtField_Size(pnl_center.getWidth() / 4);
+		pnl_kundenID.setTxtField_Size(pnl_center.getWidth() / 4);
 		pnl_firmenname.setTxtField_Size(pnl_center.getWidth() / 2);
 		pnl_ansprechpartner.setTxtField_Size(pnl_center.getWidth() / 2);
 		pnl_branche.setTxtField_Size(pnl_center.getWidth() / 4);
