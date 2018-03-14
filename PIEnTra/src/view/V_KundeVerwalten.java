@@ -98,7 +98,7 @@ public class V_KundeVerwalten extends JFrame {
 		pnl_stadt.setTxtField_Size((pnl_center.getWidth() / 2));
 	}
 	
-	private class ResizeListener implements ComponentListener {
+	class ResizeListener implements ComponentListener {
 		public void componentResized(ComponentEvent arg0) {
 			resizeGUI();
 		}
