@@ -15,68 +15,71 @@ import javax.swing.border.EmptyBorder;
 
 import utils.SimpleTextPanel;
 
-public class V_TrainingKonfigurieren extends JFrame {
+public class V_KundeVerwalten extends JFrame {
 	
 	private JPanel pnl_center;
 	private SimpleTextPanel pnl_kundenID = new SimpleTextPanel("Kunden-ID:");
 	private SimpleTextPanel pnl_firmenname = new SimpleTextPanel("Firmenname:");
 	private SimpleTextPanel pnl_ansprechpartner = new SimpleTextPanel("Ansprechpartner:");
-	private SimpleTextPanel pnl_produktbeschreibung = new SimpleTextPanel("Produktbeschreibung:");
-	private SimpleTextPanel pnl_anfangsdatum = new SimpleTextPanel("Anfangsdatum:");
-	private SimpleTextPanel pnl_enddatum = new SimpleTextPanel("Enddatum:");
-	private SimpleTextPanel pnl_tage = new SimpleTextPanel("Tage:");
-	private SimpleTextPanel pnl_trainer = new SimpleTextPanel("Trainer:");
-	private SimpleTextPanel pnl_ort = new SimpleTextPanel("Ort:");
-	private SimpleTextPanel pnl_bemerkungen = new SimpleTextPanel("Bemerkungen:");
+	private SimpleTextPanel pnl_branche = new SimpleTextPanel("Branche:");
+	private SimpleTextPanel pnl_email = new SimpleTextPanel("Email:");
+	private SimpleTextPanel pnl_rufnummer = new SimpleTextPanel("Rufnummer:");
+	private SimpleTextPanel pnl_addresse = new SimpleTextPanel("Addresse");
+	private SimpleTextPanel pnl_strasse = new SimpleTextPanel("Straße:");
+	private SimpleTextPanel pnl_plz = new SimpleTextPanel("Postleitzahl:");
+	private SimpleTextPanel pnl_bundesland = new SimpleTextPanel("Bundesland:");
+	private SimpleTextPanel pnl_stadt = new SimpleTextPanel("Stadt:");
+	
 	private JPanel pnl_south;
-	private JButton btn_kundewaehlen = new JButton("Kunde wählen");
-	private JButton btn_ressourcenwaehlen = new JButton("Ressourcen wählen");
-	private JButton btn_trainingspeichern = new JButton("Training speichern");
+	private JButton btn_kundesuchen = new JButton("Kunde suchen");
+	private JButton btn_kundeaktualisieren = new JButton("Kunde aktualisieren");
+	private JButton btn_kundeanlegen = new JButton("Neuen Kunden anlegen");
 	private JButton btn_zurueck = new JButton("Zurück zum Hauptmenü");
 	private JTextField txt_navigation;
-	
-	public V_TrainingKonfigurieren() {
+
+	public V_KundeVerwalten() {
 		initView();
 		resizeGUI();
 		this.setVisible(true);
-	}
-	
-	public static void main(String[] args) {
-		new V_TrainingKonfigurieren();
 	}
 
 	private void initView() {
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		this.setTitle("PIEnTra p1.00");
-		this.setSize(750, 450); // Optimale Größe die beim Starten geladen wird.
+		this.setSize(750, 490); // Optimale Größe die beim Starten geladen wird.
 		this.setMinimumSize(new Dimension(500, 400)); // Um zu verhindern, dass der DAU sich wundert warum das Fenster auf einmal "weg" ist.
 		this.setLayout(new BorderLayout());
 		this.setLocationRelativeTo(null); // Zentriert Frame in der Mitte des Bildschirms.
 		this.addComponentListener(new ResizeListener());  // Fügt Listener für Frame veränderungen hinzu.
 		
-		pnl_center = new JPanel(new GridLayout(10, 1, 2 ,2));
+		pnl_addresse.getTxtField().setVisible(false);
+		pnl_addresse.setBorder(new EmptyBorder(8,0,0,0));
+		
+		pnl_center = new JPanel(new GridLayout(11, 1, 2 ,2));
 		pnl_center.add(pnl_kundenID);
 		pnl_center.add(pnl_firmenname);
 		pnl_center.add(pnl_ansprechpartner);
-		pnl_center.add(pnl_produktbeschreibung);
-		pnl_center.add(pnl_anfangsdatum);
-		pnl_center.add(pnl_enddatum);
-		pnl_center.add(pnl_tage);
-		pnl_center.add(pnl_trainer);
-		pnl_center.add(pnl_ort);
-		pnl_center.add(pnl_bemerkungen);
+		pnl_center.add(pnl_branche);
+		pnl_center.add(pnl_email);
+		pnl_center.add(pnl_rufnummer);
+		pnl_center.add(pnl_addresse);
+		pnl_center.add(pnl_strasse);
+		pnl_center.add(pnl_plz);
+		pnl_center.add(pnl_bundesland);
+		pnl_center.add(pnl_stadt);
 		this.add(BorderLayout.CENTER, pnl_center);
 		
 		pnl_south = new JPanel(new GridLayout(2, 1));
 		JPanel pnl_south_top = new JPanel(new GridLayout(1, 4));
 		pnl_south_top.setBorder(new EmptyBorder(10,8,5,10));
-		pnl_south_top.add(btn_kundewaehlen);
-		pnl_south_top.add(btn_ressourcenwaehlen);
-		pnl_south_top.add(btn_trainingspeichern);
+		pnl_south_top.add(btn_kundesuchen);
+		pnl_south_top.add(btn_kundeaktualisieren);
+		pnl_south_top.add(btn_kundeanlegen);
 		pnl_south_top.add(btn_zurueck);
+		
 		pnl_south.add(pnl_south_top);
 		JPanel pnl_south_bottom = new JPanel(new FlowLayout());
-		pnl_south_bottom.add(txt_navigation = new JTextField("PIEnTra / Training konfigurieren"));
+		pnl_south_bottom.add(txt_navigation = new JTextField("PIEnTra / Kunde verwalten"));
 		txt_navigation.setFocusable(false);
 		pnl_south.add(pnl_south_bottom);
 		this.add(BorderLayout.SOUTH, pnl_south);
@@ -88,16 +91,16 @@ public class V_TrainingKonfigurieren extends JFrame {
 		pnl_kundenID.setTxtField_Size(pnl_center.getWidth() / 4);
 		pnl_firmenname.setTxtField_Size(pnl_center.getWidth() / 2);
 		pnl_ansprechpartner.setTxtField_Size(pnl_center.getWidth() / 2);
-		pnl_produktbeschreibung.setTxtField_Size(pnl_center.getWidth() / 2);
-		pnl_anfangsdatum.setTxtField_Size(pnl_center.getWidth() / 4);
-		pnl_enddatum.setTxtField_Size(pnl_center.getWidth() / 4);
-		pnl_tage.setTxtField_Size(pnl_center.getWidth() / 8);
-		pnl_trainer.setTxtField_Size(pnl_center.getWidth() / 4);
-		pnl_ort.setTxtField_Size(pnl_center.getWidth() / 4);
-		pnl_bemerkungen.setTxtField_Size((this.getWidth() - 140));
+		pnl_branche.setTxtField_Size(pnl_center.getWidth() / 4);
+		pnl_email.setTxtField_Size(pnl_center.getWidth() / 2);
+		pnl_rufnummer.setTxtField_Size(pnl_center.getWidth() / 2);
+		pnl_strasse.setTxtField_Size(pnl_center.getWidth() / 2);
+		pnl_plz.setTxtField_Size(pnl_center.getWidth() / 4);
+		pnl_bundesland.setTxtField_Size(pnl_center.getWidth() / 2);
+		pnl_stadt.setTxtField_Size((pnl_center.getWidth() / 2));
 	}
 	
-	private class ResizeListener implements ComponentListener {
+	class ResizeListener implements ComponentListener {
 		public void componentResized(ComponentEvent arg0) {
 			resizeGUI();
 		}
@@ -117,26 +120,26 @@ public class V_TrainingKonfigurieren extends JFrame {
 	public String getText_pnl_ansprechpartner() {
 		return pnl_ansprechpartner.getString();
 	}
-	public String getText_pnl_produktbeschreibung() {
-		return pnl_produktbeschreibung.getString();
+	public String getText_pnl_branche() {
+		return pnl_branche.getString();
 	}
-	public String getText_pnl_anfangsdatum() {
-		return pnl_anfangsdatum.getString();
+	public String getText_pnl_email() {
+		return pnl_email.getString();
 	}
-	public String getText_pnl_enddatum() {
-		return pnl_enddatum.getString();
+	public String getText_pnl_rufnummer() {
+		return pnl_rufnummer.getString();
 	}
-	public String getText_pnl_tage() {
-		return pnl_tage.getString();
+	public String getText_pnl_strasse() {
+		return pnl_strasse.getString();
 	}
-	public String getText_pnl_trainer() {
-		return pnl_trainer.getString();
+	public String getText_pnl_plz() {
+		return pnl_plz.getString();
 	}
-	public String getText_pnl_ort() {
-		return pnl_ort.getString();
+	public String getText_pnl_bundesland() {
+		return pnl_bundesland.getString();
 	}
-	public String getText_pnl_bemerkungen() {
-		return pnl_bemerkungen.getString();
+	public String getText_pnl_stadt() {
+		return pnl_stadt.getString();
 	}
 	
 	//------------------------------------------------------
@@ -150,25 +153,25 @@ public class V_TrainingKonfigurieren extends JFrame {
 	public void setText_pnl_ansprechpartner(String text) {
 		this.pnl_ansprechpartner.setString(text);;
 	}
-	public void setText_pnl_produktbeschreibung(String text) {
-		this.pnl_produktbeschreibung.setString(text);
+	public void setText_pnl_branche(String text) {
+		this.pnl_branche.setString(text);
 	}
-	public void setText_pnl_anfangsdatum(String text) {
-		this.pnl_anfangsdatum.setString(text);
+	public void setText_pnl_email(String text) {
+		this.pnl_email.setString(text);
 	}
-	public void setText_pnl_enddatum(String text) {
-		this.pnl_enddatum.setString(text);
+	public void setText_pnl_rufnummer(String text) {
+		this.pnl_rufnummer.setString(text);
 	}
-	public void setText_pnl_tage(String text) {
-		this.pnl_tage.setString(text);
+	public void setText_pnl_strasse(String text) {
+		this.pnl_strasse.setString(text);
 	}
-	public void setText_pnl_trainer(String text) {
-		this.pnl_trainer.setString(text);
+	public void setText_pnl_plz(String text) {
+		this.pnl_plz.setString(text);
 	}
-	public void setText_pnl_ort(String text) {
-		this.pnl_ort.setString(text);
+	public void setText_pnl_bundesland(String text) {
+		this.pnl_bundesland.setString(text);
 	}
-	public void setText_pnl_bemerkungen(String text) {
-		this.pnl_bemerkungen.setString(text);
+	public void setText_pnl_stadt(String text) {
+		this.pnl_stadt.setString(text);
 	}
 }

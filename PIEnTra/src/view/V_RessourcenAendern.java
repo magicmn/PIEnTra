@@ -11,10 +11,17 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
+import javax.swing.UIManager;
+import javax.swing.UnsupportedLookAndFeelException;
 
 public class V_RessourcenAendern extends JFrame {
 
 	public static void main(String[] args) {
+		try {
+			UIManager.setLookAndFeel("com.sun.java.swing.plaf.windows.WindowsLookAndFeel");
+		} catch (ClassNotFoundException | InstantiationException | IllegalAccessException | UnsupportedLookAndFeelException e) {
+			e.printStackTrace();
+		}
 		V_RessourcenAendern test = new V_RessourcenAendern();
 	}
 	
@@ -56,7 +63,6 @@ public class V_RessourcenAendern extends JFrame {
 	this.add(BorderLayout.SOUTH, panelButtons);
 	JPanel panel_south = new JPanel();
     panel_south.setLayout( new BoxLayout(panel_south, BoxLayout.X_AXIS));  
-    
     mainPanel.add(lbl_produktbezeichnung);
     mainPanel.add(produktbezeichnungAuswahl);
     mainPanel.add(lbl_produktbeschreibung);
@@ -72,7 +78,7 @@ public class V_RessourcenAendern extends JFrame {
 	getContentPane().add(mainPanel, BorderLayout.PAGE_START);
 	getContentPane().add(panelButtons, BorderLayout.WEST);
 	getContentPane().add(panel_south, BorderLayout.SOUTH);
-    
+
     txt_info.setEditable(false);
 	setVisible(true);
 }

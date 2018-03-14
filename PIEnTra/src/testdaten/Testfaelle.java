@@ -13,6 +13,7 @@ public class Testfaelle{
 	private M_Produkt gww;
 	private M_Produkt eww;
 	private M_Produkt wwp;
+
 	private M_Ort ort1;
 	private M_Ort ort2;
 	private M_Ort ort3;
@@ -97,8 +98,6 @@ public class Testfaelle{
 		trainer5 = new M_Trainer("Heidi", "Kluhm", wwp);
 		trainer6 = new M_Trainer("Swanja", "Ikeah", wwp);
 		
-
-		
 		kunde1 = new M_Kunde("Aeron Pumpen AG", "Pharmaindustrie", "info@aeronpump-it.de", "+49 61466939", new M_Adresse("Rainer-Kausing-Straße 4", "Hessen", "Hochheim/Main", "65239"), new M_Person("Heinrich", "Klaist"));
 		kunde2 = new M_Kunde("Agosini", "Edelmetalverarbeitung", "info@agosini.de", "+49 7231 9611", new M_Adresse("Kanzlereistr. 17","baden-Würtenberg", "Pforzheim", "75175"), new M_Person("Maria", "Jung"));
 		kunde3 = new M_Kunde("ETONGRUPPE", "Automobilzulieferer", "info@etongruppe.com", "+49 7771 8191", new M_Adresse("Hardterring 8", "Baden-Würtenberg", "Stockach", "78333"), new M_Person("Dietmar", "Bohnlen"));
@@ -108,6 +107,13 @@ public class Testfaelle{
 		training1 = new M_Training("11.11.11", trainer1, ort1, kunde1, "12.12.12", 365, "Test", eww, mAssistent);
 		
 		trainer3.trainingHinzufuegen(training1);
+	}
+
+	public static void main(String[] args) {
+
+		
+
+	
 		
 		
 		
@@ -116,10 +122,7 @@ public class Testfaelle{
 		
 	}
 	
-	public static void  main(String[] args) {
-		
-		
-	}
+	
 
 	
 	
