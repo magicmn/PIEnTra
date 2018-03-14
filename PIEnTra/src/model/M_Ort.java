@@ -1,5 +1,9 @@
 package model;
-
+/**
+ * Durchführungsort für die Trainings
+ * @author Konstantin
+ *
+ */
 public class M_Ort {
 	private static int interneID;
 	private String ortsID;
@@ -7,7 +11,7 @@ public class M_Ort {
 	private String gebaeude;
 	private int etage;
 	private String raum;
-	
+
 	public M_Ort(String ortsID, String geschaeftsstelle, String gebaeude, int etage, String raum ){
 		setInterneID(getInterneID()+1);
 		setOrtsID(ortsID);
@@ -15,10 +19,10 @@ public class M_Ort {
 		setGebaeude(gebaeude);
 		setEtage(etage);
 		setRaum("Raum E"+etage+"-"+raum);
-		
-		
+
+
 	}
-	
+
 	public static void main(String[] args) {
 
 	}
@@ -29,7 +33,7 @@ public class M_Ort {
 
 	private void setOrtsID(String ortsID) {
 		this.ortsID=ortsID;
-		
+
 	}
 
 	public static int getInterneID() {
@@ -40,7 +44,7 @@ public class M_Ort {
 		M_Ort.interneID = interneID;
 	}
 
-	
+
 	public String getGeschaefstsstelle() {
 		return geschaefstsstelle;
 	}
@@ -75,13 +79,13 @@ public class M_Ort {
 
 	@Override
 	public String toString() {
-		
-		
+
+
 		return ""+getOrtsID()+ ", "+ getGeschaefstsstelle() + ", "+ getGebaeude()+ ", " + getRaum();
 	}
-	
-	
 
-	
+
+
+
 
 }

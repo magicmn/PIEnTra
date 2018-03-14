@@ -10,32 +10,32 @@ public class M_Produkt {
 	private double version;
 	private ArrayList<M_Trainer> trainer;
 
-	
+
 	public M_Produkt(String produktID, String bezeichnung, String beschreibung, double version, M_Trainer ... trainer) {
 		setProduktID(produktID);
 		setBeschreibung(beschreibung);
 		setBezeichnung(bezeichnung);
 		setVersion(version);
-		
+
 		this.trainer = new ArrayList<M_Trainer>();
-		
+
 		if(trainer != null) {
-		
-		for(int i  = 0; i<trainer.length; i++) {
-			
-			 {
-				this.trainer.add(trainer[i]);
-			}
-			
+
+			for(int i  = 0; i<trainer.length; i++) {
+
+				{
+					this.trainer.add(trainer[i]);
+				}
+
 			}
 		}
-			
-		
-		
-		
+
+
+
+
 	}
-	
-	
+
+
 	public String getBezeichnung() {
 		return bezeichnung;
 	}
@@ -76,6 +76,10 @@ public class M_Produkt {
 		this.version = version;
 	}
 
+	/**
+	 * Den Produkten werden die zuständige Trainer hinzugefügt
+	 * @param trainer
+	 */
 	public void trainerHinzufuegen(M_Trainer trainer ) {
 		if(trainer == null) {
 			this.trainer = new ArrayList<M_Trainer>();
@@ -87,8 +91,8 @@ public class M_Produkt {
 	@Override
 	public String toString() {
 		String trainers = "";
-		
-		
+
+
 		if(getTrainer()!=null) {
 			for(M_Trainer trainer: getTrainer()) {
 				trainers = trainers + " " + trainer.getVorname()+ " "+ trainer.getNachname()+"\n";
@@ -96,10 +100,10 @@ public class M_Produkt {
 		}
 		return ""+getBezeichnung()+" (Kürzel "+getProduktID()+")\n"+getBeschreibung()+"\nTrainer: "+ trainers;
 	}
-	
-	
-	
-	
-	
-	
+
+
+
+
+
+
 }

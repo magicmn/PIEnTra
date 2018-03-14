@@ -1,7 +1,13 @@
 package model;
 
 import java.util.ArrayList;
-
+/**
+  Modellklasse für Trainer.
+  Soll mindestens ein Produkt haben.
+  Trainings wird durch die Methode trainingHinzufügen() initialisiert.
+ * @author Konstantin
+ *
+ */
 public class M_Trainer extends M_Person {
 	private static int interneID;
 	private int trainerID; 
@@ -11,15 +17,17 @@ public class M_Trainer extends M_Person {
 		super(vorname, nachname);
 		setInterneID(getInterneID()+1);
 		setTrainerID(getInterneID());
+
+
 		this.produkte = new ArrayList<M_Produkt>();
 		for(int i  = 0; i<produkte.length; i++) {
 			this.produkte.add(produkte[i]);
-			produkte[i].trainerHinzufuegen(this);
+			produkte[i].trainerHinzufuegen(this); //Trainer wird automatisch den zugeordneten M_Produkten hinzugefügt als Attribut
 
 		}
 
 
-		// TODO Auto-generated constructor stub
+		
 	}
 
 
@@ -38,25 +46,25 @@ public class M_Trainer extends M_Person {
 
 	@Override
 	public String getVorname() {
-		// TODO Auto-generated method stub
+	
 		return super.getVorname();
 	}
 
 	@Override
 	public void setVorname(String vorname) {
-		// TODO Auto-generated method stub
+		
 		super.setVorname(vorname);
 	}
 
 	@Override
 	public String getNachname() {
-		// TODO Auto-generated method stub
+		
 		return super.getNachname();
 	}
 
 	@Override
 	public void setNachname(String nachname) {
-		// TODO Auto-generated method stub
+		
 		super.setNachname(nachname);
 	}
 

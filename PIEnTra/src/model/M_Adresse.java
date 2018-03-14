@@ -1,6 +1,11 @@
 package model;
-
+/**
+ * Modellklasse für eine Adresse.
+ * @author Konstantin
+ *
+ */
 public class M_Adresse {
+
 
 	private static int interneID;
 	private int adressID;
@@ -8,7 +13,7 @@ public class M_Adresse {
 	private String bundesland;
 	private String stadt;
 	private String PLZ;
-	
+
 	public M_Adresse(String strasse, String bundesland, String stadt, String PLZ) {
 		setInterneID(getInterneID()+1);
 		setAdressID(getInterneID());
@@ -16,7 +21,7 @@ public class M_Adresse {
 		setPLZ(PLZ);
 		setStadt(stadt);
 		setStrasse(strasse);
-		
+
 	}
 
 	public static int getInterneID() {
@@ -69,15 +74,15 @@ public class M_Adresse {
 
 	@Override
 	public String toString() {
-		
+
 		return ""+getStrasse()+"\n"+getPLZ()+" "+getStadt()+"\n"+getBundesland();
 	}
-	
-	
-	
-	
-	
-	
-	
-	
+
+
+
+
+
+
+
+
 }

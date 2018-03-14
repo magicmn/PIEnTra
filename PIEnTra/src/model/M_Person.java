@@ -1,13 +1,17 @@
 package model;
-
+/**
+ * Superklasse für alle Personen
+ * @author Konstantin
+ *
+ */
 public class M_Person {
 	private String vorname;
 	private String nachname;
-	
+
 	public M_Person(String vorname, String nachname) {
 		setVorname(vorname);
 		setNachname(nachname);
-		
+
 	}
 
 	public String getVorname() {
@@ -28,10 +32,10 @@ public class M_Person {
 
 	@Override
 	public String toString() {
-		
+
 		return ""+getVorname()+", "+getNachname();
 	}
-	
-	
+
+
 
 }

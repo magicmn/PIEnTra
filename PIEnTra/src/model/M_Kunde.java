@@ -1,5 +1,9 @@
 package model;
-
+/**
+ * ModellKLasse für den Kunden
+ * @author Konstantin
+ *
+ */
 public class M_Kunde {
 
 	private static int interneID;
@@ -83,8 +87,8 @@ public class M_Kunde {
 
 	@Override
 	public String toString() {
-		
+
 		return ""+getFirmenname()+" \nAnsprechpartner: "+ getAnsprechpartner()+"\n"+ getAdresse()+"\n"+getTelefon()+"\nBranche: "+ getBranche()+ "\n"+getEmail()+"";
 	}
-	
+
 }

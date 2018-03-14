@@ -1,7 +1,11 @@
 package model;
 
 import java.util.ArrayList;
-
+/**
+ * Modellklasse für ManagemetAssistenten
+ * @author Konstantin
+ *
+ */
 public class M_ManagementAssistent extends M_Person{
 	private static int interneID;
 	private int mitarbeiterID;
@@ -10,16 +14,16 @@ public class M_ManagementAssistent extends M_Person{
 		super(vorname, nachname);
 		setInterneID(getInterneID()+1);
 		setMitarbeiterID(getInterneID());
-		
-		
-		
-		
+
+
+
+
 	}
-	
-	
-	
-	
-	
+
+
+
+
+
 	public ArrayList<M_Training> getTrainings() {
 		return trainings;
 	}
@@ -65,7 +69,7 @@ public class M_ManagementAssistent extends M_Person{
 
 	@Override
 	public String getVorname() {
-		// TODO Auto-generated method stub
+
 		return super.getVorname();
 	}
 
@@ -75,7 +79,7 @@ public class M_ManagementAssistent extends M_Person{
 
 	@Override
 	public void setVorname(String vorname) {
-		// TODO Auto-generated method stub
+
 		super.setVorname(vorname);
 	}
 
@@ -85,7 +89,7 @@ public class M_ManagementAssistent extends M_Person{
 
 	@Override
 	public String getNachname() {
-		// TODO Auto-generated method stub
+
 		return super.getNachname();
 	}
 
@@ -95,10 +99,10 @@ public class M_ManagementAssistent extends M_Person{
 
 	@Override
 	public void setNachname(String nachname) {
-		// TODO Auto-generated method stub
+
 		super.setNachname(nachname);
 	}
-	
+
 	/**Ordnet einem Assistenten ein weiteres Training hinzu
 	 * 
 	 * @param training
@@ -117,19 +121,19 @@ public class M_ManagementAssistent extends M_Person{
 	@Override
 	public String toString() {
 		String trainings = "";
-		
+
 		if(getTrainings() != null) {
-		for(M_Training training : getTrainings()) {
-			trainings = trainings+ " "+training.getTrainingsID() +"";
+			for(M_Training training : getTrainings()) {
+				trainings = trainings+ " "+training.getTrainingsID() +"";
+			}
 		}
-		}
-		
-		
+
+
 		return ""+getVorname()+", "+ getNachname()+ "\nTrainings: "+trainings+"";
-		
-		
+
+
 	}
-	
-	
-	
+
+
+
 }
