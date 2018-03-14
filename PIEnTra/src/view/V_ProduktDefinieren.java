@@ -38,6 +38,7 @@ public class V_ProduktDefinieren extends JFrame{
 	}
 	
 	public void init(){
+		
 		this.setBounds(50, 50, 470, 525);
 		this.setVisible(true);
 		this.setLayout(new BorderLayout());
@@ -45,6 +46,7 @@ public class V_ProduktDefinieren extends JFrame{
 		
 		txt_produktbeschreibung.setBorder(BorderFactory.createLineBorder(Color.gray));
 		txt_bottom.setEnabled(false);
+		
 		//txt_produktbeschreibung.
 		
 		pnl_pbezeichnung.setLayout(new FlowLayout());
