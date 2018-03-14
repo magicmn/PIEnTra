@@ -142,7 +142,7 @@ public class V_KundeVerwalten extends JFrame {
 		return pnl_stadt.getString();
 	}
 	
-	//-------------------------------------------------------
+	//------------------------------------------------------
 	
 	public void setText_pnl_kundenID(String text){
 		this.pnl_kundenID.setString(text);
