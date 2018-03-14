@@ -11,8 +11,6 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
-import javax.swing.UIManager;
-import javax.swing.UnsupportedLookAndFeelException;
 
 import utils.SimpleTextPanel;
 
@@ -35,13 +33,6 @@ public class V_TrainingKonfigurieren extends JFrame {
 	private JButton btn_trainingspeichern;
 	private JButton btn_zurueck;
 	private JTextField txt_navigation;
-		
-	
-	// Nachher in den Aufrufer auslagern.
-	public static void main(String[]args) throws ClassNotFoundException, InstantiationException, IllegalAccessException, UnsupportedLookAndFeelException {
-		UIManager.setLookAndFeel("com.sun.java.swing.plaf.windows.WindowsLookAndFeel");
-		V_TrainingKonfigurieren ad = new V_TrainingKonfigurieren();
-	}
 
 	public V_TrainingKonfigurieren() {
 		initView();
