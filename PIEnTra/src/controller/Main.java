@@ -9,5 +9,4 @@ public class Main {
 		 UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
 		new C_Hauptmenue();
 	}
-
 }
