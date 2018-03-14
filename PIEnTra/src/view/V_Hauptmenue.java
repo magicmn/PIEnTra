@@ -50,7 +50,7 @@ public class V_Hauptmenue extends JFrame {
 		this.addComponentListener(new ResizeListener());  // Fügt Listener für Frame veränderungen hinzu.
 		
 		pnl_center_container = new JPanel(new FlowLayout());
-		pnl_center_container.setBorder(BorderFactory.createEmptyBorder(40, 20, 20, 0));
+		pnl_center_container.setBorder(BorderFactory.createEmptyBorder(40, 20, 20, 20));
 		pnl_center = new JPanel(new GridLayout(1, 4));
 		pnl_center.add(btn_TrainingKonfigurieren);
 		JPanel pnl_center_left = new JPanel(new GridLayout(2, 1));
