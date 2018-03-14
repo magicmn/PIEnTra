@@ -104,7 +104,7 @@ public class V_TrainingLoeschen extends JFrame {
 	}
 	
 	
-	//Get und Set 
+	//Get und Set Methoden
 	
 	public String getText_pnl_trainingsId() {
 		return pnl_trainingsId.getString();
