@@ -11,6 +11,7 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
+import javax.swing.border.EmptyBorder;
 
 import utils.SimpleTextPanel;
 
@@ -68,6 +69,7 @@ public class V_TrainingLoeschen extends JFrame {
 		
 		pnl_south = new JPanel(new GridLayout(2, 1));
 		JPanel pnl_south_top = new JPanel(new GridLayout(1, 3));
+		pnl_south_top.setBorder(new EmptyBorder(10,8,5,10));
 		pnl_south_top.add(btn_trainingSuchen = new JButton("Training suchen"));
 		pnl_south_top.add(btn_trainingLoeschen = new JButton("Training löschen"));
 		pnl_south_top.add(btn_zurueck = new JButton("Zurück zum Hauptmenü"));

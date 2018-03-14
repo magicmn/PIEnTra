@@ -71,6 +71,7 @@ public class V_KundeVerwalten extends JFrame {
 		
 		pnl_south = new JPanel(new GridLayout(2, 1));
 		JPanel pnl_south_top = new JPanel(new GridLayout(1, 4));
+		pnl_south_top.setBorder(new EmptyBorder(10,8,5,10));
 		pnl_south_top.add(btn_kundesuchen);
 		pnl_south_top.add(btn_kundeaktualisieren);
 		pnl_south_top.add(btn_kundeanlegen);
