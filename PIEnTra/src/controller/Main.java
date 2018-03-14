@@ -5,12 +5,12 @@ import javax.swing.UnsupportedLookAndFeelException;
 
 public class Main {
 
-	public static void main(String[] args) throws ClassNotFoundException, InstantiationException, IllegalAccessException, UnsupportedLookAndFeelException {
-<<<<<<< HEAD
-		 UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
+	public static void main(String[] args){
+			try {
+				UIManager.setLookAndFeel("com.sun.java.swing.plaf.windows.WindowsLookAndFeel");
+			} catch (ClassNotFoundException | InstantiationException | IllegalAccessException | UnsupportedLookAndFeelException e) {
+				e.printStackTrace();
+			}
 		new C_Hauptmenue();
-=======
-		UIManager.setLookAndFeel("com.sun.java.swing.plaf.windows.WindowsLookAndFeel");
->>>>>>> branch 'master' of https://github.com/magicmn/PIEnTra.git
 	}
 }
