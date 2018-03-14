@@ -110,6 +110,8 @@ public class V_TrainingAendern extends JFrame {
 		public void componentShown(ComponentEvent arg0) {}
 	}
 	
+	//Get und Set
+	
 	//Get Trainings-ID
 	public String getTrainingsId() {
 		return pnl_trainingsId.getString();
