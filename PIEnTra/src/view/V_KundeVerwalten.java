@@ -211,7 +211,7 @@ public class V_KundeVerwalten extends JFrame {
 	private class KundeSuchen implements ActionListener {
 		public void actionPerformed(ActionEvent arg0) {
 			System.out.println("Kunde suchen!");
-			suchview = new C_KundeSuchen();
+			C_KundeSuchen.getInstance();
 		}
 	}
 	private class KundeAktualisieren implements ActionListener {
