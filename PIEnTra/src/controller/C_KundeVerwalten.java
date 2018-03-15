@@ -20,7 +20,7 @@ import view.V_KundeVerwalten;
 public class C_KundeVerwalten {
 
 	private static V_KundeVerwalten view;
-	private C_KundeSuchen suchview;
+	
 	private M_Kunde kunde;
 	
 	public C_KundeVerwalten(){
@@ -33,12 +33,7 @@ public class C_KundeVerwalten {
 	public void setView(V_KundeVerwalten view) {
 		this.view = view;
 	}
-	public C_KundeSuchen getSuchview() {
-		return suchview;
-	}
-	public void setSuchview(C_KundeSuchen suchview) {
-		this.suchview = suchview;
-	}
+	
 	public M_Kunde getKunde() {
 		return kunde;
 	}
