@@ -30,22 +30,22 @@ public class C_Hauptmenue {
 	}
 	private class TrainingAendern implements ActionListener {
 		public void actionPerformed(ActionEvent arg0) {
-			new C_TrainingAendern();
+			SimpleSwitchFrame.switchFrame(view, new C_TrainingAendern());
 		}
 	}
 	private class TrainingLoeschen implements ActionListener {
 		public void actionPerformed(ActionEvent arg0) {
-			new C_TrainingLoeschen();
+			SimpleSwitchFrame.switchFrame(view, new C_TrainingLoeschen());
 		}
 	}
 	private class KundeVerwalten implements ActionListener {
 		public void actionPerformed(ActionEvent arg0) {
-			new C_KundeVerwalten();
+			SimpleSwitchFrame.switchFrame(view, new C_KundeVerwalten());
 		}
 	}
 	private class ProdukteDefinieren implements ActionListener {
 		public void actionPerformed(ActionEvent arg0) {
-			new C_ProdukteDefinieren();
+			SimpleSwitchFrame.switchFrame(view, new C_ProdukteDefinieren());
 		}
 	}
 	
