@@ -20,7 +20,7 @@ public class SimpleDatumBerechnen {
 			Date enddatumFormatiert = format.parse(enddatum);
 			long diffMillisekunden = enddatumFormatiert.getTime() - startdatumFormatiert.getTime();
 			tage = Integer.parseInt( (diffMillisekunden / (1000 * 60 * 60 * 24)+""));
-		} catch (ParseException e) {
+		} catch (ParseException e) { 
 			e.printStackTrace();
 		}
 		return tage;
