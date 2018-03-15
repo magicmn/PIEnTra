@@ -181,7 +181,7 @@ public class V_TrainingLoeschen extends JFrame {
 		this.pnl_bemerkungen.setString(pnl_bemerkungen);
 	}
 	
-	// ActionListener
+	// ActionListener 
 	
 	private class TrainingSuchen implements ActionListener {
 		public void actionPerformed(ActionEvent arg0) {
