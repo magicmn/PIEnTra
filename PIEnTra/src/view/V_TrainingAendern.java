@@ -16,6 +16,18 @@ import javax.swing.border.EmptyBorder;
 
 import utils.SimpleTextPanel;
 
+/**
+ * Aktuelle Version: 1.2  
+ * Authoren: Jannik (1.0), Adrian (1.1), Konstantin (1.1)
+ * 
+ * Changelog:
+ * 1.0 	
+ * 		-Controller erstellt
+ * 1.1
+ * 		-ActionListener hinzugefügt!
+ * 1.2
+ * 		-ActionListener wieder entfernt!
+ **/
 public class V_TrainingAendern extends JFrame {
 	
 	public static void main(String[] args) throws ClassNotFoundException, InstantiationException, IllegalAccessException, UnsupportedLookAndFeelException {
