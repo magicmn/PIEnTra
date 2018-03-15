@@ -1,9 +1,24 @@
+/**
+ * Aktuelle Version: 1.2 
+ * Authoren: Adrian (1.2)
+ * 
+ * Changelog:
+ * 1.0 	
+ * 		-View erstellt!
+ * 1.1
+ * 		-Get / Set hinzugefügt!
+ * 1.2
+ * 		-ActionListener hinzugefügt!
+ **/
+
+
 package view;
 
 import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.GridLayout;
+import java.awt.event.ActionListener;
 import java.awt.event.ComponentEvent;
 import java.awt.event.ComponentListener;
 
@@ -173,5 +188,20 @@ public class V_KundeVerwalten extends JFrame {
 	}
 	public void setText_pnl_stadt(String text) {
 		this.pnl_stadt.setString(text);
+	}
+	
+	//Action Listener
+	
+	public void addBtn_kundeSuchenListener(ActionListener ActionListener) {
+		btn_kundesuchen.addActionListener(ActionListener);
+	}
+	public void addBtn_kundeAktualisierenListener(ActionListener ActionListener) {
+		btn_kundeaktualisieren.addActionListener(ActionListener);
+	}
+	public void addBtn_kundeAnlegenListener(ActionListener ActionListener) {
+		btn_kundeanlegen.addActionListener(ActionListener);
+	}
+	public void addBtn_hauptmenueListener(ActionListener ActionListener) {
+		btn_zurueck.addActionListener(ActionListener);
 	}
 }

@@ -1,9 +1,11 @@
 /**
- * Version 1.0 
- * Authoren: Adrian, Andreas
+ * Aktuelle Version: 1.1 
+ * Authoren: Julian (1.0), Adrian (1.1), Andreas (1.1)
  * 
  * Changelog:
- * 1.0 	-Controller erstellt
+ * 1.0 	
+ * 		-Controller erstellt
+ * 1.1
  * 		-ActionListener hinzugefügt!
  **/
 
