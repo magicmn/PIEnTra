@@ -55,6 +55,9 @@ public class M_Training {
 		for(int i  = 0; i<assistents.length; i++) {
 			this.managementAssistente.add(assistents[i]);
 			assistents[i].trainingHinzufuegen(this);
+			
+		setTrainingsID(idGenerieren());
+		
 
 			
 
@@ -174,7 +177,7 @@ public class M_Training {
 	}
 	
 	public String idGenerieren() {
-		return "";
+		return ""+getProdukt().getProduktID()+".D"+getAnfangsdatum()+".K"+getKunde().getKundenID()+".ID"+getInterneID();
 		
 	}
 

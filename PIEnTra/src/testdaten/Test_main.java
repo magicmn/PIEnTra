@@ -43,7 +43,7 @@ public class Test_main {
 		try {
 			System.out.println(SimpleSearch.trainerSuchen(3+"", M_Trainer.getInterneListe()));			
 			System.out.println("__________________");
-			System.out.println(SimpleSearch.trainingSuchen(1+"", M_Training.getInterneListe()));			
+			System.out.println(SimpleSearch.trainingSuchen("EWW.D11.11.11.K1.ID1", M_Training.getInterneListe()));			
 			System.out.println("__________________");
 			System.out.println(SimpleSearch.ortSuchen("WA-A-E101", M_Ort.getInterneListe()));			
 			System.out.println("__________________");		
