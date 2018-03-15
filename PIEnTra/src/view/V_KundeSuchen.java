@@ -54,7 +54,7 @@ public class V_KundeSuchen extends JFrame {
 	}
 
 	private void initView() {
-		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		this.setTitle("PIEnTra p1.00");
 		this.setSize(400,150); // Optimale Größe die beim Starten geladen wird.
 		this.setMinimumSize(new Dimension(400, 150)); // Um zu verhindern, dass der DAU sich wundert warum das Fenster auf einmal "weg" ist.
