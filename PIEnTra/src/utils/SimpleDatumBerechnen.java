@@ -1,5 +1,8 @@
-package utils;
+/**
+ * @author starkovic
+ */
 
+package utils;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -7,7 +10,7 @@ import java.util.Date;
 
 public class SimpleDatumBerechnen {
 	
-	//dd:MM:yyyy Format für das Datum
+	//dd.MM.yyyy Format für das Datum in unserem Format
 	private static DateFormat format = new SimpleDateFormat("dd.MM.yyyy");
 
 	public static int datumBerechnen(String startdatum, String enddatum){
