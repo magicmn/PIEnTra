@@ -4,6 +4,8 @@ import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.GridLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.ComponentEvent;
 import java.awt.event.ComponentListener;
 
@@ -13,6 +15,10 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
 
+import controller.C_KundeSuchen;
+import controller.C_KundeWaehlen;
+import controller.C_TrainingKonfigurieren;
+import utils.SimpleSwitchFrame;
 import utils.SimpleTextPanel;
 
 public class V_KundeWaehlen extends JFrame {
@@ -40,11 +46,12 @@ public class V_KundeWaehlen extends JFrame {
 	public V_KundeWaehlen() {
 		initView();
 		resizeGUI();
+		initListener();
 		this.setVisible(true);
 	}
 
 	private void initView() {
-		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		this.setTitle("PIEnTra p1.00");
 		this.setSize(775, 490); // Optimale Größe die beim Starten geladen wird.
 		this.setMinimumSize(new Dimension(500, 400)); // Um zu verhindern, dass der DAU sich wundert warum das Fenster auf einmal "weg" ist.
@@ -98,6 +105,12 @@ public class V_KundeWaehlen extends JFrame {
 		pnl_plz.setTxtField_Size(pnl_center.getWidth() / 4);
 		pnl_bundesland.setTxtField_Size(pnl_center.getWidth() / 2);
 		pnl_stadt.setTxtField_Size((pnl_center.getWidth() / 2));
+	}
+	
+	private void initListener(){
+		btn_kundesuchen.addActionListener(new KundeSuchen());
+		btn_kundewaehlen.addActionListener(new KundeWaehlen());
+		btn_zurueck.addActionListener(new Zurueck());
 	}
 	
 	class ResizeListener implements ComponentListener {
@@ -174,4 +187,25 @@ public class V_KundeWaehlen extends JFrame {
 	public void setText_pnl_stadt(String text) {
 		this.pnl_stadt.setString(text);
 	}
+	
+	//Action Listener
+
+		private class KundeSuchen implements ActionListener {
+			public void actionPerformed(ActionEvent arg0) {
+				System.out.println("Kunde suchen!");
+				new C_KundeSuchen();
+				//SimpleSwitchFrame.switchFrame(C_KundeWaehlen.getView(), new C_KundeSuchen());
+			}
+		}
+		private class KundeWaehlen implements ActionListener {
+			public void actionPerformed(ActionEvent arg0) {
+				System.out.println("Kunde wählen");
+			}
+		}
+		private class Zurueck implements ActionListener {
+			public void actionPerformed(ActionEvent arg0) {
+				System.out.println("Zurueck");
+				SimpleSwitchFrame.switchFrame(C_KundeWaehlen.getView(), new C_TrainingKonfigurieren());
+			}
+		}
 }

@@ -16,7 +16,8 @@ import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
 
 import controller.C_Hauptmenue;
-
+import controller.C_KundeWaehlen;
+import controller.C_TrainingKonfigurieren;
 import utils.SimpleSwitchFrame;
 import utils.SimpleTextPanel;
 
@@ -214,7 +215,8 @@ public class V_TrainingKonfigurieren extends JFrame {
 //	}
 	private class KundeWaehlen implements ActionListener {
 		public void actionPerformed(ActionEvent arg0) {
-			System.out.println("Kunde waehlen!");		
+			System.out.println("Kunde waehlen!");
+			SimpleSwitchFrame.switchFrame(C_TrainingKonfigurieren.getView(), new C_KundeWaehlen());
 		}
 	}
 	private class RessourceWaehlen implements ActionListener {
