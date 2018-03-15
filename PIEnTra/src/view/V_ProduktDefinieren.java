@@ -9,7 +9,6 @@
  * 		-ActionListener hinzugefügt!
  **/
 
-
 package view;
 
 import java.awt.BorderLayout;
