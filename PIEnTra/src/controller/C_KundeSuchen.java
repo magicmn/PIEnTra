@@ -1,5 +1,5 @@
 /**
- * Aktuelle Version: 1.1 
+ * Aktuelle Version: 1.1  
  * Authoren: Julian (1.0), Adrian (1.1), Andreas (1.1)
  * 
  * Changelog:
