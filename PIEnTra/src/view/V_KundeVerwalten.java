@@ -18,6 +18,7 @@ import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.GridLayout;
+import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.ComponentEvent;
 import java.awt.event.ComponentListener;
@@ -28,6 +29,11 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
 
+import model.M_Kunde;
+import controller.C_Hauptmenue;
+import controller.C_KundeSuchen;
+import controller.C_KundeVerwalten;
+import utils.SimpleSwitchFrame;
 import utils.SimpleTextPanel;
 
 public class V_KundeVerwalten extends JFrame {
@@ -52,9 +58,12 @@ public class V_KundeVerwalten extends JFrame {
 	private JButton btn_zurueck = new JButton("Zurück zum Hauptmenü");
 	private JTextField txt_navigation;
 
+	private C_KundeSuchen suchview;
+	
 	public V_KundeVerwalten() {
 		initView();
 		resizeGUI();
+		initListener();
 		this.setVisible(true);
 	}
 
@@ -113,6 +122,13 @@ public class V_KundeVerwalten extends JFrame {
 		pnl_plz.setTxtField_Size(pnl_center.getWidth() / 4);
 		pnl_bundesland.setTxtField_Size(pnl_center.getWidth() / 2);
 		pnl_stadt.setTxtField_Size((pnl_center.getWidth() / 2));
+	}
+	
+	private void initListener(){
+		btn_kundesuchen.addActionListener(new KundeSuchen());
+		btn_kundeaktualisieren.addActionListener(new KundeAktualisieren());
+		btn_kundeanlegen.addActionListener(new KundeAnlegen());
+		btn_zurueck.addActionListener(new Zurueck());
 	}
 	
 	class ResizeListener implements ComponentListener {
@@ -191,17 +207,27 @@ public class V_KundeVerwalten extends JFrame {
 	}
 	
 	//Action Listener
-	
-	public void addBtn_kundeSuchenListener(ActionListener ActionListener) {
-		btn_kundesuchen.addActionListener(ActionListener);
+
+	private class KundeSuchen implements ActionListener {
+		public void actionPerformed(ActionEvent arg0) {
+			System.out.println("Kunde suchen!");
+			suchview = new C_KundeSuchen();
+		}
 	}
-	public void addBtn_kundeAktualisierenListener(ActionListener ActionListener) {
-		btn_kundeaktualisieren.addActionListener(ActionListener);
+	private class KundeAktualisieren implements ActionListener {
+		public void actionPerformed(ActionEvent arg0) {
+			System.out.println("Kunde aktualisieren!");
+		}
 	}
-	public void addBtn_kundeAnlegenListener(ActionListener ActionListener) {
-		btn_kundeanlegen.addActionListener(ActionListener);
+	private class KundeAnlegen implements ActionListener {
+		public void actionPerformed(ActionEvent arg0) {
+			System.out.println("Kunde anlegen!");
+		}
 	}
-	public void addBtn_hauptmenueListener(ActionListener ActionListener) {
-		btn_zurueck.addActionListener(ActionListener);
+	private class Zurueck implements ActionListener {
+		public void actionPerformed(ActionEvent arg0) {
+			SimpleSwitchFrame.switchFrame(C_KundeVerwalten.getView(), new C_Hauptmenue());
+		}
 	}
+
 }
