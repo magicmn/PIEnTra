@@ -1,14 +1,25 @@
 package model;
 
+import java.util.ArrayList;
+
+/**
+ * Modellklasse für eine Adresse.
+ * @author Konstantin
+ *
+ */
 public class M_Adresse {
+
 
 	private static int interneID;
 	private int adressID;
+	
+	private static ArrayList<M_Adresse> interneListe;
 	private String strasse;
+	
 	private String bundesland;
 	private String stadt;
 	private String PLZ;
-	
+
 	public M_Adresse(String strasse, String bundesland, String stadt, String PLZ) {
 		setInterneID(getInterneID()+1);
 		setAdressID(getInterneID());
@@ -17,6 +28,11 @@ public class M_Adresse {
 		setStadt(stadt);
 		setStrasse(strasse);
 		
+		if(this.interneListe == null) {
+			this.interneListe =new ArrayList<M_Adresse>();
+		}
+		getInterneListe().add(this);
+
 	}
 
 	public static int getInterneID() {
@@ -66,9 +82,26 @@ public class M_Adresse {
 	public void setPLZ(String pLZ) {
 		PLZ = pLZ;
 	}
-	
-	
-	
-	
-	
+
+	@Override
+	public String toString() {
+
+		return ""+getStrasse()+"\n"+getPLZ()+" "+getStadt()+"\n"+getBundesland();
+	}
+
+	public static ArrayList<M_Adresse> getInterneListe() {
+		return interneListe;
+	}
+
+	public static void setInterneListe(ArrayList<M_Adresse> interneListe) {
+		M_Adresse.interneListe = interneListe;
+	}
+
+
+
+
+
+
+
+
 }

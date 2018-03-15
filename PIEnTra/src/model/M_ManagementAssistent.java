@@ -1,28 +1,35 @@
 package model;
 
 import java.util.ArrayList;
-
+/**
+ * Modellklasse für ManagemetAssistenten
+ * @author Konstantin
+ *
+ */
 public class M_ManagementAssistent extends M_Person{
 	private static int interneID;
+	private static ArrayList<M_ManagementAssistent> interneListe;
 	private int mitarbeiterID;
 	private ArrayList<M_Training> trainings;
-	public M_ManagementAssistent(String vorname, String nachname, M_Training ...trainings) {
+	public M_ManagementAssistent(String vorname, String nachname) {
 		super(vorname, nachname);
 		setInterneID(getInterneID()+1);
 		setMitarbeiterID(getInterneID());
-		this.trainings = new ArrayList<M_Training>();
-		for(int i  = 0; i<trainings.length; i++) {
-			this.trainings.add(trainings[i]);
-			
+		
+		if(this.interneListe == null) {
+			this.interneListe =new ArrayList<M_ManagementAssistent>();
 		}
-		
-		
+		getInterneListe().add(this);
+
+
+
+
 	}
-	
-	
-	
-	
-	
+
+
+
+
+
 	public ArrayList<M_Training> getTrainings() {
 		return trainings;
 	}
@@ -68,7 +75,7 @@ public class M_ManagementAssistent extends M_Person{
 
 	@Override
 	public String getVorname() {
-		// TODO Auto-generated method stub
+
 		return super.getVorname();
 	}
 
@@ -78,7 +85,7 @@ public class M_ManagementAssistent extends M_Person{
 
 	@Override
 	public void setVorname(String vorname) {
-		// TODO Auto-generated method stub
+
 		super.setVorname(vorname);
 	}
 
@@ -88,7 +95,7 @@ public class M_ManagementAssistent extends M_Person{
 
 	@Override
 	public String getNachname() {
-		// TODO Auto-generated method stub
+
 		return super.getNachname();
 	}
 
@@ -98,8 +105,57 @@ public class M_ManagementAssistent extends M_Person{
 
 	@Override
 	public void setNachname(String nachname) {
-		// TODO Auto-generated method stub
+
 		super.setNachname(nachname);
 	}
-	
+
+	/**Ordnet einem Assistenten ein weiteres Training hinzu
+	 * 
+	 * @param training
+	 */
+	public void trainingHinzufuegen(M_Training training ) {
+		if(trainings == null) {
+			trainings = new ArrayList<>();
+		}
+		trainings.add(training);
+	}
+
+
+
+
+
+	@Override
+	public String toString() {
+		String trainings = "";
+
+		if(getTrainings() != null) {
+			for(M_Training training : getTrainings()) {
+				trainings = trainings+ " "+training.getTrainingsID() +"";
+			}
+		}
+
+
+		return ""+getVorname()+", "+ getNachname()+ "\nTrainings: "+trainings+"";
+
+
+	}
+
+
+
+
+
+	public static ArrayList<M_ManagementAssistent> getInterneListe() {
+		return interneListe;
+	}
+
+
+
+
+
+	public static void setInterneListe(ArrayList<M_ManagementAssistent> interneListe) {
+		M_ManagementAssistent.interneListe = interneListe;
+	}
+
+
+
 }

@@ -2,8 +2,16 @@ package model;
 
 import java.util.ArrayList;
 
+/**
+ * Modellklasse für Training sollte als letzte Modellklasse erzeugt werden.
+ * 
+ * 
+ * @author Konstantin
+ *
+ */
 public class M_Training {
 	private static int interneID;
+	private static ArrayList<M_Training> interneListe;
 	private int trainingsID;
 	private String anfangsdatum; //zu ändern
 	private String enddatum; //zu ändern
@@ -14,14 +22,25 @@ public class M_Training {
 	private M_Kunde kunde;
 	private M_Trainer trainer;
 	private ArrayList<M_ManagementAssistent> managementAssistente;
-	
-	
 
+
+	/**
+	 * Mehrere {@link M_ManagementAssistent} können übergeben werden.
+	 * @param anfangsdatum
+	 * @param trainer
+	 * @param ort
+	 * @param kunde
+	 * @param enddatum
+	 * @param tage
+	 * @param bemerkungen
+	 * @param produkt
+	 * @param assistents
+	 */
 	public M_Training(String anfangsdatum, M_Trainer trainer,
 			M_Ort ort, M_Kunde kunde, String  enddatum, int tage,
 			String bemerkungen, M_Produkt produkt, M_ManagementAssistent ...assistents ) {
-		
-		
+
+
 		setInterneID(getInterneID()+1);
 		setTrainingsID(interneID);
 		setAnfangsdatum(anfangsdatum);
@@ -35,13 +54,28 @@ public class M_Training {
 		this.managementAssistente = new ArrayList<M_ManagementAssistent>();
 		for(int i  = 0; i<assistents.length; i++) {
 			this.managementAssistente.add(assistents[i]);
+			assistents[i].trainingHinzufuegen(this);
+
 			
+
 		}
-		
-		
-		
+		if(this.interneListe == null) {
+			this.interneListe =new ArrayList<M_Training>();
+		}
+		getInterneListe().add(this);
+
+
+
 	}
-	
+
+	public static ArrayList<M_Training> getInterneListe() {
+		return interneListe;
+	}
+
+	public static void setInterneListe(ArrayList<M_Training> interneListe) {
+		M_Training.interneListe = interneListe;
+	}
+
 	public ArrayList<M_ManagementAssistent> getManagementAssistente() {
 		return managementAssistente;
 	}
@@ -85,6 +119,7 @@ public class M_Training {
 		return interneID;
 	}
 
+
 	public static void setInterneID(int interneID) {
 		M_Training.interneID = interneID;
 	}
@@ -120,5 +155,27 @@ public class M_Training {
 	public void setTrainer(M_Trainer trainer) {
 		this.trainer = trainer;
 	}
-	
+
+	/**
+	 * 
+	 */
+	@Override
+	public String toString() {
+		String mAssistents = "";
+		if(getManagementAssistente() != null) {
+			for(M_ManagementAssistent mAssistent : getManagementAssistente()) {
+				mAssistents = mAssistents+ " \n"+mAssistent.getVorname()+", "+mAssistent.getNachname()+"";
+			}
+		}
+
+		return "Training ID: "+getTrainingsID()+"\n"+getKunde()+"\n"+"Anfangsdatum: "+getAnfangsdatum()+
+				"\nEnddatum: "+ getEnddatum()+"\nTage: "+getTage()+"\nTrainer: "+
+				getTrainer().getVorname()+", "+getTrainer().getNachname()+"\nOrt:"+getOrt()+"\nBemerkungen: "+getBemerkungen();
+	}
+
+
+
+
+
+
 }

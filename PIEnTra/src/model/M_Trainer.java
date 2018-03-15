@@ -1,27 +1,68 @@
 package model;
 
 import java.util.ArrayList;
-
+/**
+  Modellklasse für Trainer.
+  Soll mindestens ein Produkt haben.
+  Trainings wird durch die Methode trainingHinzufügen() initialisiert.
+ * @author Konstantin
+ *
+ */
 public class M_Trainer extends M_Person {
 	private static int interneID;
+	private static ArrayList<M_Trainer> interneListe;
 	private int trainerID; 
 	private ArrayList<M_Produkt> produkte;
 	private ArrayList<M_Training> trainings ; //muss durch die Methode trainingHinzufügen() initialisiert werden
+
+
 	public M_Trainer(String vorname, String nachname, M_Produkt ... produkte) {
 		super(vorname, nachname);
 		setInterneID(getInterneID()+1);
 		setTrainerID(getInterneID());
+
+
 		this.produkte = new ArrayList<M_Produkt>();
 		for(int i  = 0; i<produkte.length; i++) {
 			this.produkte.add(produkte[i]);
-			
-			}
-		
-		
-		// TODO Auto-generated constructor stub
+			produkte[i].trainerHinzufuegen(this); //Trainer wird automatisch den zugeordneten M_Produkten hinzugefügt als Attribut
+
+		}
+		if(this.interneListe == null) {
+			this.interneListe =new ArrayList<M_Trainer>();
+		}
+		getInterneListe().add(this);
+
+
+
+
 	}
 
+
+
 	
+
+
+
+	public static ArrayList<M_Trainer> getInterneListe() {
+		return interneListe;
+	}
+
+
+
+
+
+
+
+	public static void setInterneListe(ArrayList<M_Trainer> interneListe) {
+		M_Trainer.interneListe = interneListe;
+	}
+
+
+
+
+
+
 
 	public ArrayList<M_Training> getTrainings() {
 		return trainings;
@@ -37,25 +78,25 @@ public class M_Trainer extends M_Person {
 
 	@Override
 	public String getVorname() {
-		// TODO Auto-generated method stub
+
 		return super.getVorname();
 	}
 
 	@Override
 	public void setVorname(String vorname) {
-		// TODO Auto-generated method stub
+
 		super.setVorname(vorname);
 	}
 
 	@Override
 	public String getNachname() {
-		// TODO Auto-generated method stub
+
 		return super.getNachname();
 	}
 
 	@Override
 	public void setNachname(String nachname) {
-		// TODO Auto-generated method stub
+
 		super.setNachname(nachname);
 	}
 
@@ -92,6 +133,31 @@ public class M_Trainer extends M_Person {
 		}
 		trainings.add(training);
 	}
-	
+
+
+
+	@Override
+	public String toString() {
+		String trainings = "";
+		String produkte = "";
+
+		if(getProdukte()!=null) {
+			for(M_Produkt produkt : getProdukte()) {
+				produkte = produkte+" "+ produkt.getProduktID() +"";
+			}
+		}
+
+		if(getTrainings()!=null) {
+			for(M_Training training : getTrainings()) {
+				trainings = trainings+ " "+training.getTrainingsID() +"";
+			}
+		}
+
+
+		return ""+getVorname()+", "+ getNachname()+ "\nProdukte: " + produkte +"\nTrainings: "+trainings+"";
+	}
+
+
+
 
 }

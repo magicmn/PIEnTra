@@ -1,13 +1,21 @@
 package model;
 
+import java.util.ArrayList;
+
+/**
+ * Durchführungsort für die Trainings
+ * @author Konstantin
+ *
+ */
 public class M_Ort {
 	private static int interneID;
+	private static ArrayList<M_Ort> interneListe;
 	private String ortsID;
 	private String geschaefstsstelle;
 	private String gebaeude;
 	private int etage;
 	private String raum;
-	
+
 	public M_Ort(String ortsID, String geschaeftsstelle, String gebaeude, int etage, String raum ){
 		setInterneID(getInterneID()+1);
 		setOrtsID(ortsID);
@@ -16,9 +24,14 @@ public class M_Ort {
 		setEtage(etage);
 		setRaum("Raum E"+etage+"-"+raum);
 		
-		
+		if(this.interneListe == null) {
+			this.interneListe =new ArrayList<M_Ort >();
+		}
+		getInterneListe().add(this);
+
+
 	}
-	
+
 	public static void main(String[] args) {
 
 	}
@@ -27,9 +40,9 @@ public class M_Ort {
 		return ortsID;
 	}
 
-	private void setOrtsID(String ortsID2) {
-		// TODO Auto-generated method stub
-		
+	private void setOrtsID(String ortsID) {
+		this.ortsID=ortsID;
+
 	}
 
 	public static int getInterneID() {
@@ -40,7 +53,7 @@ public class M_Ort {
 		M_Ort.interneID = interneID;
 	}
 
-	
+
 	public String getGeschaefstsstelle() {
 		return geschaefstsstelle;
 	}
@@ -73,6 +86,23 @@ public class M_Ort {
 		this.raum = raum;
 	}
 
-	
+	@Override
+	public String toString() {
+
+
+		return ""+getOrtsID()+ ", "+ getGeschaefstsstelle() + ", "+ getGebaeude()+ ", " + getRaum();
+	}
+
+	public static ArrayList<M_Ort> getInterneListe() {
+		return interneListe;
+	}
+
+	public static void setInterneListe(ArrayList<M_Ort> interneListe) {
+		M_Ort.interneListe = interneListe;
+	}
+
+
+
+
 
 }
