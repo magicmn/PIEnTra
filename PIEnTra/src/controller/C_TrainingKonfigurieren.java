@@ -14,6 +14,7 @@ package controller;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import utils.SimpleSwitchFrame;
 import view.V_TrainingKonfigurieren;
 
 public class C_TrainingKonfigurieren {
@@ -47,7 +48,7 @@ public class C_TrainingKonfigurieren {
 	}
 	private class Zurueck implements ActionListener {
 		public void actionPerformed(ActionEvent arg0) {
-			System.out.println("Zurück zum Hauptmenü!");		
+			SimpleSwitchFrame.switchFrame(view, new C_Hauptmenue());		
 		}
 	}
 }
