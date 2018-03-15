@@ -24,15 +24,19 @@ public class SimpleDatumBerechnen {
 	}
 
 	public static String datumBerechnen(String startdatum, Integer tage){
+		long enddatumMillisekunden = 0;
+		String DateAsString = "";
 		try {
 			long tageMillisekunden = tage * 86400000; 											//Tage in Millisekunden rechnen
 			Date startdatumFormatiert = format.parse(startdatum);								//startdatum in Date formatieren dd.MM.yyyy
-			long enddatumMillisekunden = startdatumFormatiert.getTime() + tageMillisekunden;	//
+			enddatumMillisekunden = startdatumFormatiert.getTime() + tageMillisekunden;			//
+			Date datum = new Date(enddatumMillisekunden);
+			DateAsString = format.format(enddatumMillisekunden);
 
 		} catch (ParseException e) {
 			e.printStackTrace();
 		}
-		return enddatumMillisekunden;
+		return DateAsString;
 	}
 	
 }
