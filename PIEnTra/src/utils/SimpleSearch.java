@@ -13,14 +13,14 @@ import model.M_Training;
 
 
 
-public class SearchFunktion {
+public class SimpleSearch {
 
 
 
 	public static M_Kunde kundeSuchen (String id, ArrayList<M_Kunde> array) throws NoSuchElementException{
 
 		for(M_Kunde element : array) {
-			if(id.equals(element.getKundenID()+"")) {
+			if(id.equals(element.getKundenID()+"") || id.equals(element.getFirmenname()+"")) {
 				return element;
 			}
 
