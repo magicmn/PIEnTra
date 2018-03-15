@@ -14,16 +14,22 @@ package controller;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import javax.swing.JFrame;
+
 import utils.SimpleSwitchFrame;
 import view.V_TrainingKonfigurieren;
 
 public class C_TrainingKonfigurieren {
 	
-	private V_TrainingKonfigurieren view;
+	private static V_TrainingKonfigurieren view;
 	
 	public C_TrainingKonfigurieren(){
 		view = new V_TrainingKonfigurieren();
 		
+	}
+
+	public static JFrame getView() {
+		return view;
 	}	
 	
 }
