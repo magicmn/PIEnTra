@@ -15,11 +15,10 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 
 import controller.C_KundeVerwalten;
-import controller.C_ProdukteDefinieren;
+import controller.C_ProduktDefinieren;
 import controller.C_TrainingAendern;
 import controller.C_TrainingKonfigurieren;
 import controller.C_TrainingLoeschen;
-
 import utils.SimpleButtonPanel;
 import utils.SimpleSwitchFrame;
 /**
@@ -161,12 +160,9 @@ public class V_Hauptmenue extends JFrame {
 	}
 	private class ProdukteDefinieren implements ActionListener {
 		public void actionPerformed(ActionEvent arg0) {
-			SimpleSwitchFrame.switchFrame(view, new C_ProdukteDefinieren());
+			SimpleSwitchFrame.switchFrame(view, new C_ProduktDefinieren());
 		}
 	}
-
-
-
 }
 
 

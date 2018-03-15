@@ -25,7 +25,6 @@ public class C_KundeVerwalten {
 	
 	public C_KundeVerwalten(){
 		view = new V_KundeVerwalten();
-
 	}
 
 	public static V_KundeVerwalten getView() {
@@ -46,7 +45,5 @@ public class C_KundeVerwalten {
 	public void setKunde(M_Kunde kunde) {
 		this.kunde = kunde;
 	}
-	
-	
 }
 
