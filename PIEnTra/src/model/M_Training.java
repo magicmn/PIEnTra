@@ -12,7 +12,7 @@ import java.util.ArrayList;
 public class M_Training {
 	private static int interneID;
 	private static ArrayList<M_Training> interneListe;
-	private int trainingsID;
+	private String  trainingsID;
 	private String anfangsdatum; //zu ändern
 	private String enddatum; //zu ändern
 	private int tage;
@@ -42,7 +42,7 @@ public class M_Training {
 
 
 		setInterneID(getInterneID()+1);
-		setTrainingsID(interneID);
+		
 		setAnfangsdatum(anfangsdatum);
 		setEnddatum(enddatum);
 		setTage(tage);
@@ -84,10 +84,10 @@ public class M_Training {
 		this.managementAssistente = managementAssistente;
 	}
 
-	public int getTrainingsID() {
+	public String getTrainingsID() {
 		return trainingsID;
 	}
-	public void setTrainingsID(int trainingsID) {
+	public void setTrainingsID(String trainingsID) {
 		this.trainingsID = trainingsID;
 	}
 	public String getAnfangsdatum() {
@@ -171,6 +171,11 @@ public class M_Training {
 		return "Training ID: "+getTrainingsID()+"\n"+getKunde()+"\n"+"Anfangsdatum: "+getAnfangsdatum()+
 				"\nEnddatum: "+ getEnddatum()+"\nTage: "+getTage()+"\nTrainer: "+
 				getTrainer().getVorname()+", "+getTrainer().getNachname()+"\nOrt:"+getOrt()+"\nBemerkungen: "+getBemerkungen();
+	}
+	
+	public String idGenerieren() {
+		return "";
+		
 	}
 
 

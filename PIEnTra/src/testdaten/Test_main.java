@@ -1,4 +1,4 @@
-package testdaten;
+ package testdaten;
 
 import java.util.NoSuchElementException;
 
@@ -11,7 +11,7 @@ import model.M_Ort;
 import model.M_Produkt;
 import model.M_Trainer;
 import model.M_Training;
-import utils.SearchFunktion;
+import utils.SimpleSearch;
 
 public class Test_main {
 	private Testfaelle testfaelle = new Testfaelle();
@@ -41,21 +41,21 @@ public class Test_main {
 		//System.out.println(this.getTestfaelle().getTraining1());
 		
 		try {
-			System.out.println(SearchFunktion.trainerSuchen(3+"", M_Trainer.getInterneListe()));			
+			System.out.println(SimpleSearch.trainerSuchen(3+"", M_Trainer.getInterneListe()));			
 			System.out.println("__________________");
-			System.out.println(SearchFunktion.trainingSuchen(1+"", M_Training.getInterneListe()));			
+			System.out.println(SimpleSearch.trainingSuchen(1+"", M_Training.getInterneListe()));			
 			System.out.println("__________________");
-			System.out.println(SearchFunktion.ortSuchen("WA-A-E101", M_Ort.getInterneListe()));			
+			System.out.println(SimpleSearch.ortSuchen("WA-A-E101", M_Ort.getInterneListe()));			
 			System.out.println("__________________");		
-			System.out.println(SearchFunktion.produktSuchen("EWW", M_Produkt.getInterneListe()));
+			System.out.println(SimpleSearch.produktSuchen("EWW", M_Produkt.getInterneListe()));
 			System.out.println("__________________");
-			System.out.println(SearchFunktion.adresseSuchen(3+"", M_Adresse.getInterneListe()));
+			System.out.println(SimpleSearch.adresseSuchen(3+"", M_Adresse.getInterneListe()));
 			System.out.println("__________________");
-			System.out.println(SearchFunktion.managementAssistentSuchen(1+"", M_ManagementAssistent.getInterneListe()));
+			System.out.println(SimpleSearch.managementAssistentSuchen(1+"", M_ManagementAssistent.getInterneListe()));
 			System.out.println("__________________");
-			System.out.println(SearchFunktion.trainerSuchen(3+"", M_Trainer.getInterneListe()));
+			System.out.println(SimpleSearch.trainerSuchen(3+"", M_Trainer.getInterneListe()));
 			System.out.println("__________________");
-			System.out.println(SearchFunktion.trainerSuchen(3+"", M_Trainer.getInterneListe()));
+			System.out.println(SimpleSearch.trainerSuchen(3+"", M_Trainer.getInterneListe()));
 			
 			}
 			catch( NoSuchElementException e) {

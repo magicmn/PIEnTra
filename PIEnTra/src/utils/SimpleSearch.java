@@ -13,7 +13,7 @@ import model.M_Training;
 
 
 
-public class SearchFunktion {
+public class SimpleSearch {
 
 
 
