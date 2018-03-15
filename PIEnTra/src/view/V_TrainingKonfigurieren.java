@@ -4,6 +4,7 @@ import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.GridLayout;
+import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.ComponentEvent;
 import java.awt.event.ComponentListener;
@@ -14,8 +15,24 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
 
+import controller.C_Hauptmenue;
+
+import utils.SimpleSwitchFrame;
 import utils.SimpleTextPanel;
 
+/**
+ * Aktuelle Version: 1.2  
+ * Authoren: Andreas (1.0), Adrian(1.1) Konstantin (1.2)
+ * 
+ * Changelog:
+ * 1.0 	
+ * 		-Layout definiert
+ * 1.1
+ * 		
+ * 		-Getter und setter angepasst
+ * 1.2
+ * 		-ActionListener wieder hinzugefügt
+ **/
 public class V_TrainingKonfigurieren extends JFrame {
 	
 	private JPanel pnl_center;
@@ -35,8 +52,10 @@ public class V_TrainingKonfigurieren extends JFrame {
 	private JButton btn_trainingspeichern = new JButton("Training speichern");
 	private JButton btn_zurueck = new JButton("Zurück zum Hauptmenü");
 	private JTextField txt_navigation;
+	public V_TrainingKonfigurieren view ;
 	
 	public V_TrainingKonfigurieren() {
+		this.view = this;
 		initView();
 		resizeGUI();
 		this.setVisible(true);
@@ -81,6 +100,12 @@ public class V_TrainingKonfigurieren extends JFrame {
 		txt_navigation.setFocusable(false);
 		pnl_south.add(pnl_south_bottom);
 		this.add(BorderLayout.SOUTH, pnl_south);
+		
+		btn_kundewaehlen.addActionListener(new KundeWaehlen());
+		btn_ressourcenwaehlen.addActionListener(new RessourceWaehlen());
+		btn_trainingspeichern.addActionListener(new TrainingSpeichern());
+		btn_zurueck.addActionListener(new Zurueck());
+	
 	}
 	
 	/** Enthält variable Gößen **/
@@ -174,17 +199,37 @@ public class V_TrainingKonfigurieren extends JFrame {
 	}
 	
 	//Action Listener
-	
-	public void addBtn_kundeWaehlenListener(ActionListener ActionListener) {
-		btn_kundewaehlen.addActionListener(ActionListener);
+//	
+//	public void addBtn_kundeWaehlenListener(ActionListener ActionListener) {
+//		btn_kundewaehlen.addActionListener(ActionListener);
+//	}
+//	public void addBtn_ressourceWaehlenListener(ActionListener ActionListener) {
+//		btn_ressourcenwaehlen.addActionListener(ActionListener);
+//	}
+//	public void addBtn_trainingSpeichernListener(ActionListener ActionListener) {
+//		btn_trainingspeichern.addActionListener(ActionListener);
+//	}
+//	public void addBtn_zurueckListener(ActionListener ActionListener) {
+//		btn_zurueck.addActionListener(ActionListener);
+//	}
+	private class KundeWaehlen implements ActionListener {
+		public void actionPerformed(ActionEvent arg0) {
+			System.out.println("Kunde waehlen!");		
+		}
 	}
-	public void addBtn_ressourceWaehlenListener(ActionListener ActionListener) {
-		btn_ressourcenwaehlen.addActionListener(ActionListener);
+	private class RessourceWaehlen implements ActionListener {
+		public void actionPerformed(ActionEvent arg0) {
+			System.out.println("Ressource Wählen");		
+		}
 	}
-	public void addBtn_trainingSpeichernListener(ActionListener ActionListener) {
-		btn_trainingspeichern.addActionListener(ActionListener);
+	private class TrainingSpeichern implements ActionListener {
+		public void actionPerformed(ActionEvent arg0) {
+			System.out.println("Training Speichern!");
+		}
 	}
-	public void addBtn_zurueckListener(ActionListener ActionListener) {
-		btn_zurueck.addActionListener(ActionListener);
+	private class Zurueck implements ActionListener {
+		public void actionPerformed(ActionEvent arg0) {
+			SimpleSwitchFrame.switchFrame(view, new C_Hauptmenue());		
+		}
 	}
 }
