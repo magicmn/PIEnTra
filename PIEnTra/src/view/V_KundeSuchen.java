@@ -1,8 +1,11 @@
+//Author: Adrian 
+
 package view;
 
 import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.GridLayout;
+import java.awt.event.ActionListener;
 import java.awt.event.ComponentEvent;
 import java.awt.event.ComponentListener;
 
@@ -12,6 +15,7 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
 
+import utils.SimpleButtonPanel;
 import utils.SimpleTextPanel;
 
 public class V_KundeSuchen extends JFrame {
@@ -46,7 +50,7 @@ public class V_KundeSuchen extends JFrame {
 	
 		this.add(BorderLayout.CENTER, pnl_center);
 		
-		JPanel pnl_south = new JPanel(new GridLayout(1, 4));
+		JPanel pnl_south = new JPanel(new GridLayout(1, 4, 10, 0));
 		pnl_south.setBorder(new EmptyBorder(10,10,10,10));
 		pnl_south.add(btn_kundesuchen);
 		pnl_south.add(btn_abbrechen);
@@ -86,4 +90,16 @@ public class V_KundeSuchen extends JFrame {
 		this.pnl_firmenname.setString(text);
 	}
 	
+	public JButton txt(){
+		return btn_kundesuchen;
+	}
+	
+	//Action Listener
+	
+	public void addBtn_kundeSuchenListener(ActionListener kundeSuchen) {
+		btn_kundesuchen.addActionListener(kundeSuchen);
+	}
+	public void addBtn_abbrechenListener(ActionListener abbrechen) {
+		btn_abbrechen.addActionListener(abbrechen);
+	}
 }
