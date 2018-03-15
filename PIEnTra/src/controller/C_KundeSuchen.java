@@ -32,11 +32,13 @@ public class C_KundeSuchen {
 	private class KundeSuchen implements ActionListener {
 		public void actionPerformed(ActionEvent arg0) {
 			System.out.println("Kunde suchen!");
+			
 		}
 	}
 	private class Abbrechen implements ActionListener {
 		public void actionPerformed(ActionEvent arg0) {
 			System.out.println("Abbrechen");
+			view.setVisible(false);
 		}
 	}
 }
