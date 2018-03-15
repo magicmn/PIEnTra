@@ -2,6 +2,8 @@ package view;
 import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.GridLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.ComponentEvent;
 import java.awt.event.ComponentListener;
 
@@ -14,28 +16,27 @@ import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
 import javax.swing.border.EmptyBorder;
 
+import controller.C_Hauptmenue;
+import controller.C_KundeSuchen;
+import controller.C_KundeVerwalten;
+import controller.C_TrainingAendern;
+import utils.SimpleSwitchFrame;
 import utils.SimpleTextPanel;
 
 /**
  * Aktuelle Version: 1.2  
- * Authoren: Jannik (1.0), Adrian (1.1), Konstantin (1.1)
+ * Authoren: Jannik (1.0, 1.1), Adrian (1.2)
  * 
  * Changelog:
  * 1.0 	
  * 		-Controller erstellt
  * 1.1
- * 		-ActionListener hinzugefügt!
+ * 		-Get / Set hinzugefügt
  * 1.2
- * 		-ActionListener wieder entfernt!
+ * 		-ActionListener hinzugefügt
  **/
 public class V_TrainingAendern extends JFrame {
 	
-	public static void main(String[] args) throws ClassNotFoundException, InstantiationException, IllegalAccessException, UnsupportedLookAndFeelException {
-		V_TrainingAendern trainingAendern = new V_TrainingAendern();
-		UIManager.setLookAndFeel("com.sun.java.swing.plaf.windows.WindowsLookAndFeel");
-	}
-	
-	private JPanel pnl_center;
 	private SimpleTextPanel pnl_trainingsId = new SimpleTextPanel("Trainings-ID:");
 	private SimpleTextPanel pnl_firmenname = new SimpleTextPanel("Firmenname:");
 	private SimpleTextPanel pnl_ansprechpartner = new SimpleTextPanel("Ansprechpartner:");
@@ -46,20 +47,27 @@ public class V_TrainingAendern extends JFrame {
 	private SimpleTextPanel pnl_trainer = new SimpleTextPanel("Trainer:");
 	private SimpleTextPanel pnl_ort = new SimpleTextPanel("Ort:");
 	private SimpleTextPanel pnl_bemerkungen = new SimpleTextPanel("Bemerkungen:");
+	
+	private JPanel pnl_center;
 	private JPanel pnl_south;
+	private JPanel pnl_south_bottom = new JPanel();
+	
 	private JButton btn_trainingsuchen = new JButton("Training suchen");
 	private JButton btn_ressourcenaendern = new JButton("Ressourcen ändern");
 	private JButton btn_trainingaktualisieren = new JButton("Training aktualisieren");
 	private JButton btn_zurueck = new JButton("Zurück zum Hauptmenü");
+	
 	private JTextField txt_navigation;
 
 	public V_TrainingAendern() {
 		initView();
 		resizeGUI();
+		initListener();
 		this.setVisible(true);
 	}
 
 	private void initView() {
+		
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		this.setTitle("PIEnTra p1.00");
 		this.setSize(750, 450); // Optimale Größe die beim Starten geladen wird.
@@ -69,6 +77,7 @@ public class V_TrainingAendern extends JFrame {
 		this.addComponentListener(new ResizeListener());  // Fügt Listener für Frame veränderungen hinzu.
 		
 		pnl_center = new JPanel(new GridLayout(10, 1, 2 ,2));
+		
 		pnl_center.add(pnl_trainingsId);
 		pnl_center.add(pnl_firmenname);
 		pnl_center.add(pnl_ansprechpartner);
@@ -79,19 +88,21 @@ public class V_TrainingAendern extends JFrame {
 		pnl_center.add(pnl_trainer);
 		pnl_center.add(pnl_ort);
 		pnl_center.add(pnl_bemerkungen);
+		
 		this.add(BorderLayout.CENTER, pnl_center);
 		
 		pnl_south = new JPanel(new GridLayout(2, 1));
 		JPanel pnl_south_top = new JPanel(new GridLayout(1, 4));
+		
 		pnl_south_top.setBorder(new EmptyBorder(10,8,5,10));
 		pnl_south_top.add(btn_trainingsuchen);
 		pnl_south_top.add(btn_ressourcenaendern);
 		pnl_south_top.add(btn_trainingaktualisieren);
 		pnl_south_top.add(btn_zurueck);
+		
 		pnl_south.add(pnl_south_top);
-		JPanel pnl_south_bottom = new JPanel();
-	    //pnl_south_bottom.setLayout( new BoxLayout(pnl_south_bottom, BoxLayout.X_AXIS));
 		pnl_south_bottom.add(txt_navigation = new JTextField("PlEnTra / Training ändern"));
+		
 		txt_navigation.setFocusable(false);
 		pnl_south.add(pnl_south_bottom);
 		this.add(BorderLayout.SOUTH, pnl_south);
@@ -110,6 +121,12 @@ public class V_TrainingAendern extends JFrame {
 		pnl_trainer.setTxtField_Size(pnl_center.getWidth() / 4);
 		pnl_ort.setTxtField_Size(pnl_center.getWidth() / 4);
 		pnl_bemerkungen.setTxtField_Size((this.getWidth() - 140));
+	}
+	private void initListener(){
+		btn_trainingsuchen.addActionListener(new TrainingSuchen());
+		btn_ressourcenaendern.addActionListener(new RessourceAendern());
+		btn_trainingaktualisieren.addActionListener(new TrainingAktualisieren());
+		btn_zurueck.addActionListener(new Zurueck());
 	}
 	
 	private class ResizeListener implements ComponentListener {
@@ -203,5 +220,30 @@ public class V_TrainingAendern extends JFrame {
 	public void setTextBemerkungen(String txt_bemerkungen) {
 		this.pnl_bemerkungen.setString(txt_bemerkungen);
 	}	
+	
+	//ActionListener
+	//--------------------------------------------------------------
+	
+	private class TrainingSuchen implements ActionListener {
+		public void actionPerformed(ActionEvent arg0) {
+			System.out.println("Training suchen!");
+			
+		}
+	}
+	private class RessourceAendern implements ActionListener {
+		public void actionPerformed(ActionEvent arg0) {
+			System.out.println("Ressource ändern!");
+		}
+	}
+	private class TrainingAktualisieren implements ActionListener {
+		public void actionPerformed(ActionEvent arg0) {
+			System.out.println("Training aktualisieren!");
+		}
+	}
+	private class Zurueck implements ActionListener {
+		public void actionPerformed(ActionEvent arg0) {
+			SimpleSwitchFrame.switchFrame(C_TrainingAendern.getView(), new C_Hauptmenue());
+		}
+	}
 	
 }

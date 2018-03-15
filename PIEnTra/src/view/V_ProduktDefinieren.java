@@ -1,9 +1,22 @@
+/**
+ * Aktuelle Version: 1.1 
+ * Authoren: Adrian (1.0, 1.1), Andreas (1.0)
+ * 
+ * Changelog:
+ * 1.0 	
+ * 		-View erstellt
+ * 1.1
+ * 		-ActionListener hinzugefügt!
+ **/
+
 package view;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.FlowLayout;
 import java.awt.GridLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
@@ -12,6 +25,11 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.JTextArea;
+
+import utils.SimpleSwitchFrame;
+import controller.C_Hauptmenue;
+import controller.C_KundeVerwalten;
+import controller.C_ProduktDefinieren;
 
 
 public class V_ProduktDefinieren extends JFrame{
@@ -33,11 +51,11 @@ public class V_ProduktDefinieren extends JFrame{
 	JButton btn_zurueckzumhauptmenu = new JButton("Zurück zum Hauptmenü");
 	
 	public V_ProduktDefinieren(){
-		init();
-		txt_bottom.setText("PIEnTra / Produkt definieren");
+		initView();
+		initListener();	
 	}
 	
-	public void init(){
+	public void initView(){
 		
 		this.setBounds(50, 50, 470, 525);
 		this.setVisible(true);
@@ -71,7 +89,12 @@ public class V_ProduktDefinieren extends JFrame{
 		pnl_txtbottom.add(txt_bottom);
 
 		this.add(pnl_center);
-		
+		txt_bottom.setText("PIEnTra / Produkt definieren");
+	}
+	
+	private void initListener() {
+		btn_produktdefninieren.addActionListener(new ProduktDefinieren());
+		btn_zurueckzumhauptmenu.addActionListener(new Zurueck());
 	}
 	
 	// Get und Set
@@ -91,4 +114,18 @@ public class V_ProduktDefinieren extends JFrame{
 	public void setText_txt_produktbeschreibung(String text){
 		txt_produktbeschreibung.setText(text);
 	}
+	
+	//ActionListener
+	
+	private class ProduktDefinieren implements ActionListener {
+		public void actionPerformed(ActionEvent arg0) {
+			System.out.println("Produkt definieren!");
+		}
+	}
+	private class Zurueck implements ActionListener {
+		public void actionPerformed(ActionEvent arg0) {
+			SimpleSwitchFrame.switchFrame(C_ProduktDefinieren.getView(), new C_Hauptmenue());
+		}
+	}
+	
 }

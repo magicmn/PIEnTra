@@ -15,11 +15,10 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 
 import controller.C_KundeVerwalten;
-import controller.C_ProdukteDefinieren;
+import controller.C_ProduktDefinieren;
 import controller.C_TrainingAendern;
 import controller.C_TrainingKonfigurieren;
 import controller.C_TrainingLoeschen;
-
 import utils.SimpleButtonPanel;
 import utils.SimpleSwitchFrame;
 /**
@@ -116,22 +115,22 @@ public class V_Hauptmenue extends JFrame {
 		public void componentMoved(ComponentEvent arg0) {}
 		public void componentShown(ComponentEvent arg0) {}
 	}
-
-	public void addBtn_TrainingKonfigurierenListener(ActionListener TrainingKonfigurieren) {
-		btn_TrainingKonfigurieren.getButton().addActionListener(TrainingKonfigurieren);
-	}
-	public void addBtn_TrainingAendernListener(ActionListener TrainingAendern) {
-		btn_TrainingAendern.getButton().addActionListener(TrainingAendern);
-	}
-	public void addBtn_KundeVerwaltenListener(ActionListener KundeVerwalten) {
-		btn_KundeVerwalten.getButton().addActionListener(KundeVerwalten);
-	}
-	public void addBtn_TrainingLoeschenListener(ActionListener TrainingLoeschen) {
-		btn_TrainingLoeschen.getButton().addActionListener(TrainingLoeschen);
-	}
-	public void addBtn_ProdukteDefinierenListener(ActionListener ProdukteDefinieren) {
-		btn_ProdukteDefinieren.getButton().addActionListener(ProdukteDefinieren);
-	}
+//
+//	public void addBtn_TrainingKonfigurierenListener(ActionListener TrainingKonfigurieren) {
+//		btn_TrainingKonfigurieren.getButton().addActionListener(TrainingKonfigurieren);
+//	}
+//	public void addBtn_TrainingAendernListener(ActionListener TrainingAendern) {
+//		btn_TrainingAendern.getButton().addActionListener(TrainingAendern);
+//	}
+//	public void addBtn_KundeVerwaltenListener(ActionListener KundeVerwalten) {
+//		btn_KundeVerwalten.getButton().addActionListener(KundeVerwalten);
+//	}
+//	public void addBtn_TrainingLoeschenListener(ActionListener TrainingLoeschen) {
+//		btn_TrainingLoeschen.getButton().addActionListener(TrainingLoeschen);
+//	}
+//	public void addBtn_ProdukteDefinierenListener(ActionListener ProdukteDefinieren) {
+//		btn_ProdukteDefinieren.getButton().addActionListener(ProdukteDefinieren);
+//	}
 
 	private class backAction implements ActionListener {
 		public void actionPerformed(ActionEvent arg0) {
@@ -161,12 +160,9 @@ public class V_Hauptmenue extends JFrame {
 	}
 	private class ProdukteDefinieren implements ActionListener {
 		public void actionPerformed(ActionEvent arg0) {
-			SimpleSwitchFrame.switchFrame(view, new C_ProdukteDefinieren());
+			SimpleSwitchFrame.switchFrame(view, new C_ProduktDefinieren());
 		}
 	}
-
-
-
 }
 
 
