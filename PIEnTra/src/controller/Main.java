@@ -3,6 +3,7 @@ package controller;
 import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
 
+import testdaten.Test_main;
 import view.V_KundeSuchen;
 
 public class Main {
@@ -14,5 +15,7 @@ public class Main {
 				e.printStackTrace();
 			}
 		new C_Hauptmenue();
+		
+		new Test_main();
 	}
 }

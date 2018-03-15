@@ -15,11 +15,15 @@ package controller;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import model.M_Kunde;
+import view.V_KundeSuchen;
 import view.V_KundeVerwalten;
 
 public class C_KundeVerwalten {
 
 	private V_KundeVerwalten view;
+	private C_KundeSuchen suchview;
+	private M_Kunde kunde;
 	
 	public C_KundeVerwalten(){
 		view = new V_KundeVerwalten();
@@ -34,7 +38,7 @@ public class C_KundeVerwalten {
 	private class KundeSuchen implements ActionListener {
 		public void actionPerformed(ActionEvent arg0) {
 			System.out.println("Kunde suchen!");
-			new C_KundeSuchen();
+			suchview = new C_KundeSuchen();
 		}
 	}
 	private class KundeAktualisieren implements ActionListener {
@@ -52,5 +56,24 @@ public class C_KundeVerwalten {
 			System.out.println("Zurück zum Hauptmenü");
 		}
 	}
+	public V_KundeVerwalten getView() {
+		return view;
+	}
+	public void setView(V_KundeVerwalten view) {
+		this.view = view;
+	}
+	public C_KundeSuchen getSuchview() {
+		return suchview;
+	}
+	public void setSuchview(C_KundeSuchen suchview) {
+		this.suchview = suchview;
+	}
+	public M_Kunde getKunde() {
+		return kunde;
+	}
+	public void setKunde(M_Kunde kunde) {
+		this.kunde = kunde;
+	}
+	
 }
 

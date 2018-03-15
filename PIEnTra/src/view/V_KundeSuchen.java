@@ -98,6 +98,7 @@ public class V_KundeSuchen extends JFrame {
 	
 	public void addBtn_kundeSuchenListener(ActionListener kundeSuchen) {
 		btn_kundesuchen.addActionListener(kundeSuchen);
+	
 	}
 	public void addBtn_abbrechenListener(ActionListener abbrechen) {
 		btn_abbrechen.addActionListener(abbrechen);

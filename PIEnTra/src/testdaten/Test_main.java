@@ -4,6 +4,7 @@ import java.util.NoSuchElementException;
 
 import javax.swing.plaf.synth.SynthSeparatorUI;
 
+import controller.Main;
 import model.M_Adresse;
 import model.M_Kunde;
 import model.M_ManagementAssistent;
@@ -15,11 +16,13 @@ import utils.SimpleSearch;
 
 public class Test_main {
 	private Testfaelle testfaelle = new Testfaelle();
+	private Main maincontroller = new Main();
 	
 	
 	
 	public Test_main() {
 		init();
+		
 		
 	}
 	
