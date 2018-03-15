@@ -193,7 +193,7 @@ public class V_KundeWaehlen extends JFrame {
 		private class KundeSuchen implements ActionListener {
 			public void actionPerformed(ActionEvent arg0) {
 				System.out.println("Kunde suchen!");
-				new C_KundeSuchen();
+				C_KundeSuchen.getInstance();
 				//SimpleSwitchFrame.switchFrame(C_KundeWaehlen.getView(), new C_KundeSuchen());
 			}
 		}
