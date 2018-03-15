@@ -23,7 +23,6 @@ public class V_TrainingAendern extends JFrame {
 		UIManager.setLookAndFeel("com.sun.java.swing.plaf.windows.WindowsLookAndFeel");
 	}
 	
-
 	private JPanel pnl_center;
 	private SimpleTextPanel pnl_trainingsId = new SimpleTextPanel("Trainings-ID:");
 	private SimpleTextPanel pnl_firmenname = new SimpleTextPanel("Firmenname:");
