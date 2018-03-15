@@ -1,13 +1,27 @@
-//Author: Adrian 
+/**
+ * Aktuelle Version: 1.2 
+ * Authoren: Julian, Adrian, Andreas, Konstantin
+ * 
+ * Changelog:
+ * 1.0 	
+ * 		-View erstellt
+ * 1.1
+ * 		-Get / Set hinzugefügt
+ * 1.2
+ * 		-ActionListener hinzugefügt!
+ **/
+
 
 package view;
 
 import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.GridLayout;
+import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.ComponentEvent;
 import java.awt.event.ComponentListener;
+import java.util.NoSuchElementException;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -15,7 +29,9 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
 
+import model.M_Kunde;
 import utils.SimpleButtonPanel;
+import utils.SimpleSearch;
 import utils.SimpleTextPanel;
 
 public class V_KundeSuchen extends JFrame {
@@ -28,7 +44,9 @@ public class V_KundeSuchen extends JFrame {
 	private JButton btn_kundesuchen = new JButton("Kunde suchen");
 	private JButton btn_abbrechen = new JButton("Abbrechen");
 	private JTextField txt_navigation;
-
+	
+	private M_Kunde kunde;
+	
 	public V_KundeSuchen() {
 		initView();
 		resizeGUI();
@@ -55,6 +73,10 @@ public class V_KundeSuchen extends JFrame {
 		pnl_south.add(btn_kundesuchen);
 		pnl_south.add(btn_abbrechen);
 		this.add(BorderLayout.SOUTH, pnl_south);
+		
+		btn_kundesuchen.addActionListener(new KundeSuchen());
+		btn_abbrechen.addActionListener(new Abbrechen());
+	
 	}
 	
 	/** Enthält variable Gößen **/
@@ -95,12 +117,53 @@ public class V_KundeSuchen extends JFrame {
 	}
 	
 	//Action Listener
-	
-	public void addBtn_kundeSuchenListener(ActionListener kundeSuchen) {
-		btn_kundesuchen.addActionListener(kundeSuchen);
-	
+
+	private class KundeSuchen implements ActionListener {
+		public void actionPerformed(ActionEvent arg0) {
+			
+			//implementation der Suchfunktion
+			
+			try {
+				if(!getText_pnl_firmenname().equals("") && !getText_pnl_kundenID().equals("")) {
+					System.out.println("Bitte nur ein Feld füllenn ");		
+					kunde = null;
+				}
+				else if(getText_pnl_firmenname().equals("") && getText_pnl_kundenID().equals("")) {
+					System.out.println("Bitte eins der Felder ausfüllen");
+					kunde = null;
+				}
+				else if(getText_pnl_firmenname().equals("") && !getText_pnl_kundenID().equals("")) {
+					kunde = SimpleSearch.kundeSuchen(getText_pnl_kundenID(), M_Kunde.getInterneListe());
+				}
+				else if(!getText_pnl_firmenname().equals("") && getText_pnl_kundenID().equals("")) {
+					kunde = SimpleSearch.kundeSuchen(getText_pnl_firmenname(), M_Kunde.getInterneListe());
+				}
+				
+			}
+			catch ( NoSuchElementException e){
+				System.out.println("Kein Kunde gefunden");
+				kunde = null;
+				
+			}
+			finally {
+				if(kunde!=null) {
+					System.out.println(kunde);
+				}
+			}	
+		}
 	}
-	public void addBtn_abbrechenListener(ActionListener abbrechen) {
-		btn_abbrechen.addActionListener(abbrechen);
+	private class Abbrechen implements ActionListener {
+		public void actionPerformed(ActionEvent arg0) {
+			System.out.println("Abbrechen");
+			dispose();
+		}
 	}
+	
+	public M_Kunde getKunde() {
+		return kunde;
+	}
+	public void setKunde(M_Kunde kunde) {
+		this.kunde = kunde;
+	}
+	
 }

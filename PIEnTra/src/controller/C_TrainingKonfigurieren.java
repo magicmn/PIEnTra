@@ -24,7 +24,7 @@ public class C_TrainingKonfigurieren {
 	public C_TrainingKonfigurieren(){
 		view = new V_TrainingKonfigurieren();
 		initListener();
-	}
+	}	
 	private void initListener() {
 		view.addBtn_kundeWaehlenListener(new KundeWaehlen());
 		view.addBtn_ressourceWaehlenListener(new RessourceWaehlen());
