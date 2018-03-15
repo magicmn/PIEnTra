@@ -3,6 +3,7 @@ package controller;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import utils.SimpleSwitchFrame;
 import view.V_Hauptmenue;
 
 public class C_Hauptmenue {
@@ -24,7 +25,7 @@ public class C_Hauptmenue {
 	
 	private class TrainingKonfigurieren implements ActionListener {
 		public void actionPerformed(ActionEvent arg0) {
-			new C_TrainingKonfigurieren();
+			SimpleSwitchFrame.switchFrame(view, new C_TrainingKonfigurieren());
 		}
 	}
 	private class TrainingAendern implements ActionListener {
