@@ -3,6 +3,7 @@ package controller;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import utils.SimpleSwitchFrame;
 import view.V_Hauptmenue;
 
 public class C_Hauptmenue {
@@ -24,27 +25,27 @@ public class C_Hauptmenue {
 	
 	private class TrainingKonfigurieren implements ActionListener {
 		public void actionPerformed(ActionEvent arg0) {
-			new C_TrainingKonfigurieren();
+			SimpleSwitchFrame.switchFrame(view, new C_TrainingKonfigurieren());
 		}
 	}
 	private class TrainingAendern implements ActionListener {
 		public void actionPerformed(ActionEvent arg0) {
-			new C_TrainingAendern();
+			SimpleSwitchFrame.switchFrame(view, new C_TrainingAendern());
 		}
 	}
 	private class TrainingLoeschen implements ActionListener {
 		public void actionPerformed(ActionEvent arg0) {
-			new C_TrainingLoeschen();
+			SimpleSwitchFrame.switchFrame(view, new C_TrainingLoeschen());
 		}
 	}
 	private class KundeVerwalten implements ActionListener {
 		public void actionPerformed(ActionEvent arg0) {
-			new C_KundeVerwalten();
+			SimpleSwitchFrame.switchFrame(view, new C_KundeVerwalten());
 		}
 	}
 	private class ProdukteDefinieren implements ActionListener {
 		public void actionPerformed(ActionEvent arg0) {
-			new C_ProdukteDefinieren();
+			SimpleSwitchFrame.switchFrame(view, new C_ProdukteDefinieren());
 		}
 	}
 	

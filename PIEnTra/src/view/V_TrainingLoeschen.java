@@ -16,8 +16,6 @@ import javax.swing.border.EmptyBorder;
 import utils.SimpleTextPanel;
 
 
-
-
 public class V_TrainingLoeschen extends JFrame {
 	
 	private JPanel pnl_center;

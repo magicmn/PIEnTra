@@ -4,6 +4,7 @@ import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.GridLayout;
+import java.awt.event.ActionListener;
 import java.awt.event.ComponentEvent;
 import java.awt.event.ComponentListener;
 
@@ -170,5 +171,20 @@ public class V_TrainingKonfigurieren extends JFrame {
 	}
 	public void setText_pnl_bemerkungen(String text) {
 		this.pnl_bemerkungen.setString(text);
+	}
+	
+	//Action Listener
+	
+	public void addBtn_kundeWaehlenListener(ActionListener ActionListener) {
+		btn_kundewaehlen.addActionListener(ActionListener);
+	}
+	public void addBtn_ressourceWaehlenListener(ActionListener ActionListener) {
+		btn_ressourcenwaehlen.addActionListener(ActionListener);
+	}
+	public void addBtn_trainingSpeichernListener(ActionListener ActionListener) {
+		btn_trainingspeichern.addActionListener(ActionListener);
+	}
+	public void addBtn_zurueckListener(ActionListener ActionListener) {
+		btn_zurueck.addActionListener(ActionListener);
 	}
 }
