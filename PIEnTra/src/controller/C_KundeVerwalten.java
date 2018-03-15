@@ -1,62 +1,34 @@
 /**
- * Aktuelle Version: 1.1 
- * Authoren: Julian (1.0), Adrian (1.1), Andreas (1.1)
+ * Aktuelle Version: 1.2 
+ * Authoren: Julian (1.0), Adrian (1.1, 1.2), Andreas (1.1)
  * 
  * Changelog:
  * 1.0 	
  * 		-Controller erstellt
  * 1.1
  * 		-ActionListener hinzugefügt!
+ * 1.2
+ * 		-ActionListener wieder entfernt und in View implementiert!
  **/
 
 
 package controller;
 
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-
 import model.M_Kunde;
-import view.V_KundeSuchen;
 import view.V_KundeVerwalten;
 
 public class C_KundeVerwalten {
 
-	private V_KundeVerwalten view;
+	private static V_KundeVerwalten view;
 	private C_KundeSuchen suchview;
 	private M_Kunde kunde;
 	
 	public C_KundeVerwalten(){
 		view = new V_KundeVerwalten();
-		initListener();
+
 	}
-	private void initListener() {
-		view.addBtn_kundeSuchenListener(new KundeSuchen());
-		view.addBtn_kundeAktualisierenListener(new KundeAktualisieren());
-		view.addBtn_kundeAnlegenListener(new KundeAnlegen());
-		view.addBtn_hauptmenueListener(new Hauptmenue());
-	}
-	private class KundeSuchen implements ActionListener {
-		public void actionPerformed(ActionEvent arg0) {
-			System.out.println("Kunde suchen!");
-			suchview = new C_KundeSuchen();
-		}
-	}
-	private class KundeAktualisieren implements ActionListener {
-		public void actionPerformed(ActionEvent arg0) {
-			System.out.println("Kunde aktualisieren!");
-		}
-	}
-	private class KundeAnlegen implements ActionListener {
-		public void actionPerformed(ActionEvent arg0) {
-			System.out.println("Kunde anlegen!");
-		}
-	}
-	private class Hauptmenue implements ActionListener {
-		public void actionPerformed(ActionEvent arg0) {
-			System.out.println("Zurück zum Hauptmenü");
-		}
-	}
-	public V_KundeVerwalten getView() {
+
+	public static V_KundeVerwalten getView() {
 		return view;
 	}
 	public void setView(V_KundeVerwalten view) {
@@ -74,6 +46,7 @@ public class C_KundeVerwalten {
 	public void setKunde(M_Kunde kunde) {
 		this.kunde = kunde;
 	}
+	
 	
 }
 
