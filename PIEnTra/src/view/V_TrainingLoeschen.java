@@ -4,6 +4,8 @@ import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.GridLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.ComponentEvent;
 import java.awt.event.ComponentListener;
 
@@ -13,7 +15,11 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
 
+import controller.C_Hauptmenue;
+import controller.C_TrainingLoeschen;
+import utils.SimpleSwitchFrame;
 import utils.SimpleTextPanel;
+
 
 
 public class V_TrainingLoeschen extends JFrame {
@@ -37,6 +43,7 @@ public class V_TrainingLoeschen extends JFrame {
 	public V_TrainingLoeschen() {
 		initView();
 		resizeGUI();
+		initListener();
 		this.setVisible(true);
 	}
 	
@@ -77,6 +84,12 @@ public class V_TrainingLoeschen extends JFrame {
 		txt_navigation.setFocusable(false);
 		pnl_south.add(pnl_south_bottom);
 		this.add(BorderLayout.SOUTH, pnl_south);
+	}
+	
+	private void initListener(){
+		btn_trainingSuchen.addActionListener(new TrainingSuchen());
+		btn_trainingLoeschen.addActionListener(new TrainingLoeschen());
+		btn_zurueck.addActionListener(new Zurueck());
 	}
 	
 	private void resizeGUI() {
@@ -166,5 +179,25 @@ public class V_TrainingLoeschen extends JFrame {
 
 	public void setText_pnl_bemerkungen(String pnl_bemerkungen) {
 		this.pnl_bemerkungen.setString(pnl_bemerkungen);
+	}
+	
+	// ActionListener 
+	
+	private class TrainingSuchen implements ActionListener {
+		public void actionPerformed(ActionEvent arg0) {
+			System.out.println("Training suchen");
+		}
+	}
+	
+	private class TrainingLoeschen implements ActionListener {
+		public void actionPerformed(ActionEvent arg0) {
+			System.out.println("Training löschen");
+		}
+	}
+	
+	private class Zurueck implements ActionListener {
+		public void actionPerformed(ActionEvent arg0) {
+			SimpleSwitchFrame.switchFrame(C_TrainingLoeschen.getView(), new C_Hauptmenue());
+		}
 	}
 }
