@@ -40,5 +40,10 @@ public class C_KundeSuchen {
 		}
 		return instance;
 	}
+
+	public V_KundeSuchen getView() {
+		return view;
+		
+	}
 	
 }

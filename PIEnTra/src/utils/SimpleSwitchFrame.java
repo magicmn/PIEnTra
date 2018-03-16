@@ -5,7 +5,7 @@ import javax.swing.JFrame;
 public class SimpleSwitchFrame {
 	
 	public static void switchFrame(JFrame frameClose, Object frameOpen){
-		frameClose.dispose();
+		frameClose.setVisible(false);
 		frameOpen = new Object();
 	}
 }
