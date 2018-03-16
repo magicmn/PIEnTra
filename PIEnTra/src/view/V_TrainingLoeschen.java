@@ -46,6 +46,7 @@ public class V_TrainingLoeschen extends JFrame {
 	private JButton btn_zurueck;
 	private JTextField txt_navigation;
 	private M_Training training;
+	private JOptionPane popup;
 	
 	public V_TrainingLoeschen thisView;
 
