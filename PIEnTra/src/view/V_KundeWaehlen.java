@@ -42,8 +42,12 @@ public class V_KundeWaehlen extends JFrame {
 	private JButton btn_lueckenfueller = new JButton("Neuen Kunden anlegen");
 	private JButton btn_zurueck = new JButton("Zurück zu Training konfigurieren");
 	private JTextField txt_navigation;
+	
+	public V_KundeWaehlen thisView;
+	
 
 	public V_KundeWaehlen() {
+		this.thisView = this;
 		initView();
 		resizeGUI();
 		initListener();
@@ -193,8 +197,8 @@ public class V_KundeWaehlen extends JFrame {
 		private class KundeSuchen implements ActionListener {
 			public void actionPerformed(ActionEvent arg0) {
 				System.out.println("Kunde suchen!");
-				 C_KundeSuchen.getInstance();
-				//SimpleSwitchFrame.switchFrame(C_KundeWaehlen.getView(), new C_KundeSuchen());
+				C_KundeSuchen.getInstance();
+				//SimpleSwitchFrame.switchFrame(thisView, C_KundeSuchen.getInstance() , C_KundeSuchen.getInstance().getView());
 			}
 		}
 		private class KundeWaehlen implements ActionListener {
@@ -205,7 +209,7 @@ public class V_KundeWaehlen extends JFrame {
 		private class Zurueck implements ActionListener {
 			public void actionPerformed(ActionEvent arg0) {
 				System.out.println("Zurueck");
-				SimpleSwitchFrame.switchFrame(C_KundeWaehlen.getView(), C_TrainingKonfigurieren.getInstance());
+				SimpleSwitchFrame.switchFrame(thisView, C_TrainingKonfigurieren.getInstance(), C_TrainingKonfigurieren.getInstance().getView());
 			}
 		}
 }

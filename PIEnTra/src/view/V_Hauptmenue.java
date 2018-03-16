@@ -14,6 +14,7 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
+import controller.C_Hauptmenue;
 import controller.C_KundeVerwalten;
 import controller.C_ProduktDefinieren;
 import controller.C_TrainingAendern;
@@ -47,10 +48,10 @@ public class V_Hauptmenue extends JFrame {
 	private SimpleButtonPanel btn_ProdukteDefinieren = new SimpleButtonPanel("Produkte definieren");
 	private JPanel pnl_south;
 	private JTextField txt_navigation;
-	private V_Hauptmenue view;
-
+	private V_Hauptmenue thisView;
+	
 	public V_Hauptmenue() {
-		this.view=this;
+		this.thisView=this;
 		initView();
 		resizeGUI();
 		this.setVisible(true);
@@ -115,52 +116,35 @@ public class V_Hauptmenue extends JFrame {
 		public void componentMoved(ComponentEvent arg0) {}
 		public void componentShown(ComponentEvent arg0) {}
 	}
-//
-//	public void addBtn_TrainingKonfigurierenListener(ActionListener TrainingKonfigurieren) {
-//		btn_TrainingKonfigurieren.getButton().addActionListener(TrainingKonfigurieren);
-//	}
-//	public void addBtn_TrainingAendernListener(ActionListener TrainingAendern) {
-//		btn_TrainingAendern.getButton().addActionListener(TrainingAendern);
-//	}
-//	public void addBtn_KundeVerwaltenListener(ActionListener KundeVerwalten) {
-//		btn_KundeVerwalten.getButton().addActionListener(KundeVerwalten);
-//	}
-//	public void addBtn_TrainingLoeschenListener(ActionListener TrainingLoeschen) {
-//		btn_TrainingLoeschen.getButton().addActionListener(TrainingLoeschen);
-//	}
-//	public void addBtn_ProdukteDefinierenListener(ActionListener ProdukteDefinieren) {
-//		btn_ProdukteDefinieren.getButton().addActionListener(ProdukteDefinieren);
-//	}
 
 	private class backAction implements ActionListener {
 		public void actionPerformed(ActionEvent arg0) {
 			System.exit(0);
 		}
 	}
-
 	private class TrainingKonfigurieren implements ActionListener {
-		public void actionPerformed(ActionEvent arg0) {
-			SimpleSwitchFrame.switchFrame(view, C_TrainingKonfigurieren.getInstance());
+		public void actionPerformed(ActionEvent arg0) {		
+			SimpleSwitchFrame.switchFrame(thisView, C_TrainingKonfigurieren.getInstance(), C_TrainingKonfigurieren.getInstance().getView());
 		}
 	}
 	private class TrainingAendern implements ActionListener {
 		public void actionPerformed(ActionEvent arg0) {
-			SimpleSwitchFrame.switchFrame(view,  C_TrainingAendern.getInstance());
+			SimpleSwitchFrame.switchFrame(thisView, C_TrainingAendern.getInstance(),  C_TrainingAendern.getInstance().getView());
 		}
 	}
 	private class TrainingLoeschen implements ActionListener {
 		public void actionPerformed(ActionEvent arg0) {
-			SimpleSwitchFrame.switchFrame(view,  C_TrainingLoeschen.getView());
+			SimpleSwitchFrame.switchFrame(thisView, C_TrainingLoeschen.getInstance(), C_TrainingLoeschen.getInstance().getView());
 		}
 	}
 	private class KundeVerwalten implements ActionListener {
 		public void actionPerformed(ActionEvent arg0) {
-			SimpleSwitchFrame.switchFrame(view, C_KundeVerwalten.getInstance());
+			SimpleSwitchFrame.switchFrame(thisView, C_KundeVerwalten.getInstance(), C_KundeVerwalten.getInstance().getView());
 		}
 	}
 	private class ProdukteDefinieren implements ActionListener {
 		public void actionPerformed(ActionEvent arg0) {
-			SimpleSwitchFrame.switchFrame(view,  C_ProduktDefinieren.getInstance());
+			SimpleSwitchFrame.switchFrame(thisView,  C_ProduktDefinieren.getInstance(), C_ProduktDefinieren.getInstance().getView());
 		}
 	}
 }

@@ -13,7 +13,7 @@ public class C_TrainingAendern {
 		view = new V_TrainingAendern();
 	}
 
-	public static JFrame getView() {
+	public JFrame getView() {
 		return view;
 	}
 	public static C_TrainingAendern getInstance() {

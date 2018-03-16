@@ -29,7 +29,7 @@ public class C_KundeVerwalten {
 		view = new V_KundeVerwalten();
 	}
 
-	public static V_KundeVerwalten getView() {
+	public V_KundeVerwalten getView() {
 		return view;
 	}
 	public void setView(V_KundeVerwalten view) {

@@ -47,8 +47,11 @@ public class V_TrainingLoeschen extends JFrame {
 	private JTextField txt_navigation;
 	private M_Training training;
 	private JOptionPane popup;
+	
+	public V_TrainingLoeschen thisView;
 
 	public V_TrainingLoeschen() {
+		this.thisView = this;
 		initView();
 		resizeGUI();
 		initListener();
@@ -269,7 +272,7 @@ public class V_TrainingLoeschen extends JFrame {
 	
 	private class Zurueck implements ActionListener {
 		public void actionPerformed(ActionEvent arg0) {
-			SimpleSwitchFrame.switchFrame(C_TrainingLoeschen.getView(), C_Hauptmenue.getInstance());
+			SimpleSwitchFrame.switchFrame(thisView, C_Hauptmenue.getInstance(), C_Hauptmenue.getInstance().getView());
 		}
 	}
 }
