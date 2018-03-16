@@ -1,6 +1,6 @@
 /**
  * Aktuelle Version: 1.2 
- * Authoren: Adrian (1.2)
+ * Authoren: Adrian (1 - 1.2)
  * 
  * Changelog:
  * 1.0 	
