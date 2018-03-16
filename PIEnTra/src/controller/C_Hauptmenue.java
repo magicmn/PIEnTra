@@ -7,19 +7,19 @@ import javax.swing.JFrame;
 
 import utils.SimpleSwitchFrame;
 import view.V_Hauptmenue;
-
-
 /**
  * Aktuelle Version: 1.2  
- * Authoren: Julian (1.0), Konstantin (1.2)
+ * Authoren: Julian (1.0, 1.1), Konstantin (1.2, 1.3)
  * 
  * Changelog:
- * 1.0 	
- * 		-Controller erstellt
- * 1.1
- * 		-ActionListener hinzugefügt!
+ * 1.3
+ * 		-Singelton implementiert
  * 1.2
  * 		-ActionListener wieder entfernt!
+ * 1.1
+ * 		-ActionListener hinzugefügt!
+ * 1.0 	
+ * 		-Controller erstellt
  **/
 
 public class C_Hauptmenue {

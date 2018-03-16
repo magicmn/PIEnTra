@@ -23,17 +23,19 @@ import controller.C_TrainingLoeschen;
 import utils.SimpleButtonPanel;
 import utils.SimpleSwitchFrame;
 /**
- * Aktuelle Version 1.2
+ * Aktuelle Version 1.3
  * Autoren: Julian,Adrian,Konstantin
  * View für das Hauptmenü
  * 
  * Changelog:
+ *  1.3:
+ *  	-SimpleSwitchFrame implementiert
  *  1.2:
  *  	-Listener Hinzugefügt
  *  1.1:
  * 		-Listener Entfernt
  *  1.0
- *  	-Layout Implementiert
+ *  	-Layout implementiert
  *
  */
 public class V_Hauptmenue extends JFrame {
@@ -96,6 +98,7 @@ public class V_Hauptmenue extends JFrame {
 	}
 
 	/** Enthält variable Größen **/
+	
 	private void resizeGUI() {
 		txt_navigation.setPreferredSize(new Dimension(this.getWidth() - 30, txt_navigation.getPreferredSize().height));
 		pnl_center_container.setPreferredSize(new Dimension(this.getWidth(), 200));
@@ -117,6 +120,8 @@ public class V_Hauptmenue extends JFrame {
 		public void componentShown(ComponentEvent arg0) {}
 	}
 
+	//Action Listener
+	
 	private class backAction implements ActionListener {
 		public void actionPerformed(ActionEvent arg0) {
 			System.exit(0);

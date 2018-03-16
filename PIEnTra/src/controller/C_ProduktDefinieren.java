@@ -1,11 +1,16 @@
 /**
- * Aktuelle Version: 1.0
- * Authoren: Adrian (1.0)
+ * Aktuelle Version: 1.2  
+ * Authoren: Adrian (1.0, 1.1, 1.2), Konstantin (1.3)
  * 
  * Changelog:
+ * 1.3
+ * 		-Singelton implementiert
+ * 1.2
+ * 		-ActionListener wieder entfernt und in View implementiert!
+ * 1.1
+ * 		-ActionListener hinzugefügt!
  * 1.0 	
  * 		-Controller erstellt
- * 		-Erzeugt view
  **/
 
 package controller;

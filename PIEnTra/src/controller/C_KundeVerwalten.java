@@ -3,14 +3,15 @@
  * Authoren: Julian (1.0), Adrian (1.1, 1.2), Andreas (1.1), K0nstantin (1.3)
  * 
  * Changelog:
- * 1.0 	
- * 		-Controller erstellt
- * 1.1
- * 		-ActionListener hinzugefügt!
+ * 1.3
+ * 		-Singelton Implementiert* 
  * 1.2
  * 		-ActionListener wieder entfernt und in View implementiert!
- * 1.3
- * 		-Singelton Implementiert
+ * 1.1
+ * 		-ActionListener hinzugefügt!
+ * 1.0 	
+ * 		-Controller erstellt
+ *
  **/
 
 
