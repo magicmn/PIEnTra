@@ -1,12 +1,18 @@
 /**
- * Aktuelle Version: 1.1 
- * Authoren: Adrian (1.0, 1.1), Andreas (1.0)
+ * Aktuelle Version: 1.3 
+ * Authoren: Adrian, Andreas
  * 
  * Changelog:
- * 1.0 	
- * 		-View erstellt
- * 1.1
+ * 
+ * 1.3
+ * 		-SimpleSwitchFrame implementiert!
+ * 1.2
  * 		-ActionListener hinzugefügt!
+ * 1.1
+ * 		-Get / Set hinzugefügt!
+ * 1.0 	
+ * 		-View erstellt!
+ * 
  **/
 
 package view;

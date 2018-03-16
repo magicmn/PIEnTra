@@ -1,3 +1,19 @@
+/**
+ * Aktuelle Version: 1.3  
+ * Authoren: Andreas (1.0, 1.1, 1.2), Adrian(1.3)
+ * 
+ * Changelog:
+ *
+ * 1.3
+ * 		-SimpleSwitchFrame implementiert!
+ * 1.2
+ * 		-ActionListener hinzugefügt!
+ * 1.1
+ * 		-Get / Set hinzugefügt!
+ * 1.0 	
+ * 		-View erstellt!
+ **/
+
 package view;
 
 import java.awt.BorderLayout;

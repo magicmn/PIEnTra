@@ -23,17 +23,19 @@ import controller.C_TrainingLoeschen;
 import utils.SimpleButtonPanel;
 import utils.SimpleSwitchFrame;
 /**
- * Aktuelle Version 1.2
+ * Aktuelle Version 1.3
  * Autoren: Julian,Adrian,Konstantin
  * View für das Hauptmenü
  * 
  * Changelog:
+ *  1.3:
+ *  	-SimpleSwitchFrame implementiert
  *  1.2:
  *  	-Listener Hinzugefügt
  *  1.1:
  * 		-Listener Entfernt
  *  1.0
- *  	-Layout Implementiert
+ *  	-Layout implementiert
  *
  */
 public class V_Hauptmenue extends JFrame {

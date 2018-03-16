@@ -22,18 +22,22 @@ import utils.SimpleSwitchFrame;
 import utils.SimpleTextPanel;
 
 /**
- * Aktuelle Version: 1.2  
- * Authoren: Andreas (1.0), Adrian(1.1) Konstantin (1.2)
+ * Aktuelle Version: 1.3  
+ * Authoren: Andreas (1.0), Adrian(1.1, 1.3) Konstantin (1.2)
  * 
  * Changelog:
- * 1.0 	
- * 		-Layout definiert
- * 1.1
- * 		
- * 		-Getter und setter angepasst
+ *
+ * 1.3
+ * 		-SimpleSwitchFrame implementiert!
  * 1.2
- * 		-ActionListener wieder hinzugefügt
+ * 		-ActionListener hinzugefügt!
+ * 1.1
+ * 		-Get / Set hinzugefügt!
+ * 1.0 	
+ * 		-View erstellt!
  **/
+
+
 public class V_TrainingKonfigurieren extends JFrame {
 	
 	private JPanel pnl_center;

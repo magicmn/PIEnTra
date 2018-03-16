@@ -24,17 +24,20 @@ import utils.SimpleSwitchFrame;
 import utils.SimpleTextPanel;
 
 /**
- * Aktuelle Version: 1.2  
- * Authoren: Jannik (1.0, 1.1), Adrian (1.2)
+ * Aktuelle Version: 1.3  
+ * Authoren: Jannik (1.0, 1.1), Adrian (1.2, 1.3)
  * 
  * Changelog:
- * 1.0 	
- * 		-Controller erstellt
- * 1.1
- * 		-Get / Set hinzugefügt
+ * 1.3
+ * 		-SimpleSwitchFrame implementiert!
  * 1.2
- * 		-ActionListener hinzugefügt
+ * 		-ActionListener hinzugefügt!
+ * 1.1
+ * 		-Get / Set hinzugefügt!
+ * 1.0 	
+ * 		-View erstellt!
  **/
+
 public class V_TrainingAendern extends JFrame {
 	
 	private SimpleTextPanel pnl_trainingsId = new SimpleTextPanel("Trainings-ID:");
