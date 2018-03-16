@@ -35,6 +35,7 @@ public class Testfaelle{
 	
 	
 	private M_Training training1;
+	private M_Training training2;
 	
 	public Testfaelle() {
 		
@@ -105,6 +106,7 @@ public class Testfaelle{
 		mAssistent = new M_ManagementAssistent("peter", "Lustig");
 		
 		training1 = new M_Training("11.11.11", trainer1, ort1, kunde1, "12.12.12", 365, "Test", eww, mAssistent);
+		training2 = new M_Training("21.11.11", trainer1, ort1, kunde1, "12.12.12", 365, "Test", eww, mAssistent);
 		
 		trainer3.trainingHinzufuegen(training1);
 	}
@@ -402,11 +404,17 @@ public class Testfaelle{
 	}
 
 
-
-
 	public void setTraining1(M_Training training1) {
 		this.training1 = training1;
 	}
 	
+	
+	public M_Training getTraining2() {
+		return training2;
+	}
+
+	public void setTraining2(M_Training training2) {
+		this.training2 = training2;
+	}
 
 }
