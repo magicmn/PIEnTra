@@ -1,6 +1,6 @@
 /**
  * Aktuelle Version: 1.2 
- * Authoren: Adrian (1.2)
+ * Authoren: Adrian (1 - 1.2)
  * 
  * Changelog:
  * 1.0 	
@@ -226,7 +226,7 @@ public class V_KundeVerwalten extends JFrame {
 	}
 	private class Zurueck implements ActionListener {
 		public void actionPerformed(ActionEvent arg0) {
-			SimpleSwitchFrame.switchFrame(C_KundeVerwalten.getView(), new C_Hauptmenue());
+			SimpleSwitchFrame.switchFrame(C_KundeVerwalten.getView(), C_Hauptmenue.getInstance());
 		}
 	}
 

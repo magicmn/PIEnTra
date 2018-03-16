@@ -262,7 +262,7 @@ public class V_TrainingLoeschen extends JFrame {
 	
 	private class Zurueck implements ActionListener {
 		public void actionPerformed(ActionEvent arg0) {
-			SimpleSwitchFrame.switchFrame(C_TrainingLoeschen.getView(), new C_Hauptmenue());
+			SimpleSwitchFrame.switchFrame(C_TrainingLoeschen.getView(), C_Hauptmenue.getInstance());
 		}
 	}
 }

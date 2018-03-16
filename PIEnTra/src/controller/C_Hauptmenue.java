@@ -22,11 +22,19 @@ import view.V_Hauptmenue;
 
 public class C_Hauptmenue {
 	
+	private static C_Hauptmenue instance = null;
 	private V_Hauptmenue view;
 
-	public C_Hauptmenue() {
+	private C_Hauptmenue() {
 		view = new V_Hauptmenue();
 	
+	}
+	public static C_Hauptmenue getInstance() {
+
+		if(instance==null) {
+			instance = new C_Hauptmenue();
+		}
+		return instance;
 	}
 
 	

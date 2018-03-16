@@ -21,9 +21,10 @@ import view.V_TrainingKonfigurieren;
 
 public class C_TrainingKonfigurieren {
 	
+	private static C_TrainingKonfigurieren instance = null;
 	private static V_TrainingKonfigurieren view;
 	
-	public C_TrainingKonfigurieren(){
+	private C_TrainingKonfigurieren(){
 		view = new V_TrainingKonfigurieren();
 		
 	}
@@ -31,5 +32,13 @@ public class C_TrainingKonfigurieren {
 	public static JFrame getView() {
 		return view;
 	}	
+	
+	public static C_TrainingKonfigurieren getInstance() {
+
+		if(instance==null) {
+			instance = new C_TrainingKonfigurieren();
+		}
+		return instance;
+	}
 	
 }

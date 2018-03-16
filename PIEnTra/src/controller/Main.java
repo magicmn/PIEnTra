@@ -14,7 +14,7 @@ public class Main {
 			} catch (ClassNotFoundException | InstantiationException | IllegalAccessException | UnsupportedLookAndFeelException e) {
 				e.printStackTrace();
 			}
-		new C_Hauptmenue();
+		 C_Hauptmenue.getInstance();
 		
 		new Test_main();
 	}
