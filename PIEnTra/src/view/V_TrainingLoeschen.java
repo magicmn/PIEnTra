@@ -240,23 +240,30 @@ public class V_TrainingLoeschen extends JFrame {
 	private class TrainingLoeschen implements ActionListener {
 		public void actionPerformed(ActionEvent arg0) {
 			System.out.println("Training löschen");
-			training = null;
-			for (Iterator<M_Training> iter = M_Training.getInterneListe().listIterator(); iter.hasNext(); ) {
-			    training = iter.next();
-			    
-			        iter.remove();
-			    
+			if (training != null)
+			{
+				for (Iterator<M_Training> iter = M_Training.getInterneListe().listIterator(); iter.hasNext(); ) {
+				    training = iter.next();
+				    
+				        iter.remove();
+				    
+				}
+				
+				setText_pnl_trainingsId("");
+				setText_pnl_firmenname("");
+				setText_pnl_produkt("");
+				setText_pnl_startdatum("");
+				setText_pnl_enddatum("");
+				setText_pnl_tage("");
+				setText_pnl_trainer("");
+				setText_pnl_ort("");
+				setText_pnl_bemerkungen("");
+				training = null;
 			}
-			
-			setText_pnl_trainingsId("");
-			setText_pnl_firmenname("");
-			setText_pnl_produkt("");
-			setText_pnl_startdatum("");
-			setText_pnl_enddatum("");
-			setText_pnl_tage("");
-			setText_pnl_trainer("");
-			setText_pnl_ort("");
-			setText_pnl_bemerkungen("");
+			else {
+				popup.showMessageDialog(null, "Bitte wählen Sie vorher ein Training aus");
+
+			}
 		}
 	}
 	
