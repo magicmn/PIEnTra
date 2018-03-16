@@ -1,15 +1,19 @@
-package controller;
-
 /**
- * Aktuelle Version: 1.1 
- * Authoren: Julian (1.0), Adrian (1.1), Andreas (1.1)
+ * Aktuelle Version: 1.3 
+ * Authoren: Julian (1.0), Adrian(1.1, 1.2), Konstantin (1.3)
  * 
  * Changelog:
- * 1.0 	
- * 		-Controller erstellt
+ * 1.3
+ * 		-Singelton implementiert
+ * 1.2
+ * 		-ActionListener wieder entfernt!
  * 1.1
  * 		-ActionListener hinzugefügt!
+ * 1.0 	
+ * 		-Controller erstellt
  **/
+
+package controller;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
