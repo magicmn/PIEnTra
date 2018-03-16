@@ -53,10 +53,10 @@ public class V_TrainingKonfigurieren extends JFrame {
 	private JButton btn_trainingspeichern = new JButton("Training speichern");
 	private JButton btn_zurueck = new JButton("Zurück zum Hauptmenü");
 	private JTextField txt_navigation;
-	public V_TrainingKonfigurieren view ;
+	public V_TrainingKonfigurieren thisView ;
 	
 	public V_TrainingKonfigurieren() {
-		this.view = this;
+		this.thisView = this;
 		initView();
 		resizeGUI();
 		this.setVisible(true);
@@ -216,7 +216,7 @@ public class V_TrainingKonfigurieren extends JFrame {
 	private class KundeWaehlen implements ActionListener {
 		public void actionPerformed(ActionEvent arg0) {
 			System.out.println("Kunde waehlen!");
-			SimpleSwitchFrame.switchFrame(C_TrainingKonfigurieren.getView(),  C_KundeWaehlen.getInstance());
+			SimpleSwitchFrame.switchFrame(thisView, C_KundeWaehlen.getInstance(),  C_KundeWaehlen.getInstance().getView());
 		}
 	}
 	private class RessourceWaehlen implements ActionListener {
@@ -231,7 +231,7 @@ public class V_TrainingKonfigurieren extends JFrame {
 	}
 	private class Zurueck implements ActionListener {
 		public void actionPerformed(ActionEvent arg0) {
-			SimpleSwitchFrame.switchFrame(view, C_Hauptmenue.getInstance());		
+			SimpleSwitchFrame.switchFrame(thisView, C_Hauptmenue.getInstance(), C_Hauptmenue.getInstance().getView());
 		}
 	}
 }

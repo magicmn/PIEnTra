@@ -29,7 +29,7 @@ public class C_TrainingKonfigurieren {
 		
 	}
 
-	public static JFrame getView() {
+	public JFrame getView() {
 		return view;
 	}	
 	

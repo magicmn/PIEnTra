@@ -12,7 +12,7 @@ public class C_KundeWaehlen {
 		view = new V_KundeWaehlen();
 	}
 
-	public static JFrame getView() {
+	public JFrame getView() {
 		return view;
 	}
 	public static C_KundeWaehlen getInstance() {

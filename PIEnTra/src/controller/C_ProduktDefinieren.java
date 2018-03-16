@@ -23,7 +23,7 @@ public class C_ProduktDefinieren {
 		view = new V_ProduktDefinieren();
 	}
 
-	public static JFrame getView() {
+	public JFrame getView() {
 		return view;
 	}
 	public static C_ProduktDefinieren getInstance() {

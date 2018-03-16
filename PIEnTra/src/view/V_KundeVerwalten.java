@@ -57,10 +57,12 @@ public class V_KundeVerwalten extends JFrame {
 	private JButton btn_kundeanlegen = new JButton("Neuen Kunden anlegen");
 	private JButton btn_zurueck = new JButton("Zurück zum Hauptmenü");
 	private JTextField txt_navigation;
-
+	
 	private C_KundeSuchen suchview;
+	public V_KundeVerwalten thisView;
 	
 	public V_KundeVerwalten() {
+		this.thisView = this;
 		initView();
 		resizeGUI();
 		initListener();
@@ -226,7 +228,7 @@ public class V_KundeVerwalten extends JFrame {
 	}
 	private class Zurueck implements ActionListener {
 		public void actionPerformed(ActionEvent arg0) {
-			SimpleSwitchFrame.switchFrame(C_KundeVerwalten.getView(), C_Hauptmenue.getInstance());
+			SimpleSwitchFrame.switchFrame(thisView, C_Hauptmenue.getInstance(), C_Hauptmenue.getInstance().getView());
 		}
 	}
 

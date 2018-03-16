@@ -58,8 +58,11 @@ public class V_TrainingAendern extends JFrame {
 	private JButton btn_zurueck = new JButton("Zurück zum Hauptmenü");
 	
 	private JTextField txt_navigation;
+	
+	public V_TrainingAendern thisView;
 
 	public V_TrainingAendern() {
+		this.thisView = this;
 		initView();
 		resizeGUI();
 		initListener();
@@ -242,7 +245,7 @@ public class V_TrainingAendern extends JFrame {
 	}
 	private class Zurueck implements ActionListener {
 		public void actionPerformed(ActionEvent arg0) {
-			SimpleSwitchFrame.switchFrame(C_TrainingAendern.getView(), C_Hauptmenue.getInstance());
+			SimpleSwitchFrame.switchFrame(thisView, C_Hauptmenue.getInstance(), C_Hauptmenue.getInstance().getView());
 		}
 	}
 	

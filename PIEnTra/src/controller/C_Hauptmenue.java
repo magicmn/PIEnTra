@@ -3,6 +3,8 @@ package controller;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import javax.swing.JFrame;
+
 import utils.SimpleSwitchFrame;
 import view.V_Hauptmenue;
 
@@ -35,6 +37,9 @@ public class C_Hauptmenue {
 			instance = new C_Hauptmenue();
 		}
 		return instance;
+	}
+	public JFrame getView() {
+		return view;
 	}
 
 	

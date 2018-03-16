@@ -9,7 +9,7 @@ public class C_TrainingLoeschen {
 	private C_TrainingLoeschen(){
 		view = new V_TrainingLoeschen();
 	}
-	public static V_TrainingLoeschen getView() {
+	public V_TrainingLoeschen getView() {
 		return view;
 	}
 	public void setView(V_TrainingLoeschen view) {
