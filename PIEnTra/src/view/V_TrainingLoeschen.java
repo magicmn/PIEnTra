@@ -8,6 +8,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.ComponentEvent;
 import java.awt.event.ComponentListener;
+import java.util.NoSuchElementException;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -17,6 +18,9 @@ import javax.swing.border.EmptyBorder;
 
 import controller.C_Hauptmenue;
 import controller.C_TrainingLoeschen;
+import model.M_Kunde;
+import model.M_Training;
+import utils.SimpleSearch;
 import utils.SimpleSwitchFrame;
 import utils.SimpleTextPanel;
 
@@ -39,6 +43,7 @@ public class V_TrainingLoeschen extends JFrame {
 	private JButton btn_trainingLoeschen;
 	private JButton btn_zurueck;
 	private JTextField txt_navigation;
+	private M_Training training;
 
 	public V_TrainingLoeschen() {
 		initView();
@@ -165,6 +170,14 @@ public class V_TrainingLoeschen extends JFrame {
 		this.pnl_tage.setString(pnl_tage);
 	}
 	
+	public String getText_pnl_trainer() {
+		return pnl_trainer.getString();
+	}
+
+	public void setText_pnl_trainer(String pnl_trainer) {
+		this.pnl_trainer.setString(pnl_trainer);
+	}
+	
 	public String getText_pnl_ort() {
 		return pnl_ort.getString();
 	}
@@ -185,7 +198,38 @@ public class V_TrainingLoeschen extends JFrame {
 	
 	private class TrainingSuchen implements ActionListener {
 		public void actionPerformed(ActionEvent arg0) {
-			System.out.println("Training suchen");
+			
+			//implementation der Suchfunktion
+			
+			try {
+				if(getText_pnl_trainingsId().equals("")) {
+					System.out.println("Bitte ID eintragen ");		
+					training = null;
+				}
+
+				else if(!getText_pnl_trainingsId().equals("")) {
+					training = SimpleSearch.trainingSuchen(getText_pnl_trainingsId(), M_Training.getInterneListe());
+				}
+				
+			}
+			catch ( NoSuchElementException e){
+				System.out.println("Kein Kunde gefunden");
+				training = null;
+				
+			}
+			finally {
+				if(training!=null) {
+					System.out.println(training);
+					setText_pnl_firmenname(training.getKunde().getFirmenname());
+					setText_pnl_produkt(training.getProdukt().getBezeichnung());
+					setText_pnl_startdatum(training.getAnfangsdatum());
+					setText_pnl_enddatum(training.getEnddatum());
+					setText_pnl_tage(training.getTage()+"");
+					setText_pnl_trainer(training.getTrainer().getTrainerID()+"");
+					setText_pnl_ort(training.getOrt().getOrtsID());
+					setText_pnl_bemerkungen(training.getBemerkungen());
+				}
+			}	
 		}
 	}
 	

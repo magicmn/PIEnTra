@@ -155,7 +155,7 @@ public class V_Hauptmenue extends JFrame {
 	}
 	private class KundeVerwalten implements ActionListener {
 		public void actionPerformed(ActionEvent arg0) {
-			SimpleSwitchFrame.switchFrame(view, new C_KundeVerwalten());
+			SimpleSwitchFrame.switchFrame(view, C_KundeVerwalten.getInstance());
 		}
 	}
 	private class ProdukteDefinieren implements ActionListener {
