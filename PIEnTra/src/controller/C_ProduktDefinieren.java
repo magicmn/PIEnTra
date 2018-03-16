@@ -16,14 +16,22 @@ import view.V_ProduktDefinieren;
 
 public class C_ProduktDefinieren {
 	
+	private static C_ProduktDefinieren instance = null;
 	private static V_ProduktDefinieren view;
 
-	public C_ProduktDefinieren(){
+	private C_ProduktDefinieren(){
 		view = new V_ProduktDefinieren();
 	}
 
 	public static JFrame getView() {
 		return view;
+	}
+	public static C_ProduktDefinieren getInstance() {
+
+		if(instance==null) {
+			instance = new C_ProduktDefinieren();
+		}
+		return instance;
 	}
 	
 	

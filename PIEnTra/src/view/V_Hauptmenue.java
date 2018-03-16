@@ -140,17 +140,17 @@ public class V_Hauptmenue extends JFrame {
 
 	private class TrainingKonfigurieren implements ActionListener {
 		public void actionPerformed(ActionEvent arg0) {
-			SimpleSwitchFrame.switchFrame(view, new C_TrainingKonfigurieren());
+			SimpleSwitchFrame.switchFrame(view, C_TrainingKonfigurieren.getInstance());
 		}
 	}
 	private class TrainingAendern implements ActionListener {
 		public void actionPerformed(ActionEvent arg0) {
-			SimpleSwitchFrame.switchFrame(view, new C_TrainingAendern());
+			SimpleSwitchFrame.switchFrame(view,  C_TrainingAendern.getInstance());
 		}
 	}
 	private class TrainingLoeschen implements ActionListener {
 		public void actionPerformed(ActionEvent arg0) {
-			SimpleSwitchFrame.switchFrame(view, new C_TrainingLoeschen());
+			SimpleSwitchFrame.switchFrame(view,  C_TrainingLoeschen.getView());
 		}
 	}
 	private class KundeVerwalten implements ActionListener {
@@ -160,7 +160,7 @@ public class V_Hauptmenue extends JFrame {
 	}
 	private class ProdukteDefinieren implements ActionListener {
 		public void actionPerformed(ActionEvent arg0) {
-			SimpleSwitchFrame.switchFrame(view, new C_ProduktDefinieren());
+			SimpleSwitchFrame.switchFrame(view,  C_ProduktDefinieren.getInstance());
 		}
 	}
 }

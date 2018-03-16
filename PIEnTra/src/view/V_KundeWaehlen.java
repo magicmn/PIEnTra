@@ -205,7 +205,7 @@ public class V_KundeWaehlen extends JFrame {
 		private class Zurueck implements ActionListener {
 			public void actionPerformed(ActionEvent arg0) {
 				System.out.println("Zurueck");
-				SimpleSwitchFrame.switchFrame(C_KundeWaehlen.getView(), new C_TrainingKonfigurieren());
+				SimpleSwitchFrame.switchFrame(C_KundeWaehlen.getView(), C_TrainingKonfigurieren.getInstance());
 			}
 		}
 }

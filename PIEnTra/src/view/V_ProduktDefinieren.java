@@ -124,7 +124,7 @@ public class V_ProduktDefinieren extends JFrame{
 	}
 	private class Zurueck implements ActionListener {
 		public void actionPerformed(ActionEvent arg0) {
-			SimpleSwitchFrame.switchFrame(C_ProduktDefinieren.getView(), new C_Hauptmenue());
+			SimpleSwitchFrame.switchFrame(C_ProduktDefinieren.getView(), C_Hauptmenue.getInstance());
 		}
 	}
 	
