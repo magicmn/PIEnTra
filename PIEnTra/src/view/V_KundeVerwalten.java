@@ -226,7 +226,7 @@ public class V_KundeVerwalten extends JFrame {
 	}
 	private class Zurueck implements ActionListener {
 		public void actionPerformed(ActionEvent arg0) {
-			SimpleSwitchFrame.switchFrame(C_KundeVerwalten.getView(), new C_Hauptmenue());
+			SimpleSwitchFrame.switchFrame(C_KundeVerwalten.getView(), C_Hauptmenue.getInstance());
 		}
 	}
 

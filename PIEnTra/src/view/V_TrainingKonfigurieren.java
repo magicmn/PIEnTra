@@ -216,7 +216,7 @@ public class V_TrainingKonfigurieren extends JFrame {
 	private class KundeWaehlen implements ActionListener {
 		public void actionPerformed(ActionEvent arg0) {
 			System.out.println("Kunde waehlen!");
-			SimpleSwitchFrame.switchFrame(C_TrainingKonfigurieren.getView(), new C_KundeWaehlen());
+			SimpleSwitchFrame.switchFrame(C_TrainingKonfigurieren.getView(),  C_KundeWaehlen.getInstance());
 		}
 	}
 	private class RessourceWaehlen implements ActionListener {
@@ -231,7 +231,7 @@ public class V_TrainingKonfigurieren extends JFrame {
 	}
 	private class Zurueck implements ActionListener {
 		public void actionPerformed(ActionEvent arg0) {
-			SimpleSwitchFrame.switchFrame(view, new C_Hauptmenue());		
+			SimpleSwitchFrame.switchFrame(view, C_Hauptmenue.getInstance());		
 		}
 	}
 }
