@@ -25,10 +25,12 @@ import java.util.NoSuchElementException;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
 
+import controller.C_KundeVerwalten;
 import model.M_Kunde;
 import utils.SimpleButtonPanel;
 import utils.SimpleSearch;
@@ -141,13 +143,16 @@ public class V_KundeSuchen extends JFrame {
 				
 			}
 			catch ( NoSuchElementException e){
-				System.out.println("Kein Kunde gefunden");
+				JOptionPane popup = new JOptionPane();
+				popup.showMessageDialog(null, "kein Kunde gefunden");
 				kunde = null;
 				
 			}
 			finally {
 				if(kunde!=null) {
-					System.out.println(kunde);
+					C_KundeVerwalten.getInstance().setKunde(kunde);
+					C_KundeVerwalten.getInstance().felderFuellen();
+					dispose();
 				}
 			}	
 		}

@@ -94,6 +94,7 @@ public class V_KundeVerwalten extends JFrame {
 		pnl_center.add(pnl_bundesland);
 		pnl_center.add(pnl_stadt);
 		this.add(BorderLayout.CENTER, pnl_center);
+		pnl_kundenID.getTxtField().setEditable(false);
 		
 		pnl_south = new JPanel(new GridLayout(2, 1));
 		JPanel pnl_south_top = new JPanel(new GridLayout(1, 4));
@@ -218,11 +219,13 @@ public class V_KundeVerwalten extends JFrame {
 	}
 	private class KundeAktualisieren implements ActionListener {
 		public void actionPerformed(ActionEvent arg0) {
+			C_KundeVerwalten.getInstance().kundeAktualisieren();
 			System.out.println("Kunde aktualisieren!");
 		}
 	}
 	private class KundeAnlegen implements ActionListener {
 		public void actionPerformed(ActionEvent arg0) {
+			C_KundeVerwalten.getInstance().kundeAnlegen();
 			System.out.println("Kunde anlegen!");
 		}
 	}
@@ -230,6 +233,110 @@ public class V_KundeVerwalten extends JFrame {
 		public void actionPerformed(ActionEvent arg0) {
 			SimpleSwitchFrame.switchFrame(thisView, C_Hauptmenue.getInstance(), C_Hauptmenue.getInstance().getView());
 		}
+	}
+
+	public JPanel getPnl_center() {
+		return pnl_center;
+	}
+
+	public void setPnl_center(JPanel pnl_center) {
+		this.pnl_center = pnl_center;
+	}
+
+	public SimpleTextPanel getPnl_kundenID() {
+		return pnl_kundenID;
+	}
+
+	public void setPnl_kundenID(SimpleTextPanel pnl_kundenID) {
+		this.pnl_kundenID = pnl_kundenID;
+	}
+
+	public SimpleTextPanel getPnl_firmenname() {
+		return pnl_firmenname;
+	}
+
+	public void setPnl_firmenname(SimpleTextPanel pnl_firmenname) {
+		this.pnl_firmenname = pnl_firmenname;
+	}
+
+	public SimpleTextPanel getPnl_ansprechpartner() {
+		return pnl_ansprechpartner;
+	}
+
+	public void setPnl_ansprechpartner(SimpleTextPanel pnl_ansprechpartner) {
+		this.pnl_ansprechpartner = pnl_ansprechpartner;
+	}
+
+	public SimpleTextPanel getPnl_branche() {
+		return pnl_branche;
+	}
+
+	public void setPnl_branche(SimpleTextPanel pnl_branche) {
+		this.pnl_branche = pnl_branche;
+	}
+
+	public SimpleTextPanel getPnl_email() {
+		return pnl_email;
+	}
+
+	public void setPnl_email(SimpleTextPanel pnl_email) {
+		this.pnl_email = pnl_email;
+	}
+
+	public SimpleTextPanel getPnl_rufnummer() {
+		return pnl_rufnummer;
+	}
+
+	public void setPnl_rufnummer(SimpleTextPanel pnl_rufnummer) {
+		this.pnl_rufnummer = pnl_rufnummer;
+	}
+
+	public SimpleTextPanel getPnl_addresse() {
+		return pnl_addresse;
+	}
+
+	public void setPnl_addresse(SimpleTextPanel pnl_addresse) {
+		this.pnl_addresse = pnl_addresse;
+	}
+
+	public SimpleTextPanel getPnl_strasse() {
+		return pnl_strasse;
+	}
+
+	public void setPnl_strasse(SimpleTextPanel pnl_strasse) {
+		this.pnl_strasse = pnl_strasse;
+	}
+
+	public SimpleTextPanel getPnl_plz() {
+		return pnl_plz;
+	}
+
+	public void setPnl_plz(SimpleTextPanel pnl_plz) {
+		this.pnl_plz = pnl_plz;
+	}
+
+	public SimpleTextPanel getPnl_bundesland() {
+		return pnl_bundesland;
+	}
+
+	public void setPnl_bundesland(SimpleTextPanel pnl_bundesland) {
+		this.pnl_bundesland = pnl_bundesland;
+	}
+
+	public SimpleTextPanel getPnl_stadt() {
+		return pnl_stadt;
+	}
+
+	public void setPnl_stadt(SimpleTextPanel pnl_stadt) {
+		this.pnl_stadt = pnl_stadt;
+	}
+
+	public JPanel getPnl_south() {
+		return pnl_south;
+	}
+
+	public void setPnl_south(JPanel pnl_south) {
+		this.pnl_south = pnl_south;
 	}
 
 }
