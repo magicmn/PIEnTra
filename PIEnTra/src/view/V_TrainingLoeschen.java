@@ -8,10 +8,12 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.ComponentEvent;
 import java.awt.event.ComponentListener;
+import java.util.Iterator;
 import java.util.NoSuchElementException;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
@@ -44,6 +46,7 @@ public class V_TrainingLoeschen extends JFrame {
 	private JButton btn_zurueck;
 	private JTextField txt_navigation;
 	private M_Training training;
+	private JOptionPane popup;
 
 	public V_TrainingLoeschen() {
 		initView();
@@ -203,7 +206,8 @@ public class V_TrainingLoeschen extends JFrame {
 			
 			try {
 				if(getText_pnl_trainingsId().equals("")) {
-					System.out.println("Bitte ID eintragen ");		
+					System.out.println("Bitte ID eintragen ");
+					popup.showMessageDialog(null, "Bitte tragen Sie ein Trainings-ID ein");
 					training = null;
 				}
 
@@ -213,13 +217,13 @@ public class V_TrainingLoeschen extends JFrame {
 				
 			}
 			catch ( NoSuchElementException e){
-				System.out.println("Kein Kunde gefunden");
+				System.out.println("Kein Training gefunden");
+				popup.showMessageDialog(null, "Es wurde kein Training mit dieser ID gefunden");
 				training = null;
 				
 			}
 			finally {
 				if(training!=null) {
-					System.out.println(training);
 					setText_pnl_firmenname(training.getKunde().getFirmenname());
 					setText_pnl_produkt(training.getProdukt().getBezeichnung());
 					setText_pnl_startdatum(training.getAnfangsdatum());
@@ -236,6 +240,23 @@ public class V_TrainingLoeschen extends JFrame {
 	private class TrainingLoeschen implements ActionListener {
 		public void actionPerformed(ActionEvent arg0) {
 			System.out.println("Training löschen");
+			training = null;
+			for (Iterator<M_Training> iter = M_Training.getInterneListe().listIterator(); iter.hasNext(); ) {
+			    training = iter.next();
+			    
+			        iter.remove();
+			    
+			}
+			
+			setText_pnl_trainingsId("");
+			setText_pnl_firmenname("");
+			setText_pnl_produkt("");
+			setText_pnl_startdatum("");
+			setText_pnl_enddatum("");
+			setText_pnl_tage("");
+			setText_pnl_trainer("");
+			setText_pnl_ort("");
+			setText_pnl_bemerkungen("");
 		}
 	}
 	
