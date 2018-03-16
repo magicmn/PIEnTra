@@ -28,11 +28,13 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
+import javax.swing.text.MaskFormatter;
 
 import model.M_Kunde;
 import controller.C_Hauptmenue;
 import controller.C_KundeSuchen;
 import controller.C_KundeVerwalten;
+import utils.SimpleFormatter;
 import utils.SimpleSwitchFrame;
 import utils.SimpleTextPanel;
 
@@ -47,7 +49,7 @@ public class V_KundeVerwalten extends JFrame {
 	private SimpleTextPanel pnl_rufnummer = new SimpleTextPanel("Rufnummer:");
 	private SimpleTextPanel pnl_addresse = new SimpleTextPanel("Addresse");
 	private SimpleTextPanel pnl_strasse = new SimpleTextPanel("Straﬂe:");
-	private SimpleTextPanel pnl_plz = new SimpleTextPanel("Postleitzahl:");
+	private SimpleTextPanel pnl_plz = new SimpleTextPanel("Postleitzahl:", SimpleFormatter.getPLZFormat());
 	private SimpleTextPanel pnl_bundesland = new SimpleTextPanel("Bundesland:");
 	private SimpleTextPanel pnl_stadt = new SimpleTextPanel("Stadt:");
 	
@@ -95,6 +97,8 @@ public class V_KundeVerwalten extends JFrame {
 		pnl_center.add(pnl_stadt);
 		this.add(BorderLayout.CENTER, pnl_center);
 		pnl_kundenID.getTxtField().setEditable(false);
+	
+	
 		
 		pnl_south = new JPanel(new GridLayout(2, 1));
 		JPanel pnl_south_top = new JPanel(new GridLayout(1, 4));
