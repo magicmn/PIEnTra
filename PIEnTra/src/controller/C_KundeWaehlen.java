@@ -26,18 +26,23 @@ public class C_KundeWaehlen {
 	private static C_KundeWaehlen instance = null;
 	private static V_KundeWaehlen view;
 	private M_Kunde kunde;
-	
-	private C_KundeWaehlen(){
-		view = new V_KundeWaehlen();
+	private static Object controller;
+
+	private C_KundeWaehlen(Object controller){
+		this.controller = controller;
+		view = new V_KundeWaehlen(controller);
 	}
 
 	public JFrame getView() {
+		if(view ==null) {
+			view = new V_KundeWaehlen(this);
+		}
 		return view;
 	}
 	public static C_KundeWaehlen getInstance() {
 
 		if(instance==null) {
-			instance = new C_KundeWaehlen();
+			instance = new C_KundeWaehlen(controller);
 		}
 		return instance;
 	}
@@ -62,15 +67,12 @@ public class C_KundeWaehlen {
 	public void setKunde(M_Kunde kunde) {
 		this.kunde = kunde;
 		view.setKunde(kunde);
-		
+
 	}
 
-	public static void setInstance(C_KundeWaehlen instance) {
-		C_KundeWaehlen.instance = instance;
-	}
 
 	public static void setView(V_KundeWaehlen view) {
 		C_KundeWaehlen.view = view;
 	}
-	
+
 }

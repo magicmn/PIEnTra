@@ -72,6 +72,7 @@ public class V_KundeWaehlen extends SimpleMasterWindow {
 	
 	private V_KundeWaehlen thisView;
 	private M_Kunde kunde;
+	private static Object controller;
 	
 	/* Konstruktor und Methoden die vom Konstruktor aufgerufen werden. */
 	
@@ -81,12 +82,13 @@ public class V_KundeWaehlen extends SimpleMasterWindow {
 	 * Initialisiere dann den Content und lösche ein überflüssiges Element aus der im Hauptmenu nicht benutzten Menuleiste.
 	 * Zuletzt werden die Listener initialisiert.
 	 */
-	public V_KundeWaehlen() {
+	public V_KundeWaehlen(Object controller) {
 		super(
 			defaultSize,
 			minSize,
 			navigationText
 		);
+		this.controller = controller;
 		this.thisView = this;
 		initContent();
 		initMenu();
@@ -163,7 +165,7 @@ public class V_KundeWaehlen extends SimpleMasterWindow {
 		} catch (ClassNotFoundException | InstantiationException | IllegalAccessException | UnsupportedLookAndFeelException e) {
 			e.printStackTrace();
 		}
-		new V_KundeWaehlen();
+		new V_KundeWaehlen(controller);
 	}
 	
 	// Getter und Setter
@@ -228,11 +230,23 @@ public class V_KundeWaehlen extends SimpleMasterWindow {
 	public void setText_pnl_stadt(String text) {
 		this.pnl_stadt.setText(text);
 	}
+	public M_Kunde getKunde() {
+		return kunde;
+	}
+
+	public void setKunde(M_Kunde kunde) {
+		this.kunde = kunde;
+	}
 	// ActionListener
-	
+	/**
+	 * Durch das Betätigen der Taste "Kunde suchen" wird man zu einem "Kunde suchen"-Dialog weitergeleitet
+	 * @author Konstantin
+	 *
+	 */
 	private class KundeSuchen implements ActionListener {
 		public void actionPerformed(ActionEvent arg0) {
 			System.out.println("Kunde suchen!");
+		//Es wird die View des KundenSuchControllers aufgerufen und gleichzeitig wird die Suchende Instanz mit übergeben 
 			C_KundeSuchen.getInstance(C_KundeWaehlen.getInstance()).getView();
 		//SimpleSwitchFrame.switchFrame(thisView, C_KundeSuchen.getInstance() , C_KundeSuchen.getInstance().getView());
 		}
@@ -255,12 +269,6 @@ public class V_KundeWaehlen extends SimpleMasterWindow {
 		}
 	
 	}
-	public M_Kunde getKunde() {
-		return kunde;
-	}
-
-	public void setKunde(M_Kunde kunde) {
-		this.kunde = kunde;
-	}
+	
 	
 }

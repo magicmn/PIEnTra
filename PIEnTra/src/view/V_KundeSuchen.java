@@ -153,8 +153,20 @@ public class V_KundeSuchen extends SimpleMasterWindow {
 	public JButton txt(){
 		return btn_kundeSuchen;
 	}
+	public M_Kunde getKunde() {
+		return kunde;
+	}
+	public void setKunde(M_Kunde kunde) {
+		this.kunde = kunde;
+	}
 	// ActionListener
 
+/**
+ * Durch das betätigen der "Kunde suchen" Taste wird versucht einen Kunden in der Internen Liste anhand der KundenID oder den Firmennamen zu selektieren.
+ * War der suchvorgang wird eine Referenz auf den gefundenen Kunden der Suchenden Instanz übergeben. 
+ * @author Konstantin
+ *
+ */
 	private class KundeSuchen implements ActionListener {
 		public void actionPerformed(ActionEvent arg0) {
 
@@ -183,6 +195,8 @@ public class V_KundeSuchen extends SimpleMasterWindow {
 				kunde = null;
 
 			}
+			
+			//Übergabe der Referenz auf den Kunden und anschliessendes Schliessen des Views
 			finally {
 				if(kunde!=null) {
 					if(controller instanceof C_KundeVerwalten) {
@@ -206,10 +220,5 @@ public class V_KundeSuchen extends SimpleMasterWindow {
 		}
 	}
 
-	public M_Kunde getKunde() {
-		return kunde;
-	}
-	public void setKunde(M_Kunde kunde) {
-		this.kunde = kunde;
-	}
+	
 }

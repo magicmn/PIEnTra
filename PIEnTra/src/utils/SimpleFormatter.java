@@ -9,8 +9,10 @@ import java.text.SimpleDateFormat;
 import javax.swing.JFormattedTextField;
 import javax.swing.JFormattedTextField.AbstractFormatter;
 import javax.swing.text.DateFormatter;
+import javax.swing.text.DefaultFormatter;
 import javax.swing.text.MaskFormatter;
 /**
+ * SimpelFormatter ist eine statische samlung aller in der Anwendug benötigte Formate.
  * Aktuelle Version 1.3
  * 
  * 1.1
@@ -56,11 +58,12 @@ public class SimpleFormatter {
 		AbstractFormatter formatter = null;
 		SimpleDateFormat format=null;
 		format = new SimpleDateFormat("dd.MM.yyyy");
+		
 
 
 
 		formatter = new DateFormatter(format);
-
+		
 
 
 
