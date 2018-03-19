@@ -228,7 +228,6 @@ public class V_TrainingAendern extends SimpleMasterWindow {
 	private class TrainingSuchen implements ActionListener {
 		public void actionPerformed(ActionEvent arg0) {
 			
-			
 		}
 	}
 	private class RessourceAendern implements ActionListener {
