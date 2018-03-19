@@ -1,7 +1,7 @@
 package view;
 
 import java.awt.Dimension;
-import java.awt.GridLayout;
+import java.awt.FlowLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -19,15 +19,15 @@ import utils.SimpleSwitchFrame;
 import utils.SimpleTextPanel;
 
 /**
- * View von Produkt definieren.
+ * View von TrainingKonfigurieren.
  * @version 1.4 Erbt nun von Superklasse {@link SimpleMasterWindow}.
  * @version 1.3 SimpleSwitchFrame implementiert.
  * @version 1.2 Listener hinzugefügt.
  * @version 1.1 Listener entfernt. Getter und Setter entfernt.
  * @version 1.0 View implementiert.
  * @author Adrian Fromm
- * @author Andreas Kann
  * @author Julian Klein
+ * @author Konstantin Frei
  * @see {@link controller.C_Hauptmenue};
  */
 public class V_ProduktDefinieren extends SimpleMasterWindow {
@@ -39,12 +39,12 @@ public class V_ProduktDefinieren extends SimpleMasterWindow {
 	 * Standard Größe des Fensters.
 	 * @see SimpleMasterWindow#initFrame(Dimension defaultSize, Dimension minSize)
 	 * */
-	public static Dimension defaultSize = new Dimension(700, 420);
+	public static Dimension defaultSize = new Dimension(450, 500);
 	/** 
 	 * Minimale Größe des Fensters.
 	 * @see SimpleMasterWindow#initFrame(Dimension defaultSize, Dimension minSize)
 	 * */
-	private static Dimension minSize = new Dimension(700, 410);
+	private static Dimension minSize = new Dimension(450, 400);
 	/**
 	 * Text der in der Naviagtionsleiste ausgegebn wird.
 	 * @see SimpleMasterWindow#initSouth(String navigationText)
@@ -93,10 +93,7 @@ public class V_ProduktDefinieren extends SimpleMasterWindow {
 		pnl_content.add(pnl_produktbezeichnung);
 		JPanel pnl_produktbeschreibung = new JPanel();
 		pnl_produktbeschreibung.setLayout(new BoxLayout(pnl_produktbeschreibung, BoxLayout.LINE_AXIS));
-		JPanel pnl_produktbeschreibung_lbl = new JPanel(new GridLayout(1, 1));
-		lbl_produktbeschreibung.setVerticalAlignment(1);
-		pnl_produktbeschreibung_lbl.add(lbl_produktbeschreibung);
-		pnl_produktbeschreibung.add(pnl_produktbeschreibung_lbl);
+		pnl_produktbeschreibung.add(lbl_produktbeschreibung);
 		pnl_produktbeschreibung.add(txt_produktbeschreibung);
 		pnl_content.add(pnl_produktbeschreibung);
 		
