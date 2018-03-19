@@ -73,19 +73,22 @@ public abstract class SimpleMasterWindow extends JFrame {
 	 * @param navigationText Text des unteren Textfeldes das den aktuellen Pfad der Navigation anzeigt. Erhalten von {@link #SimpleMasterWindow}.
 	 */
 	private void initSouth(String navigationText) {
-		pnl_south = new JPanel();
-		pnl_south.setLayout(new BoxLayout(pnl_south, BoxLayout.PAGE_AXIS));
-		pnl_south.setBorder(BorderFactory.createEmptyBorder(padding, padding, padding, padding));
-		pnl_menu = new JPanel();
-		pnl_menu.setLayout(new FlowLayout(FlowLayout.LEFT));
-		pnl_navigationPath = new JPanel();
-		pnl_navigationPath.setLayout(new GridLayout(1, 1));
-		JTextField txt_navigation = new JTextField("PIEnTra / " + navigationText);
-		txt_navigation.setFocusable(false);
-		pnl_navigationPath.add(txt_navigation);
-		pnl_south.add(pnl_menu);
-		pnl_south.add(pnl_navigationPath);
-		this.add(BorderLayout.SOUTH, pnl_south);
+			pnl_south = new JPanel();
+			pnl_south.setLayout(new BoxLayout(pnl_south, BoxLayout.PAGE_AXIS));
+			pnl_south.setBorder(BorderFactory.createEmptyBorder(padding, padding, padding, padding));
+			pnl_menu = new JPanel();
+			pnl_menu.setLayout(new FlowLayout(FlowLayout.LEFT));
+			pnl_south.add(pnl_menu);
+			if (navigationText != "") {
+				pnl_navigationPath = new JPanel();
+				pnl_navigationPath.setLayout(new GridLayout(1, 1));
+				JTextField txt_navigation = new JTextField("PIEnTra / " + navigationText);
+				txt_navigation.setFocusable(false);
+				pnl_navigationPath.add(txt_navigation);
+				pnl_south.add(pnl_navigationPath);
+			}
+
+			this.add(BorderLayout.SOUTH, pnl_south);
 	}
 	
 	/**

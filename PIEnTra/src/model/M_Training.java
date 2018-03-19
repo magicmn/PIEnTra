@@ -167,7 +167,7 @@ public class M_Training {
 		String mAssistents = "";
 		if(getManagementAssistente() != null) {
 			for(M_ManagementAssistent mAssistent : getManagementAssistente()) {
-				mAssistents = mAssistents+ " \n"+mAssistent.getVorname()+", "+mAssistent.getNachname()+"";
+				mAssistents = mAssistents+ " \n" + mAssistent.getVorname()+", " + mAssistent.getNachname() + "";
 			}
 		}
 
