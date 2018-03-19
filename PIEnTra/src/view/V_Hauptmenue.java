@@ -24,8 +24,8 @@ import utils.SimpleSwitchFrame;
  * View des Hauptmenüs.
  * @version 1.4 Erbt nun von Superklasse {@link SimpleMasterWindow}.
  * @version 1.3 SimpleSwitchFrame implementiert.
- * @version 1.2 Listener hinzugefügt.
- * @version 1.1 Listener entfernt.
+ * @version 1.2 Listener in View hinzugefügt.
+ * @version 1.1 Listener aus Controller entfernt.
  * @version 1.0 Layout implementiert.
  * @author Adrian Fromm
  * @author Julian Klein

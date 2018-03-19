@@ -14,7 +14,7 @@ import javax.swing.JTextField;
 import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
 
-public class V_RessourcenAendern extends JFrame {
+public class OLD_V_RessourcenAendern extends JFrame {
 
 	public static void main(String[] args) {
 		try {
@@ -22,7 +22,7 @@ public class V_RessourcenAendern extends JFrame {
 		} catch (ClassNotFoundException | InstantiationException | IllegalAccessException | UnsupportedLookAndFeelException e) {
 			e.printStackTrace();
 		}
-		V_RessourcenAendern test = new V_RessourcenAendern();
+		OLD_V_RessourcenAendern test = new OLD_V_RessourcenAendern();
 	}
 	
 	JLabel lbl_produktbezeichnung= new JLabel("Produktbezeichnung:");  							
@@ -45,7 +45,7 @@ public class V_RessourcenAendern extends JFrame {
 	JTextArea txt_produktbeschreibung = new JTextArea();
 	
 	
-	public V_RessourcenAendern() {
+	public OLD_V_RessourcenAendern() {
 		init();
 		this.setVisible(true);
 	}

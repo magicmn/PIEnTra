@@ -118,5 +118,9 @@ public abstract class SimpleMasterWindow extends JFrame {
 	protected int getPadding() {
 		return padding;
 	}
+	
+	protected JPanel getNavigationPathPanel() {
+		return pnl_navigationPath;
+	}
 
 }

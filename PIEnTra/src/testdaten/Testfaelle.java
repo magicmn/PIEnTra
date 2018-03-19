@@ -77,7 +77,7 @@ public class Testfaelle{
 				"Methoden: Vortrag, Vorführung und praktische Übungen\r\n" + 
 				"Anforderungen: MyERP Version 2.01 Server Edition, Beamer, MyERP Version 2.01,\r\n" + 
 				"Windows Client", 1.0);
-		wwp = new M_Produkt("WWP","Erweitere Grundlagen Warenwirtschaft", "Systematisch werden Sie in die effiziente Anwendung der Software eingewiesen. Sie\r\n" + 
+		wwp = new M_Produkt("WWP","Produkt Wirtschaft Pro", "Systematisch werden Sie in die effiziente Anwendung der Software eingewiesen. Sie\r\n" + 
 				"vertiefen Ihre Kenntnisse der Kunden-, Lieferanten- und Artikelverwaltung sowie die\r\n" + 
 				"Auftragsbearbeitung. Sie liefern die Daten für eine professionelle Angebotserstellung.\r\n" + 
 				"Sie erstellen Auswertungen und optimieren die Software für Ihr Unternehmen.\r\n" + 
