@@ -49,7 +49,7 @@ public class V_ProduktDefinieren extends SimpleMasterWindow {
 	 * Text der in der Naviagtionsleiste ausgegebn wird.
 	 * @see SimpleMasterWindow#initSouth(String navigationText)
 	 */
-	private tatic String navigationText = "Produkt definieren";
+	private static String navigationText = "Produkt definieren";
 	
 	JPanel pnl_produktbezeichnung;
 	JPanel pnl_produktbeschreibung;
