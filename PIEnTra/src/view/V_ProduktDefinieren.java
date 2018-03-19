@@ -1,6 +1,7 @@
 package view;
 
 import java.awt.Dimension;
+import java.awt.FlowLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -38,12 +39,12 @@ public class V_ProduktDefinieren extends SimpleMasterWindow {
 	 * Standard Größe des Fensters.
 	 * @see SimpleMasterWindow#initFrame(Dimension defaultSize, Dimension minSize)
 	 * */
-	public static Dimension defaultSize = new Dimension(700, 420);
+	public static Dimension defaultSize = new Dimension(450, 500);
 	/** 
 	 * Minimale Größe des Fensters.
 	 * @see SimpleMasterWindow#initFrame(Dimension defaultSize, Dimension minSize)
 	 * */
-	private static Dimension minSize = new Dimension(700, 410);
+	private static Dimension minSize = new Dimension(450, 400);
 	/**
 	 * Text der in der Naviagtionsleiste ausgegebn wird.
 	 * @see SimpleMasterWindow#initSouth(String navigationText)
