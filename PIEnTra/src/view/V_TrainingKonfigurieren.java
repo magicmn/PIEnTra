@@ -4,7 +4,8 @@ import java.awt.Dimension;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.logging.SimpleFormatter;
+import java.awt.event.FocusEvent;
+import java.awt.event.FocusListener;
 
 import javax.swing.JButton;
 import javax.swing.JPanel;
@@ -13,12 +14,14 @@ import javax.swing.UnsupportedLookAndFeelException;
 
 import controller.C_Hauptmenue;
 import controller.C_KundeWaehlen;
+import utils.SimpleDatumBerechnen;
 import utils.SimpleMasterWindow;
 import utils.SimpleSwitchFrame;
 import utils.SimpleTextPanel;
 
 /**
  * View von TrainingKonfigurieren.
+ * @version 1.6 FocusListener implementiert
  * @version 1.5 Kunden wählen implemetiert
  * @version 1.4 Erbt nun von Superklasse {@link SimpleMasterWindow}.
  * @version 1.3 SimpleSwitchFrame implementiert.
@@ -55,7 +58,7 @@ public class V_TrainingKonfigurieren extends SimpleMasterWindow {
 	private SimpleTextPanel pnl_kundenID = new SimpleTextPanel("Kunden-ID:");
 	private SimpleTextPanel pnl_firmenname = new SimpleTextPanel("Firmenname:");
 	private SimpleTextPanel pnl_ansprechpartner = new SimpleTextPanel("Ansprechpartner:");
-	private SimpleTextPanel pnl_produktbeschreibung = new SimpleTextPanel("Produktbeschreibung:");
+	private SimpleTextPanel pnl_produktID = new SimpleTextPanel("Produktkürzel:");
 	private SimpleTextPanel pnl_anfangsdatum = new SimpleTextPanel("Anfangsdatum:",utils.SimpleFormatter.getDatumFormat());
 	private SimpleTextPanel pnl_enddatum = new SimpleTextPanel("Enddatum:",utils.SimpleFormatter.getDatumFormat());
 	private SimpleTextPanel pnl_tage = new SimpleTextPanel("Tage:");
@@ -102,7 +105,7 @@ public class V_TrainingKonfigurieren extends SimpleMasterWindow {
 		pnl_content.add(pnl_kundenID);
 		pnl_content.add(pnl_firmenname);
 		pnl_content.add(pnl_ansprechpartner);
-		pnl_content.add(pnl_produktbeschreibung);
+		pnl_content.add(pnl_produktID);
 		pnl_content.add(pnl_anfangsdatum);
 		pnl_content.add(pnl_enddatum);
 		pnl_content.add(pnl_tage);
@@ -131,6 +134,8 @@ public class V_TrainingKonfigurieren extends SimpleMasterWindow {
 		btn_ressourcenwaehlen.addActionListener(new RessourceWaehlen());
 		btn_trainingspeichern.addActionListener(new TrainingSpeichern());
 		btn_zurueck.addActionListener(new Zurueck());
+		pnl_enddatum.getTextPanel().addFocusListener(new FokusEnddatum());
+		pnl_tage.getTextPanel().addFocusListener(new FokusTage());
 	}
 	
 	protected void resizeGUI() {
@@ -139,7 +144,7 @@ public class V_TrainingKonfigurieren extends SimpleMasterWindow {
 		pnl_kundenID.setTextFieldWidth(maxWidthTextBox / 4);
 		pnl_firmenname.setTextFieldWidth(maxWidthTextBox / 2);
 		pnl_ansprechpartner.setTextFieldWidth(maxWidthTextBox / 2);
-		pnl_produktbeschreibung.setTextFieldWidth(maxWidthTextBox / 2);
+		pnl_produktID.setTextFieldWidth(maxWidthTextBox / 2);
 		pnl_anfangsdatum.setTextFieldWidth(maxWidthTextBox / 4);
 		pnl_enddatum.setTextFieldWidth(maxWidthTextBox / 4);
 		pnl_tage.setTextFieldWidth(maxWidthTextBox / 8);
@@ -176,7 +181,7 @@ public class V_TrainingKonfigurieren extends SimpleMasterWindow {
 		return pnl_ansprechpartner.getText();
 	}
 	public String getText_pnl_produktbeschreibung() {
-		return pnl_produktbeschreibung.getText();
+		return pnl_produktID.getText();
 	}
 	public String getText_pnl_anfangsdatum() {
 		return pnl_anfangsdatum.getText();
@@ -206,7 +211,7 @@ public class V_TrainingKonfigurieren extends SimpleMasterWindow {
 		this.pnl_ansprechpartner.setText(text);;
 	}
 	public void setText_pnl_produktbeschreibung(String text) {
-		this.pnl_produktbeschreibung.setText(text);
+		this.pnl_produktID.setText(text);
 	}
 	public void setText_pnl_anfangsdatum(String text) {
 		this.pnl_anfangsdatum.setText(text);
@@ -227,8 +232,48 @@ public class V_TrainingKonfigurieren extends SimpleMasterWindow {
 		this.pnl_bemerkungen.setText(text);
 	}
 	
-	// ActionListener
+	//FocusListener
+	private class FokusEnddatum implements FocusListener{
+		@Override
+		public void focusGained(FocusEvent e) {
+			pnl_tage.setFocusable(true);
+		}
+
+		@Override
+		public void focusLost(FocusEvent e) {
+			
+			if(!pnl_enddatum.getText().equals("")){
+				pnl_tage.setFocusable(false);
+				setText_pnl_tage(SimpleDatumBerechnen.datumBerechnen(getText_pnl_anfangsdatum(), getText_pnl_enddatum())+"");
+				
+			}else{
+				pnl_tage.setFocusable(true);
+			}
+			
+		}
+		
+	}
 	
+	private class FokusTage implements FocusListener{
+		@Override
+		public void focusGained(FocusEvent e) {
+			pnl_enddatum.setFocusable(true);
+		}
+
+		@Override
+		public void focusLost(FocusEvent e) {
+			
+			if(!pnl_tage.getText().equals("")){
+				pnl_enddatum.setFocusable(false);
+				setText_pnl_enddatum(SimpleDatumBerechnen.datumBerechnen(getText_pnl_anfangsdatum(),Integer.parseInt(getText_pnl_tage()))+"");
+			}else{
+				pnl_enddatum.setFocusable(true);
+			}
+			
+		}
+		
+	}
+	// ActionListener
 	private class KundeWaehlen implements ActionListener {
 		public void actionPerformed(ActionEvent arg0) {
 			System.out.println("Kunde waehlen!");
