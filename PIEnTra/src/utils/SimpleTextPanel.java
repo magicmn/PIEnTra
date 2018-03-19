@@ -52,8 +52,8 @@ public class SimpleTextPanel extends JPanel {
 		return txt;
 	}
 	
-	public void setEditable(boolean enable) {
-		txt.setEditable(enable);
+	public void setEnabled(boolean enable) {
+		txt.setEnabled(enable);
 	}
 
 }
