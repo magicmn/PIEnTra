@@ -4,7 +4,6 @@ import java.awt.Dimension;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.Iterator;
 import java.util.NoSuchElementException;
 
 import javax.swing.JButton;
@@ -21,15 +20,15 @@ import utils.SimpleSwitchFrame;
 import utils.SimpleTextPanel;
 
 /**
- * View von TrainingKonfigurieren.
+ * View von TrainingLoeschen.
  * @version 1.4 Erbt nun von Superklasse {@link SimpleMasterWindow}.
  * @version 1.3 SimpleSwitchFrame implementiert.
  * @version 1.2 Listener hinzugefügt.
  * @version 1.1 Listener entfernt. Getter und Setter entfernt.
  * @version 1.0 View implementiert.
  * @author Adrian Fromm
+ * @author Andreas Kann
  * @author Julian Klein
- * @author Konstantin Frei
  * @see {@link controller.C_Hauptmenue};
  */
 public class V_TrainingLoeschen extends SimpleMasterWindow {

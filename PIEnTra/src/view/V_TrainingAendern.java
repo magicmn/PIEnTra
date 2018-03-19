@@ -16,15 +16,15 @@ import utils.SimpleSwitchFrame;
 import utils.SimpleTextPanel;
 
 /**
- * View von TrainingKonfigurieren.
+ * View von TrainingAendern.
  * @version 1.4 Erbt nun von Superklasse {@link SimpleMasterWindow}.
  * @version 1.3 SimpleSwitchFrame implementiert.
  * @version 1.2 Listener hinzugefügt.
  * @version 1.1 Listener entfernt. Getter und Setter entfernt.
  * @version 1.0 View implementiert.
  * @author Adrian Fromm
+ * @author Jannik Stark
  * @author Julian Klein
- * @author Konstantin Frei
  * @see {@link controller.C_Hauptmenue};
  */
 public class V_TrainingAendern extends SimpleMasterWindow {
