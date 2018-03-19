@@ -14,7 +14,7 @@ import controller.C_Hauptmenue;
 import utils.SimpleMasterWindow;
 import utils.SimpleSwitchFrame;
 import utils.SimpleTextPanel;
-
+// @TODO Julian Klein
 /**
  * View von TrainingAendern.
  * @version 1.4 Erbt nun von Superklasse {@link SimpleMasterWindow}.
@@ -227,7 +227,7 @@ public class V_TrainingAendern extends SimpleMasterWindow {
 	
 	private class TrainingSuchen implements ActionListener {
 		public void actionPerformed(ActionEvent arg0) {
-			System.out.println("Training suchen!");
+			
 			
 		}
 	}
