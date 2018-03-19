@@ -112,8 +112,13 @@ public class V_RessourceWaehlen extends SimpleMasterWindow {
 	 * Initialisiere den Inhalt des Centers.
 	 */
 	private void initContent() {
-		
+		area.setPreferredSize(new Dimension(200, 80));
 		area.setBorder(BorderFactory.createLineBorder(Color.gray));
+		area.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
+		
+		textarea.setText("");
+		textarea.setLineWrap(true);
+
 		pnl_produktbez = new SimpleDropdownPanel("Produktbezeichnung:", arrayList_produktbezeichnung);
 		pnl_trainer = new SimpleDropdownPanel("Trainer:", arrayList_trainer);
 		pnl_ort = new SimpleDropdownPanel("Ort:", arrayList_ort);
@@ -131,10 +136,7 @@ public class V_RessourceWaehlen extends SimpleMasterWindow {
 		pnl_content_left.add(pnl_trainer);
 		pnl_content_left.add(pnl_ort);
 		//area.setAutoscrolls(true);
-		textarea.setLineWrap(true);
-		area.setPreferredSize(new Dimension(200, 80));
-		textarea.setText("");
-		area.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
+		
 		pnl_content_right.setLayout(new BoxLayout(pnl_content_right, BoxLayout.PAGE_AXIS));
 		pnl_content_right.add(lbl_produktb);
 		pnl_content_right.add(area);
@@ -194,10 +196,6 @@ public class V_RessourceWaehlen extends SimpleMasterWindow {
 		}
 		new Test_main();
 		new V_RessourceWaehlen();
-		
-		//System.out.println(test2);
-		
-		
 	}
 	
 	// Getter und Setter
@@ -226,7 +224,7 @@ public class V_RessourceWaehlen extends SimpleMasterWindow {
 	private class KundeSuchen implements ActionListener {
 		public void actionPerformed(ActionEvent arg0) {
 			System.out.println("Kunde suchen!");
-			C_KundeSuchen.getInstance();
+			
 			//SimpleSwitchFrame.switchFrame(thisView, C_KundeSuchen.getInstance() , C_KundeSuchen.getInstance().getView());
 		}
 	}
