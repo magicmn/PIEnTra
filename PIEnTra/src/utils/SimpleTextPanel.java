@@ -4,6 +4,7 @@ import java.awt.Dimension;
 import java.awt.FlowLayout;
 
 import javax.swing.JFormattedTextField;
+import javax.swing.JFormattedTextField.AbstractFormatter;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
@@ -23,6 +24,15 @@ public class SimpleTextPanel extends JPanel {
 		this.add(txt);
 	}
 	
+	public SimpleTextPanel(String labelText, AbstractFormatter format) {
+		this.setLayout(new FlowLayout(FlowLayout.LEFT));
+		lbl = new JLabel(labelText);
+		lbl.setPreferredSize(new Dimension(labelWidth, lbl.getPreferredSize().height));
+		txt = new JFormattedTextField(format);
+		this.add(lbl);
+		this.add(txt);
+	}
+
 	public void setTextFieldWidth(int width) {
 		txt.setPreferredSize(new Dimension(width, txt.getPreferredSize().height));
 	}
