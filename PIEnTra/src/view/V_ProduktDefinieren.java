@@ -1,122 +1,158 @@
-/**
- * Aktuelle Version: 1.3 
- * Authoren: Adrian, Andreas
- * 
- * Changelog:
- * 
- * 1.3
- * 		-SimpleSwitchFrame implementiert!
- * 1.2
- * 		-ActionListener hinzugefügt!
- * 1.1
- * 		-Get / Set hinzugefügt!
- * 1.0 	
- * 		-View erstellt!
- * 
- **/
-
 package view;
 
-import java.awt.BorderLayout;
-import java.awt.Color;
+import java.awt.Dimension;
 import java.awt.FlowLayout;
-import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import javax.swing.BorderFactory;
 import javax.swing.JButton;
-import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-import javax.swing.JTextField;
 import javax.swing.JTextArea;
+import javax.swing.JTextField;
+import javax.swing.UIManager;
+import javax.swing.UnsupportedLookAndFeelException;
 
-import utils.SimpleSwitchFrame;
 import controller.C_Hauptmenue;
-import controller.C_KundeVerwalten;
-import controller.C_ProduktDefinieren;
+import utils.SimpleMasterWindow;
+import utils.SimpleSwitchFrame;
+import utils.SimpleTextPanel;
 
-
-public class V_ProduktDefinieren extends JFrame{
+/**
+ * View von TrainingKonfigurieren.
+ * @version 1.4 Erbt nun von Superklasse {@link SimpleMasterWindow}.
+ * @version 1.3 SimpleSwitchFrame implementiert.
+ * @version 1.2 Listener hinzugefügt.
+ * @version 1.1 Listener entfernt. Getter und Setter entfernt.
+ * @version 1.0 View implementiert.
+ * @author Adrian Fromm
+ * @author Julian Klein
+ * @author Konstantin Frei
+ * @see {@link controller.C_Hauptmenue};
+ */
+public class V_ProduktDefinieren extends SimpleMasterWindow {
+	private static final long serialVersionUID = -6381551589496678636L;
 	
-	JPanel pnl_center = new JPanel();
-	JPanel pnl_pbezeichnung = new JPanel();
-	JPanel pnl_pbeschreibung = new JPanel();
-	JPanel pnl_buttons = new JPanel();
-	JPanel pnl_txtbottom = new JPanel();
+	/* Deklaration und Initailiserung von verschiedenen Variablen **/
 	
-	JLabel lbl_produktbezeichnung = new JLabel("Produktbezeichnung:              ");
-	JLabel lbl_produktbeschreibung = new JLabel("Produktbeschreibung:             ");
+	/** 
+	 * Standard Größe des Fensters.
+	 * @see SimpleMasterWindow#initFrame(Dimension defaultSize, Dimension minSize)
+	 * */
+	public static Dimension defaultSize = new Dimension(700, 420);
+	/** 
+	 * Minimale Größe des Fensters.
+	 * @see SimpleMasterWindow#initFrame(Dimension defaultSize, Dimension minSize)
+	 * */
+	private static Dimension minSize = new Dimension(700, 410);
+	/**
+	 * Text der in der Naviagtionsleiste ausgegebn wird.
+	 * @see SimpleMasterWindow#initSouth(String navigationText)
+	 */
+	private tatic String navigationText = "Produkt definieren";
 	
+	JPanel pnl_produktbezeichnung;
+	JPanel pnl_produktbeschreibung;
+	JLabel lbl_produktbezeichnung = new JLabel("Produktbezeichnung:");
+	JLabel lbl_produktbeschreibung = new JLabel("Produktbeschreibung:");
 	JTextField txt_produktbezeichnung = new JTextField(35);
 	JTextArea txt_produktbeschreibung = new JTextArea(20, 35);
-	JTextField txt_bottom = new JTextField(54);
 	
-	JButton btn_produktdefninieren = new JButton("Produkt definieren");
-	JButton btn_zurueckzumhauptmenu = new JButton("Zurück zum Hauptmenü");
+	private JButton btn_produktdefinieren = new JButton("Produkt definieren");
+	private JButton btn_zurueck = new JButton("Zurück zum Hauptmenü");
 	
-	public V_ProduktDefinieren thisView;
+	private V_ProduktDefinieren thisView;
 	
-	public V_ProduktDefinieren(){
+	/* Konstruktor und Methoden die vom Konstruktor aufgerufen werden. */
+	
+	/**
+	 * Konstruktor der View Hauptmenue.
+	 * Übergibt an die Superklasse die standard und minimal Größe, sowie aktuelle Pfadangaben der Navigationsleiste.
+	 * Initialisiere dann den Content und lösche ein überflüssiges Element aus der im Hauptmenu nicht benutzten Menuleiste.
+	 * Zuletzt werden die Listener initialisiert.
+	 */
+	public V_ProduktDefinieren() {
+		super(
+			defaultSize,
+			minSize,
+			navigationText
+		);
 		this.thisView = this;
-		initView();
-		initListener();	
+		initContent();
+		initMenu();
+		initListener();
+		resizeGUI();
 	}
-	
-	public void initView(){
-		
-		this.setBounds(50, 50, 470, 525);
-		this.setVisible(true);
-		this.setLayout(new BorderLayout());
-		this.setResizable(false);
-		
-		txt_produktbeschreibung.setBorder(BorderFactory.createLineBorder(Color.gray));
-		txt_bottom.setEnabled(false);
 
-		pnl_pbezeichnung.setLayout(new FlowLayout());
-		pnl_pbezeichnung.add(lbl_produktbezeichnung);
-		pnl_pbezeichnung.add(txt_produktbezeichnung);
-		
+	/**
+	 * Initialisiere den Inhalt des Centers.
+	 */
+	private void initContent() {
+		JPanel pnl_content = new JPanel();
+		pnl_content.setLayout(new FlowLayout(FlowLayout.LEFT));
+		pnl_produktbezeichnung = new JPanel();
+		pnl_produktbezeichnung.setLayout(new FlowLayout());
+		pnl_produktbezeichnung.add(lbl_produktbezeichnung);
+		pnl_produktbezeichnung.add(txt_produktbezeichnung);
 		FlowLayout flowlayout = new FlowLayout();
 		flowlayout.setAlignOnBaseline(true);
+		pnl_produktbeschreibung = new JPanel();
+		pnl_produktbeschreibung.setLayout(flowlayout);
+		pnl_produktbeschreibung.add(lbl_produktbeschreibung);
+		pnl_produktbeschreibung.add(txt_produktbeschreibung);
 		
-		pnl_pbeschreibung.setLayout(flowlayout);
-		pnl_pbeschreibung.add(lbl_produktbeschreibung);
-		pnl_pbeschreibung.add(txt_produktbeschreibung);
-		
-		pnl_buttons.setLayout(new FlowLayout());
-		pnl_buttons.add(btn_produktdefninieren);
-		pnl_buttons.add(btn_zurueckzumhauptmenu);
-		
-		pnl_center.setLayout(new FlowLayout(FlowLayout.LEFT));
-		pnl_center.add(pnl_pbezeichnung);
-		pnl_center.add(pnl_pbeschreibung);
-		pnl_center.add(pnl_buttons);
-		pnl_center.add(pnl_txtbottom);
-		
-		pnl_txtbottom.add(txt_bottom);
-
-		this.add(pnl_center);
-		txt_bottom.setText("PIEnTra / Produkt definieren");
+		pnl_content.add(pnl_produktbezeichnung);
+		pnl_content.add(pnl_produktbeschreibung);
+		super.getPnl_center().add(pnl_content);
 	}
 	
+	/**
+	 * Initiailisert die Menu Buttons
+	 */
+	private void initMenu() {
+		getPnl_menu().add(btn_produktdefinieren);
+		getPnl_menu().add(btn_zurueck);
+		
+	}
+	
+	/**
+	 * Initialisiert ActionListener
+	 */
 	private void initListener() {
-		btn_produktdefninieren.addActionListener(new ProduktDefinieren());
-		btn_zurueckzumhauptmenu.addActionListener(new Zurueck());
+		btn_produktdefinieren.addActionListener(new ProduktDefinieren());
+		btn_zurueck.addActionListener(new Zurueck());
 	}
 	
-	// Get und Set
+	protected void resizeGUI() {
+		int maxWidthTextBox = this.getWidth() - SimpleTextPanel.getLabelWidth() - (getPadding() * 2) - 25;
+		int optimalButtonWidth = (int) super.getPnl_menu().getWidth() - 25;
+		lbl_produktbezeichnung.setPreferredSize(new Dimension(SimpleTextPanel.getLabelWidth(), lbl_produktbezeichnung.getPreferredSize().height));
+		lbl_produktbeschreibung.setPreferredSize(new Dimension(SimpleTextPanel.getLabelWidth(), lbl_produktbeschreibung.getPreferredSize().height));
+		pnl_produktbezeichnung.setPreferredSize(new Dimension(maxWidthTextBox, txt_produktbezeichnung.getPreferredSize().height));
+		pnl_produktbeschreibung.setPreferredSize(new Dimension(maxWidthTextBox, 400));
+		btn_produktdefinieren.setPreferredSize(new Dimension(optimalButtonWidth / 4 , btn_produktdefinieren.getPreferredSize().height));
+		btn_zurueck.setPreferredSize(new Dimension(optimalButtonWidth / 4, btn_produktdefinieren.getPreferredSize().height));
+		
+	}
+
+	/* Implementierung der ActionListener */
 	
+	public static void main(String [] args) {
+		try {
+			UIManager.setLookAndFeel("com.sun.java.swing.plaf.windows.WindowsLookAndFeel");
+		} catch (ClassNotFoundException | InstantiationException | IllegalAccessException | UnsupportedLookAndFeelException e) {
+			e.printStackTrace();
+		}
+		new V_ProduktDefinieren();
+	}
+	
+	// Getter und Setter
 	public String getText_txt_produktbezeichnung(){
 		return txt_produktbezeichnung.getText();
 	}
 	public String getText_txt_produktbeschreibung(){
 		return txt_produktbeschreibung.getText();
 	}
-	
-	//-----------------------------------------------------
-	
 	public void setText_txt_produktbezeichnung(String text){
 		txt_produktbezeichnung.setText(text);
 	}
@@ -124,7 +160,7 @@ public class V_ProduktDefinieren extends JFrame{
 		txt_produktbeschreibung.setText(text);
 	}
 	
-	//ActionListener
+	// ActionListener
 	
 	private class ProduktDefinieren implements ActionListener {
 		public void actionPerformed(ActionEvent arg0) {
@@ -136,5 +172,4 @@ public class V_ProduktDefinieren extends JFrame{
 			SimpleSwitchFrame.switchFrame(thisView,C_Hauptmenue.getInstance(), C_Hauptmenue.getInstance().getView());
 		}
 	}
-	
 }

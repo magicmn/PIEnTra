@@ -49,7 +49,7 @@ public class V_KundeVerwalten extends JFrame {
 	private SimpleTextPanel pnl_ansprechpartner = new SimpleTextPanel("Ansprechpartner:");
 	private SimpleTextPanel pnl_branche = new SimpleTextPanel("Branche:");
 	private SimpleTextPanel pnl_email = new SimpleTextPanel("Email:");
-	private SimpleTextPanel pnl_rufnummer = new SimpleTextPanel("Rufnummer:",SimpleFormatter.getRufnummerFormat());
+	private SimpleTextPanel pnl_rufnummer = new SimpleTextPanel("Rufnummer:");
 	private SimpleTextPanel pnl_addresse = new SimpleTextPanel("Addresse");
 	private SimpleTextPanel pnl_strasse = new SimpleTextPanel("Straﬂe:");
 	private SimpleTextPanel pnl_plz = new SimpleTextPanel("Postleitzahl:", SimpleFormatter.getPLZFormat());

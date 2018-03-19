@@ -1,46 +1,54 @@
 package view;
 
-import java.awt.BorderLayout;
 import java.awt.Dimension;
-import java.awt.FlowLayout;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.ComponentEvent;
-import java.awt.event.ComponentListener;
 
 import javax.swing.JButton;
-import javax.swing.JFrame;
 import javax.swing.JPanel;
-import javax.swing.JTextField;
-import javax.swing.border.EmptyBorder;
+import javax.swing.UIManager;
+import javax.swing.UnsupportedLookAndFeelException;
 
 import controller.C_Hauptmenue;
 import controller.C_KundeWaehlen;
-import controller.C_TrainingKonfigurieren;
+import utils.SimpleMasterWindow;
 import utils.SimpleSwitchFrame;
 import utils.SimpleTextPanel;
 
 /**
- * Aktuelle Version: 1.3  
- * Authoren: Andreas (1.0), Adrian(1.1, 1.3) Konstantin (1.2)
- * 
- * Changelog:
- *
- * 1.3
- * 		-SimpleSwitchFrame implementiert!
- * 1.2
- * 		-ActionListener hinzugefügt!
- * 1.1
- * 		-Get / Set hinzugefügt!
- * 1.0 	
- * 		-View erstellt!
- **/
-
-
-public class V_TrainingKonfigurieren extends JFrame {
+ * View von TrainingKonfigurieren.
+ * @version 1.4 Erbt nun von Superklasse {@link SimpleMasterWindow}.
+ * @version 1.3 SimpleSwitchFrame implementiert.
+ * @version 1.2 Listener hinzugefügt.
+ * @version 1.1 Listener entfernt. Getter und Setter entfernt.
+ * @version 1.0 View implementiert.
+ * @author Adrian Fromm
+ * @author Julian Klein
+ * @author Konstantin Frei
+ * @see {@link controller.C_Hauptmenue};
+ */
+public class V_TrainingKonfigurieren extends SimpleMasterWindow {
+	private static final long serialVersionUID = -6381551589496678636L;
 	
-	private JPanel pnl_center;
+	/* Deklaration und Initailiserung von verschiedenen Variablen **/
+	
+	/** 
+	 * Standard Größe des Fensters.
+	 * @see SimpleMasterWindow#initFrame(Dimension defaultSize, Dimension minSize)
+	 * */
+	public static Dimension defaultSize = new Dimension(700, 420);
+	/** 
+	 * Minimale Größe des Fensters.
+	 * @see SimpleMasterWindow#initFrame(Dimension defaultSize, Dimension minSize)
+	 * */
+	private static Dimension minSize = new Dimension(700, 410);
+	/**
+	 * Text der in der Naviagtionsleiste ausgegebn wird.
+	 * @see SimpleMasterWindow#initSouth(String navigationText)
+	 */
+	private static String navigationText = "Training konfigurieren";
+	
 	private SimpleTextPanel pnl_kundenID = new SimpleTextPanel("Kunden-ID:");
 	private SimpleTextPanel pnl_firmenname = new SimpleTextPanel("Firmenname:");
 	private SimpleTextPanel pnl_ansprechpartner = new SimpleTextPanel("Ansprechpartner:");
@@ -51,172 +59,172 @@ public class V_TrainingKonfigurieren extends JFrame {
 	private SimpleTextPanel pnl_trainer = new SimpleTextPanel("Trainer:");
 	private SimpleTextPanel pnl_ort = new SimpleTextPanel("Ort:");
 	private SimpleTextPanel pnl_bemerkungen = new SimpleTextPanel("Bemerkungen:");
-	private JPanel pnl_south;
+	
 	private JButton btn_kundewaehlen = new JButton("Kunde wählen");
 	private JButton btn_ressourcenwaehlen = new JButton("Ressourcen wählen");
 	private JButton btn_trainingspeichern = new JButton("Training speichern");
 	private JButton btn_zurueck = new JButton("Zurück zum Hauptmenü");
-	private JTextField txt_navigation;
-	public V_TrainingKonfigurieren thisView ;
 	
+	private V_TrainingKonfigurieren thisView;
+	
+	/* Konstruktor und Methoden die vom Konstruktor aufgerufen werden. */
+	
+	/**
+	 * Konstruktor der View Hauptmenue.
+	 * Übergibt an die Superklasse die standard und minimal Größe, sowie aktuelle Pfadangaben der Navigationsleiste.
+	 * Initialisiere dann den Content und lösche ein überflüssiges Element aus der im Hauptmenu nicht benutzten Menuleiste.
+	 * Zuletzt werden die Listener initialisiert.
+	 */
 	public V_TrainingKonfigurieren() {
+		super(
+			defaultSize,
+			minSize,
+			navigationText
+		);
 		this.thisView = this;
-		initView();
+		initContent();
+		initMenu();
+		initListener();
 		resizeGUI();
-		this.setVisible(true);
-	}
-	
-	public static void main(String[] args) {
-		new V_TrainingKonfigurieren();
 	}
 
-	private void initView() {
-		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		this.setTitle("PIEnTra p1.00");
-		this.setSize(750, 450); // Optimale Größe die beim Starten geladen wird.
-		this.setMinimumSize(new Dimension(500, 400)); // Um zu verhindern, dass der DAU sich wundert warum das Fenster auf einmal "weg" ist.
-		this.setLayout(new BorderLayout());
-		this.setLocationRelativeTo(null); // Zentriert Frame in der Mitte des Bildschirms.
-		this.addComponentListener(new ResizeListener());  // Fügt Listener für Frame veränderungen hinzu.
+	/**
+	 * Initialisiere den Inhalt des Centers.
+	 */
+	private void initContent() {
+		JPanel pnl_content = new JPanel();
+		pnl_content.setLayout(new GridLayout(10, 1));
+		pnl_content.setAlignmentY(LEFT_ALIGNMENT);
+		pnl_content.add(pnl_kundenID);
+		pnl_content.add(pnl_firmenname);
+		pnl_content.add(pnl_ansprechpartner);
+		pnl_content.add(pnl_produktbeschreibung);
+		pnl_content.add(pnl_anfangsdatum);
+		pnl_content.add(pnl_enddatum);
+		pnl_content.add(pnl_tage);
+		pnl_content.add(pnl_trainer);
+		pnl_content.add(pnl_ort);
+		pnl_content.add(pnl_bemerkungen);
+		super.getPnl_center().add(pnl_content);
+	}
+	
+	/**
+	 * Initiailisert die Menu Buttons
+	 */
+	private void initMenu() {
+		getPnl_menu().add(btn_kundewaehlen);
+		getPnl_menu().add(btn_ressourcenwaehlen);
+		getPnl_menu().add(btn_trainingspeichern);
+		getPnl_menu().add(btn_zurueck);
 		
-		pnl_center = new JPanel(new GridLayout(10, 1, 2 ,2));
-		pnl_center.add(pnl_kundenID);
-		pnl_center.add(pnl_firmenname);
-		pnl_center.add(pnl_ansprechpartner);
-		pnl_center.add(pnl_produktbeschreibung);
-		pnl_center.add(pnl_anfangsdatum);
-		pnl_center.add(pnl_enddatum);
-		pnl_center.add(pnl_tage);
-		pnl_center.add(pnl_trainer);
-		pnl_center.add(pnl_ort);
-		pnl_center.add(pnl_bemerkungen);
-		this.add(BorderLayout.CENTER, pnl_center);
-		
-		pnl_south = new JPanel(new GridLayout(2, 1));
-		JPanel pnl_south_top = new JPanel(new GridLayout(1, 4));
-		pnl_south_top.setBorder(new EmptyBorder(10,8,5,10));
-		pnl_south_top.add(btn_kundewaehlen);
-		pnl_south_top.add(btn_ressourcenwaehlen);
-		pnl_south_top.add(btn_trainingspeichern);
-		pnl_south_top.add(btn_zurueck);
-		pnl_south.add(pnl_south_top);
-		JPanel pnl_south_bottom = new JPanel(new FlowLayout());
-		pnl_south_bottom.add(txt_navigation = new JTextField("PIEnTra / Training konfigurieren"));
-		txt_navigation.setFocusable(false);
-		pnl_south.add(pnl_south_bottom);
-		this.add(BorderLayout.SOUTH, pnl_south);
-		
+	}
+	
+	/**
+	 * Initialisiert ActionListener
+	 */
+	private void initListener() {
 		btn_kundewaehlen.addActionListener(new KundeWaehlen());
 		btn_ressourcenwaehlen.addActionListener(new RessourceWaehlen());
 		btn_trainingspeichern.addActionListener(new TrainingSpeichern());
 		btn_zurueck.addActionListener(new Zurueck());
-	
 	}
 	
-	/** Enthält variable Gößen **/
-	private void resizeGUI() {
-		txt_navigation.setPreferredSize(new Dimension(this.getWidth() - 30, txt_navigation.getPreferredSize().height));
-		pnl_kundenID.setTxtField_Size(pnl_center.getWidth() / 4);
-		pnl_firmenname.setTxtField_Size(pnl_center.getWidth() / 2);
-		pnl_ansprechpartner.setTxtField_Size(pnl_center.getWidth() / 2);
-		pnl_produktbeschreibung.setTxtField_Size(pnl_center.getWidth() / 2);
-		pnl_anfangsdatum.setTxtField_Size(pnl_center.getWidth() / 4);
-		pnl_enddatum.setTxtField_Size(pnl_center.getWidth() / 4);
-		pnl_tage.setTxtField_Size(pnl_center.getWidth() / 8);
-		pnl_trainer.setTxtField_Size(pnl_center.getWidth() / 4);
-		pnl_ort.setTxtField_Size(pnl_center.getWidth() / 4);
-		pnl_bemerkungen.setTxtField_Size((this.getWidth() - 140));
+	protected void resizeGUI() {
+		int maxWidthTextBox = this.getWidth() - SimpleTextPanel.getLabelWidth() - (getPadding() * 2) - 25;
+		int optimalButtonWidth = (int) super.getPnl_menu().getWidth() - 25;
+		pnl_kundenID.setTextFieldWidth(maxWidthTextBox / 4);
+		pnl_firmenname.setTextFieldWidth(maxWidthTextBox / 2);
+		pnl_ansprechpartner.setTextFieldWidth(maxWidthTextBox / 2);
+		pnl_produktbeschreibung.setTextFieldWidth(maxWidthTextBox / 2);
+		pnl_anfangsdatum.setTextFieldWidth(maxWidthTextBox / 4);
+		pnl_enddatum.setTextFieldWidth(maxWidthTextBox / 4);
+		pnl_tage.setTextFieldWidth(maxWidthTextBox / 8);
+		pnl_trainer.setTextFieldWidth(maxWidthTextBox / 2);
+		pnl_ort.setTextFieldWidth(maxWidthTextBox / 2);
+		pnl_bemerkungen.setTextFieldWidth(maxWidthTextBox);
+		btn_kundewaehlen.setPreferredSize(new Dimension(optimalButtonWidth / 4 , btn_kundewaehlen.getPreferredSize().height));
+		btn_ressourcenwaehlen.setPreferredSize(new Dimension(optimalButtonWidth / 4, btn_kundewaehlen.getPreferredSize().height));
+		btn_trainingspeichern.setPreferredSize(new Dimension(optimalButtonWidth / 4, btn_kundewaehlen.getPreferredSize().height));
+		btn_zurueck.setPreferredSize(new Dimension(optimalButtonWidth / 4, btn_kundewaehlen.getPreferredSize().height));
+		
 	}
+
+	/* Implementierung der ActionListener */
 	
-	private class ResizeListener implements ComponentListener {
-		public void componentResized(ComponentEvent arg0) {
-			resizeGUI();
+	public static void main(String [] args) {
+		try {
+			UIManager.setLookAndFeel("com.sun.java.swing.plaf.windows.WindowsLookAndFeel");
+		} catch (ClassNotFoundException | InstantiationException | IllegalAccessException | UnsupportedLookAndFeelException e) {
+			e.printStackTrace();
 		}
-		public void componentHidden(ComponentEvent arg0) {}
-		public void componentMoved(ComponentEvent arg0) {}
-		public void componentShown(ComponentEvent arg0) {}
+		new V_TrainingKonfigurieren();
 	}
 	
-	// Get und Set
+	// Getter und Setter
 	
 	public String getText_pnl_kundenID(){
-		return pnl_kundenID.getString();
+		return pnl_kundenID.getText();
 	}
 	public String getText_pnl_firmenname(){
-		return pnl_firmenname.getString();
+		return pnl_firmenname.getText();
 	}
 	public String getText_pnl_ansprechpartner() {
-		return pnl_ansprechpartner.getString();
+		return pnl_ansprechpartner.getText();
 	}
 	public String getText_pnl_produktbeschreibung() {
-		return pnl_produktbeschreibung.getString();
+		return pnl_produktbeschreibung.getText();
 	}
 	public String getText_pnl_anfangsdatum() {
-		return pnl_anfangsdatum.getString();
+		return pnl_anfangsdatum.getText();
 	}
 	public String getText_pnl_enddatum() {
-		return pnl_enddatum.getString();
+		return pnl_enddatum.getText();
 	}
 	public String getText_pnl_tage() {
-		return pnl_tage.getString();
+		return pnl_tage.getText();
 	}
 	public String getText_pnl_trainer() {
-		return pnl_trainer.getString();
+		return pnl_trainer.getText();
 	}
 	public String getText_pnl_ort() {
-		return pnl_ort.getString();
+		return pnl_ort.getText();
 	}
 	public String getText_pnl_bemerkungen() {
-		return pnl_bemerkungen.getString();
+		return pnl_bemerkungen.getText();
 	}
-	
-	//------------------------------------------------------
-	
 	public void setText_pnl_kundenID(String text){
-		this.pnl_kundenID.setString(text);
+		this.pnl_kundenID.setText(text);
 	}
 	public void setText_pnl_firmenname(String text){
-		this.pnl_firmenname.setString(text);
+		this.pnl_firmenname.setText(text);
 	}
 	public void setText_pnl_ansprechpartner(String text) {
-		this.pnl_ansprechpartner.setString(text);;
+		this.pnl_ansprechpartner.setText(text);;
 	}
 	public void setText_pnl_produktbeschreibung(String text) {
-		this.pnl_produktbeschreibung.setString(text);
+		this.pnl_produktbeschreibung.setText(text);
 	}
 	public void setText_pnl_anfangsdatum(String text) {
-		this.pnl_anfangsdatum.setString(text);
+		this.pnl_anfangsdatum.setText(text);
 	}
 	public void setText_pnl_enddatum(String text) {
-		this.pnl_enddatum.setString(text);
+		this.pnl_enddatum.setText(text);
 	}
 	public void setText_pnl_tage(String text) {
-		this.pnl_tage.setString(text);
+		this.pnl_tage.setText(text);
 	}
 	public void setText_pnl_trainer(String text) {
-		this.pnl_trainer.setString(text);
+		this.pnl_trainer.setText(text);
 	}
 	public void setText_pnl_ort(String text) {
-		this.pnl_ort.setString(text);
+		this.pnl_ort.setText(text);
 	}
 	public void setText_pnl_bemerkungen(String text) {
-		this.pnl_bemerkungen.setString(text);
+		this.pnl_bemerkungen.setText(text);
 	}
 	
-	//Action Listener
-//	
-//	public void addBtn_kundeWaehlenListener(ActionListener ActionListener) {
-//		btn_kundewaehlen.addActionListener(ActionListener);
-//	}
-//	public void addBtn_ressourceWaehlenListener(ActionListener ActionListener) {
-//		btn_ressourcenwaehlen.addActionListener(ActionListener);
-//	}
-//	public void addBtn_trainingSpeichernListener(ActionListener ActionListener) {
-//		btn_trainingspeichern.addActionListener(ActionListener);
-//	}
-//	public void addBtn_zurueckListener(ActionListener ActionListener) {
-//		btn_zurueck.addActionListener(ActionListener);
-//	}
+	// ActionListener
+	
 	private class KundeWaehlen implements ActionListener {
 		public void actionPerformed(ActionEvent arg0) {
 			System.out.println("Kunde waehlen!");
