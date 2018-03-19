@@ -21,12 +21,13 @@ import utils.SimpleSwitchFrame;
 import utils.SimpleTextPanel;
 
 /**
- * View von TrainingKonfigurieren.
+ * @version 1.5 Löschenfunktion wirft nun Abfragen
  * @version 1.4 Erbt nun von Superklasse {@link SimpleMasterWindow}.
  * @version 1.3 SimpleSwitchFrame implementiert.
  * @version 1.2 Listener hinzugefügt.
  * @version 1.1 Listener entfernt. Getter und Setter entfernt.
  * @version 1.0 View implementiert.
+ * @author Andreas Kann
  * @author Adrian Fromm
  * @author Julian Klein
  * @author Konstantin Frei
@@ -149,7 +150,6 @@ public class V_TrainingLoeschen extends SimpleMasterWindow {
 		
 	}
 
-	/* Implementierung der ActionListener */
 	
 	public static void main(String [] args) {
 		try {
@@ -160,7 +160,7 @@ public class V_TrainingLoeschen extends SimpleMasterWindow {
 		new V_TrainingLoeschen();
 	}
 	
-	// Getter und Setter
+	// Getter und Setter ----------------------------------------------------------------------------------
 	
 	public String getText_pnl_trainingsID(){
 		return pnl_trainingsID.getText();
@@ -217,12 +217,12 @@ public class V_TrainingLoeschen extends SimpleMasterWindow {
 		this.pnl_bemerkungen.setText(text);
 	}
 	
-	// ActionListener
+	// ActionListener -----------------------------------------------------------------------------------
 	
 	private class TrainingSuchen implements ActionListener {
 		public void actionPerformed(ActionEvent arg0) {
 			
-			//implementation der Suchfunktion
+			//Suchfunktion: durchsucht die Liste nach einem Objekt mit der eingebenen ID
 			
 			try {
 				if(getText_pnl_trainingsID().equals("")) {
@@ -237,7 +237,6 @@ public class V_TrainingLoeschen extends SimpleMasterWindow {
 				
 			}
 			catch ( NoSuchElementException e){
-				System.out.println("Kein Training gefunden");
 				popup.showMessageDialog(null, "Es wurde kein Training mit dieser ID gefunden");
 				training = null;
 				
@@ -259,23 +258,24 @@ public class V_TrainingLoeschen extends SimpleMasterWindow {
 	
 	private class TrainingLoeschen implements ActionListener {
 		public void actionPerformed(ActionEvent arg0) {
-			System.out.println("Training löschen");
-			
 			if (training != null)
 			{
-			
-				M_Training.getInterneListe().remove(training);
+				int input = JOptionPane.showConfirmDialog(null, "Wollen Sie das Training wirklich löschen ?");
 				
-				setText_pnl_trainingsID("");
-				setText_pnl_firmenname("");
-				setText_pnl_produkt("");
-				setText_pnl_startdatum("");
-				setText_pnl_enddatum("");
-				setText_pnl_tage("");
-				setText_pnl_trainer("");
-				setText_pnl_ort("");
-				setText_pnl_bemerkungen("");
-				training = null;
+				if (input == 0){
+					M_Training.getInterneListe().remove(training);
+					
+					setText_pnl_trainingsID("");
+					setText_pnl_firmenname("");
+					setText_pnl_produkt("");
+					setText_pnl_startdatum("");
+					setText_pnl_enddatum("");
+					setText_pnl_tage("");
+					setText_pnl_trainer("");
+					setText_pnl_ort("");
+					setText_pnl_bemerkungen("");
+					training = null;
+				}
 			}
 			else {
 				popup.showMessageDialog(null, "Bitte wählen Sie vorher ein Training aus");
