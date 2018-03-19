@@ -243,14 +243,11 @@ public class V_TrainingLoeschen extends JFrame {
 	private class TrainingLoeschen implements ActionListener {
 		public void actionPerformed(ActionEvent arg0) {
 			System.out.println("Training löschen");
+			
 			if (training != null)
 			{
-				for (Iterator<M_Training> iter = M_Training.getInterneListe().listIterator(); iter.hasNext(); ) {
-				    training = iter.next();
-				    
-				        iter.remove();
-				    
-				}
+			
+				M_Training.getInterneListe().remove(training);
 				
 				setText_pnl_trainingsId("");
 				setText_pnl_firmenname("");
