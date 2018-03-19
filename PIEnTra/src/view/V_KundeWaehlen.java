@@ -22,7 +22,7 @@ import utils.SimpleTextPanel;
  * @version 1.4 Erbt nun von Superklasse {@link SimpleMasterWindow}.
  * @version 1.3 SimpleSwitchFrame implementiert.
  * @version 1.2 Listener hinzugefügt.
- * @version 1.1 Listener entfernt. Getter und Setter entfernt.
+ * @version 1.1 Getter und Setter entfernt.
  * @version 1.0 View implementiert. 
  * @author Adrian Fromm
  * @author Julian Klein
