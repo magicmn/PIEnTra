@@ -33,8 +33,14 @@ public class M_Person{
 
 	@Override
 	public String toString() {
+		if(getNachname().equals("")) {
+			return getVorname()+"";
+		}
+		else {
 
-		return ""+getVorname()+", "+getNachname();
+			return ""+getVorname()+", "+getNachname();
+		}
+
 	}
 	
 

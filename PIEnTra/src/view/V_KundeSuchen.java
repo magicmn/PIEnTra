@@ -1,123 +1,152 @@
-/**
- * Aktuelle Version: 1.2 
- * Authoren: Julian, Adrian, Andreas, Konstantin
- * 
- * Changelog:
- * 1.0 	
- * 		-View erstellt
- * 1.1
- * 		-Get / Set hinzugefügt
- * 1.2
- * 		-ActionListener hinzugefügt!
- **/
-
-
 package view;
 
-import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.ComponentEvent;
-import java.awt.event.ComponentListener;
 import java.util.NoSuchElementException;
 
 import javax.swing.JButton;
-import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
-import javax.swing.JTextField;
-import javax.swing.border.EmptyBorder;
+import javax.swing.UIManager;
+import javax.swing.UnsupportedLookAndFeelException;
 
+import controller.C_KundeVerwalten;
 import model.M_Kunde;
-import utils.SimpleButtonPanel;
+import utils.SimpleMasterWindow;
 import utils.SimpleSearch;
 import utils.SimpleTextPanel;
 
-public class V_KundeSuchen extends JFrame {
+/**
+ * View von TrainingKonfigurieren.
+ * @version 1.4 Erbt nun von Superklasse {@link SimpleMasterWindow}.
+ * @version 1.3 SimpleSwitchFrame implementiert.
+ * @version 1.2 Listener hinzugefügt.
+ * @version 1.1 Listener entfernt. Getter und Setter entfernt.
+ * @version 1.0 View implementiert. 
+ * @author Adrian Fromm
+ * @author Julian Klein
+ * @author Konstantin Frei
+ * @see {@link controller.C_Hauptmenue};
+ */
+public class V_KundeSuchen extends SimpleMasterWindow {
+	private static final long serialVersionUID = -6381551589496678636L;
 	
-	private JPanel pnl_center;
+	/* Deklaration und Initailiserung von verschiedenen Variablen **/
+	
+	/** 
+	 * Standard Größe des Fensters.
+	 * @see SimpleMasterWindow#initFrame(Dimension defaultSize, Dimension minSize)
+	 * */
+	public static Dimension defaultSize = new Dimension(400, 180);
+	/** 
+	 * Minimale Größe des Fensters.
+	 * @see SimpleMasterWindow#initFrame(Dimension defaultSize, Dimension minSize)
+	 * */
+	private static Dimension minSize = new Dimension(400, 180);
+	/**
+	 * Text der in der Naviagtionsleiste ausgegebn wird.
+	 * @see SimpleMasterWindow#initSouth(String navigationText)
+	 */
+	private static String navigationText = "";
+	
 	private SimpleTextPanel pnl_kundenID = new SimpleTextPanel("Kunden-ID:");
 	private SimpleTextPanel pnl_firmenname = new SimpleTextPanel("Firmenname:");
 	
-	private JPanel pnl_south;
-	private JButton btn_kundesuchen = new JButton("Kunde suchen");
-	private JButton btn_abbrechen = new JButton("Abbrechen");
-	private JTextField txt_navigation;
+	private JButton btn_kundeSuchen = new JButton("Kunde suchen");
+	private JButton btn_abbrechen = new JButton("Abrechen");
 	
 	private M_Kunde kunde;
 	
+	/* Konstruktor und Methoden die vom Konstruktor aufgerufen werden. */
+	
+	/**
+	 * Konstruktor der View Hauptmenue.
+	 * Übergibt an die Superklasse die standard und minimal Größe, sowie aktuelle Pfadangaben der Navigationsleiste.
+	 * Initialisiere dann den Content und lösche ein überflüssiges Element aus der im Hauptmenu nicht benutzten Menuleiste.
+	 * Zuletzt werden die Listener initialisiert.
+	 */
 	public V_KundeSuchen() {
-		initView();
+		super(
+			defaultSize,
+			minSize,
+			navigationText
+		);
+		initContent();
+		initMenu();
+		initListener();
 		resizeGUI();
 		this.setVisible(true);
 	}
 
-	private void initView() {
-		this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-		this.setTitle("PIEnTra p1.00");
-		this.setSize(400,150); // Optimale Größe die beim Starten geladen wird.
-		this.setMinimumSize(new Dimension(400, 150)); // Um zu verhindern, dass der DAU sich wundert warum das Fenster auf einmal "weg" ist.
-		this.setLayout(new BorderLayout());
-		this.setLocationRelativeTo(null); // Zentriert Frame in der Mitte des Bildschirms.
-		this.addComponentListener(new ResizeListener());  // Fügt Listener für Frame veränderungen hinzu.
-		
-		pnl_center = new JPanel(new GridLayout(2, 1, 2 ,2));
-		pnl_center.add(pnl_kundenID);
-		pnl_center.add(pnl_firmenname);
+	/**
+	 * Initialisiere den Inhalt des Centers.
+	 */
+	private void initContent() {
+		JPanel pnl_content = new JPanel();
+		pnl_content.setLayout(new GridLayout(2, 1));
+		pnl_content.setAlignmentY(LEFT_ALIGNMENT);
+		pnl_content.add(pnl_kundenID);
+		pnl_content.add(pnl_firmenname);
+		super.getPnl_center().add(pnl_content);
+	}
 	
-		this.add(BorderLayout.CENTER, pnl_center);
-		
-		JPanel pnl_south = new JPanel(new GridLayout(1, 4, 10, 0));
-		pnl_south.setBorder(new EmptyBorder(10,10,10,10));
-		pnl_south.add(btn_kundesuchen);
-		pnl_south.add(btn_abbrechen);
-		this.add(BorderLayout.SOUTH, pnl_south);
-		
-		btn_kundesuchen.addActionListener(new KundeSuchen());
+	/**
+	 * Initiailisert die Menu Buttons
+	 */
+	private void initMenu() {
+		getPnl_menu().add(btn_kundeSuchen);
+		getPnl_menu().add(btn_abbrechen);
+	}
+	
+	/**
+	 * Initialisiert ActionListener
+	 */
+	private void initListener() {
+		btn_kundeSuchen.addActionListener(new KundeSuchen());
 		btn_abbrechen.addActionListener(new Abbrechen());
-	
 	}
 	
-	/** Enthält variable Gößen **/
-	private void resizeGUI() {
-		pnl_kundenID.setTxtField_Size(this.getWidth() - 260);
-		pnl_firmenname.setTxtField_Size(this.getWidth() -140 );
+	protected void resizeGUI() {
+		int maxWidthTextBox = this.getWidth() - SimpleTextPanel.getLabelWidth() - (getPadding() * 2) - 25;
+		int optimalButtonWidth = (int) super.getPnl_menu().getWidth() - 25;
+		pnl_kundenID.setTextFieldWidth(maxWidthTextBox / 2);
+		pnl_firmenname.setTextFieldWidth(maxWidthTextBox);
+		btn_kundeSuchen.setPreferredSize(new Dimension(optimalButtonWidth / 2 , btn_kundeSuchen.getPreferredSize().height));
+		btn_abbrechen.setPreferredSize(new Dimension(optimalButtonWidth / 2, btn_kundeSuchen.getPreferredSize().height));
 	}
+
+	/* Implementierung der ActionListener */
 	
-	private class ResizeListener implements ComponentListener {
-		public void componentResized(ComponentEvent arg0) {
-			resizeGUI();
+	public static void main(String [] args) {
+		try {
+			UIManager.setLookAndFeel("com.sun.java.swing.plaf.windows.WindowsLookAndFeel");
+		} catch (ClassNotFoundException | InstantiationException | IllegalAccessException | UnsupportedLookAndFeelException e) {
+			e.printStackTrace();
 		}
-		public void componentHidden(ComponentEvent arg0) {}
-		public void componentMoved(ComponentEvent arg0) {}
-		public void componentShown(ComponentEvent arg0) {}
+		new V_KundeSuchen();
 	}
 	
-	// Get and Set
+	// Getter und Setter
 	
 	public String getText_pnl_kundenID(){
-		return pnl_kundenID.getString();
+		return pnl_kundenID.getText();
 	}
 	public String getText_pnl_firmenname(){
-		return pnl_firmenname.getString();
+		return pnl_firmenname.getText();
 	}
-	
-	//-----------------------------------------------
-	
 	public void setText_pnl_kundenID(String text){
-		this.pnl_kundenID.setString(text);
+		this.pnl_kundenID.setText(text);
 	}
 	public void setText_pnl_firmenname(String text){
-		this.pnl_firmenname.setString(text);
+		this.pnl_firmenname.setText(text);
 	}
-	
 	public JButton txt(){
-		return btn_kundesuchen;
+		return btn_kundeSuchen;
 	}
+	// ActionListener
 	
-	//Action Listener
-
 	private class KundeSuchen implements ActionListener {
 		public void actionPerformed(ActionEvent arg0) {
 			
@@ -125,7 +154,7 @@ public class V_KundeSuchen extends JFrame {
 			
 			try {
 				if(!getText_pnl_firmenname().equals("") && !getText_pnl_kundenID().equals("")) {
-					System.out.println("Bitte nur ein Feld füllenn ");		
+					System.out.println("Bitte nur ein Feld aussfüllen");		
 					kunde = null;
 				}
 				else if(getText_pnl_firmenname().equals("") && getText_pnl_kundenID().equals("")) {
@@ -141,13 +170,16 @@ public class V_KundeSuchen extends JFrame {
 				
 			}
 			catch ( NoSuchElementException e){
-				System.out.println("Kein Kunde gefunden");
+				JOptionPane popup = new JOptionPane();
+				popup.showMessageDialog(null, "Es wurde kein Kunde gefunden");
 				kunde = null;
 				
 			}
 			finally {
 				if(kunde!=null) {
-					System.out.println(kunde);
+					C_KundeVerwalten.getInstance().setKunde(kunde);
+					C_KundeVerwalten.getInstance().felderFuellen();
+					dispose();
 				}
 			}	
 		}
@@ -165,5 +197,4 @@ public class V_KundeSuchen extends JFrame {
 	public void setKunde(M_Kunde kunde) {
 		this.kunde = kunde;
 	}
-	
 }

@@ -99,6 +99,7 @@ public class Testfaelle{
 		trainer5 = new M_Trainer("Heidi", "Kluhm", wwp);
 		trainer6 = new M_Trainer("Swanja", "Ikeah", wwp);
 		
+		
 		kunde1 = new M_Kunde("Aeron Pumpen AG", "Pharmaindustrie", "info@aeronpump-it.de", "+49 61466939", new M_Adresse("Rainer-Kausing-Straße 4", "Hessen", "Hochheim/Main", "65239"), new M_Person("Heinrich", "Klaist"));
 		kunde2 = new M_Kunde("Agosini", "Edelmetalverarbeitung", "info@agosini.de", "+49 7231 9611", new M_Adresse("Kanzlereistr. 17","baden-Würtenberg", "Pforzheim", "75175"), new M_Person("Maria", "Jung"));
 		kunde3 = new M_Kunde("ETONGRUPPE", "Automobilzulieferer", "info@etongruppe.com", "+49 7771 8191", new M_Adresse("Hardterring 8", "Baden-Würtenberg", "Stockach", "78333"), new M_Person("Dietmar", "Bohnlen"));

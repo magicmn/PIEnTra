@@ -1,15 +1,16 @@
 /**
- * Aktuelle Version: 1.2
- * Authoren: Julian (1.0), Adrian (1.1),Konstantin(1.2)
+ * Aktuelle Version: 1.3  
+ * Authoren: Julian (1.0), Adrian (1.1) Konstantin (1.2, 1.3)
  * 
  * Changelog:
- * 1.0 	
- * 		-Controller erstellt
- * 1.1
- * 		-ActionListener hinzugefügt!
+ * 1.3
+ * 		-Singelton implementiert
  * 1.2
  * 		-ActionListener wieder entfernt!
- * 		-Singleton implementiert
+ * 1.1
+ * 		-ActionListener hinzugefügt!
+ * 1.0 	
+ * 		-Controller erstellt
  **/
 
 package controller;
