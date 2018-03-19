@@ -24,50 +24,49 @@ import javax.swing.text.MaskFormatter;
  */
 public class SimpleFormatter {
 
-public static AbstractFormatter getPLZFormat() {
-	AbstractFormatter formatter = null;
-	try {
-		 formatter = new MaskFormatter("######");
-	} catch (ParseException e) {
-		
-		e.printStackTrace();
-	}
-		
+	public static AbstractFormatter getPLZFormat() {
+		AbstractFormatter formatter = null;
+		try {
+			formatter = new MaskFormatter("######");
+		} catch (ParseException e) {
 
-	
-	return formatter;
-	
-}
-public static AbstractFormatter getRufnummerFormat() {
-	AbstractFormatter formatter = null;
-	try {
-		 formatter = new MaskFormatter("+############");
-	
-	} catch (ParseException e) {
-		
-		e.printStackTrace();
-	}
-		
-	((MaskFormatter) formatter).setValidCharacters("0123456789-");
-	return formatter;
-	
-}
-public static AbstractFormatter getDatumFormat() {
-	AbstractFormatter formatter = null;
-	SimpleDateFormat format=null;
-	format = new SimpleDateFormat("dd.MM.yyyy");
-	
-	
-		
-		 formatter = new DateFormatter(format);
-		 ((DateFormatter) formatter).setAllowsInvalid(false);
-		 
+			e.printStackTrace();
+		}
 
-		
-	
-	return formatter;
-	
-}
+
+
+		return formatter;
+
+	}
+	public static AbstractFormatter getRufnummerFormat() {
+		AbstractFormatter formatter = null;
+		try {
+			formatter = new MaskFormatter("+############");
+
+		} catch (ParseException e) {
+
+			e.printStackTrace();
+		}
+
+		((MaskFormatter) formatter).setValidCharacters("0123456789-");
+		return formatter;
+
+	}
+	public static AbstractFormatter getDatumFormat() {
+		AbstractFormatter formatter = null;
+		SimpleDateFormat format=null;
+		format = new SimpleDateFormat("dd.MM.yyyy");
+
+
+
+		formatter = new DateFormatter(format);
+
+
+
+
+		return formatter;
+
+	}
 
 
 }
