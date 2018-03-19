@@ -48,5 +48,8 @@ public class SimpleTextPanel extends JPanel {
 	public void setText(String text) {
 		txt.setText(text);
 	}
+	public JFormattedTextField getTextPanel() {
+		return txt;
+	}
 
 }
