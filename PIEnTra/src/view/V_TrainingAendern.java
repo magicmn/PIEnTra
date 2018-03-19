@@ -4,6 +4,8 @@ import java.awt.Dimension;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.FocusEvent;
+import java.awt.event.FocusListener;
 import java.util.NoSuchElementException;
 
 import javax.swing.JButton;
@@ -11,9 +13,12 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
+import javax.swing.event.CaretEvent;
+import javax.swing.event.CaretListener;
 
 import controller.C_Hauptmenue;
 import model.M_Training;
+import utils.SimpleDatumBerechnen;
 import utils.SimpleMasterWindow;
 import utils.SimpleSearch;
 import utils.SimpleSwitchFrame;
@@ -23,8 +28,8 @@ import utils.SimpleTextPanel;
  * View von TrainingAendern.
  * @version 1.4 Erbt nun von Superklasse {@link SimpleMasterWindow}.
  * @version 1.3 SimpleSwitchFrame implementiert.
- * @version 1.2 Listener aus Controller entfernt und in View implementiert.
- * @version 1.1 Getter und Setter hinzugefügt.
+ * @version 1.2 Listener hinzugefügt.
+ * @version 1.1 Listener entfernt. Getter und Setter entfernt.
  * @version 1.0 View implementiert.
  * @author Adrian Fromm
  * @author Jannik Stark
@@ -50,7 +55,7 @@ public class V_TrainingAendern extends SimpleMasterWindow {
 	 * Text der in der Naviagtionsleiste ausgegebn wird.
 	 * @see SimpleMasterWindow#initSouth(String navigationText)
 	 */
-	private static String navigationText = "Training konfigurieren";
+	private static String navigationText = "Training ändern";
 	
 	private SimpleTextPanel pnl_trainingsID = new SimpleTextPanel("Trainings-ID:");
 	private SimpleTextPanel pnl_firmenname = new SimpleTextPanel("Firmenname:");
@@ -100,6 +105,12 @@ public class V_TrainingAendern extends SimpleMasterWindow {
 		JPanel pnl_content = new JPanel();
 		pnl_content.setLayout(new GridLayout(10, 1));
 		pnl_content.setAlignmentY(LEFT_ALIGNMENT);
+		pnl_firmenname.setFocusable(false);
+		pnl_ansprechpartner.setFocusable(false);
+		pnl_produktbeschreibung.setFocusable(false);
+		pnl_trainer.setFocusable(false);
+		pnl_ort.setFocusable(false);
+		pnl_bemerkungen.setFocusable(false);
 		pnl_content.add(pnl_trainingsID);
 		pnl_content.add(pnl_firmenname);
 		pnl_content.add(pnl_ansprechpartner);
@@ -117,11 +128,11 @@ public class V_TrainingAendern extends SimpleMasterWindow {
 	 * Initiailisert die Menu Buttons
 	 */
 	private void initMenu() {
+		btn_trainingAktualisieren.setEnabled(false);
 		getPnl_menu().add(btn_trainingSuchen);
 		getPnl_menu().add(btn_ressourcenAendern);
 		getPnl_menu().add(btn_trainingAktualisieren);
 		getPnl_menu().add(btn_zurueck);
-		
 	}
 	
 	/**
@@ -132,6 +143,12 @@ public class V_TrainingAendern extends SimpleMasterWindow {
 		btn_ressourcenAendern.addActionListener(new RessourceAendern());
 		btn_trainingAktualisieren.addActionListener(new TrainingAktualisieren());
 		btn_zurueck.addActionListener(new Zurueck());
+		pnl_enddatum.getTextPanel().addFocusListener(new TageBerechnen());
+		pnl_tage.getTextPanel().addFocusListener(new EnddatumBerechnen());
+		pnl_trainingsID.getTextPanel().addCaretListener(new CheckInput());
+		pnl_startdatum.getTextPanel().addCaretListener(new CheckInput());
+		pnl_enddatum.getTextPanel().addCaretListener(new CheckInput());
+		pnl_tage.getTextPanel().addCaretListener(new CheckInput());
 	}
 	
 	protected void resizeGUI() {
@@ -270,13 +287,35 @@ public class V_TrainingAendern extends SimpleMasterWindow {
 	}
 	private class TrainingAktualisieren implements ActionListener {
 		public void actionPerformed(ActionEvent arg0) {
-			System.out.println("Training aktualisieren!");
+			
 		}
 	}
 
 	private class Zurueck implements ActionListener {
 		public void actionPerformed(ActionEvent arg0) {
 			SimpleSwitchFrame.switchFrame(thisView, C_Hauptmenue.getInstance(), C_Hauptmenue.getInstance().getView());
+		}
+	}
+	
+	private class TageBerechnen implements FocusListener {
+		public void focusGained(FocusEvent arg0) {}
+		public void focusLost(FocusEvent arg0) {
+			setText_pnl_tage((SimpleDatumBerechnen.datumBerechnen(getText_pnl_startdatum(), getText_pnl_enddatum()) + ""));
+		}
+	}
+	
+	private class EnddatumBerechnen implements FocusListener {
+		public void focusGained(FocusEvent arg0) {}
+		public void focusLost(FocusEvent arg0) {
+			setText_pnl_enddatum(SimpleDatumBerechnen.datumBerechnen(getText_pnl_startdatum(), Integer.parseInt(getText_pnl_tage())) + "");
+		}
+	}
+	
+	private class CheckInput implements CaretListener {
+		public void caretUpdate(CaretEvent arg0) {
+			if (!getText_pnl_trainingsID().equals("") && !getText_pnl_startdatum().equals("") && !getText_pnl_enddatum().equals("") && !getText_pnl_tage().equals("")) {
+				btn_trainingAktualisieren.setEnabled(true);
+			}
 		}
 	}
 }
