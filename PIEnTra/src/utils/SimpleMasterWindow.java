@@ -38,6 +38,7 @@ public abstract class SimpleMasterWindow extends JFrame {
 	 * @param navigationText Text des unteren Textfeldes das den aktuellen Pfad der Navigation anzeigt. Wird weitergeben an {@link #initSouth}.
 	 */
 	public SimpleMasterWindow(Dimension defaultSize, Dimension minSize, String navigationText) {
+		
 		initFrame(defaultSize, minSize);
 		initCenter();
 		initSouth(navigationText);

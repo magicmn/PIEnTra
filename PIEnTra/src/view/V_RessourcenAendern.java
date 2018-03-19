@@ -47,6 +47,7 @@ public class V_RessourcenAendern extends JFrame {
 	
 	public V_RessourcenAendern() {
 		init();
+		this.setVisible(true);
 	}
 	public void init(){setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	

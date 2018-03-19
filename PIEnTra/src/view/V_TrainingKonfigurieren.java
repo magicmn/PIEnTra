@@ -86,6 +86,7 @@ public class V_TrainingKonfigurieren extends SimpleMasterWindow {
 		initMenu();
 		initListener();
 		resizeGUI();
+		this.setVisible(true);
 	}
 
 	/**

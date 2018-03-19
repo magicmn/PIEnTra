@@ -82,6 +82,7 @@ public class V_ProduktDefinieren extends SimpleMasterWindow {
 		initMenu();
 		initListener();
 		resizeGUI();
+		this.setVisible(true);
 	}
 
 	/**

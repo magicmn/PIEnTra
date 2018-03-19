@@ -89,6 +89,7 @@ public class V_KundeVerwalten extends SimpleMasterWindow {
 		initMenu();
 		initListener();
 		resizeGUI();
+		this.setVisible(true);
 	}
 
 	/**

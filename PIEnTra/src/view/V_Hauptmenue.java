@@ -80,6 +80,7 @@ public class V_Hauptmenue extends SimpleMasterWindow {
 		initContent();
 		initMenu();
 		initListener();
+		this.setVisible(true);
 	}
 
 	/**

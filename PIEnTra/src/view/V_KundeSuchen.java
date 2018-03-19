@@ -77,6 +77,7 @@ public class V_KundeSuchen extends SimpleMasterWindow {
 		initMenu();
 		initListener();
 		resizeGUI();
+		this.setVisible(true);
 	}
 
 	/**

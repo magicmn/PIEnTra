@@ -85,6 +85,7 @@ public class V_TrainingAendern extends SimpleMasterWindow {
 		initMenu();
 		initListener();
 		resizeGUI();
+		this.setVisible(true);
 	}
 
 	/**

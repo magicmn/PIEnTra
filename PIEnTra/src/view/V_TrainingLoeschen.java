@@ -90,6 +90,7 @@ public class V_TrainingLoeschen extends SimpleMasterWindow {
 		initMenu();
 		initListener();
 		resizeGUI();
+		this.setVisible(true);
 	}
 
 	/**

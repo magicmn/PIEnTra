@@ -87,6 +87,7 @@ public class V_KundeWaehlen extends SimpleMasterWindow {
 		initMenu();
 		initListener();
 		resizeGUI();
+		this.setVisible(true);
 	}
 
 	/**
