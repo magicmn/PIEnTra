@@ -51,5 +51,9 @@ public class SimpleTextPanel extends JPanel {
 	public JFormattedTextField getTextPanel() {
 		return txt;
 	}
+	
+	public void setEditable(boolean enable) {
+		txt.setEditable(enable);
+	}
 
 }
