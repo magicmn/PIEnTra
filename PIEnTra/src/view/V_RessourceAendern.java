@@ -4,6 +4,7 @@ import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.GridLayout;
+import java.awt.ScrollPane;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
@@ -18,11 +19,16 @@ import javax.swing.JTextArea;
 import javax.swing.ScrollPaneConstants;
 import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
+import javax.swing.border.Border;
 import javax.swing.border.EmptyBorder;
 
+import model.M_Adresse;
 import model.M_Ort;
+import model.M_Person;
 import model.M_Produkt;
 import model.M_Trainer;
+import model.M_Training;
+import controller.C_KundeSuchen;
 import controller.C_TrainingKonfigurieren;
 import testdaten.Test_main;
 import utils.SimpleDropdownPanel;
@@ -42,7 +48,7 @@ import utils.SimpleTextPanel;
  * @author Julian Klein
  * @see {@link controller.C_Hauptmenue};
  */
-public class V_RessourceWaehlen extends SimpleMasterWindow {
+public class V_RessourceAendern extends SimpleMasterWindow {
 	private static final long serialVersionUID = -6381551589496678636L;
 	
 	/* Deklaration und Initailiserung von verschiedenen Variablen **/
@@ -51,7 +57,7 @@ public class V_RessourceWaehlen extends SimpleMasterWindow {
 	 * Standard Größe des Fensters.
 	 * @see SimpleMasterWindow#initFrame(Dimension defaultSize, Dimension minSize)
 	 * */
-	public static Dimension defaultSize = new Dimension(720, 240);
+	public static Dimension defaultSize = new Dimension(700, 235);
 	/** 
 	 * Minimale Größe des Fensters.
 	 * @see SimpleMasterWindow#initFrame(Dimension defaultSize, Dimension minSize)
@@ -75,10 +81,10 @@ public class V_RessourceWaehlen extends SimpleMasterWindow {
 	private JTextArea textarea = new JTextArea();
 	private JScrollPane area = new JScrollPane(textarea);
 	
-	private JButton btn_kundeSuchen = new JButton("Ressource wählen");
+	private JButton btn_kundeSuchen = new JButton("Ressource ändern");
 	private JButton btn_zurueck = new JButton("Zurück zu Training konfigurieren");
 	
-	private V_RessourceWaehlen thisView;
+	private V_RessourceAendern thisView;
 	
 	/* Konstruktor und Methoden die vom Konstruktor aufgerufen werden. */
 	
@@ -88,7 +94,7 @@ public class V_RessourceWaehlen extends SimpleMasterWindow {
 	 * Initialisiere dann den Content und lösche ein überflüssiges Element aus der im Hauptmenu nicht benutzten Menuleiste.
 	 * Zuletzt werden die Listener initialisiert.
 	 */
-	public V_RessourceWaehlen() {
+	public V_RessourceAendern() {
 		super(
 			defaultSize,
 			minSize,
@@ -107,7 +113,6 @@ public class V_RessourceWaehlen extends SimpleMasterWindow {
 	 * Initialisiere den Inhalt des Centers.
 	 */
 	private void initContent() {
-				
 		area.setPreferredSize(new Dimension(200, 80));
 		area.setBorder(BorderFactory.createLineBorder(Color.gray));
 		area.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
@@ -118,10 +123,6 @@ public class V_RessourceWaehlen extends SimpleMasterWindow {
 		pnl_produktbez = new SimpleDropdownPanel("Produktbezeichnung:", arrayList_produktbezeichnung);
 		pnl_trainer = new SimpleDropdownPanel("Trainer:", arrayList_trainer);
 		pnl_ort = new SimpleDropdownPanel("Ort:", arrayList_ort);
-		
-		pnl_produktbez.getComboBox().setSelectedIndex(-1);
-		pnl_trainer.getComboBox().setSelectedIndex(-1);
-		pnl_ort.getComboBox().setSelectedIndex(-1);
 		
 		GridLayout grid = new GridLayout(3,1);
 		grid.setVgap(5);
@@ -135,6 +136,7 @@ public class V_RessourceWaehlen extends SimpleMasterWindow {
 		pnl_content_left.add(pnl_produktbez);
 		pnl_content_left.add(pnl_trainer);
 		pnl_content_left.add(pnl_ort);
+		//area.setAutoscrolls(true);
 		
 		pnl_content_right.setLayout(new BoxLayout(pnl_content_right, BoxLayout.PAGE_AXIS));
 		pnl_content_right.add(lbl_produktb);
@@ -155,7 +157,8 @@ public class V_RessourceWaehlen extends SimpleMasterWindow {
 	 */
 	private void initMenu() {
 		getPnl_menu().add(btn_kundeSuchen);
-		getPnl_menu().add(btn_zurueck);	
+		getPnl_menu().add(btn_zurueck);
+		
 	}
 	
 	/**
@@ -194,7 +197,7 @@ public class V_RessourceWaehlen extends SimpleMasterWindow {
 			e.printStackTrace();
 		}
 		new Test_main();
-		new V_RessourceWaehlen();
+		new V_RessourceAendern();
 	}
 	
 	// Getter und Setter
@@ -227,6 +230,11 @@ public class V_RessourceWaehlen extends SimpleMasterWindow {
 			//SimpleSwitchFrame.switchFrame(thisView, C_KundeSuchen.getInstance() , C_KundeSuchen.getInstance().getView());
 		}
 	}
+	private class KundeWaehlen implements ActionListener {
+		public void actionPerformed(ActionEvent arg0) {
+			System.out.println("Kunde wählen");
+		}
+	}
 	private class Zurueck implements ActionListener {
 		public void actionPerformed(ActionEvent arg0) {
 			System.out.println("Zurueck");
@@ -243,4 +251,5 @@ public class V_RessourceWaehlen extends SimpleMasterWindow {
 	    	
 	    }
 	}
+
 }

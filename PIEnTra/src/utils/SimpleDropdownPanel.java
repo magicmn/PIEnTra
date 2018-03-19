@@ -17,7 +17,7 @@ public class SimpleDropdownPanel extends JPanel {
 	static int labelWidth = 120;
 	JLabel lbl;
 	JFormattedTextField txt;
-	JComboBox box;
+	JComboBox<?> box;
 	
 	public SimpleDropdownPanel(String labelText) {
 		this.setLayout(new FlowLayout(FlowLayout.LEFT));
@@ -41,8 +41,8 @@ public class SimpleDropdownPanel extends JPanel {
 		this.setLayout(new FlowLayout(FlowLayout.LEFT));
 		lbl = new JLabel(labelText);
 		lbl.setPreferredSize(new Dimension(labelWidth, lbl.getPreferredSize().height));
-		//box.setModel(new DefaultComboBoxModel<>(test.toArray()));
-		box = new JComboBox(array.toArray());
+		//box.setModel(new DefaultComboBoxModel<>(array.toArray()));
+		box = new JComboBox<>(array.toArray());
 		this.add(lbl);
 		this.add(box);
 	}
@@ -66,7 +66,7 @@ public class SimpleDropdownPanel extends JPanel {
 	public void setText(String text) {
 		txt.setText(text);
 	}
-	public JComboBox getComboBox(){
+	public JComboBox<?> getComboBox(){
 		return box;
 	}
 }
