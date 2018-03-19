@@ -16,7 +16,7 @@ import controller.C_Hauptmenue;
 import utils.SimpleMasterWindow;
 import utils.SimpleSwitchFrame;
 import utils.SimpleTextPanel;
-// @TODO Julian Klein
+
 /**
  * View von TrainingKonfigurieren.
  * @version 1.4 Erbt nun von Superklasse {@link SimpleMasterWindow}.
