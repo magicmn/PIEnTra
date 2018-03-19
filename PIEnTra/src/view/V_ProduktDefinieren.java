@@ -1,6 +1,7 @@
 package view;
 
 import java.awt.Dimension;
+import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -92,7 +93,10 @@ public class V_ProduktDefinieren extends SimpleMasterWindow {
 		pnl_content.add(pnl_produktbezeichnung);
 		JPanel pnl_produktbeschreibung = new JPanel();
 		pnl_produktbeschreibung.setLayout(new BoxLayout(pnl_produktbeschreibung, BoxLayout.LINE_AXIS));
-		pnl_produktbeschreibung.add(lbl_produktbeschreibung);
+		JPanel pnl_produktbeschreibung_lbl = new JPanel(new GridLayout(1, 1));
+		lbl_produktbeschreibung.setVerticalAlignment(1);
+		pnl_produktbeschreibung_lbl.add(lbl_produktbeschreibung);
+		pnl_produktbeschreibung.add(pnl_produktbeschreibung_lbl);
 		pnl_produktbeschreibung.add(txt_produktbeschreibung);
 		pnl_content.add(pnl_produktbeschreibung);
 		
