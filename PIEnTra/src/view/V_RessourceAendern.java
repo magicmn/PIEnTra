@@ -29,6 +29,7 @@ import model.M_Produkt;
 import model.M_Trainer;
 import model.M_Training;
 import controller.C_KundeSuchen;
+import controller.C_TrainingAendern;
 import controller.C_TrainingKonfigurieren;
 import testdaten.Test_main;
 import utils.SimpleDropdownPanel;
@@ -82,7 +83,7 @@ public class V_RessourceAendern extends SimpleMasterWindow {
 	private JScrollPane area = new JScrollPane(textarea);
 	
 	private JButton btn_kundeSuchen = new JButton("Ressource ändern");
-	private JButton btn_zurueck = new JButton("Zurück zu Training konfigurieren");
+	private JButton btn_zurueck = new JButton("Zurück zu Training ändern");
 	
 	private V_RessourceAendern thisView;
 	
@@ -123,6 +124,10 @@ public class V_RessourceAendern extends SimpleMasterWindow {
 		pnl_produktbez = new SimpleDropdownPanel("Produktbezeichnung:", arrayList_produktbezeichnung);
 		pnl_trainer = new SimpleDropdownPanel("Trainer:", arrayList_trainer);
 		pnl_ort = new SimpleDropdownPanel("Ort:", arrayList_ort);
+		
+		pnl_produktbez.getComboBox().setSelectedIndex(-1);
+		pnl_trainer.getComboBox().setSelectedIndex(-1);
+		pnl_ort.getComboBox().setSelectedIndex(-1);
 		
 		GridLayout grid = new GridLayout(3,1);
 		grid.setVgap(5);
@@ -238,7 +243,7 @@ public class V_RessourceAendern extends SimpleMasterWindow {
 	private class Zurueck implements ActionListener {
 		public void actionPerformed(ActionEvent arg0) {
 			System.out.println("Zurueck");
-			SimpleSwitchFrame.switchFrame(thisView, C_TrainingKonfigurieren.getInstance(), C_TrainingKonfigurieren.getInstance().getView());
+			SimpleSwitchFrame.switchFrame(thisView, C_TrainingAendern.getInstance(), C_TrainingAendern.getInstance().getView());
 		}
 	}	
 	

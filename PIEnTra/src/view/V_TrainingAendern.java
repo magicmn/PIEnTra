@@ -17,6 +17,7 @@ import javax.swing.event.CaretEvent;
 import javax.swing.event.CaretListener;
 
 import controller.C_Hauptmenue;
+import controller.C_RessourceAendern;
 import model.M_Training;
 import utils.SimpleDatumBerechnen;
 import utils.SimpleMasterWindow;
@@ -221,7 +222,7 @@ public class V_TrainingAendern extends SimpleMasterWindow {
 		this.pnl_firmenname.setText(text);
 	}
 	public void setText_pnl_ansprechpartner(String text) {
-		this.pnl_ansprechpartner.setText(text);;
+		this.pnl_ansprechpartner.setText(text);
 	}
 	public void setText_pnl_produktbeschreibung(String text) {
 		this.pnl_produktbeschreibung.setText(text);
@@ -282,7 +283,7 @@ public class V_TrainingAendern extends SimpleMasterWindow {
 	}
 	private class RessourceAendern implements ActionListener {
 		public void actionPerformed(ActionEvent arg0) {
-		//@TODO	SimpleSwitchFrame.switchFrame(thisView, C_RessourceAendern.getInstance(), C_RessourceAendern.getInstance().getView());
+			SimpleSwitchFrame.switchFrame(thisView, C_RessourceAendern.getInstance(), C_RessourceAendern.getInstance().getView());
 		}
 	}
 	private class TrainingAktualisieren implements ActionListener {
