@@ -21,7 +21,10 @@ import utils.SimpleTextPanel;
 
 /**
  * View von TrainingKonfigurieren.
+<<<<<<< HEAD
  * @version 1.5 von mehreren controllern wiederverwendbar durch Konstruktorerweiterung
+=======
+>>>>>>> branch 'master' of https://github.com/magicmn/PIEnTra.git
  * @version 1.3 Erbt nun von Superklasse {@link SimpleMasterWindow}.
  * @version 1.1 Get und Set
  * @version 1.0 View implementiert. 
