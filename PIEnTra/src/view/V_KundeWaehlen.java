@@ -12,13 +12,17 @@ import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
 
 import controller.C_KundeSuchen;
+import controller.C_KundeVerwalten;
+import controller.C_KundeWaehlen;
 import controller.C_TrainingKonfigurieren;
+import model.M_Kunde;
 import utils.SimpleMasterWindow;
 import utils.SimpleSwitchFrame;
 import utils.SimpleTextPanel;
 
 /**
  * View von TrainingKonfigurieren.
+ * @version 1.5 Kundensuchfunktion implemetiert
  * @version 1.4 Erbt nun von Superklasse {@link SimpleMasterWindow}.
  * @version 1.3 SimpleSwitchFrame implementiert.
  * @version 1.2 Listener hinzugefügt.
@@ -67,6 +71,7 @@ public class V_KundeWaehlen extends SimpleMasterWindow {
 	private JButton btn_zurueck = new JButton("Zurück zu Training konfigurieren");
 	
 	private V_KundeWaehlen thisView;
+	private M_Kunde kunde;
 	
 	/* Konstruktor und Methoden die vom Konstruktor aufgerufen werden. */
 	
@@ -228,12 +233,18 @@ public class V_KundeWaehlen extends SimpleMasterWindow {
 	private class KundeSuchen implements ActionListener {
 		public void actionPerformed(ActionEvent arg0) {
 			System.out.println("Kunde suchen!");
-			C_KundeSuchen.getInstance();
-			//SimpleSwitchFrame.switchFrame(thisView, C_KundeSuchen.getInstance() , C_KundeSuchen.getInstance().getView());
+			C_KundeSuchen.getInstance(C_KundeWaehlen.getInstance()).getView();
+		//SimpleSwitchFrame.switchFrame(thisView, C_KundeSuchen.getInstance() , C_KundeSuchen.getInstance().getView());
 		}
 	}
 	private class KundeWaehlen implements ActionListener {
 		public void actionPerformed(ActionEvent arg0) {
+			if(kunde != null) {
+				C_TrainingKonfigurieren.getInstance().setKunde(kunde);
+				C_TrainingKonfigurieren.getInstance().felderFuellen();
+				dispose();
+				C_TrainingKonfigurieren.getInstance().getView().setVisible(true);;
+			}
 			System.out.println("Kunde wählen");
 		}
 	}
@@ -242,5 +253,14 @@ public class V_KundeWaehlen extends SimpleMasterWindow {
 			System.out.println("Zurueck");
 			SimpleSwitchFrame.switchFrame(thisView, C_TrainingKonfigurieren.getInstance(), C_TrainingKonfigurieren.getInstance().getView());
 		}
+	
 	}
+	public M_Kunde getKunde() {
+		return kunde;
+	}
+
+	public void setKunde(M_Kunde kunde) {
+		this.kunde = kunde;
+	}
+	
 }

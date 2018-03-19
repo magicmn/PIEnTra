@@ -4,6 +4,7 @@ import java.awt.Dimension;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.logging.SimpleFormatter;
 
 import javax.swing.JButton;
 import javax.swing.JPanel;
@@ -18,6 +19,7 @@ import utils.SimpleTextPanel;
 
 /**
  * View von TrainingKonfigurieren.
+ * @version 1.5 Kunden wählen implemetiert
  * @version 1.4 Erbt nun von Superklasse {@link SimpleMasterWindow}.
  * @version 1.3 SimpleSwitchFrame implementiert.
  * @version 1.2 Listener hinzugefügt.
@@ -53,8 +55,8 @@ public class V_TrainingKonfigurieren extends SimpleMasterWindow {
 	private SimpleTextPanel pnl_firmenname = new SimpleTextPanel("Firmenname:");
 	private SimpleTextPanel pnl_ansprechpartner = new SimpleTextPanel("Ansprechpartner:");
 	private SimpleTextPanel pnl_produktbeschreibung = new SimpleTextPanel("Produktbeschreibung:");
-	private SimpleTextPanel pnl_anfangsdatum = new SimpleTextPanel("Anfangsdatum:");
-	private SimpleTextPanel pnl_enddatum = new SimpleTextPanel("Enddatum:");
+	private SimpleTextPanel pnl_anfangsdatum = new SimpleTextPanel("Anfangsdatum:",utils.SimpleFormatter.getDatumFormat());
+	private SimpleTextPanel pnl_enddatum = new SimpleTextPanel("Enddatum:",utils.SimpleFormatter.getDatumFormat());
 	private SimpleTextPanel pnl_tage = new SimpleTextPanel("Tage:");
 	private SimpleTextPanel pnl_trainer = new SimpleTextPanel("Trainer:");
 	private SimpleTextPanel pnl_ort = new SimpleTextPanel("Ort:");

@@ -13,6 +13,7 @@ import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
 
 import controller.C_KundeVerwalten;
+import controller.C_KundeWaehlen;
 import model.M_Kunde;
 import utils.SimpleMasterWindow;
 import utils.SimpleSearch;
@@ -20,6 +21,7 @@ import utils.SimpleTextPanel;
 
 /**
  * View von TrainingKonfigurieren.
+ * @version 1.5 von mehreren controllern wiederverwendbar durch Konstruktorerweiterung
  * @version 1.4 Erbt nun von Superklasse {@link SimpleMasterWindow}.
  * @version 1.3 SimpleSwitchFrame implementiert.
  * @version 1.2 Listener hinzugefügt.
@@ -32,9 +34,9 @@ import utils.SimpleTextPanel;
  */
 public class V_KundeSuchen extends SimpleMasterWindow {
 	private static final long serialVersionUID = -6381551589496678636L;
-	
+
 	/* Deklaration und Initailiserung von verschiedenen Variablen **/
-	
+
 	/** 
 	 * Standard Größe des Fensters.
 	 * @see SimpleMasterWindow#initFrame(Dimension defaultSize, Dimension minSize)
@@ -50,35 +52,39 @@ public class V_KundeSuchen extends SimpleMasterWindow {
 	 * @see SimpleMasterWindow#initSouth(String navigationText)
 	 */
 	private static String navigationText = "";
-	
+
 	private SimpleTextPanel pnl_kundenID = new SimpleTextPanel("Kunden-ID:");
 	private SimpleTextPanel pnl_firmenname = new SimpleTextPanel("Firmenname:");
-	
+
 	private JButton btn_kundeSuchen = new JButton("Kunde suchen");
 	private JButton btn_abbrechen = new JButton("Abrechen");
-	
+
 	private M_Kunde kunde;
-	
+	private static Object controller;
+
 	/* Konstruktor und Methoden die vom Konstruktor aufgerufen werden. */
-	
+
 	/**
 	 * Konstruktor der View Hauptmenue.
 	 * Übergibt an die Superklasse die standard und minimal Größe, sowie aktuelle Pfadangaben der Navigationsleiste.
 	 * Initialisiere dann den Content und lösche ein überflüssiges Element aus der im Hauptmenu nicht benutzten Menuleiste.
 	 * Zuletzt werden die Listener initialisiert.
 	 */
-	public V_KundeSuchen() {
+	public V_KundeSuchen(Object controller) {
 		super(
-			defaultSize,
-			minSize,
-			navigationText
-		);
+				defaultSize,
+				minSize,
+				navigationText
+				);
 		initContent();
 		initMenu();
 		initListener();
 		resizeGUI();
+		this.controller = controller;
 		this.setVisible(true);
 	}
+
+	
 
 	/**
 	 * Initialisiere den Inhalt des Centers.
@@ -91,7 +97,7 @@ public class V_KundeSuchen extends SimpleMasterWindow {
 		pnl_content.add(pnl_firmenname);
 		super.getPnl_center().add(pnl_content);
 	}
-	
+
 	/**
 	 * Initiailisert die Menu Buttons
 	 */
@@ -99,7 +105,7 @@ public class V_KundeSuchen extends SimpleMasterWindow {
 		getPnl_menu().add(btn_kundeSuchen);
 		getPnl_menu().add(btn_abbrechen);
 	}
-	
+
 	/**
 	 * Initialisiert ActionListener
 	 */
@@ -107,7 +113,7 @@ public class V_KundeSuchen extends SimpleMasterWindow {
 		btn_kundeSuchen.addActionListener(new KundeSuchen());
 		btn_abbrechen.addActionListener(new Abbrechen());
 	}
-	
+
 	protected void resizeGUI() {
 		int maxWidthTextBox = this.getWidth() - SimpleTextPanel.getLabelWidth() - (getPadding() * 2) - 25;
 		int optimalButtonWidth = (int) super.getPnl_menu().getWidth() - 25;
@@ -118,18 +124,18 @@ public class V_KundeSuchen extends SimpleMasterWindow {
 	}
 
 	/* Implementierung der ActionListener */
-	
+
 	public static void main(String [] args) {
 		try {
 			UIManager.setLookAndFeel("com.sun.java.swing.plaf.windows.WindowsLookAndFeel");
 		} catch (ClassNotFoundException | InstantiationException | IllegalAccessException | UnsupportedLookAndFeelException e) {
 			e.printStackTrace();
 		}
-		new V_KundeSuchen();
+		new V_KundeSuchen(controller);
 	}
-	
+
 	// Getter und Setter
-	
+
 	public String getText_pnl_kundenID(){
 		return pnl_kundenID.getText();
 	}
@@ -146,12 +152,12 @@ public class V_KundeSuchen extends SimpleMasterWindow {
 		return btn_kundeSuchen;
 	}
 	// ActionListener
-	
+
 	private class KundeSuchen implements ActionListener {
 		public void actionPerformed(ActionEvent arg0) {
-			
+
 			//implementation der Suchfunktion
-			
+
 			try {
 				if(!getText_pnl_firmenname().equals("") && !getText_pnl_kundenID().equals("")) {
 					System.out.println("Bitte nur ein Feld aussfüllen");		
@@ -167,19 +173,26 @@ public class V_KundeSuchen extends SimpleMasterWindow {
 				else if(!getText_pnl_firmenname().equals("") && getText_pnl_kundenID().equals("")) {
 					kunde = SimpleSearch.kundeSuchen(getText_pnl_firmenname(), M_Kunde.getInterneListe());
 				}
-				
+
 			}
 			catch ( NoSuchElementException e){
 				JOptionPane popup = new JOptionPane();
 				popup.showMessageDialog(null, "Es wurde kein Kunde gefunden");
 				kunde = null;
-				
+
 			}
 			finally {
 				if(kunde!=null) {
-					C_KundeVerwalten.getInstance().setKunde(kunde);
-					C_KundeVerwalten.getInstance().felderFuellen();
-					dispose();
+					if(controller instanceof C_KundeVerwalten) {
+						C_KundeVerwalten.getInstance().setKunde(kunde);
+						C_KundeVerwalten.getInstance().felderFuellen();
+						dispose();
+					}
+					if(controller instanceof C_KundeWaehlen) {
+						C_KundeWaehlen.getInstance().setKunde(kunde);
+						C_KundeWaehlen.getInstance().felderFuellen();
+						dispose();
+					}
 				}
 			}	
 		}
@@ -190,7 +203,7 @@ public class V_KundeSuchen extends SimpleMasterWindow {
 			dispose();
 		}
 	}
-	
+
 	public M_Kunde getKunde() {
 		return kunde;
 	}

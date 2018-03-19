@@ -20,6 +20,7 @@ import utils.SimpleTextPanel;
 
 /**
  * View von TrainingKonfigurieren.
+ * @version 1.5 Kundensuchfunktion implementiert
  * @version 1.4 Erbt nun von Superklasse {@link SimpleMasterWindow}.
  * @version 1.3 SimpleSwitchFrame implementiert.
  * @version 1.2 Listener hinzugefügt.
@@ -64,9 +65,9 @@ public class V_KundeVerwalten extends SimpleMasterWindow {
 	private SimpleTextPanel pnl_stadt = new SimpleTextPanel("Stadt:");
 	
 	private JButton btn_kundeSuchen = new JButton("Kunde suchen");
-	private JButton btn_kundeAktualisieren = new JButton("Kunde wählen");
-	private JButton btn_kundeAnlegen = new JButton("Kunde suchen");
-	private JButton btn_zurueck = new JButton("Zurück zu Training konfigurieren");
+	private JButton btn_kundeAktualisieren = new JButton("Kunde aktualisieren");
+	private JButton btn_kundeAnlegen = new JButton("Kunde anlegen");
+	private JButton btn_zurueck = new JButton("Zurück zum Hauptmenu");
 	
 	private V_KundeVerwalten thisView;
 	
@@ -233,7 +234,7 @@ public class V_KundeVerwalten extends SimpleMasterWindow {
 	private class KundeSuchen implements ActionListener {
 		public void actionPerformed(ActionEvent arg0) {
 			System.out.println("Kunde suchen!");
-			C_KundeSuchen.getInstance().getView().setVisible(true);;
+			C_KundeSuchen.getInstance(C_KundeVerwalten.getInstance()).getView().setVisible(true);;
 		}
 	}
 	private class KundeAktualisieren implements ActionListener {
