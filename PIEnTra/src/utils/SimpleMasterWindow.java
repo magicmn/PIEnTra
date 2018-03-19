@@ -78,6 +78,7 @@ public abstract class SimpleMasterWindow extends JFrame {
 			pnl_south.setBorder(BorderFactory.createEmptyBorder(padding, padding, padding, padding));
 			pnl_menu = new JPanel();
 			pnl_menu.setLayout(new FlowLayout(FlowLayout.LEFT));
+			pnl_south.add(pnl_menu);
 			if (navigationText != "") {
 				pnl_navigationPath = new JPanel();
 				pnl_navigationPath.setLayout(new GridLayout(1, 1));
@@ -86,7 +87,7 @@ public abstract class SimpleMasterWindow extends JFrame {
 				pnl_navigationPath.add(txt_navigation);
 				pnl_south.add(pnl_navigationPath);
 			}
-			pnl_south.add(pnl_menu);
+
 			this.add(BorderLayout.SOUTH, pnl_south);
 	}
 	
