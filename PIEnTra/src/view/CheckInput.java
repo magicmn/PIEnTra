@@ -7,6 +7,8 @@ import javax.swing.event.CaretListener;
 
 /**
  * Nimmt 2 booleans entgegen und überprüft bei Änderung des Textes ob diese true sind. Wenn ja wird ein übergebener Button aktiviert.
+ * @author Konstantin
+ * @version 1.1
  * @author Julian Klein
  * @version 1.0
  */
@@ -26,6 +28,26 @@ public class CheckInput implements CaretListener {
 		if (bool1 == true && bool2 == true) {
 			buttonToEnable.setEnabled(true);
 		}
+		else {
+			buttonToEnable.setEnabled(false);
+		}
 	}
+
+	public Boolean getBool1() {
+		return bool1;
+	}
+
+	public void setBool1(Boolean bool1) {
+		this.bool1 = bool1;
+	}
+
+	public Boolean getBool2() {
+		return bool2;
+	}
+
+	public void setBool2(Boolean bool2) {
+		this.bool2 = bool2;
+	}
+	
 
 }

@@ -18,6 +18,7 @@ import javax.swing.event.CaretListener;
 
 import controller.C_Hauptmenue;
 import controller.C_RessourceAendern;
+import controller.C_TrainingAendern;
 import model.M_Training;
 import utils.SimpleDatumBerechnen;
 import utils.SimpleMasterWindow;
@@ -27,6 +28,7 @@ import utils.SimpleTextPanel;
 // @TODO Julian Klein
 /**
  * View von TrainingAendern.
+ * @version 1.5 noch stub
  * @version 1.4 Erbt nun von Superklasse {@link SimpleMasterWindow}.
  * @version 1.3 SimpleSwitchFrame implementiert.
  * @version 1.2 Listener hinzugefügt.
@@ -35,6 +37,7 @@ import utils.SimpleTextPanel;
  * @author Adrian Fromm
  * @author Jannik Stark
  * @author Julian Klein
+ * @author Konstantin
  * @see {@link controller.C_Hauptmenue};
  */
 public class V_TrainingAendern extends SimpleMasterWindow {
@@ -76,9 +79,10 @@ public class V_TrainingAendern extends SimpleMasterWindow {
 	
 	private V_TrainingAendern thisView;
 	private M_Training training;
-
-	public boolean dateCorrect = false;
-	public boolean trainingsIDCorrect = false;
+	private CheckInput moehrenhoerer;
+	private boolean dateCorrect = false;
+	private boolean trainingsIDCorrect = false;
+	
 	
 	/* Konstruktor und Methoden die vom Konstruktor aufgerufen werden. */
 	
@@ -109,12 +113,18 @@ public class V_TrainingAendern extends SimpleMasterWindow {
 		JPanel pnl_content = new JPanel();
 		pnl_content.setLayout(new GridLayout(10, 1));
 		pnl_content.setAlignmentY(LEFT_ALIGNMENT);
-		pnl_firmenname.setFocusable(false);
-		pnl_ansprechpartner.setFocusable(false);
-		pnl_produktbeschreibung.setFocusable(false);
-		pnl_trainer.setFocusable(false);
-		pnl_ort.setFocusable(false);
-		pnl_bemerkungen.setFocusable(false);
+//		pnl_firmenname.setFocusable(false);
+//		pnl_ansprechpartner.setFocusable(false);
+//		pnl_produktbeschreibung.setFocusable(false);
+//		pnl_trainer.setFocusable(false);
+//		pnl_ort.setFocusable(false);
+//		pnl_bemerkungen.setEnabled(false);
+		pnl_firmenname.getTextPanel().setEditable(false);
+		pnl_ansprechpartner.getTextPanel().setEditable(false);
+		pnl_produktbeschreibung.getTextPanel().setEditable(false);
+		pnl_trainer.getTextPanel().setEditable(false);
+		pnl_ort.getTextPanel().setEditable(false);
+		pnl_bemerkungen.getTextPanel().setEditable(false);
 		pnl_content.add(pnl_trainingsID);
 		pnl_content.add(pnl_firmenname);
 		pnl_content.add(pnl_ansprechpartner);
@@ -143,16 +153,19 @@ public class V_TrainingAendern extends SimpleMasterWindow {
 	 * Initialisiert ActionListener
 	 */
 	private void initListener() {
+		
 		btn_trainingSuchen.addActionListener(new TrainingSuchen());
 		btn_ressourcenAendern.addActionListener(new RessourceAendern());
 		btn_trainingAktualisieren.addActionListener(new TrainingAktualisieren());
 		btn_zurueck.addActionListener(new Zurueck());
 		pnl_enddatum.getTextPanel().addFocusListener(new TageBerechnen());
 		pnl_tage.getTextPanel().addFocusListener(new EnddatumBerechnen());
-		pnl_trainingsID.getTextPanel().addCaretListener(new CheckInput(trainingsIDCorrect, dateCorrect, btn_trainingAktualisieren));
-		pnl_startdatum.getTextPanel().addCaretListener(new CheckInput(trainingsIDCorrect, dateCorrect, btn_trainingAktualisieren));
-		pnl_enddatum.getTextPanel().addCaretListener(new CheckInput(trainingsIDCorrect, dateCorrect, btn_trainingAktualisieren));
-		pnl_tage.getTextPanel().addCaretListener(new CheckInput(trainingsIDCorrect, dateCorrect, btn_trainingAktualisieren));
+		pnl_trainingsID.getTextPanel().addCaretListener(moehrenhoerer);
+	
+		moehrenhoerer = new CheckInput(trainingsIDCorrect, dateCorrect, btn_trainingAktualisieren);
+		pnl_startdatum.getTextPanel().addCaretListener(moehrenhoerer);
+		pnl_enddatum.getTextPanel().addCaretListener(moehrenhoerer);
+		pnl_tage.getTextPanel().addCaretListener(moehrenhoerer);
 	}
 	
 	protected void resizeGUI() {
@@ -259,7 +272,7 @@ public class V_TrainingAendern extends SimpleMasterWindow {
 					System.out.println("Bitte ID eintragen ");
 					popup.showMessageDialog(null, "Bitte tragen Sie ein Trainings-ID ein");
 					training = null;
-					trainingsIDCorrect = false;
+					moehrenhoerer.setBool1(false);;
 				}
 				else if(!getText_pnl_trainingsID().equals("")) {
 					training = SimpleSearch.trainingSuchen(getText_pnl_trainingsID(), M_Training.getInterneListe());
@@ -267,21 +280,22 @@ public class V_TrainingAendern extends SimpleMasterWindow {
 			} catch (NoSuchElementException e){
 				popup.showMessageDialog(null, "Es wurde kein Training mit dieser ID gefunden");
 				training = null;
-				trainingsIDCorrect = false;
+				moehrenhoerer.setBool1(false);
 				
 			} finally {
 				if(training!=null) {
-					trainingsIDCorrect = true;
-					C_TrainingAendern.getInstance().get
-					setText_pnl_firmenname(training.getKunde().getFirmenname());
-					setText_pnl_ansprechpartner(training.getTrainer().getVorname() + " " + training.getTrainer().getNachname());
-					setText_pnl_produktbeschreibung(training.getProdukt().getBeschreibung());
-					setText_pnl_startdatum(training.getAnfangsdatum());
-					setText_pnl_enddatum(training.getEnddatum());
-					setText_pnl_tage(training.getTage()+"");
-					setText_pnl_trainer(training.getTrainer().getTrainerID()+"");
-					setText_pnl_ort(training.getOrt().getOrtsID());
-					setText_pnl_bemerkungen(training.getBemerkungen());
+					moehrenhoerer.setBool1(true);
+					
+					C_TrainingAendern.getInstance().felderFuellen(training);
+//					setText_pnl_firmenname(training.getKunde().getFirmenname());
+//					setText_pnl_ansprechpartner(training.getTrainer().getVorname() + " " + training.getTrainer().getNachname());
+//					setText_pnl_produktbeschreibung(training.getProdukt().getBeschreibung());
+//					setText_pnl_startdatum(training.getAnfangsdatum());
+//					setText_pnl_enddatum(training.getEnddatum());
+//					setText_pnl_tage(training.getTage()+"");
+//					setText_pnl_trainer(training.getTrainer().getTrainerID()+"");
+//					setText_pnl_ort(training.getOrt().getOrtsID());
+//					setText_pnl_bemerkungen(training.getBemerkungen());
 				}
 			}
 		}
@@ -304,34 +318,45 @@ public class V_TrainingAendern extends SimpleMasterWindow {
 	}
 	
 	private class TageBerechnen implements FocusListener {
-		public void focusGained(FocusEvent arg0) {}
+		public void focusGained(FocusEvent arg0) {
+			pnl_enddatum.getTextPanel().setEditable(true);
+			}
 		public void focusLost(FocusEvent arg0) {
-			JOptionPane popup = new JOptionPane();
+			
 			int tage = (SimpleDatumBerechnen.datumBerechnen(getText_pnl_startdatum(), getText_pnl_enddatum()));
-			if (tage == -1) {
-				dateCorrect = false;
+			if (tage == -1 ){
+				pnl_enddatum.getTextPanel().setEditable(false);
+				
+				moehrenhoerer.setBool2(false);;
 			} else {
 				setText_pnl_tage(tage + "");
-				dateCorrect = true;
+				moehrenhoerer.setBool2(true);;
+				pnl_enddatum.getTextPanel().setEditable(true);
 			}
 		}
 	}
 	
 	private class EnddatumBerechnen implements FocusListener {
-		public void focusGained(FocusEvent arg0) {}
+		public void focusGained(FocusEvent arg0) {
+			pnl_tage.getTextPanel().setEditable(true);
+		}
 		public void focusLost(FocusEvent arg0) {
-			JOptionPane popup = new JOptionPane();
-			String datum;
+			
+			String datum = "";
 			try {
 				datum = SimpleDatumBerechnen.datumBerechnen(getText_pnl_startdatum(), Integer.parseInt(getText_pnl_tage()));
 			} catch(NumberFormatException e) {
 				datum = "-1";
 			}
+			finally {
 			if (datum.equals("-1")) {
-				dateCorrect = false;
+				moehrenhoerer.setBool2(false);;
+				pnl_tage.getTextPanel().setEditable(false);
 			} else {
 				setText_pnl_enddatum(datum);
-				dateCorrect = true;
+				moehrenhoerer.setBool2(true);;
+				pnl_tage.getTextPanel().setEditable(true);
+			}
 			}
 		}
 	}

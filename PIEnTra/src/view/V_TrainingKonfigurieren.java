@@ -15,6 +15,7 @@ import javax.swing.UnsupportedLookAndFeelException;
 import controller.C_Hauptmenue;
 import controller.C_KundeWaehlen;
 import controller.C_RessourceWaehlen;
+import model.M_Training;
 import utils.SimpleDatumBerechnen;
 import utils.SimpleMasterWindow;
 import utils.SimpleSwitchFrame;
@@ -73,6 +74,11 @@ public class V_TrainingKonfigurieren extends SimpleMasterWindow {
 	private JButton btn_zurueck = new JButton("Zurück zum Hauptmenü");
 	
 	private V_TrainingKonfigurieren thisView;
+	
+	private M_Training training;
+	private CheckInput moehrenhoerer;
+	private boolean dateCorrect = false;
+	private boolean trainingsIDCorrect = false;
 	
 	/* Konstruktor und Methoden die vom Konstruktor aufgerufen werden. */
 	
@@ -137,6 +143,12 @@ public class V_TrainingKonfigurieren extends SimpleMasterWindow {
 		btn_zurueck.addActionListener(new Zurueck());
 		pnl_enddatum.getTextPanel().addFocusListener(new FokusEnddatum());
 		pnl_tage.getTextPanel().addFocusListener(new FokusTage());
+		
+
+		moehrenhoerer = new CheckInput(trainingsIDCorrect, dateCorrect, btn_trainingspeichern);
+		pnl_anfangsdatum.getTextPanel().addCaretListener(moehrenhoerer);
+		pnl_enddatum.getTextPanel().addCaretListener(moehrenhoerer);
+		pnl_tage.getTextPanel().addCaretListener(moehrenhoerer);
 	}
 	
 	protected void resizeGUI() {
