@@ -76,6 +76,9 @@ public class V_TrainingAendern extends SimpleMasterWindow {
 	
 	private V_TrainingAendern thisView;
 	private M_Training training;
+
+	public boolean dateCorrect = false;
+	public boolean trainingsIDCorrect = false;
 	
 	/* Konstruktor und Methoden die vom Konstruktor aufgerufen werden. */
 	
@@ -146,7 +149,7 @@ public class V_TrainingAendern extends SimpleMasterWindow {
 		btn_zurueck.addActionListener(new Zurueck());
 		pnl_enddatum.getTextPanel().addFocusListener(new TageBerechnen());
 		pnl_tage.getTextPanel().addFocusListener(new EnddatumBerechnen());
-		pnl_trainingsID.getTextPanel().addCaretListener(new CheckInput());
+		pnl_trainingsID.getTextPanel().addCaretListener(new CheckInput(trainingsIDCorrect, dateCorrect, btn_trainingAktualisieren));
 		pnl_startdatum.getTextPanel().addCaretListener(new CheckInput());
 		pnl_enddatum.getTextPanel().addCaretListener(new CheckInput());
 		pnl_tage.getTextPanel().addCaretListener(new CheckInput());
@@ -256,18 +259,19 @@ public class V_TrainingAendern extends SimpleMasterWindow {
 					System.out.println("Bitte ID eintragen ");
 					popup.showMessageDialog(null, "Bitte tragen Sie ein Trainings-ID ein");
 					training = null;
+					trainingsIDCorrect = false;
 				}
 				else if(!getText_pnl_trainingsID().equals("")) {
 					training = SimpleSearch.trainingSuchen(getText_pnl_trainingsID(), M_Training.getInterneListe());
 				}
-			}
-			catch ( NoSuchElementException e){
+			} catch (NoSuchElementException e){
 				popup.showMessageDialog(null, "Es wurde kein Training mit dieser ID gefunden");
 				training = null;
+				trainingsIDCorrect = false;
 				
-			}
-			finally {
+			} finally {
 				if(training!=null) {
+					trainingsIDCorrect = true;
 					setText_pnl_firmenname(training.getKunde().getFirmenname());
 					setText_pnl_ansprechpartner(training.getTrainer().getVorname() + " " + training.getTrainer().getNachname());
 					setText_pnl_produktbeschreibung(training.getProdukt().getBeschreibung());
@@ -301,21 +305,29 @@ public class V_TrainingAendern extends SimpleMasterWindow {
 	private class TageBerechnen implements FocusListener {
 		public void focusGained(FocusEvent arg0) {}
 		public void focusLost(FocusEvent arg0) {
-			setText_pnl_tage((SimpleDatumBerechnen.datumBerechnen(getText_pnl_startdatum(), getText_pnl_enddatum()) + ""));
+			JOptionPane popup = new JOptionPane();
+			int tage = (SimpleDatumBerechnen.datumBerechnen(getText_pnl_startdatum(), getText_pnl_enddatum()));
+			if (tage == -1) {
+				popup.showMessageDialog(null, "Fehler bei Datum.");
+				dateCorrect = false;
+			} else {
+				setText_pnl_tage(tage + "");
+				dateCorrect = true;
+			}
 		}
 	}
 	
 	private class EnddatumBerechnen implements FocusListener {
 		public void focusGained(FocusEvent arg0) {}
 		public void focusLost(FocusEvent arg0) {
-			setText_pnl_enddatum(SimpleDatumBerechnen.datumBerechnen(getText_pnl_startdatum(), Integer.parseInt(getText_pnl_tage())) + "");
-		}
-	}
-	
-	private class CheckInput implements CaretListener {
-		public void caretUpdate(CaretEvent arg0) {
-			if (!getText_pnl_trainingsID().equals("") && !getText_pnl_startdatum().equals("") && !getText_pnl_enddatum().equals("") && !getText_pnl_tage().equals("")) {
-				btn_trainingAktualisieren.setEnabled(true);
+			JOptionPane popup = new JOptionPane();
+			String datum = SimpleDatumBerechnen.datumBerechnen(getText_pnl_startdatum(), Integer.parseInt(getText_pnl_tage()));
+			if (datum.equals("-1")) {
+				popup.showMessageDialog(null, "Fehler bei Datum.");
+				dateCorrect = true;
+			} else {
+				setText_pnl_enddatum(datum);
+				dateCorrect = true;
 			}
 		}
 	}
