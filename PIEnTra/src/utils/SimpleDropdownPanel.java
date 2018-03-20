@@ -23,13 +23,14 @@ public class SimpleDropdownPanel extends JPanel {
 	
 	static int labelWidth = 120;
 	JLabel lbl;
-	JComboBox <?> box;
+	JComboBox <String>box;
 	
+	@SuppressWarnings({ "rawtypes", "unchecked" })
 	public SimpleDropdownPanel(String labelText, ArrayList <String> array) {
 		this.setLayout(new FlowLayout(FlowLayout.LEFT));
 		lbl = new JLabel(labelText);
 		lbl.setPreferredSize(new Dimension(labelWidth, lbl.getPreferredSize().height));
-		box = new JComboBox<>(array.toArray());
+		box = new JComboBox(array.toArray());
 		this.add(lbl);
 		this.add(box);
 	}
@@ -39,10 +40,14 @@ public class SimpleDropdownPanel extends JPanel {
 	public static int getLabelWidth() {
 		return labelWidth;
 	}
-	public JComboBox<?> getComboBox(){
+	public JComboBox<String> getComboBox(){
 		return box;
 	}
 	public String getText(){
 		return box.getSelectedItem().toString();
 	}
+	public void removeItems(){
+		box.removeAllItems();
+	}
+
 }

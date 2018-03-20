@@ -4,9 +4,10 @@ import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.GridLayout;
-import java.awt.ScrollPane;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.ItemEvent;
+import java.awt.event.ItemListener;
 import java.util.ArrayList;
 
 import javax.swing.BorderFactory;
@@ -19,17 +20,10 @@ import javax.swing.JTextArea;
 import javax.swing.ScrollPaneConstants;
 import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
-import javax.swing.border.Border;
 import javax.swing.border.EmptyBorder;
 
-import model.M_Adresse;
 import model.M_Ort;
-import model.M_Person;
 import model.M_Produkt;
-import model.M_Trainer;
-import model.M_Training;
-import controller.C_KundeSuchen;
-import controller.C_TrainingAendern;
 import controller.C_TrainingKonfigurieren;
 import testdaten.Test_main;
 import utils.SimpleDropdownPanel;
@@ -46,11 +40,11 @@ import utils.SimpleTextPanel;
  * @version 1.1 Listener in Controller hinzugefügt. Getter und Setter hinzugefügt.
  * @version 1.0 View implementiert. 
  * @author Adrian Fromm
- * @author Julian Klein
  * @see {@link controller.C_Hauptmenue};
  */
 public class V_RessourceAendern extends SimpleMasterWindow {
-	private static final long serialVersionUID = -6381551589496678636L;
+
+	private static final long serialVersionUID = 5395382811986935482L;
 	
 	/* Deklaration und Initailiserung von verschiedenen Variablen **/
 	
@@ -58,7 +52,7 @@ public class V_RessourceAendern extends SimpleMasterWindow {
 	 * Standard Größe des Fensters.
 	 * @see SimpleMasterWindow#initFrame(Dimension defaultSize, Dimension minSize)
 	 * */
-	public static Dimension defaultSize = new Dimension(700, 235);
+	public static Dimension defaultSize = new Dimension(720, 240);
 	/** 
 	 * Minimale Größe des Fensters.
 	 * @see SimpleMasterWindow#initFrame(Dimension defaultSize, Dimension minSize)
@@ -73,6 +67,7 @@ public class V_RessourceAendern extends SimpleMasterWindow {
 	private ArrayList<String>arrayList_produktbezeichnung = new ArrayList<String>();
 	private ArrayList<String>arrayList_trainer = new ArrayList<String>();
 	private ArrayList<String>arrayList_ort = new ArrayList<String>();
+	//private ArrayList<String>trainerarray = new ArrayList<String>();
 	
 	private SimpleDropdownPanel pnl_produktbez;
 	private SimpleDropdownPanel pnl_trainer;
@@ -82,18 +77,19 @@ public class V_RessourceAendern extends SimpleMasterWindow {
 	private JTextArea textarea = new JTextArea();
 	private JScrollPane area = new JScrollPane(textarea);
 	
-	private JButton btn_ressourceaendern = new JButton("Ressource ändern");
-	private JButton btn_zurueck = new JButton("Zurück zu Training ändern");
+	private JButton btn_ressourcewaehlen = new JButton("Ressource wählen");
+	private JButton btn_zurueck = new JButton("Zurück zu Training konfigurieren");
+	
+	private TrainerListener trainerlistener = new TrainerListener();
+	
+	private M_Produkt produkt;
 	
 	private V_RessourceAendern thisView;
 	
 	/* Konstruktor und Methoden die vom Konstruktor aufgerufen werden. */
 	
 	/**
-	 * Konstruktor der View Hauptmenue.
-	 * Übergibt an die Superklasse die standard und minimal Größe, sowie aktuelle Pfadangaben der Navigationsleiste.
-	 * Initialisiere dann den Content und lösche ein überflüssiges Element aus der im Hauptmenu nicht benutzten Menuleiste.
-	 * Zuletzt werden die Listener initialisiert.
+	 * Konstruktor der View RessourceWaehlen
 	 */
 	public V_RessourceAendern() {
 		super(
@@ -108,12 +104,15 @@ public class V_RessourceAendern extends SimpleMasterWindow {
 		initListener();
 		resizeGUI();
 		this.setVisible(true);
+		
 	}
 
 	/**
 	 * Initialisiere den Inhalt des Centers.
 	 */
+	
 	private void initContent() {
+				
 		area.setPreferredSize(new Dimension(200, 80));
 		area.setBorder(BorderFactory.createLineBorder(Color.gray));
 		area.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
@@ -129,6 +128,9 @@ public class V_RessourceAendern extends SimpleMasterWindow {
 		pnl_trainer.getComboBox().setSelectedIndex(-1);
 		pnl_ort.getComboBox().setSelectedIndex(-1);
 		
+		pnl_trainer.getComboBox().setEnabled(false);
+		pnl_ort.getComboBox().setEnabled(false);
+		
 		GridLayout grid = new GridLayout(3,1);
 		grid.setVgap(5);
 		
@@ -141,7 +143,7 @@ public class V_RessourceAendern extends SimpleMasterWindow {
 		pnl_content_left.add(pnl_produktbez);
 		pnl_content_left.add(pnl_trainer);
 		pnl_content_left.add(pnl_ort);
-
+		
 		pnl_content_right.setLayout(new BoxLayout(pnl_content_right, BoxLayout.PAGE_AXIS));
 		pnl_content_right.add(lbl_produktb);
 		pnl_content_right.add(area);
@@ -160,18 +162,21 @@ public class V_RessourceAendern extends SimpleMasterWindow {
 	 * Initiailisert die Menu Buttons
 	 */
 	private void initMenu() {
-		getPnl_menu().add(btn_ressourceaendern);
-		getPnl_menu().add(btn_zurueck);
-		
+		btn_ressourcewaehlen.setEnabled(false);
+		getPnl_menu().add(btn_ressourcewaehlen);
+		getPnl_menu().add(btn_zurueck);	
 	}
 	
 	/**
 	 * Initialisiert ActionListener
 	 */
 	private void initListener() {
-		btn_ressourceaendern.addActionListener(new RessourceAendern());
-		btn_zurueck.addActionListener(new Zurueck());
-		pnl_produktbez.getComboBox().addActionListener(new DropdownListener());
+		btn_ressourcewaehlen.addActionListener(new RessourceWaehlen());
+		btn_zurueck.addActionListener(new Zurueck());	
+		pnl_produktbez.getComboBox().addItemListener(new ProduktbezeichnungListener());
+		pnl_trainer.getComboBox().addItemListener(trainerlistener);
+		pnl_ort.getComboBox().addItemListener(new OrtListener());
+		
 	}
 	
 	protected void resizeGUI() {
@@ -180,16 +185,14 @@ public class V_RessourceAendern extends SimpleMasterWindow {
 		pnl_produktbez.setComboBoxFieldWidth(maxWidthTextBox / 2);
 		pnl_trainer.setComboBoxFieldWidth(maxWidthTextBox / 2);
 		pnl_ort.setComboBoxFieldWidth(maxWidthTextBox / 2);
-		btn_ressourceaendern.setPreferredSize(new Dimension(optimalButtonWidth / 4 , btn_ressourceaendern.getPreferredSize().height));
-		btn_zurueck.setPreferredSize(new Dimension(optimalButtonWidth / 4, btn_ressourceaendern.getPreferredSize().height));
+		btn_ressourcewaehlen.setPreferredSize(new Dimension(optimalButtonWidth / 4 , btn_ressourcewaehlen.getPreferredSize().height));
+		btn_zurueck.setPreferredSize(new Dimension(optimalButtonWidth / 4, btn_ressourcewaehlen.getPreferredSize().height));
 		
 	}
 	
 	private void initComboBox(){
 		M_Produkt.getInterneListe().forEach(M_Produkt -> arrayList_produktbezeichnung.add(M_Produkt.getBezeichnung()));
-		M_Trainer.getInterneListe().forEach(M_Trainer -> arrayList_trainer.add(M_Trainer.getVorname() +" "+ M_Trainer.getNachname()));
-		M_Ort.getInterneListe().forEach(M_Ort -> arrayList_ort.add(M_Ort.getOrtsID()+" , "+M_Ort.getGeschaefstsstelle()));
-		//M_Ort.getInterneListe().forEach(M_Ort -> arrayList_ort.add(M_Ort.toString()));		
+		M_Ort.getInterneListe().forEach(M_Ort -> arrayList_ort.add(M_Ort.getOrtsID()+" , "+M_Ort.getGeschaefstsstelle()));		
 	}
 	
 	/* Implementierung der ActionListener */
@@ -202,7 +205,6 @@ public class V_RessourceAendern extends SimpleMasterWindow {
 		}
 		new Test_main();
 		new V_RessourceAendern();
-		
 	}
 	
 	// Getter und Setter
@@ -219,40 +221,76 @@ public class V_RessourceAendern extends SimpleMasterWindow {
 	public String getText_pnl_produktbeschreibung(){
 		return textarea.getText();
 	}
-	/*public void setText_pnl_produktbezeichnung(String text){
-		this.pnl_produktbez.setText(text);
-	}
-	public void setText_pnl_trainer(String text){
-		this.pnl_trainer.setText(text);
-	}
-	public void setText_pnl_prt(String text) {
-		this.pnl_ort.setText(text);;
-	}*/
 
-	// ActionListener
+	// ActionListener Buttons
 	
-	private class RessourceAendern implements ActionListener {
+	private class RessourceWaehlen implements ActionListener {
 		public void actionPerformed(ActionEvent arg0) {
-			System.out.println("RessourceAendern!");
-			System.out.println(pnl_produktbez.getText());
-			//SimpleSwitchFrame.switchFrame(thisView, C_KundeSuchen.getInstance() , C_KundeSuchen.getInstance().getView());
+			System.out.println("Ressource wählen!");
 		}
 	}
 	private class Zurueck implements ActionListener {
 		public void actionPerformed(ActionEvent arg0) {
 			System.out.println("Zurueck");
-			SimpleSwitchFrame.switchFrame(thisView, C_TrainingAendern.getInstance(), C_TrainingAendern.getInstance().getView());
+			SimpleSwitchFrame.switchFrame(thisView, C_TrainingKonfigurieren.getInstance(), C_TrainingKonfigurieren.getInstance().getView());
 		}
 	}	
 	
-	public class DropdownListener implements ActionListener {	
+	// ActionListener ComboBox
+	
+	private class ProduktbezeichnungListener implements ItemListener {	
         
-	    public void actionPerformed(ActionEvent e) {
-
-	    	System.out.println(pnl_produktbez.getComboBox().getSelectedIndex());
-	    	//textarea.setText(arrayList_produktbezeichnung.);
-	    	
+	    public void itemStateChanged(ItemEvent e) {
+	    	if(e.getStateChange() == ItemEvent.SELECTED){
+				
+		    	pnl_trainer.getComboBox().removeItemListener(trainerlistener);
+		    		
+		    		if(pnl_produktbez.getComboBox().getSelectedIndex()>-1){
+		    			
+		    			arrayList_trainer.clear();
+		    			pnl_trainer.removeItems();
+		    			
+		    			pnl_trainer.getComboBox().setEnabled(true);
+		    			
+		    			produkt = M_Produkt.getInterneListe().get(pnl_produktbez.getComboBox().getSelectedIndex());
+		    			produkt.getTrainer().forEach(n -> arrayList_trainer.add(n.getVorname()+" "+n.getNachname()));
+		    			
+		    			textarea.setText(M_Produkt.getInterneListe().get(pnl_produktbez.getComboBox().getSelectedIndex()).getBeschreibung());
+		    			
+		    			System.out.println(arrayList_trainer);
+	
+				    	for(String item : arrayList_trainer){			
+				    		pnl_trainer.getComboBox().addItem(item);			    		
+				    	}
+		    		}
+		    	pnl_trainer.getComboBox().setSelectedIndex(-1);
+		    	pnl_ort.getComboBox().setSelectedIndex(-1);
+		    	pnl_trainer.getComboBox().addItemListener(trainerlistener);
+	    	} 
 	    }
 	}
-
+	
+	private class TrainerListener implements ItemListener {	
+        
+		public void itemStateChanged(ItemEvent e) {
+			
+			if(e.getStateChange() == ItemEvent.SELECTED){
+				if(pnl_trainer.getComboBox().getSelectedIndex()>-1){
+		    		pnl_ort.getComboBox().setEnabled(true);
+		    	}
+         	}  
+		}
+	}
+	
+	private class OrtListener implements ItemListener {	
+        
+		public void itemStateChanged(ItemEvent e) {
+			
+			if(e.getStateChange() == ItemEvent.SELECTED){
+				if(pnl_trainer.getComboBox().getSelectedIndex()>-1){
+		    		btn_ressourcewaehlen.setEnabled(true);
+		    	}
+         	}  
+		}
+	}
 }
