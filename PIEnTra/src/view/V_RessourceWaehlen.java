@@ -66,7 +66,6 @@ public class V_RessourceWaehlen extends SimpleMasterWindow {
 	private ArrayList<String>arrayList_produktbezeichnung = new ArrayList<String>();
 	private ArrayList<String>arrayList_trainer = new ArrayList<String>();
 	private ArrayList<String>arrayList_ort = new ArrayList<String>();
-	//private ArrayList<String>trainerarray = new ArrayList<String>();
 	
 	private SimpleDropdownPanel pnl_produktbez;
 	private SimpleDropdownPanel pnl_trainer;
@@ -172,6 +171,7 @@ public class V_RessourceWaehlen extends SimpleMasterWindow {
 	private void initListener() {
 		btn_ressourcewaehlen.addActionListener(new RessourceWaehlen());
 		btn_zurueck.addActionListener(new Zurueck());	
+		
 		pnl_produktbez.getComboBox().addItemListener(new ProduktbezeichnungListener());
 		pnl_trainer.getComboBox().addItemListener(trainerlistener);
 		pnl_ort.getComboBox().addItemListener(new OrtListener());
