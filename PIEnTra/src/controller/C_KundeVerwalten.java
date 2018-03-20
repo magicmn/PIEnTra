@@ -109,6 +109,7 @@ public class C_KundeVerwalten {
 		kunde.getAnsprechpartner().setNachname(ansprechpartner[1]);	
 	}
 	
+	//@TODO JavaDoc fehlt
 	/**
 	 * 
 	 */
