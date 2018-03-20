@@ -1,0 +1,1 @@
+typeSearchIndex = [{"p":"model","l":"M_Adresse"},{"p":"model","l":"M_Kunde"},{"p":"model","l":"M_ManagementAssistent"},{"p":"model","l":"M_Ort"},{"p":"model","l":"M_Person"},{"p":"model","l":"M_Produkt"},{"p":"model","l":"M_Trainer"},{"p":"model","l":"M_Training"}]
