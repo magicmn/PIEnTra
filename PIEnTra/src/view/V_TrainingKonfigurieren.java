@@ -284,7 +284,8 @@ public class V_TrainingKonfigurieren extends SimpleMasterWindow {
 	private class RessourceWaehlen implements ActionListener {
 		public void actionPerformed(ActionEvent arg0) {
 			System.out.println("Ressource Wählen");
-			SimpleSwitchFrame.switchFrame(thisView, C_RessourceWaehlen.getInstance(), C_RessourceWaehlen.getInstance().getView());
+			C_RessourceWaehlen.getInstance();
+			//SimpleSwitchFrame.switchFrame(thisView, C_RessourceWaehlen.getInstance(), C_RessourceWaehlen.getInstance().getView());
 		}
 	}
 	private class TrainingSpeichern implements ActionListener {

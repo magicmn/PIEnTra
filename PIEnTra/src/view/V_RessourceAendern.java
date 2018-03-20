@@ -24,7 +24,7 @@ import javax.swing.border.EmptyBorder;
 
 import model.M_Ort;
 import model.M_Produkt;
-import controller.C_TrainingKonfigurieren;
+import controller.C_TrainingAendern;
 import testdaten.Test_main;
 import utils.SimpleDropdownPanel;
 import utils.SimpleMasterWindow;
@@ -229,7 +229,7 @@ public class V_RessourceAendern extends SimpleMasterWindow {
 	private class Zurueck implements ActionListener {
 		public void actionPerformed(ActionEvent arg0) {
 			System.out.println("Zurueck");
-			SimpleSwitchFrame.switchFrame(thisView, C_TrainingKonfigurieren.getInstance(), C_TrainingKonfigurieren.getInstance().getView());
+			SimpleSwitchFrame.switchFrame(thisView, C_TrainingAendern.getInstance(), C_TrainingAendern.getInstance().getView());
 		}
 	}	
 	
