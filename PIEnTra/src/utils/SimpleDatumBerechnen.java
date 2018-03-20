@@ -1,17 +1,20 @@
-/**
- * 
- * @author starkovic
- * @author Julian Klein
- * @version 1.1 Setzt bei Falscheingabe Tage und Datum nun -1
- * @version 1.0 implementiert
- */
-
 package utils;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.regex.Pattern;
+/**
+* Die Klasse SimpleDatumBerechnen ist alleine dafür da, mit den als Parameter übergebenen Daten zu rechnen, sie zu vergleichen und auf Gültigkeit zu prüfen.
+* @author Jannik Stark
+* @version 1.0 - SimpleDateFormat geaddet, um die Daten in "dd.MM.yyyy" formatieren zu können [Jannik Stark]
+* @version 1.1 - Methode datumBerechnen(String, String) hinzugefügt, die ausrechnet, wie viele Tage zwischen den Daten liegen [Jannik Stark]
+* @version 1.2 - Methode datumBerechnen(String, int) hinzugefügt, die aus dem Startdatum und der Anzahl der Tage das Enddatum ausgibt [Jannik Stark]
+* @version 1.3 - Regular Expressions hinzugefügt um das Format überprüfen zu können [Jannik Stark]
+* @version 1.4 - Methode pruefeDatum(String, String) hinzugefügt, die mithilfe von RegEx prüft, ob die Daten das richtige Format haben [Jannik Stark]
+* @author Julian Klein
+* @version 1.5 - Setzt bei Falscheingabe die Tage und das Datum auf -1 [Julian Klein]
+*/
 
 public class SimpleDatumBerechnen {
 	//dd.MM.yyyy Format für das Datum in unserem Format
@@ -29,20 +32,20 @@ public class SimpleDatumBerechnen {
 				long diffMillisekunden = enddatumFormatiert.getTime() - startdatumFormatiert.getTime();
 				tage = Integer.parseInt( (diffMillisekunden / (1000 * 60 * 60 * 24)+1+""));
 				if (tage < 1) {
-					System.out.println("Das Startdatum muss vor dem Enddatum liegen!");
+					//System.out.println("Das Startdatum muss vor dem Enddatum liegen!");
 					//throw new IllegalArgumentException();
 					tage = -1;
 				}
 			} catch (ParseException e) {
-				System.out.println("ParseException");
+				//System.out.println("ParseException");
 				tage = -1;
 				//JOptionPane.showMessageDialog(null, e,"Vorgang abgebrochen!", JOptionPane.ERROR_MESSAGE);
 			} catch (NullPointerException e){
-				System.out.println("NullPointerException");
+				//System.out.println("NullPointerException");
 				tage = -1;
 				//e.getStackTrace();
 			} catch (IllegalArgumentException e){
-				System.out.println("Das Startdatum muss vor dem Enddatum liegen! - IllegalArgument");
+				//System.out.println("Das Startdatum muss vor dem Enddatum liegen! - IllegalArgument");
 				//JOptionPane.showMessageDialog(null, "Das Startdatum muss vor dem Enddatum liegen!","Vorgang abgebrochen!", JOptionPane.ERROR_MESSAGE);
 				tage = -1;
 			}
@@ -65,7 +68,7 @@ public class SimpleDatumBerechnen {
 				DateAsString = format.format(enddatumMillisekunden);
 
 			} catch (ParseException e) {
-				System.out.println("ParseException");
+				//e.printStackTrace();
 				DateAsString = "-1";
 			}
 			}

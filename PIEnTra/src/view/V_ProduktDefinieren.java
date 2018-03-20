@@ -4,34 +4,43 @@ import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.NoSuchElementException;
 
 import javax.swing.BoxLayout;
 import javax.swing.JButton;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
 import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
 
 import controller.C_Hauptmenue;
+import controller.C_ProduktDefinieren;
+import model.M_Produkt;
 import utils.SimpleMasterWindow;
+import utils.SimpleSearch;
 import utils.SimpleSwitchFrame;
 import utils.SimpleTextPanel;
 
 /**
  * View von TrainingKonfigurieren.
+ * @version 1.5 Objekte können nun erstellt werden.
  * @version 1.4 Erbt nun von Superklasse {@link SimpleMasterWindow}.
  * @version 1.3 SimpleSwitchFrame implementiert.
  * @version 1.2 Listener aus Controller entfernt und in View implementiert.
  * @version 1.1 Getter und Setter hinzugefügt.
  * @version 1.0 View implementiert.
  * @author Adrian Fromm
+ * @author Andreas Kann
  * @author Julian Klein
  * @author Konstantin Frei
  * @see {@link controller.C_Hauptmenue};
  */
 public class V_ProduktDefinieren extends SimpleMasterWindow {
 	private static final long serialVersionUID = -6381551589496678636L;
+	private M_Produkt produkt;
+	private JOptionPane popup;
 	
 	/* Deklaration und Initailiserung von verschiedenen Variablen **/
 	
@@ -51,7 +60,7 @@ public class V_ProduktDefinieren extends SimpleMasterWindow {
 	 */
 	private static String navigationText = "Produkt definieren";
 	
-	private SimpleTextPanel pnl_produktID = new SimpleTextPanel("Produktbezeichnung:");
+	private SimpleTextPanel pnl_produktID = new SimpleTextPanel("ProduktID:");
 	private SimpleTextPanel pnl_produktbezeichnung = new SimpleTextPanel("Produktbezeichnung:");
 	private JLabel lbl_produktbeschreibung = new JLabel("Produktbeschreibung:");
 	private JTextArea txt_produktbeschreibung = new JTextArea();
@@ -161,9 +170,26 @@ public class V_ProduktDefinieren extends SimpleMasterWindow {
 	
 	private class ProduktDefinieren implements ActionListener {
 		public void actionPerformed(ActionEvent arg0) {
-			System.out.println("Produkt definieren!");
+			//System.out.println("Produkt definieren!");
+			produkt = null;
+			
+			try{
+				produkt = SimpleSearch.produktSuchen(getText_txt_produktID(), M_Produkt.getInterneListe());
+				
+					}catch(NoSuchElementException e){
+						C_ProduktDefinieren.getInstance().produktDefinieren();
+						System.out.println("AHHHHHHH ");
+						}finally{
+							if(produkt != null){
+								popup.showMessageDialog(null, "Es ist bereits ein Produkt mit dieser ID vorhanden");
+								
+							}
+						}
+					
+			
 		}
 	}
+	
 	private class Zurueck implements ActionListener {
 		public void actionPerformed(ActionEvent arg0) {
 			SimpleSwitchFrame.switchFrame(thisView,C_Hauptmenue.getInstance(), C_Hauptmenue.getInstance().getView());

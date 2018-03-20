@@ -106,8 +106,8 @@ public class Testfaelle{
 		
 		mAssistent = new M_ManagementAssistent("peter", "Lustig");
 		
-		training1 = new M_Training("11.11.11", trainer1, ort1, kunde1, "12.12.12", 365, "Test", eww, mAssistent);
-		training2 = new M_Training("21.11.11", trainer1, ort1, kunde1, "12.12.12", 365, "Test", eww, mAssistent);
+		training1 = new M_Training("11.11.2011", trainer1, ort1, kunde1, "12.12.2012", 365, "Test", eww, mAssistent);
+		training2 = new M_Training("21.11.2011", trainer1, ort1, kunde1, "12.12.2012", 365, "Test", eww, mAssistent);
 		
 		trainer3.trainingHinzufuegen(training1);
 	}

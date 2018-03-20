@@ -150,9 +150,9 @@ public class V_TrainingAendern extends SimpleMasterWindow {
 		pnl_enddatum.getTextPanel().addFocusListener(new TageBerechnen());
 		pnl_tage.getTextPanel().addFocusListener(new EnddatumBerechnen());
 		pnl_trainingsID.getTextPanel().addCaretListener(new CheckInput(trainingsIDCorrect, dateCorrect, btn_trainingAktualisieren));
-		pnl_startdatum.getTextPanel().addCaretListener(new CheckInput());
-		pnl_enddatum.getTextPanel().addCaretListener(new CheckInput());
-		pnl_tage.getTextPanel().addCaretListener(new CheckInput());
+		pnl_startdatum.getTextPanel().addCaretListener(new CheckInput(trainingsIDCorrect, dateCorrect, btn_trainingAktualisieren));
+		pnl_enddatum.getTextPanel().addCaretListener(new CheckInput(trainingsIDCorrect, dateCorrect, btn_trainingAktualisieren));
+		pnl_tage.getTextPanel().addCaretListener(new CheckInput(trainingsIDCorrect, dateCorrect, btn_trainingAktualisieren));
 	}
 	
 	protected void resizeGUI() {
@@ -308,7 +308,6 @@ public class V_TrainingAendern extends SimpleMasterWindow {
 			JOptionPane popup = new JOptionPane();
 			int tage = (SimpleDatumBerechnen.datumBerechnen(getText_pnl_startdatum(), getText_pnl_enddatum()));
 			if (tage == -1) {
-				popup.showMessageDialog(null, "Fehler bei Datum.");
 				dateCorrect = false;
 			} else {
 				setText_pnl_tage(tage + "");
@@ -321,10 +320,14 @@ public class V_TrainingAendern extends SimpleMasterWindow {
 		public void focusGained(FocusEvent arg0) {}
 		public void focusLost(FocusEvent arg0) {
 			JOptionPane popup = new JOptionPane();
-			String datum = SimpleDatumBerechnen.datumBerechnen(getText_pnl_startdatum(), Integer.parseInt(getText_pnl_tage()));
+			String datum;
+			try {
+				datum = SimpleDatumBerechnen.datumBerechnen(getText_pnl_startdatum(), Integer.parseInt(getText_pnl_tage()));
+			} catch(NumberFormatException e) {
+				datum = "-1";
+			}
 			if (datum.equals("-1")) {
-				popup.showMessageDialog(null, "Fehler bei Datum.");
-				dateCorrect = true;
+				dateCorrect = false;
 			} else {
 				setText_pnl_enddatum(datum);
 				dateCorrect = true;
