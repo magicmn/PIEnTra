@@ -1,15 +1,14 @@
 package model;
 
 import java.util.ArrayList;
-
+//@TODO JavaDoc
 /**
  * Modellklasse für eine Adresse.
  * @author Konstantin
- *
  */
 public class M_Adresse {
 
-
+	/** Macht eine Adresse eindeutig. <a href="https://de.wikipedia.org/wiki/Schl%C3%BCssel_(Datenbank)">Siehe dazu den Wiki eintrag...</a> **/
 	private static int interneID;
 	private int adressID;
 	
@@ -20,19 +19,25 @@ public class M_Adresse {
 	private String stadt;
 	private String PLZ;
 
+	/**
+	 * Konstruktor von {@link M_Adresse}.
+	 * Pflegt automatisch eine statische Liste mit allen Adressen.
+	 * @param strasse Straße der Adresse Bsp.: Rainer-Kausing-Straße 4
+	 * @param bundesland Bundesland der Adresse Bsp.: Hessen
+	 * @param stadt Stadt der Adresse Bsp.: Hochheim/Main
+	 * @param PLZ Postleitzahl der Adresse Bsp.: 65239
+	 */
 	public M_Adresse(String strasse, String bundesland, String stadt, String PLZ) {
-		setInterneID(getInterneID()+1);
+		setInterneID(getInterneID() + 1);
 		setAdressID(getInterneID());
 		setBundesland(bundesland);
 		setPLZ(PLZ);
 		setStadt(stadt);
 		setStrasse(strasse);
-		
-		if(this.interneListe == null) {
-			this.interneListe =new ArrayList<M_Adresse>();
+		if(M_Adresse.interneListe == null) {
+			M_Adresse.interneListe = new ArrayList<M_Adresse>();
 		}
 		getInterneListe().add(this);
-
 	}
 
 	public static int getInterneID() {
