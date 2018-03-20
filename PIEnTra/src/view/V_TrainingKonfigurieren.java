@@ -14,6 +14,7 @@ import javax.swing.UnsupportedLookAndFeelException;
 
 import controller.C_Hauptmenue;
 import controller.C_KundeWaehlen;
+import controller.C_RessourceWaehlen;
 import utils.SimpleDatumBerechnen;
 import utils.SimpleMasterWindow;
 import utils.SimpleSwitchFrame;
@@ -282,7 +283,8 @@ public class V_TrainingKonfigurieren extends SimpleMasterWindow {
 	}
 	private class RessourceWaehlen implements ActionListener {
 		public void actionPerformed(ActionEvent arg0) {
-			System.out.println("Ressource Wählen");		
+			System.out.println("Ressource Wählen");
+			SimpleSwitchFrame.switchFrame(thisView, C_RessourceWaehlen.getInstance(), C_RessourceWaehlen.getInstance().getView());
 		}
 	}
 	private class TrainingSpeichern implements ActionListener {
