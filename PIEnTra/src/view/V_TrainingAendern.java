@@ -18,7 +18,6 @@ import javax.swing.event.CaretListener;
 
 import controller.C_Hauptmenue;
 import controller.C_RessourceAendern;
-import controller.C_TrainingAendern;
 import model.M_Training;
 import utils.SimpleDatumBerechnen;
 import utils.SimpleMasterWindow;
