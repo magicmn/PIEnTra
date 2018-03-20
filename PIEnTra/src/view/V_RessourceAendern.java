@@ -32,12 +32,9 @@ import utils.SimpleSwitchFrame;
 import utils.SimpleTextPanel;
 
 /**
- * View von TrainingKonfigurieren.
- * @version 1.5 Dropdown Funktionen hinzugefügt
- * @version 1.4 Erbt nun von Superklasse {@link SimpleMasterWindow}.
- * @version 1.3 SimpleSwitchFrame implementiert.
- * @version 1.2 Listener aus Controller entfernt und in View implementiert.
- * @version 1.1 Listener in Controller hinzugefügt. Getter und Setter hinzugefügt.
+ * View von RessourceAendern.
+ * @version 1.2 Dropdown Funktionen hinzugefügt.
+ * @version 1.1 Listener hinzugefügt. Getter und Setter hinzugefügt.
  * @version 1.0 View implementiert. 
  * @author Adrian Fromm
  * @see {@link controller.C_Hauptmenue};
