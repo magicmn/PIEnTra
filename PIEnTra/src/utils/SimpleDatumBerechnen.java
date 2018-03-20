@@ -29,20 +29,20 @@ public class SimpleDatumBerechnen {
 				long diffMillisekunden = enddatumFormatiert.getTime() - startdatumFormatiert.getTime();
 				tage = Integer.parseInt( (diffMillisekunden / (1000 * 60 * 60 * 24)+1+""));
 				if (tage < 1) {
-					//System.out.println("Das Startdatum muss vor dem Enddatum liegen!");
+					System.out.println("Das Startdatum muss vor dem Enddatum liegen!");
 					//throw new IllegalArgumentException();
 					tage = -1;
 				}
 			} catch (ParseException e) {
-				//System.out.println("ParseException");
+				System.out.println("ParseException");
 				tage = -1;
 				//JOptionPane.showMessageDialog(null, e,"Vorgang abgebrochen!", JOptionPane.ERROR_MESSAGE);
 			} catch (NullPointerException e){
-				//System.out.println("NullPointerException");
+				System.out.println("NullPointerException");
 				tage = -1;
 				//e.getStackTrace();
 			} catch (IllegalArgumentException e){
-				//System.out.println("Das Startdatum muss vor dem Enddatum liegen! - IllegalArgument");
+				System.out.println("Das Startdatum muss vor dem Enddatum liegen! - IllegalArgument");
 				//JOptionPane.showMessageDialog(null, "Das Startdatum muss vor dem Enddatum liegen!","Vorgang abgebrochen!", JOptionPane.ERROR_MESSAGE);
 				tage = -1;
 			}
@@ -65,7 +65,7 @@ public class SimpleDatumBerechnen {
 				DateAsString = format.format(enddatumMillisekunden);
 
 			} catch (ParseException e) {
-				//e.printStackTrace();
+				System.out.println("ParseException");
 				DateAsString = "-1";
 			}
 			}
