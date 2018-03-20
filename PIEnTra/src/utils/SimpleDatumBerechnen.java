@@ -1,5 +1,9 @@
 /**
+ * 
  * @author starkovic
+ * @author Julian Klein
+ * @version 1.1 Setzt bei Falscheingabe Tage und Datum nun -1
+ * @version 1.0 implementiert
  */
 
 package utils;
@@ -25,23 +29,27 @@ public class SimpleDatumBerechnen {
 				long diffMillisekunden = enddatumFormatiert.getTime() - startdatumFormatiert.getTime();
 				tage = Integer.parseInt( (diffMillisekunden / (1000 * 60 * 60 * 24)+1+""));
 				if (tage < 1) {
-					System.out.println("Das Startdatum muss vor dem Enddatum liegen!");
+					//System.out.println("Das Startdatum muss vor dem Enddatum liegen!");
 					//throw new IllegalArgumentException();
+					tage = -1;
 				}
 			} catch (ParseException e) {
-				System.out.println("ParseException");
+				//System.out.println("ParseException");
+				tage = -1;
 				//JOptionPane.showMessageDialog(null, e,"Vorgang abgebrochen!", JOptionPane.ERROR_MESSAGE);
 			} catch (NullPointerException e){
-				System.out.println("NullPointerException");
-				e.getStackTrace();
+				//System.out.println("NullPointerException");
+				tage = -1;
+				//e.getStackTrace();
 			} catch (IllegalArgumentException e){
-				System.out.println("Das Startdatum muss vor dem Enddatum liegen! - IllegalArgument");
+				//System.out.println("Das Startdatum muss vor dem Enddatum liegen! - IllegalArgument");
 				//JOptionPane.showMessageDialog(null, "Das Startdatum muss vor dem Enddatum liegen!","Vorgang abgebrochen!", JOptionPane.ERROR_MESSAGE);
+				tage = -1;
 			}
 		}
 		if(!Pattern.matches(dateRegEx, startdatum) || !Pattern.matches(dateRegEx, enddatum)){
-			System.out.println("RegEx1 passt nicht!");
-			tage = 0;
+			//System.out.println("RegEx1 passt nicht!");
+			tage = -1;
 		}
 		return tage;
 	}
@@ -57,12 +65,13 @@ public class SimpleDatumBerechnen {
 				DateAsString = format.format(enddatumMillisekunden);
 
 			} catch (ParseException e) {
-				e.printStackTrace();
+				//e.printStackTrace();
+				DateAsString = "-1";
 			}
 			}
 		if(!Pattern.matches(dateRegEx, startdatum)){
 			System.out.println("RegEx2 passt nicht!");
-			DateAsString = "";
+			DateAsString = "-1";
 		}
 		return DateAsString;
 	}
