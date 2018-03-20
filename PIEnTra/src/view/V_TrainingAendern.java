@@ -302,7 +302,8 @@ public class V_TrainingAendern extends SimpleMasterWindow {
 	}
 	private class RessourceAendern implements ActionListener {
 		public void actionPerformed(ActionEvent arg0) {
-			SimpleSwitchFrame.switchFrame(thisView, C_RessourceAendern.getInstance(), C_RessourceAendern.getInstance().getView());
+			C_RessourceAendern.getInstance();
+			//SimpleSwitchFrame.switchFrame(thisView, C_RessourceAendern.getInstance(), C_RessourceAendern.getInstance().getView());
 		}
 	}
 	private class TrainingAktualisieren implements ActionListener {
