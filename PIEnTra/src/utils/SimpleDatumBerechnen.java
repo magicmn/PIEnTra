@@ -54,7 +54,6 @@ public class SimpleDatumBerechnen {
 				long tageMillisekunden = tage * 86400000; 											
 				Date startdatumFormatiert = format.parse(startdatum);				
 				long enddatumMillisekunden = startdatumFormatiert.getTime() + tageMillisekunden - 86400000;	
-				Date datum = new Date(enddatumMillisekunden);
 				DateAsString = format.format(enddatumMillisekunden);
 
 			} catch (ParseException e) {
