@@ -18,6 +18,7 @@ import javax.swing.event.CaretListener;
 
 import controller.C_Hauptmenue;
 import controller.C_RessourceAendern;
+import controller.C_TrainingAendern;
 import model.M_Training;
 import utils.SimpleDatumBerechnen;
 import utils.SimpleMasterWindow;
@@ -272,6 +273,7 @@ public class V_TrainingAendern extends SimpleMasterWindow {
 			} finally {
 				if(training!=null) {
 					trainingsIDCorrect = true;
+					C_TrainingAendern.getInstance().get
 					setText_pnl_firmenname(training.getKunde().getFirmenname());
 					setText_pnl_ansprechpartner(training.getTrainer().getVorname() + " " + training.getTrainer().getNachname());
 					setText_pnl_produktbeschreibung(training.getProdukt().getBeschreibung());
