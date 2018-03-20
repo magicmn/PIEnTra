@@ -82,7 +82,7 @@ public class V_RessourceAendern extends SimpleMasterWindow {
 	private JTextArea textarea = new JTextArea();
 	private JScrollPane area = new JScrollPane(textarea);
 	
-	private JButton btn_kundeSuchen = new JButton("Ressource ändern");
+	private JButton btn_ressourceaendern = new JButton("Ressource ändern");
 	private JButton btn_zurueck = new JButton("Zurück zu Training ändern");
 	
 	private V_RessourceAendern thisView;
@@ -141,8 +141,7 @@ public class V_RessourceAendern extends SimpleMasterWindow {
 		pnl_content_left.add(pnl_produktbez);
 		pnl_content_left.add(pnl_trainer);
 		pnl_content_left.add(pnl_ort);
-		//area.setAutoscrolls(true);
-		
+
 		pnl_content_right.setLayout(new BoxLayout(pnl_content_right, BoxLayout.PAGE_AXIS));
 		pnl_content_right.add(lbl_produktb);
 		pnl_content_right.add(area);
@@ -161,7 +160,7 @@ public class V_RessourceAendern extends SimpleMasterWindow {
 	 * Initiailisert die Menu Buttons
 	 */
 	private void initMenu() {
-		getPnl_menu().add(btn_kundeSuchen);
+		getPnl_menu().add(btn_ressourceaendern);
 		getPnl_menu().add(btn_zurueck);
 		
 	}
@@ -170,7 +169,7 @@ public class V_RessourceAendern extends SimpleMasterWindow {
 	 * Initialisiert ActionListener
 	 */
 	private void initListener() {
-		btn_kundeSuchen.addActionListener(new KundeSuchen());
+		btn_ressourceaendern.addActionListener(new RessourceAendern());
 		btn_zurueck.addActionListener(new Zurueck());
 		pnl_produktbez.getComboBox().addActionListener(new DropdownListener());
 	}
@@ -181,8 +180,8 @@ public class V_RessourceAendern extends SimpleMasterWindow {
 		pnl_produktbez.setComboBoxFieldWidth(maxWidthTextBox / 2);
 		pnl_trainer.setComboBoxFieldWidth(maxWidthTextBox / 2);
 		pnl_ort.setComboBoxFieldWidth(maxWidthTextBox / 2);
-		btn_kundeSuchen.setPreferredSize(new Dimension(optimalButtonWidth / 4 , btn_kundeSuchen.getPreferredSize().height));
-		btn_zurueck.setPreferredSize(new Dimension(optimalButtonWidth / 4, btn_kundeSuchen.getPreferredSize().height));
+		btn_ressourceaendern.setPreferredSize(new Dimension(optimalButtonWidth / 4 , btn_ressourceaendern.getPreferredSize().height));
+		btn_zurueck.setPreferredSize(new Dimension(optimalButtonWidth / 4, btn_ressourceaendern.getPreferredSize().height));
 		
 	}
 	
@@ -203,41 +202,40 @@ public class V_RessourceAendern extends SimpleMasterWindow {
 		}
 		new Test_main();
 		new V_RessourceAendern();
+		
 	}
 	
 	// Getter und Setter
 	
-	public String getText_pnl_kundenID(){
+	public String getText_pnl_produktbezeichnung(){
 		return pnl_produktbez.getText();
 	}
-	public String getText_pnl_firmenname(){
+	public String getText_pnl_trainer(){
 		return pnl_trainer.getText();
 	}
-	public String getText_pnl_ansprechpartner() {
+	public String getText_pnl_ort() {
 		return pnl_ort.getText();
 	}
-	public void setText_pnl_kundenID(String text){
+	public String getText_pnl_produktbeschreibung(){
+		return textarea.getText();
+	}
+	/*public void setText_pnl_produktbezeichnung(String text){
 		this.pnl_produktbez.setText(text);
 	}
-	public void setText_pnl_firmenname(String text){
+	public void setText_pnl_trainer(String text){
 		this.pnl_trainer.setText(text);
 	}
-	public void setText_pnl_ansprechpartner(String text) {
+	public void setText_pnl_prt(String text) {
 		this.pnl_ort.setText(text);;
-	}
+	}*/
 
 	// ActionListener
 	
-	private class KundeSuchen implements ActionListener {
+	private class RessourceAendern implements ActionListener {
 		public void actionPerformed(ActionEvent arg0) {
-			System.out.println("Kunde suchen!");
-			
+			System.out.println("RessourceAendern!");
+			System.out.println(pnl_produktbez.getText());
 			//SimpleSwitchFrame.switchFrame(thisView, C_KundeSuchen.getInstance() , C_KundeSuchen.getInstance().getView());
-		}
-	}
-	private class KundeWaehlen implements ActionListener {
-		public void actionPerformed(ActionEvent arg0) {
-			System.out.println("Kunde wählen");
 		}
 	}
 	private class Zurueck implements ActionListener {

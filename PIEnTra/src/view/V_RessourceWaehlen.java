@@ -27,6 +27,7 @@ import controller.C_TrainingKonfigurieren;
 import testdaten.Test_main;
 import utils.SimpleDropdownPanel;
 import utils.SimpleMasterWindow;
+import utils.SimpleSearch;
 import utils.SimpleSwitchFrame;
 import utils.SimpleTextPanel;
 
@@ -75,18 +76,17 @@ public class V_RessourceWaehlen extends SimpleMasterWindow {
 	private JTextArea textarea = new JTextArea();
 	private JScrollPane area = new JScrollPane(textarea);
 	
-	private JButton btn_kundeSuchen = new JButton("Ressource wählen");
+	private JButton btn_ressourcewaehlen = new JButton("Ressource wählen");
 	private JButton btn_zurueck = new JButton("Zurück zu Training konfigurieren");
+	
+	private M_Produkt produkt;
 	
 	private V_RessourceWaehlen thisView;
 	
 	/* Konstruktor und Methoden die vom Konstruktor aufgerufen werden. */
 	
 	/**
-	 * Konstruktor der View Hauptmenue.
-	 * Übergibt an die Superklasse die standard und minimal Größe, sowie aktuelle Pfadangaben der Navigationsleiste.
-	 * Initialisiere dann den Content und lösche ein überflüssiges Element aus der im Hauptmenu nicht benutzten Menuleiste.
-	 * Zuletzt werden die Listener initialisiert.
+	 * Konstruktor der View RessourceWaehlen
 	 */
 	public V_RessourceWaehlen() {
 		super(
@@ -101,11 +101,13 @@ public class V_RessourceWaehlen extends SimpleMasterWindow {
 		initListener();
 		resizeGUI();
 		this.setVisible(true);
+		
 	}
 
 	/**
 	 * Initialisiere den Inhalt des Centers.
 	 */
+	
 	private void initContent() {
 				
 		area.setPreferredSize(new Dimension(200, 80));
@@ -154,7 +156,7 @@ public class V_RessourceWaehlen extends SimpleMasterWindow {
 	 * Initiailisert die Menu Buttons
 	 */
 	private void initMenu() {
-		getPnl_menu().add(btn_kundeSuchen);
+		getPnl_menu().add(btn_ressourcewaehlen);
 		getPnl_menu().add(btn_zurueck);	
 	}
 	
@@ -162,7 +164,7 @@ public class V_RessourceWaehlen extends SimpleMasterWindow {
 	 * Initialisiert ActionListener
 	 */
 	private void initListener() {
-		btn_kundeSuchen.addActionListener(new KundeSuchen());
+		btn_ressourcewaehlen.addActionListener(new RessourceWaehlen());
 		btn_zurueck.addActionListener(new Zurueck());
 		pnl_produktbez.getComboBox().addActionListener(new DropdownListener());
 	}
@@ -173,8 +175,8 @@ public class V_RessourceWaehlen extends SimpleMasterWindow {
 		pnl_produktbez.setComboBoxFieldWidth(maxWidthTextBox / 2);
 		pnl_trainer.setComboBoxFieldWidth(maxWidthTextBox / 2);
 		pnl_ort.setComboBoxFieldWidth(maxWidthTextBox / 2);
-		btn_kundeSuchen.setPreferredSize(new Dimension(optimalButtonWidth / 4 , btn_kundeSuchen.getPreferredSize().height));
-		btn_zurueck.setPreferredSize(new Dimension(optimalButtonWidth / 4, btn_kundeSuchen.getPreferredSize().height));
+		btn_ressourcewaehlen.setPreferredSize(new Dimension(optimalButtonWidth / 4 , btn_ressourcewaehlen.getPreferredSize().height));
+		btn_zurueck.setPreferredSize(new Dimension(optimalButtonWidth / 4, btn_ressourcewaehlen.getPreferredSize().height));
 		
 	}
 	
@@ -199,32 +201,40 @@ public class V_RessourceWaehlen extends SimpleMasterWindow {
 	
 	// Getter und Setter
 	
-	public String getText_pnl_kundenID(){
+	public String getText_pnl_produktbezeichnung(){
 		return pnl_produktbez.getText();
 	}
-	public String getText_pnl_firmenname(){
+	public String getText_pnl_trainer(){
 		return pnl_trainer.getText();
 	}
-	public String getText_pnl_ansprechpartner() {
+	public String getText_pnl_ort() {
 		return pnl_ort.getText();
 	}
-	public void setText_pnl_kundenID(String text){
+	public String getText_pnl_produktbeschreibung(){
+		return textarea.getText();
+	}
+	/*public void setText_pnl_produktbezeichnung(String text){
 		this.pnl_produktbez.setText(text);
 	}
-	public void setText_pnl_firmenname(String text){
+	public void setText_pnl_trainer(String text){
 		this.pnl_trainer.setText(text);
 	}
-	public void setText_pnl_ansprechpartner(String text) {
+	public void setText_pnl_prt(String text) {
 		this.pnl_ort.setText(text);;
-	}
+	}*/
+
 
 	// ActionListener
 	
-	private class KundeSuchen implements ActionListener {
+	private class RessourceWaehlen implements ActionListener {
 		public void actionPerformed(ActionEvent arg0) {
-			System.out.println("Kunde suchen!");
-			
+			System.out.println("Ressource wählen!");
 			//SimpleSwitchFrame.switchFrame(thisView, C_KundeSuchen.getInstance() , C_KundeSuchen.getInstance().getView());
+			System.out.println(getText_pnl_produktbezeichnung());
+			//produkt = SimpleSearch.produktSuchen(pnl_produktbez.getComboBox().getSelectedIndex(), M_Produkt.getInterneListe());
+	    	
+			
+			//System.out.println(produkt.getBeschreibung());
 		}
 	}
 	private class Zurueck implements ActionListener {
@@ -237,9 +247,13 @@ public class V_RessourceWaehlen extends SimpleMasterWindow {
 	public class DropdownListener implements ActionListener {	
         
 	    public void actionPerformed(ActionEvent e) {
-
+	    	if(pnl_produktbez.getComboBox().getSelectedIndex()>-1){
+	    	textarea.setText(M_Produkt.getInterneListe().get(pnl_produktbez.getComboBox().getSelectedIndex()).getBeschreibung());
 	    	System.out.println(pnl_produktbez.getComboBox().getSelectedIndex());
-	    	//textarea.setText(arrayList_produktbezeichnung.);
+//	    	pnl_trainer.getComboBox().enable(true);
+//	    	pnl_ort
+	    	}
+	    
 	    	
 	    }
 	}
