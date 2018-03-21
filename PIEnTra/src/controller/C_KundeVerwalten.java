@@ -130,6 +130,15 @@ public class C_KundeVerwalten {
 				new M_Person(vorname, nachname));
 		view.setText_pnl_kundenID(kunde.getKundenID() + "");
 	}
+
+	public boolean checkKundeAktualisieren() {
+		if(view.getText_pnl_plz().equals("")||view.getText_pnl_bundesland().equals("")||view.getText_pnl_strasse().equals("")||view.getText_pnl_stadt().equals("")||view.getText_pnl_email().equals("")||view.getText_pnl_firmenname().equals("")||view.getText_pnl_branche().equals("")||view.getText_pnl_rufnummer().equals("")||view.getText_pnl_ansprechpartner().equals("")){
+			return false;
+		}
+		else{
+		return true;
+		}
+	}
 }
 
 

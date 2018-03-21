@@ -7,6 +7,7 @@ import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
@@ -62,6 +63,7 @@ public class V_KundeVerwalten extends SimpleMasterWindow {
 	private SimpleTextPanel pnl_postleitzahl = new SimpleTextPanel("Postleitzahl:");
 	private SimpleTextPanel pnl_bundesland = new SimpleTextPanel("Bundesland:");
 	private SimpleTextPanel pnl_stadt = new SimpleTextPanel("Stadt:");
+	private JOptionPane popup = new JOptionPane();
 	
 	private JButton btn_kundeSuchen = new JButton("Kunde suchen");
 	private JButton btn_kundeAktualisieren = new JButton("Kunde aktualisieren");
@@ -238,8 +240,12 @@ public class V_KundeVerwalten extends SimpleMasterWindow {
 	}
 	private class KundeAktualisieren implements ActionListener {
 		public void actionPerformed(ActionEvent arg0) {
+			if(C_KundeVerwalten.getInstance().checkKundeAktualisieren()==false){
+				popup.showMessageDialog(null, "Bitte füllen Sie alle Felder aus!");
+			}
+			else{
 			C_KundeVerwalten.getInstance().kundeAktualisieren();
-			System.out.println("Kunde aktualisieren!");
+			}
 		}
 	}
 	private class KundeAnlegen implements ActionListener {
