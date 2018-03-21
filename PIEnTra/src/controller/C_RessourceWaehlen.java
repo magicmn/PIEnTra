@@ -31,7 +31,7 @@ public class C_RessourceWaehlen {
 		return view;
 	}
 	public void setView(V_RessourceWaehlen view) {
-		this.view = view;
+		C_RessourceWaehlen.view = view;
 	}
 
 	public static C_RessourceWaehlen getInstance() {
