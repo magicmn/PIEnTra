@@ -1,27 +1,18 @@
 /**
- * Aktuelle Version: 1.3 
- * Authoren: Julian (1.0), Adrian(1.1, 1.2), Konstantin (1.3)
- * 
- * Changelog:
- * 1.3
- * 		-Singelton implementiert
- * 1.2
- * 		-ActionListener wieder entfernt!
- * 1.1
- * 		-ActionListener hinzugefügt!
- * 1.0 	
- * 		-Controller erstellt
+ * @ersion 1.3 Singelton implementiert
+ * @version 1.2 ActionListener wieder entfernt.
+ * @version 1.1 ActionListener hinzugefuegt.
+ * @version 1.0 Erstellt.
+ * @author Adrian Fromm (1.1 & 1.2)
+ * @author Julian Klein (1.0)
+ * @author Konstantin Frei (1.3)
  **/
 
 package controller;
 
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-
 import javax.swing.JFrame;
 
 import model.M_Kunde;
-import utils.SimpleSwitchFrame;
 import view.V_TrainingKonfigurieren;
 
 public class C_TrainingKonfigurieren {
