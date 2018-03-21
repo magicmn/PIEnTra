@@ -73,7 +73,7 @@ public class V_ProduktDefinieren extends SimpleMasterWindow {
 	/* Konstruktor und Methoden die vom Konstruktor aufgerufen werden. */
 	
 	/**
-	 * Konstruktor der View Hauptmenue.
+	 * Konstruktor der View Produkt definieren.
 	 * Übergibt an die Superklasse die standard und minimal Größe, sowie aktuelle Pfadangaben der Navigationsleiste.
 	 * Initialisiere dann den Content und lösche ein überflüssiges Element aus der im Hauptmenu nicht benutzten Menuleiste.
 	 * Zuletzt werden die Listener initialisiert.
@@ -135,8 +135,9 @@ public class V_ProduktDefinieren extends SimpleMasterWindow {
 		txt_produktbeschreibung.setPreferredSize(new Dimension(maxWidthTextBox, 400));
 	}
 
-	/* Implementierung der ActionListener */
-	
+	/**
+	 * For testing
+	 */
 	public static void main(String [] args) {
 		try {
 			UIManager.setLookAndFeel("com.sun.java.swing.plaf.windows.WindowsLookAndFeel");
@@ -146,7 +147,7 @@ public class V_ProduktDefinieren extends SimpleMasterWindow {
 		new V_ProduktDefinieren();
 	}
 	
-	// Getter und Setter
+	// Getter und Setter -------------------------------------------------------------------------------------
 	public String getText_txt_produktID(){
 		return pnl_produktID.getText();
 	}
@@ -166,19 +167,22 @@ public class V_ProduktDefinieren extends SimpleMasterWindow {
 		pnl_produktID.setText(text);
 	}
 	
-	// ActionListener
+	// ActionListener ----------------------------------------------------------------------------------------
 	
 	private class ProduktDefinieren implements ActionListener {
 		public void actionPerformed(ActionEvent arg0) {
 			//System.out.println("Produkt definieren!");
 			produkt = null;
-			
+			if(!getText_txt_produktID().equals("")){
 			try{
 				produkt = SimpleSearch.produktSuchen(getText_txt_produktID(), M_Produkt.getInterneListe());
 				
 					}catch(NoSuchElementException e){
 						C_ProduktDefinieren.getInstance().produktDefinieren();
-						System.out.println("AHHHHHHH ");
+						popup.showMessageDialog(null, "Es wurde ein neues Produkt mit der ID "+ getText_txt_produktID() + " angelegt");
+						setText_txt_produktID("");
+						setText_txt_produktbezeichnung("");
+						setText_txt_produktbeschreibung("");
 						}finally{
 							if(produkt != null){
 								popup.showMessageDialog(null, "Es ist bereits ein Produkt mit dieser ID vorhanden");
@@ -187,6 +191,9 @@ public class V_ProduktDefinieren extends SimpleMasterWindow {
 						}
 					
 			
+			}else {
+				popup.showMessageDialog(null, "Bitte geben Sie eine ProduktID ein!");
+			}
 		}
 	}
 	

@@ -101,6 +101,7 @@ public class V_RessourceWaehlen extends SimpleMasterWindow {
 		this.setVisible(true);
 		
 	}
+	
 
 	/**
 	 * Initialisiere den Inhalt des Centers.

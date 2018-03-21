@@ -2,9 +2,8 @@ package model;
 
 import java.util.ArrayList;
 /**
- * Modellklasse für ManagemetAssistenten
- * @author Konstantin
- *
+ * Modellklasse für ManagemetAssistenten. Erbt von {@link M_Person}.
+ * @author Konstantin Frei
  */
 public class M_ManagementAssistent extends M_Person{
 	private static int interneID;
@@ -15,83 +14,45 @@ public class M_ManagementAssistent extends M_Person{
 		super(vorname, nachname);
 		setInterneID(getInterneID()+1);
 		setMitarbeiterID(getInterneID());
-		
-		if(this.interneListe == null) {
+		if(M_ManagementAssistent.interneListe == null) {
 			this.interneListe =new ArrayList<M_ManagementAssistent>();
 		}
 		getInterneListe().add(this);
-
-
-
-
 	}
-
-
-
-
 
 	public ArrayList<M_Training> getTrainings() {
 		return trainings;
 	}
 
-
-
-
-
 	public void setTrainings(ArrayList<M_Training> trainings) {
 		this.trainings = trainings;
 	}
 
-
-
-
-
 	public int getMitarbeiterID() {
 		return mitarbeiterID;
 	}
+
 	public void setMitarbeiterID(int mitarbeiterID) {
 		this.mitarbeiterID = mitarbeiterID;
 	}
-
-
-
-
 
 	public static int getInterneID() {
 		return interneID;
 	}
 
-
-
-
-
 	public static void setInterneID(int interneID) {
 		M_ManagementAssistent.interneID = interneID;
 	}
 
-
-
-
-
 	@Override
 	public String getVorname() {
-
 		return super.getVorname();
 	}
 
-
-
-
-
 	@Override
 	public void setVorname(String vorname) {
-
 		super.setVorname(vorname);
 	}
-
-
-
-
 
 	@Override
 	public String getNachname() {
@@ -99,18 +60,14 @@ public class M_ManagementAssistent extends M_Person{
 		return super.getNachname();
 	}
 
-
-
-
-
 	@Override
 	public void setNachname(String nachname) {
 
 		super.setNachname(nachname);
 	}
 
-	/**Ordnet einem Assistenten ein weiteres Training hinzu
-	 * 
+	/**
+	 * Ordnet einem Assistenten ein weiteres Training hinzu. Falls dieser noch keins hat wird automatisch eine Liste erstellt.
 	 * @param training
 	 */
 	public void trainingHinzufuegen(M_Training training ) {
@@ -120,42 +77,26 @@ public class M_ManagementAssistent extends M_Person{
 		trainings.add(training);
 	}
 
-
-
-
-
+	/**
+	 * Testfunktion. Gibt Daten als String zrueck.
+	 */
 	@Override
 	public String toString() {
 		String trainings = "";
-
 		if(getTrainings() != null) {
 			for(M_Training training : getTrainings()) {
 				trainings = trainings+ " "+training.getTrainingsID() +"";
 			}
 		}
-
-
 		return ""+getVorname()+", "+ getNachname()+ "\nTrainings: "+trainings+"";
-
-
 	}
-
-
-
-
 
 	public static ArrayList<M_ManagementAssistent> getInterneListe() {
 		return interneListe;
 	}
 
-
-
-
-
 	public static void setInterneListe(ArrayList<M_ManagementAssistent> interneListe) {
 		M_ManagementAssistent.interneListe = interneListe;
 	}
-
-
 
 }

@@ -7,6 +7,7 @@ import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
@@ -62,6 +63,7 @@ public class V_KundeVerwalten extends SimpleMasterWindow {
 	private SimpleTextPanel pnl_postleitzahl = new SimpleTextPanel("Postleitzahl:");
 	private SimpleTextPanel pnl_bundesland = new SimpleTextPanel("Bundesland:");
 	private SimpleTextPanel pnl_stadt = new SimpleTextPanel("Stadt:");
+	private JOptionPane popup = new JOptionPane();
 	
 	private JButton btn_kundeSuchen = new JButton("Kunde suchen");
 	private JButton btn_kundeAktualisieren = new JButton("Kunde aktualisieren");
@@ -73,7 +75,7 @@ public class V_KundeVerwalten extends SimpleMasterWindow {
 	/* Konstruktor und Methoden die vom Konstruktor aufgerufen werden. */
 	
 	/**
-	 * Konstruktor der View Hauptmenue.
+	 * Konstruktor der View Kunde verwalten.
 	 * Übergibt an die Superklasse die standard und minimal Größe, sowie aktuelle Pfadangaben der Navigationsleiste.
 	 * Initialisiere dann den Content und lösche ein überflüssiges Element aus der im Hauptmenu nicht benutzten Menuleiste.
 	 * Zuletzt werden die Listener initialisiert.
@@ -233,13 +235,17 @@ public class V_KundeVerwalten extends SimpleMasterWindow {
 	private class KundeSuchen implements ActionListener {
 		public void actionPerformed(ActionEvent arg0) {
 			System.out.println("Kunde suchen!");
-			C_KundeSuchen.getInstance(C_KundeVerwalten.getInstance()).getView().setVisible(true);;
+			C_KundeSuchen.getInstance(C_KundeVerwalten.getInstance()).getView().setVisible(true);
 		}
 	}
 	private class KundeAktualisieren implements ActionListener {
 		public void actionPerformed(ActionEvent arg0) {
+			if(C_KundeVerwalten.getInstance().checkKundeAktualisieren()==false){
+				popup.showMessageDialog(null, "Bitte füllen Sie alle Felder aus!");
+			}
+			else{
 			C_KundeVerwalten.getInstance().kundeAktualisieren();
-			System.out.println("Kunde aktualisieren!");
+			}
 		}
 	}
 	private class KundeAnlegen implements ActionListener {

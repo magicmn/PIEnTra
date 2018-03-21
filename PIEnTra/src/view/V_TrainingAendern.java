@@ -19,6 +19,9 @@ import javax.swing.event.CaretListener;
 import controller.C_Hauptmenue;
 import controller.C_RessourceAendern;
 import controller.C_TrainingAendern;
+import model.M_Ort;
+import model.M_Produkt;
+import model.M_Trainer;
 import model.M_Training;
 import utils.SimpleDatumBerechnen;
 import utils.SimpleMasterWindow;
@@ -79,6 +82,9 @@ public class V_TrainingAendern extends SimpleMasterWindow {
 	
 	private V_TrainingAendern thisView;
 	private M_Training training;
+	private M_Trainer trainer;
+	private M_Produkt produkt;
+	private M_Ort ort;
 	private CheckInput moehrenhoerer;
 	private boolean dateCorrect = false;
 	private boolean trainingsIDCorrect = false;
@@ -87,7 +93,7 @@ public class V_TrainingAendern extends SimpleMasterWindow {
 	/* Konstruktor und Methoden die vom Konstruktor aufgerufen werden. */
 	
 	/**
-	 * Konstruktor der View Hauptmenue.
+	 * Konstruktor der View Training Aendern.
 	 * Übergibt an die Superklasse die standard und minimal Größe, sowie aktuelle Pfadangaben der Navigationsleiste.
 	 * Initialisiere dann den Content und lösche ein überflüssiges Element aus der im Hauptmenu nicht benutzten Menuleiste.
 	 * Zuletzt werden die Listener initialisiert.
@@ -161,7 +167,6 @@ public class V_TrainingAendern extends SimpleMasterWindow {
 		pnl_enddatum.getTextPanel().addFocusListener(new TageBerechnen());
 		pnl_tage.getTextPanel().addFocusListener(new EnddatumBerechnen());
 		pnl_trainingsID.getTextPanel().addCaretListener(moehrenhoerer);
-	
 		moehrenhoerer = new CheckInput(trainingsIDCorrect, dateCorrect, btn_trainingAktualisieren);
 		pnl_startdatum.getTextPanel().addCaretListener(moehrenhoerer);
 		pnl_enddatum.getTextPanel().addCaretListener(moehrenhoerer);
@@ -201,9 +206,35 @@ public class V_TrainingAendern extends SimpleMasterWindow {
 	
 	// Getter und Setter
 	
+	
+	
 	public String getText_pnl_trainingsID(){
 		return pnl_trainingsID.getText();
 	}
+	public M_Trainer getTrainer() {
+		return trainer;
+	}
+
+	public void setTrainer(M_Trainer trainer) {
+		this.trainer = trainer;
+	}
+
+	public M_Produkt getProdukt() {
+		return produkt;
+	}
+
+	public void setProdukt(M_Produkt produkt) {
+		this.produkt = produkt;
+	}
+
+	public M_Ort getOrt() {
+		return ort;
+	}
+
+	public void setOrt(M_Ort ort) {
+		this.ort = ort;
+	}
+
 	public String getText_pnl_firmenname(){
 		return pnl_firmenname.getText();
 	}
@@ -285,24 +316,17 @@ public class V_TrainingAendern extends SimpleMasterWindow {
 			} finally {
 				if(training!=null) {
 					moehrenhoerer.setBool1(true);
-					
 					C_TrainingAendern.getInstance().felderFuellen(training);
-//					setText_pnl_firmenname(training.getKunde().getFirmenname());
-//					setText_pnl_ansprechpartner(training.getTrainer().getVorname() + " " + training.getTrainer().getNachname());
-//					setText_pnl_produktbeschreibung(training.getProdukt().getBeschreibung());
-//					setText_pnl_startdatum(training.getAnfangsdatum());
-//					setText_pnl_enddatum(training.getEnddatum());
-//					setText_pnl_tage(training.getTage()+"");
-//					setText_pnl_trainer(training.getTrainer().getTrainerID()+"");
-//					setText_pnl_ort(training.getOrt().getOrtsID());
-//					setText_pnl_bemerkungen(training.getBemerkungen());
 				}
 			}
 		}
 	}
 	private class RessourceAendern implements ActionListener {
 		public void actionPerformed(ActionEvent arg0) {
-			C_RessourceAendern.getInstance();
+			C_RessourceAendern.getInstance(C_TrainingAendern.getInstance());
+			C_RessourceAendern.getInstance(C_TrainingAendern.getInstance()).getView();
+			C_RessourceAendern.getInstance(C_TrainingAendern.getInstance()).viewSetzen(training.getProdukt(),training.getTrainer(),training.getOrt());
+
 			//SimpleSwitchFrame.switchFrame(thisView, C_RessourceAendern.getInstance(), C_RessourceAendern.getInstance().getView());
 		}
 	}
@@ -319,45 +343,33 @@ public class V_TrainingAendern extends SimpleMasterWindow {
 	}
 	
 	private class TageBerechnen implements FocusListener {
-		public void focusGained(FocusEvent arg0) {
-			pnl_enddatum.getTextPanel().setEditable(true);
-			}
+		public void focusGained(FocusEvent arg0) {}
 		public void focusLost(FocusEvent arg0) {
-			
 			int tage = (SimpleDatumBerechnen.datumBerechnen(getText_pnl_startdatum(), getText_pnl_enddatum()));
 			if (tage == -1 ){
-				pnl_enddatum.getTextPanel().setEditable(false);
-				
-				moehrenhoerer.setBool2(false);;
+				moehrenhoerer.setBool2(false);
 			} else {
 				setText_pnl_tage(tage + "");
-				moehrenhoerer.setBool2(true);;
-				pnl_enddatum.getTextPanel().setEditable(true);
+				moehrenhoerer.setBool2(true);
 			}
 		}
 	}
 	
 	private class EnddatumBerechnen implements FocusListener {
-		public void focusGained(FocusEvent arg0) {
-			pnl_tage.getTextPanel().setEditable(true);
-		}
+		public void focusGained(FocusEvent arg0) {}
 		public void focusLost(FocusEvent arg0) {
-			
 			String datum = "";
 			try {
 				datum = SimpleDatumBerechnen.datumBerechnen(getText_pnl_startdatum(), Integer.parseInt(getText_pnl_tage()));
 			} catch(NumberFormatException e) {
 				datum = "-1";
-			}
-			finally {
-			if (datum.equals("-1")) {
-				moehrenhoerer.setBool2(false);;
-				pnl_tage.getTextPanel().setEditable(false);
-			} else {
-				setText_pnl_enddatum(datum);
-				moehrenhoerer.setBool2(true);;
-				pnl_tage.getTextPanel().setEditable(true);
-			}
+			} finally {
+				if (datum.equals("-1")) {
+					moehrenhoerer.setBool2(false);
+				} else {
+					setText_pnl_enddatum(datum);
+					moehrenhoerer.setBool2(true);
+				}
 			}
 		}
 	}

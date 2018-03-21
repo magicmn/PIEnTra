@@ -18,7 +18,7 @@ import view.V_Hauptmenue;
  * @version 1.0 Hinzugefügt.
  * @author Julian Klein
  * 
- * @see {@link view.V_Hauptmenue};
+ * @see {@link view.V_TrainingKonfigurieren} (Beispiel fuer Verwendung der Klasse)
  */
 public abstract class SimpleMasterWindow extends JFrame {
 
@@ -87,7 +87,6 @@ public abstract class SimpleMasterWindow extends JFrame {
 				pnl_navigationPath.add(txt_navigation);
 				pnl_south.add(pnl_navigationPath);
 			}
-
 			this.add(BorderLayout.SOUTH, pnl_south);
 	}
 	
@@ -113,12 +112,15 @@ public abstract class SimpleMasterWindow extends JFrame {
 	}
 	
 	/**
-	 * @return margin Abstand zwischen Inhalten und Rändern.
+	 * @return Abstand zwischen Inhalten und Rändern.
 	 */
 	protected int getPadding() {
 		return padding;
 	}
 	
+	/**
+	 * @return JPanel, welches die Navigation enthält.
+	 */
 	protected JPanel getNavigationPathPanel() {
 		return pnl_navigationPath;
 	}

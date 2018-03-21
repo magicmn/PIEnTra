@@ -15,9 +15,12 @@ package controller;
 import javax.swing.JFrame;
 
 import model.M_Produkt;
-import utils.SimpleMasterWindow;
 import view.V_ProduktDefinieren;
 
+/**
+ * Controller von "Produkte definieren"
+ * @version unknown - Erstellt, Singelton usw.
+ */
 public class C_ProduktDefinieren {
 	
 	private static C_ProduktDefinieren instance = null;
@@ -39,6 +42,9 @@ public class C_ProduktDefinieren {
 		return instance;
 	}
 	
+	/**
+	 * Legt ein Objekt der Klasse Produkt an.
+	 */
 	public void produktDefinieren(){
 		
 		produkt = new M_Produkt(view.getText_txt_produktID(), view.getText_txt_produktbezeichnung(), view.getText_txt_produktbeschreibung(), 1.0);
