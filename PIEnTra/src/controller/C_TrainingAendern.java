@@ -6,7 +6,7 @@
  * 1.3
  * 		-Singelton implementiert
  * 1.2
- * 		-ActionListener wieder entfernt!
+ * 		-ActionListener entfernt und in View implementiert!
  * 1.1
  * 		-ActionListener hinzugefügt!
  * 1.0 	
