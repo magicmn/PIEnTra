@@ -1,15 +1,32 @@
 /**
- * Übersicht wer in welchen Klassen gearbeitet hat.
+ * Übersicht wer in wo dran und in welchen Klassen gearbeitet hat.
  * 
  * Legende:
  * [x] Steht für die Klassen in denen hauptsächlich der entsprechende Author gearbeitet hat.
  * [ ] Steht für die Klassen in denen der entsprechende Author nebensächlich gearbeitet hat.
- * [-] Steht für eine Klassen die hauptsächlich in Zusammenarbeit mit einem anderen Mitgleid erstellt wurde
- * 
+ * [-] Steht für eine Klassen die hauptsächlich in Zusammenarbeit mit einem anderen Mitgleid erstellt wurden
+ * [z] Steht für Zusätzliche Aufgaben (Klassendiagramm, Kommentierung etc.)
  * 
  * 
  * Julian:
+ *  [x] - SimpleMasterWindow
+ *  [x] - SimpleTextPanel
+ *  [x] - SimpleButtonPanel
+ *  
+ *  [z] - Kommentierung, Pflegung, Anpassung der JavaDocs in diversen Klassen
+ *  
  * Konstantin:
+ * 	[x]	- M_Adresse
+ * 	[x]	- M_Kunde
+ * 	[x]	- M_ManagementAssistent
+ * 	[x]	- M_Ort
+ * 	[x]	- M_Produkt
+ * 	[x]	- M_Trainer
+ * 	[x]	- M_Training
+ * 
+ * 	[z] - Erstellung des Datenmodels (Diagramm)
+ *  [z] - Kommentierung, Pflegung, Anpassung der JavaDocs in diversen Klassen
+ * 
  * Adrian:
  * 	[x]	- SimpleSwitchFrame
  * 	[ ]	- SimpleDropDownPanel 	
@@ -33,9 +50,15 @@
  * 	[ ]	- C_TrainingAendern
  * 	[ ]	- C_TrainingKonfigurieren
  * 	[ ]	- C_TrainingLoeschen
+ * 	[z] - Kommentierung, Pflegung und Anpassung der JavaDocs in diversen Klassen
  * 
  * Andreas:
+ * 	[z] - Kommentierung, Pflegung, Anpassung der JavaDocs in diversen Klassen
+ * 
  * Jannik:
+ *  [z] - Kommentierung, Pflegung, Anpassung der JavaDocs in diversen Klassen
+ * 	[z] - Erstellung der Präsentation für die Zusammenfassung
+ * 
  * Jens:
  * 
  * 
