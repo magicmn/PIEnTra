@@ -29,6 +29,7 @@
  *  [ ] - V_TrainingLoeschen
  *  [ ] - CheckInput
  *  
+ *  [z] - Anlegen und pflegen der Klassendiagramme.
  *  [z] - Kommentierung, Pflegung, Anpassung der JavaDocs in diversen Klassen
  *  
  * Konstantin:
@@ -116,6 +117,5 @@
  * 
  * @author Adrian
  */
-
 package projectinfo;
 
