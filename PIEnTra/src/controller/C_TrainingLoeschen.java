@@ -41,7 +41,7 @@ public class C_TrainingLoeschen {
 	}
 	/**
 	 * Löscht das übergebene Trainings Objekt aus der Internen Liste.
-	 * @param training
+	 * @author Andreas Kann
 	 */
 	public static void trainingLoeschen(M_Training training){
 		M_Training.getInterneListe().remove(training);

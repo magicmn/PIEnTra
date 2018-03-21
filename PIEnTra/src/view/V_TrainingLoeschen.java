@@ -223,6 +223,11 @@ public class V_TrainingLoeschen extends SimpleMasterWindow {
 	
 	// ActionListener -----------------------------------------------------------------------------------
 	
+	/**
+	 * Durchsucht die interne Liste nach einem Objekt mit der eingebenen ID und füllt die Formularfelder.
+	 * Gibt dabei Fehlermedungen aus sollte zuvor keine oder eine flasche Eingabe erfolgt sein.
+	 * @author Andreas Kann
+	 */
 	private class TrainingSuchen implements ActionListener {
 		public void actionPerformed(ActionEvent arg0) {
 			
@@ -258,6 +263,13 @@ public class V_TrainingLoeschen extends SimpleMasterWindow {
 			}	
 		}
 	}
+	/**
+	 * Gibt die Anweisung das zuvor ausgewählte Trainings-Objekt zu löschen.
+	 * Ruft die Löschenfunktion des Controllers erst nach einer Sicherheitsabfrage auf.
+	 * 
+	 * @author Andreas Kann
+	 *
+	 */
 	
 	private class TrainingLoeschen implements ActionListener {
 		public void actionPerformed(ActionEvent arg0) {
@@ -287,6 +299,12 @@ public class V_TrainingLoeschen extends SimpleMasterWindow {
 		}
 	}
 	
+	/**
+	 * Navigiert zurück zum Hauptmenu.
+	 * 
+	 * @author Andreas Kann
+	 *
+	 */
 	private class Zurueck implements ActionListener {
 		public void actionPerformed(ActionEvent arg0) {
 			SimpleSwitchFrame.switchFrame(thisView, C_Hauptmenue.getInstance(), C_Hauptmenue.getInstance().getView());
