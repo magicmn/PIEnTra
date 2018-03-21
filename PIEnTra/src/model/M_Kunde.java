@@ -4,8 +4,7 @@ import java.util.ArrayList;
 
 /**
  * ModellKLasse für den Kunden
- * @author Konstantin
- *
+ * @author Konstantin Frei
  */
 public class M_Kunde {
 
@@ -18,11 +17,19 @@ public class M_Kunde {
 	private String telefon;
 	private M_Person ansprechpartner;
 	private M_Adresse adresse;
-
+	
+	/**
+	 * Konstruktor von {@link M_Kunde}.
+	 * Pflegt automatisch eine statische Liste mit allen angelegten Kunden.
+	 * @param firmenname Name der Firma z.B: "Aeron Pumpen AG"
+	 * @param branche Bereich in dem die Firma tätig ist z.B: "Pharmaindustrie"
+	 * @param email Kontankt unter der die Firma erreichbar ist: Mail z.B: "info@aeronpump-it.de"
+	 * @param telefon ...: Telefon z.B: "+49 61466939"
+	 * @param adresse ...: {@link M_Adresse}
+	 * @param ansprechpartner ...: {@link M_Person}
+	 */
 	public M_Kunde(String firmenname, String branche, String email, String telefon, M_Adresse adresse, M_Person ansprechpartner) {
 		setInterneID(getInterneID()+1);
-		
-		
 		setKundenID(interneID);
 		setFirmenname(firmenname);
 		setBranche(branche);
@@ -30,15 +37,11 @@ public class M_Kunde {
 		setEmail(email);
 		setAnsprechpartner(ansprechpartner);
 		setAdresse(adresse);
-		
-		if(this.interneListe == null) {
-			this.interneListe =new ArrayList<M_Kunde>();
+		if(M_Kunde.interneListe == null) {
+			M_Kunde.interneListe =new ArrayList<M_Kunde>();
 		}
 		getInterneListe().add(this);
 	}
-	
-
-
 
 	public int getKundenID() {
 		return kundenID;
@@ -83,38 +86,34 @@ public class M_Kunde {
 		M_Kunde.interneID = interneID;
 	}
 
-
-
 	public M_Adresse getAdresse() {
 		return adresse;
 	}
-
-
 
 	public void setAdresse(M_Adresse adresse) {
 		this.adresse = adresse;
 	}
 
-
-
+	/**
+	 * Testmethode. Gibt alle Daten als String zurueck
+	 */
 	@Override
 	public String toString() {
-
-		return ""+getFirmenname()+" \nAnsprechpartner: "+ getAnsprechpartner()+"\n"+ getAdresse()+"\n"+getTelefon()+"\nBranche: "+ getBranche()+ "\n"+getEmail()+"";
+		String returnValue = "" + getFirmenname() + 
+				"\nAnsprechpartner: " + getAnsprechpartner() +
+				"\n"+ getAdresse() + 
+				"\n" + getTelefon() + 
+				"\nBranche: " + getBranche() + 
+				"\n" + getEmail() + "";
+		return returnValue;
 	}
-
-
 
 	public static ArrayList<M_Kunde> getInterneListe() {
 		return interneListe;
 	}
 
-
-
 	public static void setInterneListe(ArrayList<M_Kunde> interneListe) {
 		M_Kunde.interneListe = interneListe;
 	}
-	
-	
 
 }
