@@ -9,9 +9,24 @@
  * 
  * 
  * Julian:
+ *  [x] - Main
  *  [x] - SimpleMasterWindow
  *  [x] - SimpleTextPanel
  *  [x] - SimpleButtonPanel
+ *  [ ] - C_Hauptmenue
+ *  [ ] - C_KundeSuchen
+ *  [ ] - C_KundeVerwalten
+ *  [ ] - C_ProduktDefinieren
+ *  [ ] - C_TrainingAendern
+ *  [ ] - C_TrainingKonfigurieren
+ *  [ ] - V_Hauptmenue
+ *  [ ] - V_KundeSuchen
+ *  [ ] - V_KundeVerwalten
+ *  [ ] - V_KundeWaehlen
+ *  [ ] - V_ProduktDefinieren
+ *  [ ] - V_TrainingAendern
+ *  [ ] - V_TrainingKonfigurieren
+ *  [ ] - V_TrainingLoeschen
  *  [ ] - CheckInput
  *  
  *  [z] - Kommentierung, Pflegung, Anpassung der JavaDocs in diversen Klassen
@@ -25,6 +40,7 @@
  * 	[x]	- M_Trainer
  * 	[x]	- M_Training
  * 	[x] - SimpleFormatter
+ * 	[x] - SimpleSearch
  *  [ ] - C_Hauptmenue
  *  [ ] - C_KundeSuchen
  *  [ ] - C_KundeVerwalten
@@ -71,7 +87,9 @@
  * 	[ ]	- C_TrainingAendern
  * 	[ ]	- C_TrainingKonfigurieren
  * 	[ ]	- C_TrainingLoeschen
+ * 	
  * 	[z] - Kommentierung, Pflegung und Anpassung der JavaDocs in diversen Klassen
+ * 	[z] - Erstellung projectinfo
  * 
  * Andreas:
  * 	[x] - V_TrainingLoeschen
@@ -87,16 +105,17 @@
  * 
  * Jannik:
  *  [x] - SimpleDatumBerechnen
+ *  [x] - V_TrainingAendern
+ *  
  *  [z] - Kommentierung, Pflegung, Anpassung der JavaDocs in diversen Klassen
  * 	[z] - Erstellung der Präsentation für die Zusammenfassung
  * 
  * Jens:
- * 
+ * 	
  * 
  * 
  * @author Adrian
  */
-
 
 package projectinfo;
 
