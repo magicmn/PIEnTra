@@ -42,6 +42,9 @@ public class C_ProduktDefinieren {
 		return instance;
 	}
 	
+	/**
+	 * Legt ein Objekt der Klasse Produkt an.
+	 */
 	public void produktDefinieren(){
 		
 		produkt = new M_Produkt(view.getText_txt_produktID(), view.getText_txt_produktbezeichnung(), view.getText_txt_produktbeschreibung(), 1.0);
