@@ -331,7 +331,12 @@ public class V_TrainingKonfigurieren extends SimpleMasterWindow {
 		public void actionPerformed(ActionEvent arg0) {
 			System.out.println("Ressource Wählen");
 			C_RessourceAendern.getInstance(C_TrainingKonfigurieren.getInstance());
-			C_RessourceAendern.getInstance(C_TrainingKonfigurieren.getInstance()).getView();
+			V_RessourceAendern.setController(C_TrainingKonfigurieren.getInstance());;
+	
+			
+		
+			
+	
 		
 			//SimpleSwitchFrame.switchFrame(thisView, C_RessourceWaehlen.getInstance(), C_RessourceWaehlen.getInstance().getView());
 		}

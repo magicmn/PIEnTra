@@ -33,19 +33,19 @@ public class C_RessourceAendern {
 	private M_Trainer trainer;
 	private M_Ort ort;
 
-	private C_RessourceAendern (){
-		
-		view = new V_RessourceAendern(controller);
+	private C_RessourceAendern (Object controller){
+		setController(controller);
+		getView();
 	}
 
-	public V_RessourceAendern getView() {
+	public static V_RessourceAendern getView() {
 
-		if(view==null) {
-			view = new V_RessourceAendern(controller,  produkt, trainer, ort);
-		}
-		view.setVisible(true);
+
 		V_RessourceAendern.setController(controller);
 
+		view = new V_RessourceAendern(controller);
+
+		view.setVisible(true);
 		return view;
 
 	}
@@ -58,9 +58,12 @@ public class C_RessourceAendern {
 	public static C_RessourceAendern getInstance(Object controller) {
 
 		if(instance==null) {
-			instance = new C_RessourceAendern();
+			instance = new C_RessourceAendern(controller);
 		}
 		setController(controller);
+		if(view==null) {
+			getView();
+		}
 		return instance;
 	}
 
@@ -72,25 +75,25 @@ public class C_RessourceAendern {
 		C_RessourceAendern.controller = controller;
 	}
 
-	public void ressourcenSetzen(M_Produkt produkt, M_Trainer trainer, M_Ort ort) {
-		if(ort!=null&&produkt!=null&&trainer!=null) {
-			if(controller instanceof C_TrainingAendern) {
+	//	public void ressourcenSetzen(M_Produkt produkt, M_Trainer trainer, M_Ort ort) {
+	//		if(ort!=null&&produkt!=null&&trainer!=null) {
+	//			if(controller instanceof C_TrainingAendern) {
+	//
+	//				view.dispose();
+	//			}
+	////			if(controller instanceof C_KundeWaehlen) {
+	//
+	//				view.dispose();
+	//			}
+	//		}
+	//
+	//	}
 
-				view.dispose();
-			}
-			if(controller instanceof C_KundeWaehlen) {
-
-				view.dispose();
-			}
-		}
-
-	}
-	
 	public void viewSetzen(M_Produkt produkt, M_Trainer trainer, M_Ort ort) {
 		setProdukt(produkt);
 		setTrainer(trainer);
 		setOrt(ort);
-		
+
 	}
 
 	public M_Produkt getProdukt() {
@@ -116,7 +119,7 @@ public class C_RessourceAendern {
 	public void setOrt(M_Ort ort) {
 		this.ort = ort;
 	}
-	
+
 }
 
 
