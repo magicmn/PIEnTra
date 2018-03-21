@@ -120,6 +120,11 @@ public class V_TrainingKonfigurieren extends SimpleMasterWindow {
 		JPanel pnl_content = new JPanel();
 		pnl_content.setLayout(new GridLayout(10, 1));
 		pnl_content.setAlignmentY(LEFT_ALIGNMENT);
+		pnl_firmenname.setEnabled(false);
+		pnl_ansprechpartner.setEnabled(false);
+		pnl_produktID.setEnabled(false);
+		pnl_trainer.setEnabled(false);
+		pnl_ort.setEnabled(false);
 		pnl_content.add(pnl_kundenID);
 		pnl_content.add(pnl_firmenname);
 		pnl_content.add(pnl_ansprechpartner);
@@ -332,10 +337,10 @@ public class V_TrainingKonfigurieren extends SimpleMasterWindow {
 		public void componentResized(ComponentEvent arg0) {}
 		@Override
 		public void componentShown(ComponentEvent arg0) {
-			if (getText_pnl_firmenname().equals("") && getText_pnl_produktbeschreibung().equals("")) {
-				moehrenhoerer.setBool1(true);
-			} else {
+			if (getText_pnl_firmenname().equals("") && getText_pnl_ort().equals("")) {
 				moehrenhoerer.setBool1(false);
+			} else {
+				moehrenhoerer.setBool1(true);
 			}
 		}
 		
