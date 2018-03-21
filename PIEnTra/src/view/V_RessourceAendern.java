@@ -85,6 +85,7 @@ public class V_RessourceAendern extends SimpleMasterWindow {
 	private M_Produkt produkt = null;
 	private M_Trainer trainer = null;
 	private M_Ort ort = null;
+	boolean success = false;
 
 	private V_RessourceAendern thisView;
 	private static Object controller;
@@ -195,9 +196,11 @@ public class V_RessourceAendern extends SimpleMasterWindow {
 	private void initMenu() {
 		if(controller instanceof C_TrainingAendern) {
 			btn_ressourceaendern.setLabel("Ressource ändern");
+			setSuccess(true);
 		}
 		if(controller instanceof C_TrainingKonfigurieren) {
 			btn_ressourceaendern.setLabel("Ressource wählen");
+			setSuccess(true);
 		}
 		
 	
@@ -272,6 +275,12 @@ public class V_RessourceAendern extends SimpleMasterWindow {
 		V_RessourceAendern.controller = controller;
 	}
 
+	public boolean isSuccess() {
+		return success;
+	}
+	public void setSuccess(boolean success) {
+		this.success = success;
+	}
 	public M_Trainer getTrainer() {
 		return trainer;
 	}
