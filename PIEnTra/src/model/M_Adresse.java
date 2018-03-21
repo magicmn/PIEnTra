@@ -40,6 +40,10 @@ public class M_Adresse {
 		getInterneListe().add(this);
 	}
 
+	/**
+	 * Get fuer Interne ID
+	 * @return {@link #interneID}
+	 */
 	public static int getInterneID() {
 		return interneID;
 	}
