@@ -47,8 +47,16 @@ public class C_ProduktDefinieren {
 	 */
 	public void produktDefinieren(){
 		
-		produkt = new M_Produkt(view.getText_txt_produktID(), view.getText_txt_produktbezeichnung(), view.getText_txt_produktbeschreibung(), 1.0);
+		setProdukt(new M_Produkt(view.getText_txt_produktID(), view.getText_txt_produktbezeichnung(), view.getText_txt_produktbeschreibung(), 1.0));
 		
+	}
+
+	public M_Produkt getProdukt() {
+		return produkt;
+	}
+
+	public void setProdukt(M_Produkt produkt) {
+		this.produkt = produkt;
 	}
 	
 	

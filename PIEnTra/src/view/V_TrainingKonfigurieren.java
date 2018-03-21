@@ -75,6 +75,7 @@ public class V_TrainingKonfigurieren extends SimpleMasterWindow {
 	
 	private V_TrainingKonfigurieren thisView;
 	
+	@SuppressWarnings("unused")
 	private M_Training training;
 	private CheckInput moehrenhoerer;
 	private boolean dateCorrect = false;

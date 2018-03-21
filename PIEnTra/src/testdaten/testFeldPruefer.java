@@ -2,13 +2,13 @@ package testdaten;
 
 import java.awt.Dimension;
 
-import javax.swing.JFrame;
-
 import utils.SimpleMasterWindow;
 import utils.SimpleTextPanel;
 
 public class testFeldPruefer extends SimpleMasterWindow {
 
+	private static final long serialVersionUID = 2155801843116893113L;
+	
 	private SimpleTextPanel panel;
 	private static testFeldPruefer instance = null;
 	public testFeldPruefer(Dimension defaultSize, Dimension minSize, String navigationText) {

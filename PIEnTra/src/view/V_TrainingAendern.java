@@ -13,8 +13,6 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
-import javax.swing.event.CaretEvent;
-import javax.swing.event.CaretListener;
 
 import controller.C_Hauptmenue;
 import controller.C_RessourceAendern;
@@ -264,6 +262,7 @@ public class V_TrainingAendern extends SimpleMasterWindow {
 	// ActionListener
 	
 	private class TrainingSuchen implements ActionListener {
+		@SuppressWarnings("static-access")
 		public void actionPerformed(ActionEvent arg0) {
 			JOptionPane popup = new JOptionPane();
 			try {

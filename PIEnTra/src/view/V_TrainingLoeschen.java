@@ -4,7 +4,6 @@ import java.awt.Dimension;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.Iterator;
 import java.util.NoSuchElementException;
 
 import javax.swing.JButton;
@@ -12,7 +11,6 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
-import javax.swing.text.AbstractDocument.Content;
 
 import controller.C_Hauptmenue;
 import controller.C_TrainingLoeschen;
@@ -229,6 +227,7 @@ public class V_TrainingLoeschen extends SimpleMasterWindow {
 	 * @author Andreas Kann
 	 */
 	private class TrainingSuchen implements ActionListener {
+		@SuppressWarnings("static-access")
 		public void actionPerformed(ActionEvent arg0) {
 			
 			//Suchfunktion: durchsucht die interne Liste nach einem Objekt mit der eingebenen ID
@@ -272,6 +271,7 @@ public class V_TrainingLoeschen extends SimpleMasterWindow {
 	 */
 	
 	private class TrainingLoeschen implements ActionListener {
+		@SuppressWarnings("static-access")
 		public void actionPerformed(ActionEvent arg0) {
 			if (training != null)
 			{
