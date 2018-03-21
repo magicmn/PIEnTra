@@ -4,6 +4,8 @@ import java.awt.Dimension;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.ComponentEvent;
+import java.awt.event.ComponentListener;
 import java.awt.event.FocusEvent;
 import java.awt.event.FocusListener;
 
@@ -16,7 +18,6 @@ import controller.C_Hauptmenue;
 import controller.C_KundeWaehlen;
 import controller.C_RessourceAendern;
 import controller.C_RessourceWaehlen;
-import controller.C_TrainingAendern;
 import controller.C_TrainingKonfigurieren;
 import model.M_Ort;
 import model.M_Produkt;
@@ -29,6 +30,7 @@ import utils.SimpleTextPanel;
 
 /**
  * View von TrainingKonfigurieren.
+ * @version 1.7 ComponentListener hinzugefügt, der beim sichtbar werden des Fensters die anderen Klassen nach einem boolean fragt
  * @version 1.6 FocusListener implementiert
  * @version 1.5 Kunden wählen implemetiert
  * @version 1.4 Erbt nun von Superklasse {@link SimpleMasterWindow}.
@@ -81,14 +83,13 @@ public class V_TrainingKonfigurieren extends SimpleMasterWindow {
 	
 	private V_TrainingKonfigurieren thisView;
 	
-	@SuppressWarnings("unused")
 	private M_Training training;
 	private M_Trainer trainer;
 	private M_Produkt produkt;
 	private M_Ort ort;
 	private CheckInput moehrenhoerer;
 	private boolean dateCorrect = false;
-	private boolean kundenIDCorrect = false;
+	private boolean pickedDataCorrect = false;
 	
 	/* Konstruktor und Methoden die vom Konstruktor aufgerufen werden. */
 	
@@ -148,13 +149,14 @@ public class V_TrainingKonfigurieren extends SimpleMasterWindow {
 	 * Initialisiert ActionListener
 	 */
 	private void initListener() {
+		this.addComponentListener(new getOnShown());
 		btn_kundewaehlen.addActionListener(new KundeWaehlen());
 		btn_ressourcenwaehlen.addActionListener(new RessourceWaehlen());
 		btn_trainingspeichern.addActionListener(new TrainingSpeichern());
 		btn_zurueck.addActionListener(new Zurueck());
 		pnl_enddatum.getTextPanel().addFocusListener(new TageBerechnen());
 		pnl_tage.getTextPanel().addFocusListener(new EnddatumBerechnen());
-		moehrenhoerer = new CheckInput(kundenIDCorrect, dateCorrect, btn_trainingspeichern);
+		moehrenhoerer = new CheckInput(pickedDataCorrect, dateCorrect, btn_trainingspeichern);
 		pnl_anfangsdatum.getTextPanel().addCaretListener(moehrenhoerer);
 		pnl_enddatum.getTextPanel().addCaretListener(moehrenhoerer);
 		pnl_tage.getTextPanel().addCaretListener(moehrenhoerer);
@@ -318,6 +320,25 @@ public class V_TrainingKonfigurieren extends SimpleMasterWindow {
 				moehrenhoerer.setBool2(true);
 			}
 		}
+	}
+	
+	private class getOnShown implements ComponentListener {
+
+		@Override
+		public void componentHidden(ComponentEvent arg0) {}
+		@Override
+		public void componentMoved(ComponentEvent arg0) {}
+		@Override
+		public void componentResized(ComponentEvent arg0) {}
+		@Override
+		public void componentShown(ComponentEvent arg0) {
+			if (getText_pnl_firmenname().equals("") && getText_pnl_produktbeschreibung().equals("")) {
+				moehrenhoerer.setBool1(true);
+			} else {
+				moehrenhoerer.setBool1(false);
+			}
+		}
+		
 	}
 	
 	// ActionListener
