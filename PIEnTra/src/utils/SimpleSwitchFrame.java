@@ -10,36 +10,43 @@ import javax.swing.JFrame;
  * Falls ja, wird die Instanz einfach wieder sichtbar. (switchFrameView)
  * Falls nein, wird eine neue Instanz erstellt. (switchFrameNewObject)
  * 
- * @param start Der erste Parameter steht für das aktuelle JFrame in der die Methode aufgerufen wird, welche geschlossen bzw.
- * unsichtbar gemacht werden soll.
- * @param ziel Der zweite Parameter steht für das Mockup welches geöffnet werden soll.
- * Da das Mockup über den Controller aufgerufen wird, wird an dieser Stelle die Instanz des jeweiligen Controllers
- * übergeben. Der Parameter wird genutzt, falls das Ziel-Mockup noch keine Controller-Instanz hat.
- * @param zielView Der dritte Parameter steht ebenfalls für das Mockup weleches geöffnet werden soll.
- * Der Parameter wird genutzt, falls das Ziel-Mockup schon eine Controller-Instanz hat.
+ * @version 1.2 Minimale Codeuberarbeitung (Julian Klein)
  * @version 1.1 SwitchFrame Methode
  * @version 1.0 SwitchFrameView und SwitchFrameNewObject erstellt
  * @author Adrian Fromm
  */
-
-public class SimpleSwitchFrame {
+public abstract class SimpleSwitchFrame {
 	
+	/**
+	 * Ueberprueft ob ein Objekt des Zielframes bereits existiert.
+	 * Wenn nicht wird es erstellt.
+	 * Ansonsten wird es nur sichtbar gemacht.
+	 * @param start  Der erste Parameter steht für das aktuelle JFrame in der die Methode aufgerufen wird, welche geschlossen bzw.
+	 * unsichtbar gemacht werden soll.
+	 * @param ziel Der zweite Parameter steht für das Mockup welches geöffnet werden soll.
+	 * Da das Mockup über den Controller aufgerufen wird, wird an dieser Stelle die Instanz des jeweiligen Controllers
+	 * übergeben. Der Parameter wird genutzt, falls das Ziel-Mockup noch keine Controller-Instanz hat.
+	 * @param zielView Der dritte Parameter steht ebenfalls für das Mockup weleches geöffnet werden soll.
+	 * Der Parameter wird genutzt, falls das Ziel-Mockup schon eine Controller-Instanz hat.
+	 */
 	public static void switchFrame(JFrame start, Object ziel, JFrame zielView){
-		if(ziel == null){
-			switchFrameNewObject(start, ziel);
-		}
-		else{
-			switchFrameView(start, zielView);
+		start.setVisible(false);
+		if(ziel == null) {
+			ziel = new Object();
+			//switchFrameNewObject(start, ziel);
+		} else {
+			zielView.setVisible(true);
+			//switchFrameView(start, zielView);
 		}
 	}
 	
-	public static void switchFrameView(JFrame frameClose, JFrame frameOpen){
-		frameClose.dispose();
-		frameOpen.setVisible(true);
-	}
-	
-	public static void switchFrameNewObject(JFrame frameClose, Object frameOpen){
-		frameClose.setVisible(false);
-		frameOpen = new Object();
-	}
+//	private static void switchFrameView(JFrame frameClose, JFrame frameOpen){
+//		frameClose.setVisible(false);
+//		frameOpen.setVisible(true);
+//	}
+//	
+//	private static void switchFrameNewObject(JFrame frameClose, Object frameOpen){
+//		frameClose.setVisible(false);
+//		frameOpen = new Object();
+//	}
 }
