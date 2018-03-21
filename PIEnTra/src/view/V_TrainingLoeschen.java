@@ -74,7 +74,11 @@ public class V_TrainingLoeschen extends SimpleMasterWindow {
 	private JOptionPane popup;
 	
 	/**
+<<<<<<< HEAD
 	 * Konstruktor der View Training_Löschen.
+=======
+	 * Konstruktor der View Training Löschen.
+>>>>>>> branch 'master' of https://github.com/magicmn/PIEnTra.git
 	 * Übergibt an die Superklasse die standard und minimal Größe, sowie aktuelle Pfadangaben der Navigationsleiste.
 	 * Initialisiert den Content, das Menu, die resizeGUI und sämtliche Listener.
 	 * Zuletzt wird die View sichbar gesetzt.

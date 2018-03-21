@@ -48,7 +48,7 @@ public class V_TrainingSuchen extends SimpleMasterWindow {
 	/* Konstruktor und Methoden die vom Konstruktor aufgerufen werden. */
 
 	/**
-	 * Konstruktor der View Hauptmenue.
+	 * Konstruktor der View Training suchen.
 	 * Übergibt an die Superklasse die standard und minimal Größe, sowie aktuelle Pfadangaben der Navigationsleiste.
 	 * Initialisiere dann den Content und lösche ein überflüssiges Element aus der im Hauptmenu nicht benutzten Menuleiste.
 	 * Zuletzt werden die Listener initialisiert.

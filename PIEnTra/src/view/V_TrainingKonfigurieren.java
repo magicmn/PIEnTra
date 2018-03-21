@@ -78,12 +78,12 @@ public class V_TrainingKonfigurieren extends SimpleMasterWindow {
 	private M_Training training;
 	private CheckInput moehrenhoerer;
 	private boolean dateCorrect = false;
-	private boolean trainingsIDCorrect = false;
+	private boolean kundenIDCorrect = false;
 	
 	/* Konstruktor und Methoden die vom Konstruktor aufgerufen werden. */
 	
 	/**
-	 * Konstruktor der View Hauptmenue.
+	 * Konstruktor der View Training Konfigurieren.
 	 * Übergibt an die Superklasse die standard und minimal Größe, sowie aktuelle Pfadangaben der Navigationsleiste.
 	 * Initialisiere dann den Content und lösche ein überflüssiges Element aus der im Hauptmenu nicht benutzten Menuleiste.
 	 * Zuletzt werden die Listener initialisiert.
@@ -126,6 +126,7 @@ public class V_TrainingKonfigurieren extends SimpleMasterWindow {
 	 * Initiailisert die Menu Buttons
 	 */
 	private void initMenu() {
+		btn_trainingspeichern.setEnabled(false);
 		getPnl_menu().add(btn_kundewaehlen);
 		getPnl_menu().add(btn_ressourcenwaehlen);
 		getPnl_menu().add(btn_trainingspeichern);
@@ -141,11 +142,9 @@ public class V_TrainingKonfigurieren extends SimpleMasterWindow {
 		btn_ressourcenwaehlen.addActionListener(new RessourceWaehlen());
 		btn_trainingspeichern.addActionListener(new TrainingSpeichern());
 		btn_zurueck.addActionListener(new Zurueck());
-		pnl_enddatum.getTextPanel().addFocusListener(new FokusEnddatum());
-		pnl_tage.getTextPanel().addFocusListener(new FokusTage());
-		
-
-		moehrenhoerer = new CheckInput(trainingsIDCorrect, dateCorrect, btn_trainingspeichern);
+		pnl_enddatum.getTextPanel().addFocusListener(new TageBerechnen());
+		pnl_tage.getTextPanel().addFocusListener(new EnddatumBerechnen());
+		moehrenhoerer = new CheckInput(kundenIDCorrect, dateCorrect, btn_trainingspeichern);
 		pnl_anfangsdatum.getTextPanel().addCaretListener(moehrenhoerer);
 		pnl_enddatum.getTextPanel().addCaretListener(moehrenhoerer);
 		pnl_tage.getTextPanel().addCaretListener(moehrenhoerer);
@@ -246,46 +245,38 @@ public class V_TrainingKonfigurieren extends SimpleMasterWindow {
 	}
 	
 	//FocusListener
-	private class FokusEnddatum implements FocusListener{
-		@Override
-		public void focusGained(FocusEvent e) {
-			pnl_tage.setFocusable(true);
-		}
-
-		@Override
-		public void focusLost(FocusEvent e) {
-			
-			if(!pnl_enddatum.getText().equals("")){
-				pnl_tage.setFocusable(false);
-				setText_pnl_tage(SimpleDatumBerechnen.datumBerechnen(getText_pnl_anfangsdatum(), getText_pnl_enddatum())+"");
-				
-			}else{
-				pnl_tage.setFocusable(true);
+	private class EnddatumBerechnen implements FocusListener {
+		public void focusGained(FocusEvent arg0) {}
+		public void focusLost(FocusEvent arg0) {
+			String datum = "";
+			try {
+				datum = SimpleDatumBerechnen.datumBerechnen(getText_pnl_anfangsdatum(), Integer.parseInt(getText_pnl_tage()));
+			} catch(NumberFormatException e) {
+				datum = "-1";
+			} finally {
+				if (datum.equals("-1")) {
+					moehrenhoerer.setBool2(false);
+				} else {
+					setText_pnl_enddatum(datum);
+					moehrenhoerer.setBool2(true);
+				}
 			}
-			
 		}
-		
 	}
 	
-	private class FokusTage implements FocusListener{
-		@Override
-		public void focusGained(FocusEvent e) {
-			pnl_enddatum.setFocusable(true);
-		}
-
-		@Override
-		public void focusLost(FocusEvent e) {
-			
-			if(!pnl_tage.getText().equals("")){
-				pnl_enddatum.setFocusable(false);
-				setText_pnl_enddatum(SimpleDatumBerechnen.datumBerechnen(getText_pnl_anfangsdatum(),Integer.parseInt(getText_pnl_tage()))+"");
-			}else{
-				pnl_enddatum.setFocusable(true);
+	private class TageBerechnen implements FocusListener {
+		public void focusGained(FocusEvent arg0) {}
+		public void focusLost(FocusEvent arg0) {
+			int tage = (SimpleDatumBerechnen.datumBerechnen(getText_pnl_anfangsdatum(), getText_pnl_enddatum()));
+			if (tage == -1 ){
+				moehrenhoerer.setBool2(false);
+			} else {
+				setText_pnl_tage(tage + "");
+				moehrenhoerer.setBool2(true);
 			}
-			
 		}
-		
 	}
+	
 	// ActionListener
 	private class KundeWaehlen implements ActionListener {
 		public void actionPerformed(ActionEvent arg0) {
