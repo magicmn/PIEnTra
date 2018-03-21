@@ -1,8 +1,14 @@
 package controller;
 
+<<<<<<< HEAD
 
 //import java.lang.ModuleLayer.Controller;
 
+=======
+
+//import java.lang.ModuleLayer.Controller;
+
+>>>>>>> branch 'master' of https://github.com/magicmn/PIEnTra.git
 import javax.swing.JFrame;
 
 import model.M_Kunde;

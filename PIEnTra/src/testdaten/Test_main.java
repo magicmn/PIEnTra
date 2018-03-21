@@ -2,11 +2,9 @@
 
 import java.util.NoSuchElementException;
 
-import javax.swing.plaf.synth.SynthSeparatorUI;
 
 import controller.Main;
 import model.M_Adresse;
-import model.M_Kunde;
 import model.M_ManagementAssistent;
 import model.M_Ort;
 import model.M_Produkt;

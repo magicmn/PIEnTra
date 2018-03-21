@@ -4,7 +4,6 @@ import java.awt.Dimension;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.Iterator;
 import java.util.NoSuchElementException;
 
 import javax.swing.JButton;
@@ -73,8 +72,13 @@ public class V_TrainingLoeschen extends SimpleMasterWindow {
 	private M_Training training;
 	private JOptionPane popup;
 	
+<<<<<<< HEAD
 	/**
 	 * Konstruktor der View_Training Löschen.
+=======
+	/**
+	 * Konstruktor der View_Training Löschen.
+>>>>>>> branch 'master' of https://github.com/magicmn/PIEnTra.git
 	 * Übergibt an die Superklasse die standard und minimal Größe, sowie aktuelle Pfadangaben der Navigationsleiste.
 	 * Initialisiert den Content, das Menu, die resizeGUI und sämtliche Listener.
 	 * Zuletzt wird die View sichbar gesetzt.
@@ -229,6 +233,7 @@ public class V_TrainingLoeschen extends SimpleMasterWindow {
 	 * @author Andreas Kann
 	 */
 	private class TrainingSuchen implements ActionListener {
+		@SuppressWarnings("static-access")
 		public void actionPerformed(ActionEvent arg0) {
 			
 			//Suchfunktion: durchsucht die interne Liste nach einem Objekt mit der eingebenen ID
@@ -272,6 +277,7 @@ public class V_TrainingLoeschen extends SimpleMasterWindow {
 	 */
 	
 	private class TrainingLoeschen implements ActionListener {
+		@SuppressWarnings("static-access")
 		public void actionPerformed(ActionEvent arg0) {
 			if (training != null)
 			{

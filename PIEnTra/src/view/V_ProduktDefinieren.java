@@ -1,7 +1,6 @@
 package view;
 
 import java.awt.Dimension;
-import java.awt.FlowLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.NoSuchElementException;
@@ -128,6 +127,7 @@ public class V_ProduktDefinieren extends SimpleMasterWindow {
 	
 	protected void resizeGUI() {
 		int maxWidthTextBox = this.getWidth() - SimpleTextPanel.getLabelWidth() - (getPadding() * 2) - 25;
+		@SuppressWarnings("unused")
 		int optimalButtonWidth = (int) super.getPnl_menu().getWidth() - 25;
 		pnl_produktID.setTextFieldWidth(maxWidthTextBox);
 		pnl_produktbezeichnung.setTextFieldWidth(maxWidthTextBox);
@@ -170,6 +170,7 @@ public class V_ProduktDefinieren extends SimpleMasterWindow {
 	// ActionListener ----------------------------------------------------------------------------------------
 	
 	private class ProduktDefinieren implements ActionListener {
+		@SuppressWarnings("static-access")
 		public void actionPerformed(ActionEvent arg0) {
 			//System.out.println("Produkt definieren!");
 			produkt = null;

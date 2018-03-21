@@ -87,6 +87,7 @@ public abstract class SimpleSearch {
 
 		for(M_Trainer element : array) {
 			if(id.equals(element.getTrainerID() + "")) {
+<<<<<<< HEAD
 				return element;
 			}
 		}
@@ -97,12 +98,12 @@ public abstract class SimpleSearch {
 
 		for(M_Trainer element : array) {
 			if(vorname.equals(element.getVorname()+"") && vorname.equals(element.getNachname())) {
+=======
+>>>>>>> branch 'master' of https://github.com/magicmn/PIEnTra.git
 				return element;
 			}
-
 		}
 		throw new NoSuchElementException();
-
 	}
 
 	/**
