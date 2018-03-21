@@ -254,7 +254,7 @@ public class V_TrainingKonfigurieren extends SimpleMasterWindow {
 		this.pnl_bemerkungen.setText(text);
 	}
 	
-<<<<<<< HEAD
+
 	public M_Training getTraining() {
 		return training;
 	}
@@ -287,8 +287,6 @@ public class V_TrainingKonfigurieren extends SimpleMasterWindow {
 		this.ort = ort;
 	}
 
-=======
->>>>>>> branch 'master' of https://github.com/magicmn/PIEnTra.git
 	//FocusListener
 	private class EnddatumBerechnen implements FocusListener {
 		public void focusGained(FocusEvent arg0) {}

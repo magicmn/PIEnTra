@@ -72,7 +72,7 @@ public class V_TrainingLoeschen extends SimpleMasterWindow {
 	private M_Training training;
 	private JOptionPane popup;
 	
-<<<<<<< HEAD
+
 	/**
 	 * Konstruktor der View_Training Löschen.
 =======

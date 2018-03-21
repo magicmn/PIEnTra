@@ -13,13 +13,12 @@ package controller;
 import javax.swing.JFrame;
 
 import model.M_Kunde;
-<<<<<<< HEAD
+
 import model.M_Ort;
 import model.M_Produkt;
 import model.M_Trainer;
 import model.M_Training;
-=======
->>>>>>> branch 'master' of https://github.com/magicmn/PIEnTra.git
+
 import view.V_TrainingKonfigurieren;
 
 public class C_TrainingKonfigurieren {
