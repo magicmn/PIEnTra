@@ -141,7 +141,7 @@ public class V_RessourceAendern extends SimpleMasterWindow {
 		this.setProdukt(produkt);
 		this.setTrainer(trainer);
 		this.setOrt(ort);
-		V_RessourceAendern.controller = controller;
+		V_RessourceAendern.controller =controller; 
 		this.thisView = this;
 		initComboBox();
 		initContent();
@@ -214,25 +214,34 @@ public class V_RessourceAendern extends SimpleMasterWindow {
 	 * Initiailisert die Menu Buttons
 	 */
 	private void initMenu() {
-		if(controller instanceof C_TrainingAendern) {
-			btn_ressourceaendern.setLabel("Ressource ändern");
-			setSuccess(true);
-		}
-		if(controller instanceof C_TrainingKonfigurieren) {
-			btn_ressourceaendern.setLabel("Ressource wählen");
-			setSuccess(true);
-		}
+		
 		
 	
 		btn_ressourceaendern.setEnabled(false);
 		getPnl_menu().add(btn_ressourceaendern);
 		getPnl_menu().add(btn_zurueck);	
+		if(getController() instanceof C_TrainingAendern) {
+			btn_ressourceaendern.setText("Ressource ändern");
+			System.out.println("test");
+			
+		}
+		if(getController() instanceof C_TrainingKonfigurieren) {
+			btn_ressourceaendern.setText("Ressource wählen");
+			System.out.println("testtest");
+		System.out.println();
+			setSuccess(true);
+		}
+	
 	}
 
 	/**
 	 * Initialisiert ActionListener
 	 */
+	
+	
 	private void initListener() {
+	
+		
 		btn_ressourceaendern.addActionListener(new RessourceWaehlen());
 		btn_zurueck.addActionListener(new Zurueck());	
 
@@ -261,6 +270,7 @@ public class V_RessourceAendern extends SimpleMasterWindow {
 	 * Hinweis: arrayList_trainer wird zur Laufzeit abhängig von der Combobox-Auswahl von Produktbezeichnung initialisiert.
 	 */
 	private void initComboBox(){
+		
 		M_Produkt.getInterneListe().forEach(M_Produkt -> arrayList_produktbezeichnung.add(M_Produkt.getBezeichnung()));
 		M_Ort.getInterneListe().forEach(M_Ort -> arrayList_ort.add(M_Ort.getOrtsID()+" , "+M_Ort.getGeschaefstsstelle()));		
 	}
@@ -339,11 +349,13 @@ public class V_RessourceAendern extends SimpleMasterWindow {
 				
 				if(controller instanceof C_TrainingAendern) {
 					System.out.println("fuellenm");
+					setSuccess(true);
 					((C_TrainingAendern) controller).felderFuellen(produkt, trainer, ort);
 					dispose();
 				}
 				if(controller instanceof C_TrainingKonfigurieren) {
 					System.out.println("woobWOOB");
+					setSuccess(true);
 					((C_TrainingKonfigurieren) controller).felderFuellen(produkt, trainer, ort);
 					dispose();
 				}
