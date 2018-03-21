@@ -147,6 +147,7 @@ public class V_TrainingAendern extends SimpleMasterWindow {
 	 */
 	private void initMenu() {
 		btn_trainingAktualisieren.setEnabled(false);
+		btn_ressourcenAendern.setEnabled(false);
 		getPnl_menu().add(btn_trainingSuchen);
 		getPnl_menu().add(btn_ressourcenAendern);
 		getPnl_menu().add(btn_trainingAktualisieren);
@@ -316,6 +317,7 @@ public class V_TrainingAendern extends SimpleMasterWindow {
 				if(training!=null) {
 					moehrenhoerer.setBool1(true);
 					C_TrainingAendern.getInstance().felderFuellen(training);
+					btn_ressourcenAendern.setEnabled(true);
 				}
 			}
 		}
