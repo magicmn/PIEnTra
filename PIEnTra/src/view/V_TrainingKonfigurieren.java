@@ -15,6 +15,7 @@ import javax.swing.UnsupportedLookAndFeelException;
 import controller.C_Hauptmenue;
 import controller.C_KundeWaehlen;
 import controller.C_RessourceWaehlen;
+import model.M_Training;
 import utils.SimpleDatumBerechnen;
 import utils.SimpleMasterWindow;
 import utils.SimpleSwitchFrame;
@@ -74,14 +75,11 @@ public class V_TrainingKonfigurieren extends SimpleMasterWindow {
 	
 	private V_TrainingKonfigurieren thisView;
 	
-<<<<<<< HEAD
 	private M_Training training;
 	private CheckInput moehrenhoerer;
 	private boolean dateCorrect = false;
 	private boolean kundenIDCorrect = false;
 	
-=======
->>>>>>> branch 'master' of https://github.com/magicmn/PIEnTra.git
 	/* Konstruktor und Methoden die vom Konstruktor aufgerufen werden. */
 	
 	/**
@@ -144,17 +142,12 @@ public class V_TrainingKonfigurieren extends SimpleMasterWindow {
 		btn_ressourcenwaehlen.addActionListener(new RessourceWaehlen());
 		btn_trainingspeichern.addActionListener(new TrainingSpeichern());
 		btn_zurueck.addActionListener(new Zurueck());
-<<<<<<< HEAD
 		pnl_enddatum.getTextPanel().addFocusListener(new TageBerechnen());
 		pnl_tage.getTextPanel().addFocusListener(new EnddatumBerechnen());
 		moehrenhoerer = new CheckInput(kundenIDCorrect, dateCorrect, btn_trainingspeichern);
 		pnl_anfangsdatum.getTextPanel().addCaretListener(moehrenhoerer);
 		pnl_enddatum.getTextPanel().addCaretListener(moehrenhoerer);
 		pnl_tage.getTextPanel().addCaretListener(moehrenhoerer);
-=======
-		pnl_enddatum.getTextPanel().addFocusListener(new FokusEnddatum());
-		pnl_tage.getTextPanel().addFocusListener(new FokusTage());
->>>>>>> branch 'master' of https://github.com/magicmn/PIEnTra.git
 	}
 	
 	protected void resizeGUI() {
@@ -294,6 +287,7 @@ public class V_TrainingKonfigurieren extends SimpleMasterWindow {
 	private class RessourceWaehlen implements ActionListener {
 		public void actionPerformed(ActionEvent arg0) {
 			System.out.println("Ressource Wählen");
+			C_RessourceWaehlen.getInstance();
 			//SimpleSwitchFrame.switchFrame(thisView, C_RessourceWaehlen.getInstance(), C_RessourceWaehlen.getInstance().getView());
 		}
 	}

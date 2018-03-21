@@ -15,12 +15,13 @@ import javax.swing.JFrame;
  * @param ziel Der zweite Parameter steht für das Mockup welches geöffnet werden soll.
  * Da das Mockup über den Controller aufgerufen wird, wird an dieser Stelle die Instanz des jeweiligen Controllers
  * übergeben. Der Parameter wird genutzt, falls das Ziel-Mockup noch keine Controller-Instanz hat.
- * @param zielView Der dritte Parameter (@param zielView) steht ebenfalls für das Mockup weleches geöffnet werden soll.
+ * @param zielView Der dritte Parameter steht ebenfalls für das Mockup weleches geöffnet werden soll.
  * Der Parameter wird genutzt, falls das Ziel-Mockup schon eine Controller-Instanz hat.
  * @version 1.1 SwitchFrame Methode
  * @version 1.0 SwitchFrameView und SwitchFrameNewObject erstellt
  * @author Adrian Fromm
  */
+
 public class SimpleSwitchFrame {
 	
 	public static void switchFrame(JFrame start, Object ziel, JFrame zielView){
