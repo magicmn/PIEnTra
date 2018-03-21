@@ -12,8 +12,10 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
+import javax.swing.text.AbstractDocument.Content;
 
 import controller.C_Hauptmenue;
+import controller.C_TrainingLoeschen;
 import model.M_Training;
 import utils.SimpleMasterWindow;
 import utils.SimpleSearch;
@@ -21,6 +23,7 @@ import utils.SimpleSwitchFrame;
 import utils.SimpleTextPanel;
 
 /**
+ * @version 1.6 Löschenfunktion wurde in den Construktor verschoben.
  * @version 1.5 Löschenfunktion wirft nun Abfragen
  * @version 1.4 Erbt nun von Superklasse {@link SimpleMasterWindow}.
  * @version 1.3 SimpleSwitchFrame implementiert.
@@ -35,8 +38,6 @@ import utils.SimpleTextPanel;
  */
 public class V_TrainingLoeschen extends SimpleMasterWindow {
 	private static final long serialVersionUID = -6381551589496678636L;
-	
-	/* Deklaration und Initailiserung von verschiedenen Variablen **/
 	
 	/** 
 	 * Standard Größe des Fensters.
@@ -72,13 +73,11 @@ public class V_TrainingLoeschen extends SimpleMasterWindow {
 	private M_Training training;
 	private JOptionPane popup;
 	
-	/* Konstruktor und Methoden die vom Konstruktor aufgerufen werden. */
-	
 	/**
-	 * Konstruktor der View Hauptmenue.
+	 * Konstruktor der View Training_Löschen.
 	 * Übergibt an die Superklasse die standard und minimal Größe, sowie aktuelle Pfadangaben der Navigationsleiste.
-	 * Initialisiere dann den Content und lösche ein überflüssiges Element aus der im Hauptmenu nicht benutzten Menuleiste.
-	 * Zuletzt werden die Listener initialisiert.
+	 * Initialisiert den Content, das Menu, die resizeGUI und sämtliche Listener.
+	 * Zuletzt wird die View sichbar gesetzt.
 	 */
 	public V_TrainingLoeschen() {
 		super(
@@ -95,7 +94,7 @@ public class V_TrainingLoeschen extends SimpleMasterWindow {
 	}
 
 	/**
-	 * Initialisiere den Inhalt des Centers.
+	 * Initialisiert den Inhalt des Centers.
 	 */
 	private void initContent() {
 		JPanel pnl_content = new JPanel();
@@ -114,7 +113,7 @@ public class V_TrainingLoeschen extends SimpleMasterWindow {
 	}
 	
 	/**
-	 * Initiailisert die Menu Buttons
+	 * Initialisiert die Menu Buttons
 	 */
 	private void initMenu() {
 		getPnl_menu().add(btn_trainingSuchen);
@@ -150,7 +149,9 @@ public class V_TrainingLoeschen extends SimpleMasterWindow {
 		
 	}
 
-	
+	/**
+	 * For testing
+	 */
 	public static void main(String [] args) {
 		try {
 			UIManager.setLookAndFeel("com.sun.java.swing.plaf.windows.WindowsLookAndFeel");
@@ -189,6 +190,9 @@ public class V_TrainingLoeschen extends SimpleMasterWindow {
 	public String getText_pnl_bemerkungen() {
 		return pnl_bemerkungen.getText();
 	}
+	public M_Training get_training(){
+		return training;
+	}
 	public void setText_pnl_trainingsID(String text){
 		this.pnl_trainingsID.setText(text);
 	}
@@ -222,12 +226,11 @@ public class V_TrainingLoeschen extends SimpleMasterWindow {
 	private class TrainingSuchen implements ActionListener {
 		public void actionPerformed(ActionEvent arg0) {
 			
-			//Suchfunktion: durchsucht die Liste nach einem Objekt mit der eingebenen ID
+			//Suchfunktion: durchsucht die interne Liste nach einem Objekt mit der eingebenen ID
 			
 			try {
 				if(getText_pnl_trainingsID().equals("")) {
-					System.out.println("Bitte ID eintragen ");
-					popup.showMessageDialog(null, "Bitte tragen Sie ein Trainings-ID ein");
+					popup.showMessageDialog(null, "Bitte tragen Sie eine Trainings-ID ein");
 					training = null;
 				}
 
@@ -263,7 +266,7 @@ public class V_TrainingLoeschen extends SimpleMasterWindow {
 				int input = JOptionPane.showConfirmDialog(null, "Wollen Sie das Training wirklich löschen ?");
 				
 				if (input == 0){
-					M_Training.getInterneListe().remove(training);
+					C_TrainingLoeschen.trainingLoeschen(training);
 					
 					setText_pnl_trainingsID("");
 					setText_pnl_firmenname("");
