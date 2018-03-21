@@ -10,10 +10,11 @@ import javax.swing.JFrame;
  * Falls ja, wird die Instanz einfach wieder sichtbar. (switchFrameView)
  * Falls nein, wird eine neue Instanz erstellt. (switchFrameNewObject)
  * 
- * @version 1.2 Minimale Codeuberarbeitung (Julian Klein)
+ * @version 1.2 Minimale Codeuberarbeitung
  * @version 1.1 SwitchFrame Methode
  * @version 1.0 SwitchFrameView und SwitchFrameNewObject erstellt
- * @author Adrian Fromm
+ * @author Adrian Fromm (1.0 & 1.1)
+ * @author Julian Klein (1.2)
  */
 public abstract class SimpleSwitchFrame {
 	
