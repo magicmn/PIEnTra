@@ -64,28 +64,44 @@ public class V_RessourceAendern extends SimpleMasterWindow {
 	 * @see SimpleMasterWindow#initSouth(String navigationText)
 	 */
 	private static String navigationText = "Training konfigurieren / Kunde wählen";
-
+	/**
+	 * ArrayListen in den die Werte für die Comboboxen geschrieben werden.
+	 * Die ArrayListen bekommen ihren Inhalt aus den jeweiligen Modelklassen
+	 */
 	private ArrayList<String>arrayList_produktbezeichnung = new ArrayList<String>();
 	private ArrayList<String>arrayList_trainer = new ArrayList<String>();
 	private ArrayList<String>arrayList_ort = new ArrayList<String>();
-
+	/**
+	 * Deklaration der Comboboxen. 
+	 * SimpleDropdownPanel erbt von JPanel und besitzt erweiterte Funktionen für Comboboxen
+	 * @see SimpleDropDownPanel.java
+	 */
 	private SimpleDropdownPanel pnl_produktbez;
 	private SimpleDropdownPanel pnl_trainer;
 	private SimpleDropdownPanel pnl_ort;
-
+	/**
+	 * Deklaration und Initialisierung der restlichen JFrame-Komponenten (JLabel, JTextArea, JScrollPane, JButton)
+	 */
 	private JLabel lbl_produktb = new JLabel("Produktbeschreibung:");
 	private JTextArea textarea = new JTextArea();
 	private JScrollPane area = new JScrollPane(textarea);
-
 	private JButton btn_ressourceaendern = new JButton("Button");
 	private JButton btn_zurueck = new JButton("Zurück zu Training ändern");
-
+	/**
+	 * Deklaration und Initialisierung des TrainerListener Objekts (erbt von ItemListener) 
+	 * Wird an dieser Stelle deklariert, da er zur Laufzeit einem Objekt hinzugefügt und entfernt werden muss.
+	 */
 	private TrainerListener trainerlistener = new TrainerListener();
-
+	/**
+	 * Deklaration und Initialisierung der benötigten Model-Objekte
+	 */
 	private M_Produkt produkt = null;
 	private M_Trainer trainer = null;
 	private M_Ort ort = null;
-
+	/**
+	 * Deklaration dieser View.
+	 * Deklaration des Controllers dieser View.
+	 */
 	private V_RessourceAendern thisView;
 	private static Object controller;
 
@@ -110,6 +126,9 @@ public class V_RessourceAendern extends SimpleMasterWindow {
 		this.setVisible(true);
 
 	}
+	/**
+	 * Überladener Konstruktor der View RessourceWaehlen
+	 */
 	public V_RessourceAendern(Object controller, M_Produkt produkt, M_Trainer trainer, M_Ort ort) {
 		super(
 				defaultSize,
@@ -133,7 +152,6 @@ public class V_RessourceAendern extends SimpleMasterWindow {
 	/**
 	 * Initialisiere den Inhalt des Centers.
 	 */
-
 	private void initContent() {
 
 		area.setPreferredSize(new Dimension(200, 80));
@@ -219,6 +237,9 @@ public class V_RessourceAendern extends SimpleMasterWindow {
 
 	}
 
+	/**
+	 * Anpassung der Komponentengrößen
+	 */
 	protected void resizeGUI() {
 		int maxWidthTextBox = this.getWidth() - SimpleTextPanel.getLabelWidth() - (getPadding() * 2) - 25;
 		int optimalButtonWidth = (int) super.getPnl_menu().getWidth() - 25;
@@ -229,13 +250,15 @@ public class V_RessourceAendern extends SimpleMasterWindow {
 		btn_zurueck.setPreferredSize(new Dimension(optimalButtonWidth / 4, btn_ressourceaendern.getPreferredSize().height));
 
 	}
-
+	
+	/**
+	 * Initialisiert die ArrayListen.
+	 * Hinweis: arrayList_trainer wird zur Laufzeit abhängig von der Combobox-Auswahl von Produktbezeichnung initialisiert.
+	 */
 	private void initComboBox(){
 		M_Produkt.getInterneListe().forEach(M_Produkt -> arrayList_produktbezeichnung.add(M_Produkt.getBezeichnung()));
 		M_Ort.getInterneListe().forEach(M_Ort -> arrayList_ort.add(M_Ort.getOrtsID()+" , "+M_Ort.getGeschaefstsstelle()));		
 	}
-
-	/* Implementierung der ActionListener */
 
 	public static void main(String [] args) {
 		try {
@@ -247,7 +270,7 @@ public class V_RessourceAendern extends SimpleMasterWindow {
 		new V_RessourceAendern(controller);
 	}
 
-	// Getter und Setter
+	// Getter und Setter 
 
 	public String getText_pnl_produktbezeichnung(){
 		return pnl_produktbez.getText();
@@ -262,41 +285,42 @@ public class V_RessourceAendern extends SimpleMasterWindow {
 		return textarea.getText();
 	}
 
-	// ActionListener Buttons
-
+	// Getter und Setter Model
+	
 	public static Object getController() {
 		return controller;
 	}
-
 	public static void setController(Object controller) {
 		V_RessourceAendern.controller = controller;
 	}
-
 	public M_Trainer getTrainer() {
 		return trainer;
 	}
 	public void setTrainer(M_Trainer trainer) {
 		this.trainer = trainer;
 	}
-
 	public M_Ort getOrt() {
 		return ort;
 	}
 	public void setOrt(M_Ort ort) {
 		this.ort = ort;
 	}
-
-
-
 	public M_Produkt getProdukt() {
 		return produkt;
 	}
 	public void setProdukt(M_Produkt produkt) {
 		this.produkt = produkt;
 	}
-
-
-
+	
+	/* Implementierung der ActionListener */
+	
+	/**
+	 * Die interne Klasse "Ressource Waehlen" implementiert den ActionListener für "btn_ressourcewaehlen".
+	 * 
+	 * .........An dieser Stelle warte ich bis Konstantin diese Klasse gefixt hat. 
+	 * 
+	 *
+	 */	
 	private class RessourceWaehlen implements ActionListener {
 		public void actionPerformed(ActionEvent arg0) {
 
