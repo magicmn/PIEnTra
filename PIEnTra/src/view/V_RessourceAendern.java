@@ -37,6 +37,8 @@ import utils.SimpleTextPanel;
 
 /**
  * View von RessourceAendern.
+ * @version 2.1 Bugfixes
+ * @version 2.0 V_RessourceWaehlen und V_RessourceAendern zu einer Klasse zusammengeführt
  * @version 1.2 Dropdown Funktionen hinzugefügt.
  * @version 1.1 Listener hinzugefügt. Getter und Setter hinzugefügt.
  * @version 1.0 View implementiert. 
@@ -54,16 +56,19 @@ public class V_RessourceAendern extends SimpleMasterWindow {
 	 * @see SimpleMasterWindow#initFrame(Dimension defaultSize, Dimension minSize)
 	 * */
 	public static Dimension defaultSize = new Dimension(720, 240);
+	
 	/** 
 	 * Minimale Größe des Fensters.
 	 * @see SimpleMasterWindow#initFrame(Dimension defaultSize, Dimension minSize)
 	 * */
 	private static Dimension minSize = new Dimension(700, 235);
+	
 	/**
 	 * Text der in der Naviagtionsleiste ausgegebn wird.
 	 * @see SimpleMasterWindow#initSouth(String navigationText)
 	 */
 	private static String navigationText = "Training konfigurieren / Kunde wählen";
+	
 	/**
 	 * ArrayListen in den die Werte für die Comboboxen geschrieben werden.
 	 * Die ArrayListen bekommen ihren Inhalt aus den jeweiligen Modelklassen
@@ -71,6 +76,7 @@ public class V_RessourceAendern extends SimpleMasterWindow {
 	private ArrayList<String>arrayList_produktbezeichnung = new ArrayList<String>();
 	private ArrayList<String>arrayList_trainer = new ArrayList<String>();
 	private ArrayList<String>arrayList_ort = new ArrayList<String>();
+	
 	/**
 	 * Deklaration der Comboboxen. 
 	 * SimpleDropdownPanel erbt von JPanel und besitzt erweiterte Funktionen für Comboboxen
@@ -79,6 +85,7 @@ public class V_RessourceAendern extends SimpleMasterWindow {
 	private SimpleDropdownPanel pnl_produktbez;
 	private SimpleDropdownPanel pnl_trainer;
 	private SimpleDropdownPanel pnl_ort;
+	
 	/**
 	 * Deklaration und Initialisierung der restlichen JFrame-Komponenten (JLabel, JTextArea, JScrollPane, JButton)
 	 */
@@ -87,11 +94,13 @@ public class V_RessourceAendern extends SimpleMasterWindow {
 	private JScrollPane area = new JScrollPane(textarea);
 	private JButton btn_ressourceaendern = new JButton("Button");
 	private JButton btn_zurueck = new JButton("Zurück zu Training ändern");
+	
 	/**
 	 * Deklaration und Initialisierung des TrainerListener Objekts (erbt von ItemListener) 
 	 * Wird an dieser Stelle deklariert, da er zur Laufzeit einem Objekt hinzugefügt und entfernt werden muss.
 	 */
 	private TrainerListener trainerlistener = new TrainerListener();
+	
 	/**
 	 * Deklaration und Initialisierung der benötigten Model-Objekte
 	 */
@@ -103,11 +112,9 @@ public class V_RessourceAendern extends SimpleMasterWindow {
 	 * Deklaration dieser View.
 	 * Deklaration des Controllers dieser View.
 	 */
-
 	private V_RessourceAendern thisView;
 	private static Object controller;
 
-	boolean success = false;
 	/* Konstruktor und Methoden die vom Konstruktor aufgerufen werden. */
 
 	/**
@@ -149,7 +156,6 @@ public class V_RessourceAendern extends SimpleMasterWindow {
 		initListener();
 		resizeGUI();
 		this.setVisible(true);
-
 	}
 
 	/**
@@ -179,21 +185,15 @@ public class V_RessourceAendern extends SimpleMasterWindow {
 			produkt = ((C_TrainingAendern) controller).getProdukt();
 			trainer = ((C_TrainingAendern) controller).getTrainer();
 			ort = ((C_TrainingAendern) controller).getOrt();
-
-
+			
 			pnl_trainer.getComboBox().setEnabled(true);
 			pnl_ort.getComboBox().setEnabled(true);
 
 			pnl_produktbez.getComboBox().setSelectedItem(produkt.getBezeichnung());
 			pnl_trainer.getComboBox().setSelectedItem(trainer.getVorname() + trainer.getNachname()+"");
 			pnl_ort.getComboBox().setSelectedItem(ort.toString());
-
-
 		}
-
-
-
-
+		
 		GridLayout grid = new GridLayout(3,1);
 		grid.setVgap(5);
 
@@ -226,21 +226,17 @@ public class V_RessourceAendern extends SimpleMasterWindow {
 	 */
 	private void initMenu() {
 
-
-
 		btn_ressourceaendern.setEnabled(false);
 		getPnl_menu().add(btn_ressourceaendern);
 		getPnl_menu().add(btn_zurueck);	
+		
 		if(getController() instanceof C_TrainingAendern) {
 			btn_ressourceaendern.setText("Ressource ändern");
-			System.out.println("test");
-
+			btn_zurueck.setText("Zurück zu Training ändern");
 		}
 		if(getController() instanceof C_TrainingKonfigurieren) {
 			btn_ressourceaendern.setText("Ressource wählen");
-			System.out.println("testtest");
-			System.out.println();
-			setSuccess(true);
+			btn_zurueck.setText("Zurück zu Training konfigurieren");
 		}
 
 	}
@@ -248,10 +244,7 @@ public class V_RessourceAendern extends SimpleMasterWindow {
 	/**
 	 * Initialisiert ActionListener
 	 */
-
-
 	private void initListener() {
-
 
 		btn_ressourceaendern.addActionListener(new RessourceWaehlen());
 		btn_zurueck.addActionListener(new Zurueck());	
@@ -286,17 +279,7 @@ public class V_RessourceAendern extends SimpleMasterWindow {
 		M_Ort.getInterneListe().forEach(M_Ort -> arrayList_ort.add(M_Ort.getOrtsID()+" , "+M_Ort.getGeschaefstsstelle()));		
 	}
 
-	public static void main(String [] args) {
-		try {
-			UIManager.setLookAndFeel("com.sun.java.swing.plaf.windows.WindowsLookAndFeel");
-		} catch (ClassNotFoundException | InstantiationException | IllegalAccessException | UnsupportedLookAndFeelException e) {
-			e.printStackTrace();
-		}
-		new Test_main();
-		new V_RessourceAendern(controller);
-	}
-
-	// Getter und Setter 
+	// Getter und Setter Dropdownfelder
 
 	public String getText_pnl_produktbezeichnung(){
 		return pnl_produktbez.getText();
@@ -319,12 +302,6 @@ public class V_RessourceAendern extends SimpleMasterWindow {
 	public static void setController(Object controller) {
 		V_RessourceAendern.controller = controller;
 	}
-	public boolean isSuccess() {
-		return success;
-	}
-	public void setSuccess(boolean success) {
-		this.success = success;
-	}
 	public M_Trainer getTrainer() {
 		return trainer;
 	}
@@ -345,13 +322,14 @@ public class V_RessourceAendern extends SimpleMasterWindow {
 	}
 
 	/* Implementierung der ActionListener */
-
+	
 	/**
 	 * Die interne Klasse "Ressource Waehlen" implementiert den ActionListener für "btn_ressourcewaehlen".
 	 * 
-	 * .........An dieser Stelle warte ich bis Konstantin diese Klasse gefixt hat. 
+	 * Jenachdem von welcher Controller Instanz diese View aufgerufen wird, werden unterschiedliche Aktionen ausgeführt.
+	 * Die Aktionen füllen die Felder in der View V_TrainingKonfigurieren oder V_TrainingAendern
+	 * Die Aktion nutzt die Methode "felderFuellen" aus dem jeweiligen Controller der View.
 	 * 
-	 *
 	 */	
 	private class RessourceWaehlen implements ActionListener {
 		public void actionPerformed(ActionEvent arg0) {
@@ -359,29 +337,31 @@ public class V_RessourceAendern extends SimpleMasterWindow {
 			if(ort!=null&&produkt!=null&&trainer!=null) {
 
 				if(controller instanceof C_TrainingAendern) {
-					System.out.println("fuellenm");
-					setSuccess(true);
+					System.out.println("Ressource ändern");
 					((C_TrainingAendern) controller).felderFuellen(produkt, trainer, ort);
 					dispose();
 				}
 				if(controller instanceof C_TrainingKonfigurieren) {
-					System.out.println("woobWOOB");
-					setSuccess(true);
+					System.out.println("Ressource wählen");
 					((C_TrainingKonfigurieren) controller).felderFuellen(produkt, trainer, ort);
 					dispose();
-				}
-				System.out.println("Ressource wählen!2");
+				}	
 			}
-
-			System.out.println("Ressource wählen!");
 		}
 	}
+	
+	/**
+	 * Die interne Klasse "Zurueck" implementiert den ActionListener für "btn_zurueck".
+	 * 
+	 * Jenachdem von welcher Controller Instanz diese View aufgerufen wird, werden unterschiedliche Aktionen ausgeführt.
+	 * Die Aktionen brechen die View ab und wechseln wieder in die entsprechende View aus der V_RessourceAendern aufgerufen wurde.
+	 * 
+	 */	
 	private class Zurueck implements ActionListener {
 		public void actionPerformed(ActionEvent arg0) {
 			System.out.println("Zurueck");
 
-			if(controller instanceof C_TrainingAendern) {
-				
+			if(controller instanceof C_TrainingAendern) {			
 				SimpleSwitchFrame.switchFrame(thisView, C_TrainingAendern.getInstance(), ((C_TrainingAendern) controller).getView());
 				C_RessourceAendern.getInstance(C_TrainingAendern.getInstance()).setView(null);
 			}
@@ -392,10 +372,23 @@ public class V_RessourceAendern extends SimpleMasterWindow {
 		}
 	}	
 
-	// ActionListener ComboBox
-
+	/*    Implementierung der ItemListener    */
+	
+	/**
+	 * Die interne Klasse "ProduktbezeichnungListener" implementiert den ItemListener für "pnl_produktbez".
+	 * 
+	 * Die Auswahl die in der Combobox von pnl_produktbez gewählt wird, beeinflusst die Auswahlmöglichkeiten
+	 * von pnl_trainer.
+	 * 
+	 * Jenachdem welche Produktbezeichnung gewählt wird, sind in pnl_trainer auch nur die Trainer auswählbar, die im 
+	 * Objekt M_Trainer die ausgewählt Produktbezeichnung stehen haben.
+	 * 
+	 * Es muss an dieser Stelle der ItemListener von pnl_trainer entfernt und nach ausführung der Aktion wieder hinzugefügt werden,
+	 * da dieser sonst beim auswählen einer Produktbezeichnung direkt mit ausgelöst wird.
+	 * 
+	 * Erst nachdem eine Auswahl getroffen wurde, kann man einen Trainer auswählen.
+	 */		
 	private class ProduktbezeichnungListener implements ItemListener {	
-
 		public void itemStateChanged(ItemEvent e) {
 			if(e.getStateChange() == ItemEvent.SELECTED){
 
@@ -408,8 +401,6 @@ public class V_RessourceAendern extends SimpleMasterWindow {
 
 					pnl_trainer.getComboBox().setEnabled(true);
 
-
-
 					produkt = M_Produkt.getInterneListe().get(pnl_produktbez.getComboBox().getSelectedIndex());
 					produkt.getTrainer().forEach(n -> arrayList_trainer.add(n.getVorname()+" "+n.getNachname()));
 
@@ -421,13 +412,20 @@ public class V_RessourceAendern extends SimpleMasterWindow {
 						pnl_trainer.getComboBox().addItem(item);			    		
 					}
 				}
+				
 				pnl_trainer.getComboBox().setSelectedIndex(-1);
 				pnl_ort.getComboBox().setSelectedIndex(-1);
 				pnl_trainer.getComboBox().addItemListener(trainerlistener);
 			} 
 		}
 	}
-
+	
+	/**
+	 * Die interne Klasse "TrainerListener" implementiert den ItemListener für "pnl_trainer".
+	 * 
+	 * Erst nachdem eine Auswahl getroffen wurde, kann man einen Ort auswählen.
+	 * 
+	 */
 	private class TrainerListener implements ItemListener {	
 
 		public void itemStateChanged(ItemEvent e) {
@@ -442,7 +440,13 @@ public class V_RessourceAendern extends SimpleMasterWindow {
 			}  
 		}
 	}
-
+	
+	/**
+	 * Die interne Klasse "OrtListener" implementiert den ItemListener für "pnl_ort".
+	 * 
+	 * Erst nachdem eine Auswahl getroffen wurde, wird btn_ressourceaendern zum auswählen freigeschaltet.
+	 * 
+	 */
 	private class OrtListener implements ItemListener {	
 
 		public void itemStateChanged(ItemEvent e) {
