@@ -339,11 +339,13 @@ public class V_RessourceAendern extends SimpleMasterWindow {
 				if(controller instanceof C_TrainingAendern) {
 					System.out.println("Ressource ändern");
 					((C_TrainingAendern) controller).felderFuellen(produkt, trainer, ort);
+					C_RessourceAendern.getInstance(C_TrainingAendern.getInstance()).setView(null);
 					dispose();
 				}
 				if(controller instanceof C_TrainingKonfigurieren) {
 					System.out.println("Ressource wählen");
 					((C_TrainingKonfigurieren) controller).felderFuellen(produkt, trainer, ort);
+					C_RessourceAendern.getInstance(C_TrainingKonfigurieren.getInstance()).setView(null);
 					dispose();
 				}	
 			}
