@@ -417,5 +417,4 @@ public class Testfaelle{
 	public void setTraining2(M_Training training2) {
 		this.training2 = training2;
 	}
-
 }

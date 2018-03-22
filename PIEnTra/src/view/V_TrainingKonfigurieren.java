@@ -10,6 +10,7 @@ import java.awt.event.FocusEvent;
 import java.awt.event.FocusListener;
 
 import javax.swing.JButton;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
@@ -17,7 +18,6 @@ import javax.swing.UnsupportedLookAndFeelException;
 import controller.C_Hauptmenue;
 import controller.C_KundeWaehlen;
 import controller.C_RessourceAendern;
-import controller.C_RessourceWaehlen;
 import controller.C_TrainingKonfigurieren;
 import model.M_Ort;
 import model.M_Produkt;
@@ -120,11 +120,11 @@ public class V_TrainingKonfigurieren extends SimpleMasterWindow {
 		JPanel pnl_content = new JPanel();
 		pnl_content.setLayout(new GridLayout(10, 1));
 		pnl_content.setAlignmentY(LEFT_ALIGNMENT);
-		pnl_firmenname.setEnabled(false);
-		pnl_ansprechpartner.setEnabled(false);
-		pnl_produktID.setEnabled(false);
-		pnl_trainer.setEnabled(false);
-		pnl_ort.setEnabled(false);
+		pnl_firmenname.getTextPanel().setEnabled(false);
+		pnl_ansprechpartner.getTextPanel().setEnabled(false);
+		pnl_produktID.getTextPanel().setEnabled(false);
+		pnl_trainer.getTextPanel().setEnabled(false);
+		pnl_ort.getTextPanel().setEnabled(false);
 		pnl_content.add(pnl_kundenID);
 		pnl_content.add(pnl_firmenname);
 		pnl_content.add(pnl_ansprechpartner);
@@ -369,7 +369,8 @@ public class V_TrainingKonfigurieren extends SimpleMasterWindow {
 	}
 	private class TrainingSpeichern implements ActionListener {
 		public void actionPerformed(ActionEvent arg0) {
-			System.out.println("Training Speichern!");
+			C_TrainingKonfigurieren.getInstance().saveTraining();
+			JOptionPane.showMessageDialog(null, "Das Training mit der ID " + C_TrainingKonfigurieren.getInstance().getTraining().getTrainingsID() + " wurde konfiguriert!" );
 		}
 	}
 	private class Zurueck implements ActionListener {
