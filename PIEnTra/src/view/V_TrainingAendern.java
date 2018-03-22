@@ -315,7 +315,7 @@ public class V_TrainingAendern extends SimpleMasterWindow {
 //					training = null;
 //					moehrenhoerer.setBool1(false);;
 
-			        JOptionPane jop = new JOptionPane("Wählen Sie ein Training aus!",JOptionPane.QUESTION_MESSAGE, JOptionPane.DEFAULT_OPTION,null,options, null);
+			        JOptionPane jop = new JOptionPane("Wählen Sie ein Training aus!", JOptionPane.QUESTION_MESSAGE, JOptionPane.DEFAULT_OPTION, null, options, null);
 			        jop.add(combobox);
 			        JDialog diag = new JDialog();
 			        diag.getContentPane().add(jop);

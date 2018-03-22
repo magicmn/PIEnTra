@@ -117,6 +117,13 @@ public class C_TrainingAendern {
 	public void setOrt(M_Ort ort) {
 		this.ort = ort;
 	}
+
+	public void updateTraining() {
+		getTraining().setAnfangsdatum(view.getText_pnl_startdatum());
+		getTraining().setEnddatum(view.getText_pnl_enddatum());
+		getTraining().setTage(Integer.parseInt(view.getText_pnl_tage()));
+		getTraining().setProdukt(getProdukt());
+	}
 	
 
 }
