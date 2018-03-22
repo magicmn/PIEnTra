@@ -39,7 +39,7 @@ import utils.SimpleTextPanel;
  * @author Adrian Fromm
  * @see {@link controller.C_Hauptmenue};
  */
-public class V_RessourceWaehlen extends SimpleMasterWindow {
+public class OLD_V_RessourceWaehlen extends SimpleMasterWindow {
 	private static final long serialVersionUID = -6381551589496678636L;
 	
 	/* Deklaration und Initailiserung von verschiedenen Variablen **/
@@ -79,14 +79,14 @@ public class V_RessourceWaehlen extends SimpleMasterWindow {
 	
 	private M_Produkt produkt;
 	
-	private V_RessourceWaehlen thisView;
+	private OLD_V_RessourceWaehlen thisView;
 	
 	/* Konstruktor und Methoden die vom Konstruktor aufgerufen werden. */
 	
 	/**
 	 * Konstruktor der View RessourceWaehlen
 	 */
-	public V_RessourceWaehlen() {
+	public OLD_V_RessourceWaehlen() {
 		super(
 			defaultSize,
 			minSize,
@@ -201,7 +201,7 @@ public class V_RessourceWaehlen extends SimpleMasterWindow {
 			e.printStackTrace();
 		}
 		new Test_main();
-		new V_RessourceWaehlen();
+		new OLD_V_RessourceWaehlen();
 	}
 	
 	// Getter und Setter
