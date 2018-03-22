@@ -6,6 +6,8 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.FocusEvent;
 import java.awt.event.FocusListener;
+import java.awt.event.ItemEvent;
+import java.awt.event.ItemListener;
 import java.util.NoSuchElementException;
 
 import javax.swing.JButton;
@@ -89,6 +91,10 @@ public class V_TrainingAendern extends SimpleMasterWindow {
 	private boolean dateCorrect = false;
 	private boolean trainingsIDCorrect = false;
 	
+	String[] trainings= {M_Training.getInterneListe().get((M_Training.getInterneListe().size()-1)).getTrainingsID()};
+	JComboBox combobox  = new JComboBox(trainings);
+    Object[] options = new Object[] {};
+	
 	
 	/* Konstruktor und Methoden die vom Konstruktor aufgerufen werden. */
 	
@@ -154,6 +160,7 @@ public class V_TrainingAendern extends SimpleMasterWindow {
 		getPnl_menu().add(btn_ressourcenAendern);
 		getPnl_menu().add(btn_trainingAktualisieren);
 		getPnl_menu().add(btn_zurueck);
+		
 	}
 	
 	/**
@@ -306,15 +313,15 @@ public class V_TrainingAendern extends SimpleMasterWindow {
 //					popup.showMessageDialog(null, "Bitte tragen Sie ein Trainings-ID ein");
 //					training = null;
 //					moehrenhoerer.setBool1(false);;
-					String[] training= {M_Training.getInterneListe().get((M_Training.getInterneListe().size()-1)).getTrainingsID()};
-					JComboBox combobox  = new JComboBox(training);
-			        Object[] options = new Object[] {};
+
 			        JOptionPane jop = new JOptionPane("Wählen Sie ein Training aus!",JOptionPane.QUESTION_MESSAGE, JOptionPane.DEFAULT_OPTION,null,options, null);
 			        jop.add(combobox);
 			        JDialog diag = new JDialog();
 			        diag.getContentPane().add(jop);
 			        diag.pack();
 			        diag.setVisible(true);
+			        combobox.setSelectedIndex(-1);
+			        combobox.addItemListener(new DropdownListener());
 				}
 				else if(!getText_pnl_trainingsID().equals("")) {
 					training = SimpleSearch.trainingSuchen(getText_pnl_trainingsID(), M_Training.getInterneListe());
@@ -333,6 +340,19 @@ public class V_TrainingAendern extends SimpleMasterWindow {
 			}
 		}
 	}
+	
+	private class DropdownListener implements ItemListener{
+		public void itemStateChanged(ItemEvent e) {
+			if(e.getStateChange() == ItemEvent.SELECTED){		    		
+					}
+			training = SimpleSearch.trainingSuchen(combobox.getSelectedItem().toString(), M_Training.getInterneListe());
+			C_TrainingAendern.getInstance().felderFuellen(training);
+			C_TrainingAendern.getInstance().idFuellen(training);
+				}
+			} 
+
+	
+	
 	private class RessourceAendern implements ActionListener {
 		public void actionPerformed(ActionEvent arg0) {
 			C_RessourceAendern.getInstance(C_TrainingAendern.getInstance()).getView().setVisible(true);;
