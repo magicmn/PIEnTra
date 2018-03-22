@@ -370,12 +370,8 @@ public class V_TrainingKonfigurieren extends SimpleMasterWindow {
 	}
 	private class TrainingSpeichern implements ActionListener {
 		public void actionPerformed(ActionEvent arg0) {
-<<<<<<< HEAD
 			C_TrainingKonfigurieren.getInstance().saveTraining();
 			JOptionPane.showMessageDialog(null, "Das Training mit der ID " + C_TrainingKonfigurieren.getInstance().getTraining().getTrainingsID() + " wurde konfiguriert!" );
-=======
-			JOptionPane.showMessageDialog(null, "Das Training mit der ID " + training.getTrainingsID() + " wurde konfiguriert!" );
->>>>>>> branch 'master' of https://github.com/magicmn/PIEnTra.git
 		}
 	}
 	private class Zurueck implements ActionListener {
