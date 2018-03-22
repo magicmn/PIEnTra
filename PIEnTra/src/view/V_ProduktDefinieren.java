@@ -41,8 +41,6 @@ public class V_ProduktDefinieren extends SimpleMasterWindow {
 	private M_Produkt produkt;
 	private JOptionPane popup;
 	
-	/* Deklaration und Initailiserung von verschiedenen Variablen **/
-	
 	/** 
 	 * Standard Größe des Fensters.
 	 * @see SimpleMasterWindow#initFrame(Dimension defaultSize, Dimension minSize)
@@ -69,7 +67,6 @@ public class V_ProduktDefinieren extends SimpleMasterWindow {
 	
 	private V_ProduktDefinieren thisView;
 	
-	/* Konstruktor und Methoden die vom Konstruktor aufgerufen werden. */
 	
 	/**
 	 * Konstruktor der View Produkt definieren.
@@ -97,6 +94,7 @@ public class V_ProduktDefinieren extends SimpleMasterWindow {
 	private void initContent() {
 		JPanel pnl_content = new JPanel();
 		pnl_content.setLayout(new BoxLayout(pnl_content, BoxLayout.PAGE_AXIS));
+		txt_produktbeschreibung.setLineWrap(true);
 		pnl_content.add(pnl_produktID);
 		pnl_content.add(pnl_produktbezeichnung);
 		JPanel pnl_produktbeschreibung = new JPanel();
@@ -168,11 +166,16 @@ public class V_ProduktDefinieren extends SimpleMasterWindow {
 	}
 	
 	// ActionListener ----------------------------------------------------------------------------------------
-	
+	/**
+	 * Gibt die Anweisung ein neues Produkt an zu legen.
+	 * Testet vorher ob eine korrekte Eingabe erfolgt ist.
+	 * Bereinigt im Anschluss das Formular um weitere Produkte anlegen zu können.
+	 * 
+	 * @author Andreas Kann
+	 *
+	 */
 	private class ProduktDefinieren implements ActionListener {
-		@SuppressWarnings("static-access")
 		public void actionPerformed(ActionEvent arg0) {
-			//System.out.println("Produkt definieren!");
 			produkt = null;
 			if(!getText_txt_produktID().equals("")){
 			try{
@@ -180,24 +183,30 @@ public class V_ProduktDefinieren extends SimpleMasterWindow {
 				
 					}catch(NoSuchElementException e){
 						C_ProduktDefinieren.getInstance().produktDefinieren();
-						popup.showMessageDialog(null, "Es wurde ein neues Produkt mit der ID "+ getText_txt_produktID() + " angelegt");
+						JOptionPane.showMessageDialog(null, "Es wurde ein neues Produkt mit der ID "+ getText_txt_produktID() + " angelegt");
 						setText_txt_produktID("");
 						setText_txt_produktbezeichnung("");
 						setText_txt_produktbeschreibung("");
 						}finally{
 							if(produkt != null){
-								popup.showMessageDialog(null, "Es ist bereits ein Produkt mit dieser ID vorhanden");
+								JOptionPane.showMessageDialog(null, "Es ist bereits ein Produkt mit dieser ID vorhanden");
 								
 							}
 						}
 					
 			
 			}else {
-				popup.showMessageDialog(null, "Bitte geben Sie eine ProduktID ein!");
+				JOptionPane.showMessageDialog(null, "Bitte geben Sie eine ProduktID ein!");
 			}
 		}
 	}
 	
+	/**
+	 * Navigiert zurück zum Hauptmenu.
+	 * 
+	 * @author Andreas Kann
+	 *
+	 */
 	private class Zurueck implements ActionListener {
 		public void actionPerformed(ActionEvent arg0) {
 			SimpleSwitchFrame.switchFrame(thisView,C_Hauptmenue.getInstance(), C_Hauptmenue.getInstance().getView());

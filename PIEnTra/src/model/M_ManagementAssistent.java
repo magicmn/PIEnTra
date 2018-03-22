@@ -98,5 +98,9 @@ public class M_ManagementAssistent extends M_Person{
 	public static void setInterneListe(ArrayList<M_ManagementAssistent> interneListe) {
 		M_ManagementAssistent.interneListe = interneListe;
 	}
+	
+	public static M_ManagementAssistent getManagmentAssistent() {
+		return interneListe.get(0);
+	}
 
 }

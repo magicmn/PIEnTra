@@ -9,6 +9,8 @@ import java.awt.event.FocusListener;
 import java.util.NoSuchElementException;
 
 import javax.swing.JButton;
+import javax.swing.JComboBox;
+import javax.swing.JDialog;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.UIManager;
@@ -37,7 +39,7 @@ import utils.SimpleTextPanel;
  * @version 1.1 Listener entfernt. Getter und Setter entfernt.
  * @version 1.0 View implementiert.
  * @author Adrian Fromm
- * @author Jannik Stark
+ * @author Jannik
  * @author Julian Klein
  * @author Konstantin
  * @see {@link controller.C_Hauptmenue};
@@ -301,10 +303,19 @@ public class V_TrainingAendern extends SimpleMasterWindow {
 			JOptionPane popup = new JOptionPane();
 			try {
 				if(getText_pnl_trainingsID().equals("")) {
-					System.out.println("Bitte ID eintragen ");
-					popup.showMessageDialog(null, "Bitte tragen Sie ein Trainings-ID ein");
-					training = null;
-					moehrenhoerer.setBool1(false);;
+//					System.out.println("Bitte ID eintragen ");
+//					popup.showMessageDialog(null, "Bitte tragen Sie ein Trainings-ID ein");
+//					training = null;
+//					moehrenhoerer.setBool1(false);;
+					String[] training= {M_Training.getInterneListe().get((M_Training.getInterneListe().size()-1)).getTrainingsID()};
+					JComboBox combobox  = new JComboBox(training);
+			        Object[] options = new Object[] {};
+			        JOptionPane jop = new JOptionPane("Wählen Sie ein Training aus!",JOptionPane.QUESTION_MESSAGE, JOptionPane.DEFAULT_OPTION,null,options, null);
+			        jop.add(combobox);
+			        JDialog diag = new JDialog();
+			        diag.getContentPane().add(jop);
+			        diag.pack();
+			        diag.setVisible(true);
 				}
 				else if(!getText_pnl_trainingsID().equals("")) {
 					training = SimpleSearch.trainingSuchen(getText_pnl_trainingsID(), M_Training.getInterneListe());

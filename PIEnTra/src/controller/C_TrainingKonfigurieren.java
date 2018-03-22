@@ -13,12 +13,12 @@ package controller;
 import javax.swing.JFrame;
 
 import model.M_Kunde;
-
+import model.M_ManagementAssistent;
 import model.M_Ort;
 import model.M_Produkt;
 import model.M_Trainer;
 import model.M_Training;
-
+import testdaten.Testfaelle;
 import view.V_TrainingKonfigurieren;
 
 public class C_TrainingKonfigurieren {
@@ -64,18 +64,29 @@ public class C_TrainingKonfigurieren {
 		
 
 	}
-public void felderFuellen(M_Produkt produkt, M_Trainer trainer, M_Ort ort) {
-		
+	public void felderFuellen(M_Produkt produkt, M_Trainer trainer, M_Ort ort) {	
 		setProdukt(produkt);
 		setTrainer(trainer);
 		setOrt(ort);
-		
 		view.setText_pnl_produktbeschreibung(getProdukt().getBezeichnung());
 		view.setText_pnl_trainer(getTrainer().getVorname()+", "+getTrainer().getNachname());
 		view.setText_pnl_ort(getOrt().getOrtsID());
-		
 	}
 
+	
+	public void saveTraining() {
+		setTraining(new M_Training(
+				view.getText_pnl_anfangsdatum(),
+				getTrainer(),
+				getOrt(),
+				getKunde(),
+				view.getText_pnl_enddatum(),
+				Integer.parseInt(view.getText_pnl_tage()),
+				view.getText_pnl_bemerkungen(), 
+				getProdukt(),
+				M_ManagementAssistent.getManagmentAssistent()));
+	}
+	
 	public M_Training getTraining() {
 		return training;
 	}
