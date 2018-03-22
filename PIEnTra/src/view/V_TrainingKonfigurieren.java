@@ -10,6 +10,7 @@ import java.awt.event.FocusEvent;
 import java.awt.event.FocusListener;
 
 import javax.swing.JButton;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
@@ -17,7 +18,6 @@ import javax.swing.UnsupportedLookAndFeelException;
 import controller.C_Hauptmenue;
 import controller.C_KundeWaehlen;
 import controller.C_RessourceAendern;
-import controller.C_RessourceWaehlen;
 import controller.C_TrainingKonfigurieren;
 import model.M_Ort;
 import model.M_Produkt;
@@ -370,7 +370,7 @@ public class V_TrainingKonfigurieren extends SimpleMasterWindow {
 	}
 	private class TrainingSpeichern implements ActionListener {
 		public void actionPerformed(ActionEvent arg0) {
-			System.out.println("Training Speichern!");
+			JOptionPane.showMessageDialog(null, "Das Training mit der ID " + training.getTrainingsID() + " wurde konfiguriert!" );
 		}
 	}
 	private class Zurueck implements ActionListener {
