@@ -75,10 +75,6 @@ public class V_TrainingLoeschen extends SimpleMasterWindow {
 
 	/**
 	 * Konstruktor der View_Training Löschen.
-=======
-	/**
-	 * Konstruktor der View_Training Löschen.
->>>>>>> branch 'master' of https://github.com/magicmn/PIEnTra.git
 	 * Übergibt an die Superklasse die standard und minimal Größe, sowie aktuelle Pfadangaben der Navigationsleiste.
 	 * Initialisiert den Content, das Menu, die resizeGUI und sämtliche Listener.
 	 * Zuletzt wird die View sichbar gesetzt.

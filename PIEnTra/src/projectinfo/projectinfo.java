@@ -99,9 +99,10 @@
  * 	[ ] - V_KundeSuchen	
  * 	[ ] - C_TrainingKonfigurieren
  * 	[x] - C_TrainingLoeschen
- * 	[ ] - C_ProduktDefinieren
+ * 	[x] - C_ProduktDefinieren
  *  [ ] - C_KundeVerwalten
  *  [ ] - SimpleSearch
+ *  
  * 	[z] - Kommentierung, Pflegung, Anpassung der JavaDocs in diversen Klassen
  * 
  * Jannik:

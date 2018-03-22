@@ -21,7 +21,6 @@ public class M_Training {
 	private M_Ort ort;
 	private M_Kunde kunde;
 	private M_Trainer trainer;
-	private String managmentAssistentJustAString;
 	private ArrayList<M_ManagementAssistent> managementAssistente;
 
 
@@ -40,7 +39,10 @@ public class M_Training {
 	public M_Training(String anfangsdatum, M_Trainer trainer,
 			M_Ort ort, M_Kunde kunde, String  enddatum, int tage,
 			String bemerkungen, M_Produkt produkt, M_ManagementAssistent ...assistents ) {
+
+
 		setInterneID(getInterneID()+1);
+		
 		setAnfangsdatum(anfangsdatum);
 		setEnddatum(enddatum);
 		setTage(tage);
@@ -53,12 +55,20 @@ public class M_Training {
 		for(int i  = 0; i<assistents.length; i++) {
 			this.managementAssistente.add(assistents[i]);
 			assistents[i].trainingHinzufuegen(this);
+			
 		setTrainingsID(idGenerieren());
+		
+
+			
+
 		}
-		if(M_Training.interneListe == null) {
-			M_Training.interneListe =new ArrayList<M_Training>();
+		if(this.interneListe == null) {
+			this.interneListe =new ArrayList<M_Training>();
 		}
 		getInterneListe().add(this);
+
+
+
 	}
 
 	public static ArrayList<M_Training> getInterneListe() {

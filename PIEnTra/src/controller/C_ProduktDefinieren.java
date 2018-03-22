@@ -46,7 +46,9 @@ public class C_ProduktDefinieren {
 	 * Legt ein Objekt der Klasse Produkt an.
 	 */
 	public void produktDefinieren(){
+		
 		setProdukt(new M_Produkt(view.getText_txt_produktID(), view.getText_txt_produktbezeichnung(), view.getText_txt_produktbeschreibung(), 1.0));
+		
 	}
 
 	public M_Produkt getProdukt() {

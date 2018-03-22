@@ -106,7 +106,7 @@ public class V_RessourceAendern extends SimpleMasterWindow {
 
 	private V_RessourceAendern thisView;
 	private static Object controller;
-	
+
 	boolean success = false;
 	/* Konstruktor und Methoden die vom Konstruktor aufgerufen werden. */
 
@@ -167,19 +167,30 @@ public class V_RessourceAendern extends SimpleMasterWindow {
 		pnl_produktbez = new SimpleDropdownPanel("Produktbezeichnung:", arrayList_produktbezeichnung);
 		pnl_trainer = new SimpleDropdownPanel("Trainer:", arrayList_trainer);
 		pnl_ort = new SimpleDropdownPanel("Ort:", arrayList_ort);
-		if(getOrt() == null && getProdukt()==null&&getTrainer()==null) {
-			pnl_produktbez.getComboBox().setSelectedIndex(-1);
-			pnl_trainer.getComboBox().setSelectedIndex(-1);
-			pnl_ort.getComboBox().setSelectedIndex(-1);
 
-			pnl_trainer.getComboBox().setEnabled(false);
-			pnl_ort.getComboBox().setEnabled(false);
-		}
-		else {
+		pnl_produktbez.getComboBox().setSelectedIndex(-1);
+		pnl_trainer.getComboBox().setSelectedIndex(-1);
+		pnl_ort.getComboBox().setSelectedIndex(-1);
+
+		pnl_trainer.getComboBox().setEnabled(false);
+		pnl_ort.getComboBox().setEnabled(false);
+
+		if(controller instanceof C_TrainingAendern) {
+			produkt = ((C_TrainingAendern) controller).getProdukt();
+			trainer = ((C_TrainingAendern) controller).getTrainer();
+			ort = ((C_TrainingAendern) controller).getOrt();
+
+
+			pnl_trainer.getComboBox().setEnabled(true);
+			pnl_ort.getComboBox().setEnabled(true);
+
 			pnl_produktbez.getComboBox().setSelectedItem(produkt.getBezeichnung());
-			pnl_trainer.getComboBox().setSelectedItem(trainer.getVorname() + trainer.getNachname());
-			pnl_ort.getComboBox().setSelectedItem(ort);
+			pnl_trainer.getComboBox().setSelectedItem(trainer.getVorname() + trainer.getNachname()+"");
+			pnl_ort.getComboBox().setSelectedItem(ort.toString());
+
+
 		}
+
 
 
 
@@ -214,34 +225,34 @@ public class V_RessourceAendern extends SimpleMasterWindow {
 	 * Initiailisert die Menu Buttons
 	 */
 	private void initMenu() {
-		
-		
-	
+
+
+
 		btn_ressourceaendern.setEnabled(false);
 		getPnl_menu().add(btn_ressourceaendern);
 		getPnl_menu().add(btn_zurueck);	
 		if(getController() instanceof C_TrainingAendern) {
 			btn_ressourceaendern.setText("Ressource ändern");
 			System.out.println("test");
-			
+
 		}
 		if(getController() instanceof C_TrainingKonfigurieren) {
 			btn_ressourceaendern.setText("Ressource wählen");
 			System.out.println("testtest");
-		System.out.println();
+			System.out.println();
 			setSuccess(true);
 		}
-	
+
 	}
 
 	/**
 	 * Initialisiert ActionListener
 	 */
-	
-	
+
+
 	private void initListener() {
-	
-		
+
+
 		btn_ressourceaendern.addActionListener(new RessourceWaehlen());
 		btn_zurueck.addActionListener(new Zurueck());	
 
@@ -264,13 +275,13 @@ public class V_RessourceAendern extends SimpleMasterWindow {
 		btn_zurueck.setPreferredSize(new Dimension(optimalButtonWidth / 4, btn_ressourceaendern.getPreferredSize().height));
 
 	}
-	
+
 	/**
 	 * Initialisiert die ArrayListen.
 	 * Hinweis: arrayList_trainer wird zur Laufzeit abhängig von der Combobox-Auswahl von Produktbezeichnung initialisiert.
 	 */
 	private void initComboBox(){
-		
+
 		M_Produkt.getInterneListe().forEach(M_Produkt -> arrayList_produktbezeichnung.add(M_Produkt.getBezeichnung()));
 		M_Ort.getInterneListe().forEach(M_Ort -> arrayList_ort.add(M_Ort.getOrtsID()+" , "+M_Ort.getGeschaefstsstelle()));		
 	}
@@ -301,7 +312,7 @@ public class V_RessourceAendern extends SimpleMasterWindow {
 	}
 
 	// Getter und Setter Model
-	
+
 	public static Object getController() {
 		return controller;
 	}
@@ -332,9 +343,9 @@ public class V_RessourceAendern extends SimpleMasterWindow {
 	public void setProdukt(M_Produkt produkt) {
 		this.produkt = produkt;
 	}
-	
+
 	/* Implementierung der ActionListener */
-	
+
 	/**
 	 * Die interne Klasse "Ressource Waehlen" implementiert den ActionListener für "btn_ressourcewaehlen".
 	 * 
@@ -346,7 +357,7 @@ public class V_RessourceAendern extends SimpleMasterWindow {
 		public void actionPerformed(ActionEvent arg0) {
 
 			if(ort!=null&&produkt!=null&&trainer!=null) {
-				
+
 				if(controller instanceof C_TrainingAendern) {
 					System.out.println("fuellenm");
 					setSuccess(true);
@@ -361,14 +372,22 @@ public class V_RessourceAendern extends SimpleMasterWindow {
 				}
 				System.out.println("Ressource wählen!2");
 			}
-			
+
 			System.out.println("Ressource wählen!");
 		}
 	}
 	private class Zurueck implements ActionListener {
 		public void actionPerformed(ActionEvent arg0) {
 			System.out.println("Zurueck");
-			SimpleSwitchFrame.switchFrame(thisView, C_TrainingAendern.getInstance(), C_TrainingAendern.getInstance().getView());
+
+			if(controller instanceof C_TrainingAendern) {
+
+				SimpleSwitchFrame.switchFrame(thisView, C_TrainingAendern.getInstance(), ((C_TrainingAendern) controller).getView());
+				
+			}
+			if(controller instanceof C_TrainingKonfigurieren) {
+				SimpleSwitchFrame.switchFrame(thisView, C_TrainingKonfigurieren.getInstance(), ((C_TrainingKonfigurieren) controller).getView());
+			}
 		}
 	}	
 
@@ -387,6 +406,8 @@ public class V_RessourceAendern extends SimpleMasterWindow {
 					pnl_trainer.removeItems();
 
 					pnl_trainer.getComboBox().setEnabled(true);
+
+
 
 					produkt = M_Produkt.getInterneListe().get(pnl_produktbez.getComboBox().getSelectedIndex());
 					produkt.getTrainer().forEach(n -> arrayList_trainer.add(n.getVorname()+" "+n.getNachname()));
@@ -413,8 +434,9 @@ public class V_RessourceAendern extends SimpleMasterWindow {
 			if(e.getStateChange() == ItemEvent.SELECTED){
 				if(pnl_trainer.getComboBox().getSelectedIndex()>-1){
 					pnl_ort.getComboBox().setEnabled(true);
+
 					trainer = produkt.getTrainer().get(pnl_trainer.getComboBox().getSelectedIndex());
-						
+
 				}
 			}  
 		}
