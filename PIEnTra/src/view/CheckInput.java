@@ -30,6 +30,9 @@ public class CheckInput implements CaretListener {
 		this.buttonToEnable = buttonToEnable;
 	}
 	
+	/**
+	 * EventMethode. Bei ausfuehrung werden die beiden booleans ueberprueft.
+	 */
 	public void caretUpdate(CaretEvent arg0) {
 		if (bool1 == true && bool2 == true) {
 			buttonToEnable.setEnabled(true);
