@@ -341,6 +341,7 @@ public class V_TrainingAendern extends SimpleMasterWindow {
 		}
 	}
 	
+	
 	private class DropdownListener implements ItemListener{
 		public void itemStateChanged(ItemEvent e) {
 			if(e.getStateChange() == ItemEvent.SELECTED){		    		
