@@ -58,6 +58,9 @@ public class C_TrainingAendern {
 		view.setText_pnl_ort(training.getOrt().getOrtsID());
 		view.setText_pnl_bemerkungen(training.getBemerkungen());
 		setTraining(training);
+		setProdukt(training.getProdukt());
+		setTrainer(training.getTrainer());
+		setOrt(training.getOrt());
 	}
 	public void felderFuellen(M_Produkt produkt, M_Trainer trainer, M_Ort ort) {
 		

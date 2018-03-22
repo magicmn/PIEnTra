@@ -324,8 +324,8 @@ public class V_TrainingAendern extends SimpleMasterWindow {
 	}
 	private class RessourceAendern implements ActionListener {
 		public void actionPerformed(ActionEvent arg0) {
-			C_RessourceAendern.getInstance(C_TrainingAendern.getInstance());
-			C_RessourceAendern.getInstance(C_TrainingAendern.getInstance()).getView();
+			C_RessourceAendern.getInstance(C_TrainingAendern.getInstance()).getView().setVisible(true);;
+		
 			C_RessourceAendern.getInstance(C_TrainingAendern.getInstance()).viewSetzen(training.getProdukt(),training.getTrainer(),training.getOrt());
 
 			//SimpleSwitchFrame.switchFrame(thisView, C_RessourceAendern.getInstance(), C_RessourceAendern.getInstance().getView());

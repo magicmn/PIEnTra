@@ -40,10 +40,13 @@ public class C_RessourceAendern {
 
 	public static V_RessourceAendern getView() {
 
+		if(view==null) {
+			view = new V_RessourceAendern(controller);
+			
+		}
+//		V_RessourceAendern.setController(controller);
 
-		V_RessourceAendern.setController(controller);
-
-		view = new V_RessourceAendern(controller);
+		
 
 		view.setVisible(true);
 		return view;
@@ -61,9 +64,7 @@ public class C_RessourceAendern {
 			instance = new C_RessourceAendern(controller);
 		}
 		setController(controller);
-		if(view==null) {
-			getView();
-		}
+	
 		return instance;
 	}
 
