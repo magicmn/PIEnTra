@@ -345,7 +345,7 @@ public class V_TrainingAendern extends SimpleMasterWindow {
 	}
 	private class TrainingAktualisieren implements ActionListener {
 		public void actionPerformed(ActionEvent arg0) {
-			
+			C_TrainingAendern.getInstance().updateTraining();
 		}
 	}
 

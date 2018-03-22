@@ -76,8 +76,15 @@ public class C_TrainingAendern {
 		view.setText_pnl_trainer(getTrainer().getVorname()+", "+getTrainer().getNachname());
 		view.setText_pnl_ort(getOrt().getOrtsID());
 		view.setText_pnl_bemerkungen(training.getBemerkungen());
-	
 	}
+	
+	public void updateTraining() {
+		training.setAnfangsdatum(view.getText_pnl_startdatum());
+		training.setEnddatum(view.getText_pnl_enddatum());
+		training.setTage(Integer.parseInt(view.getText_pnl_tage()));
+		training.setProdukt(this.getProdukt());
+	}
+	
 	public void ressourcenAnzeigen() {
 		
 	}
