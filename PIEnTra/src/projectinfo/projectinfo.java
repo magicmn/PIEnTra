@@ -18,14 +18,14 @@
  *  [ ] - C_KundeVerwalten
  *  [ ] - C_ProduktDefinieren
  *  [ ] - C_TrainingAendern
- *  [ ] - C_TrainingKonfigurieren
+ *  [x] - C_TrainingKonfigurieren
  *  [ ] - V_Hauptmenue
  *  [ ] - V_KundeSuchen
  *  [ ] - V_KundeVerwalten
  *  [ ] - V_KundeWaehlen
  *  [ ] - V_ProduktDefinieren
  *  [ ] - V_TrainingAendern
- *  [ ] - V_TrainingKonfigurieren
+ *  [x] - V_TrainingKonfigurieren
  *  [ ] - V_TrainingLoeschen
  *  [ ] - CheckInput
  *  
