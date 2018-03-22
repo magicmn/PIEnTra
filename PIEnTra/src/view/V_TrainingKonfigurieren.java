@@ -357,9 +357,10 @@ public class V_TrainingKonfigurieren extends SimpleMasterWindow {
 		public void actionPerformed(ActionEvent arg0) {
 			System.out.println("Ressource Wählen");
 			
-			C_RessourceAendern.getInstance(C_TrainingKonfigurieren.getInstance()).getView().setVisible(true);;
-			
-			
+			//C_RessourceAendern.getInstance(C_TrainingKonfigurieren.getInstance()).getView().setVisible(true);;
+			C_RessourceAendern.getInstance(C_TrainingKonfigurieren.getInstance());
+			C_RessourceAendern.getInstance(C_TrainingKonfigurieren.getInstance()).getView().setVisible(true);
+			System.out.println(C_RessourceAendern.getController());
 			
 		
 			

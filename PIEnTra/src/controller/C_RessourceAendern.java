@@ -96,6 +96,11 @@ public class C_RessourceAendern {
 		setOrt(ort);
 
 	}
+	
+	public static void setInstanceNull(){
+		C_RessourceAendern.instance = null;
+		C_RessourceAendern.getView().dispose();
+	}
 
 	public M_Produkt getProdukt() {
 		return produkt;
