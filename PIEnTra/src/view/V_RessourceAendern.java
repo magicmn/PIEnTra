@@ -381,12 +381,13 @@ public class V_RessourceAendern extends SimpleMasterWindow {
 			System.out.println("Zurueck");
 
 			if(controller instanceof C_TrainingAendern) {
-
-				SimpleSwitchFrame.switchFrame(thisView, C_TrainingAendern.getInstance(), ((C_TrainingAendern) controller).getView());
 				
+				SimpleSwitchFrame.switchFrame(thisView, C_TrainingAendern.getInstance(), ((C_TrainingAendern) controller).getView());
+				C_RessourceAendern.getInstance(C_TrainingAendern.getInstance()).setView(null);
 			}
 			if(controller instanceof C_TrainingKonfigurieren) {
-				SimpleSwitchFrame.switchFrame(thisView, C_TrainingKonfigurieren.getInstance(), ((C_TrainingKonfigurieren) controller).getView());
+				SimpleSwitchFrame.switchFrame(thisView, C_TrainingKonfigurieren.getInstance(), ((C_TrainingKonfigurieren) controller).getView());;
+				C_RessourceAendern.getInstance(C_TrainingKonfigurieren.getInstance()).setView(null);
 			}
 		}
 	}	

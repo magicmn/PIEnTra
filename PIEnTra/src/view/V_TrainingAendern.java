@@ -21,6 +21,7 @@ import javax.swing.UnsupportedLookAndFeelException;
 import controller.C_Hauptmenue;
 import controller.C_RessourceAendern;
 import controller.C_TrainingAendern;
+import controller.C_TrainingKonfigurieren;
 import model.M_Ort;
 import model.M_Produkt;
 import model.M_Trainer;
@@ -356,16 +357,16 @@ public class V_TrainingAendern extends SimpleMasterWindow {
 	
 	private class RessourceAendern implements ActionListener {
 		public void actionPerformed(ActionEvent arg0) {
-			C_RessourceAendern.getInstance(C_TrainingAendern.getInstance()).getView().setVisible(true);;
-		
+			C_RessourceAendern.getInstance(C_TrainingAendern.getInstance());
+			C_RessourceAendern.getInstance(C_TrainingAendern.getInstance()).getView().setVisible(true);
 			C_RessourceAendern.getInstance(C_TrainingAendern.getInstance()).viewSetzen(training.getProdukt(),training.getTrainer(),training.getOrt());
-
+			
 			//SimpleSwitchFrame.switchFrame(thisView, C_RessourceAendern.getInstance(), C_RessourceAendern.getInstance().getView());
 		}
 	}
 	private class TrainingAktualisieren implements ActionListener {
 		public void actionPerformed(ActionEvent arg0) {
-			
+			C_TrainingAendern.getInstance().updateTraining();
 		}
 	}
 
