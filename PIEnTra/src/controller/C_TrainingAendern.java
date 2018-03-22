@@ -47,7 +47,7 @@ public class C_TrainingAendern {
 		return instance;
 	}
 	public void felderFuellen(M_Training training) {
-		
+
 		view.setText_pnl_firmenname(training.getKunde().getFirmenname());
 		view.setText_pnl_ansprechpartner(training.getKunde().getAnsprechpartner().getVorname() + " " + training.getKunde().getAnsprechpartner().getNachname());
 	    view.setText_pnl_produktbeschreibung(training.getProdukt().getBezeichnung());
@@ -77,6 +77,10 @@ public class C_TrainingAendern {
 		view.setText_pnl_ort(getOrt().getOrtsID());
 		view.setText_pnl_bemerkungen(training.getBemerkungen());
 	
+	}
+	
+	public void idFuellen(M_Training training){
+		view.setText_pnl_trainingsID(getTraining().getTrainingsID());
 	}
 	public void ressourcenAnzeigen() {
 		
@@ -112,6 +116,13 @@ public class C_TrainingAendern {
 
 	public void setOrt(M_Ort ort) {
 		this.ort = ort;
+	}
+
+	public void updateTraining() {
+		getTraining().setAnfangsdatum(view.getText_pnl_startdatum());
+		getTraining().setEnddatum(view.getText_pnl_enddatum());
+		getTraining().setTage(Integer.parseInt(view.getText_pnl_tage()));
+		getTraining().setProdukt(getProdukt());
 	}
 	
 
